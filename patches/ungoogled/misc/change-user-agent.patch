@@ -1,0 +1,30 @@
+Index: chromium-126.0.6478.57/content/common/user_agent.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/content/common/user_agent.cc
++++ chromium-126.0.6478.57/content/common/user_agent.cc
+@@ -129,7 +129,7 @@ std::string BuildCpuInfo() {
+       sizeof(void*) == sizeof(int32_t)) {
+     cpuinfo.assign("i686 (x86_64)");
+   } else {
+-    cpuinfo.assign(unixinfo.machine);
++    cpuinfo.assign("x86_64");
+   }
+ #endif
+ 
+Index: chromium-126.0.6478.57/third_party/blink/renderer/core/frame/navigator_id.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/third_party/blink/renderer/core/frame/navigator_id.cc
++++ chromium-126.0.6478.57/third_party/blink/renderer/core/frame/navigator_id.cc
+@@ -72,10 +72,8 @@ String NavigatorID::platform() const {
+     StringBuilder result;
+     if (uname(&osname) >= 0) {
+       result.Append(osname.sysname);
+-      if (strlen(osname.machine) != 0) {
+-        result.Append(" ");
+-        result.Append(osname.machine);
+-      }
++      result.Append(" ");
++      result.Append("x86_64");
+     }
+     *platform_name = result.ToString();
+   }

@@ -1,0 +1,25 @@
+=================================================================================
+APPLICATION
+
+export QUILT_PATCHES=patches
+export QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
+
+quilt push -a
+
+=================================================================================
+NOTE
+
+The Ungoogled patches are modified to apply to a stock Debian Chromium tree,
+without any other Ungoogled patches applied.  Typically, this means that the
+following patches must be removed from the Debian patch series and reverted
+from the source tree before this repository can be used:
+ * ungoogled/disable-privacy-sandbox.patch
+
+Be aware that since Debian already carries cookie deactivation patches the
+associated patch in the Ungoogled tree has also been removed.  If you are
+considering applying this Ungoogled patch series to a non-Debian Chromium tree,
+it may be a good idea to use the upstream Ungoogled patch series as a starting
+point instead of this patch series.
+
+If building a Debian package, safe_browsing_mode=0 will need to be set in the
+debian/rules file.

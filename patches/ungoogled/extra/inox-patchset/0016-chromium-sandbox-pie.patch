@@ -1,0 +1,17 @@
+Index: chromium-126.0.6478.57/sandbox/linux/BUILD.gn
+===================================================================
+--- chromium-126.0.6478.57.orig/sandbox/linux/BUILD.gn
++++ chromium-126.0.6478.57/sandbox/linux/BUILD.gn
+@@ -304,6 +304,12 @@ if (is_linux || is_chromeos) {
+       # These files have a suspicious comparison.
+       # TODO fix this and re-enable this warning.
+       "-Wno-sign-compare",
++
++      "-fPIE",
++    ]
++
++    ldflags = [
++      "-pie",
+     ]
+   }
+ }

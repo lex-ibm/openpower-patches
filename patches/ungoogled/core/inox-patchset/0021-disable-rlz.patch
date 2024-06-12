@@ -1,0 +1,34 @@
+# Disable rlz
+
+Index: chromium-126.0.6478.57/BUILD.gn
+===================================================================
+--- chromium-126.0.6478.57.orig/BUILD.gn
++++ chromium-126.0.6478.57/BUILD.gn
+@@ -459,14 +459,6 @@ group("gn_all") {
+       deps += [ "//chromeos:chromeos_unittests" ]
+     }
+ 
+-    if (is_chromeos_ash || is_mac || is_win) {
+-      deps += [
+-        "//rlz:rlz_id",
+-        "//rlz:rlz_lib",
+-        "//rlz:rlz_unittests",
+-      ]
+-    }
+-
+     if (is_linux || is_chromeos) {
+       # The following are definitely linux-only.
+       deps += [
+Index: chromium-126.0.6478.57/rlz/buildflags/buildflags.gni
+===================================================================
+--- chromium-126.0.6478.57.orig/rlz/buildflags/buildflags.gni
++++ chromium-126.0.6478.57/rlz/buildflags/buildflags.gni
+@@ -7,7 +7,7 @@ import("//build/config/chromeos/ui_mode.
+ 
+ # Whether we are using the rlz library or not.  Platforms like Android send
+ # rlz codes for searches but do not use the library.
+-enable_rlz_support = is_win || is_apple || is_chromeos_ash
++enable_rlz_support = false
+ 
+ declare_args() {
+   enable_rlz = is_chrome_branded && enable_rlz_support

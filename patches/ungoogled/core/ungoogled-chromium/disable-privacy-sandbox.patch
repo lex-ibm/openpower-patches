@@ -1,0 +1,60 @@
+Index: chromium-126.0.6478.57/components/attribution_reporting/features.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/components/attribution_reporting/features.cc
++++ chromium-126.0.6478.57/components/attribution_reporting/features.cc
+@@ -11,7 +11,7 @@ namespace attribution_reporting::feature
+ // Controls whether the Conversion Measurement API infrastructure is enabled.
+ BASE_FEATURE(kConversionMeasurement,
+              "ConversionMeasurement",
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+ 
+ BASE_FEATURE(kAttributionReportingTriggerContextId,
+              "AttributionReportingTriggerContextId",
+Index: chromium-126.0.6478.57/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
++++ chromium-126.0.6478.57/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
+@@ -125,7 +125,7 @@ std::set<browsing_topics::Topic> GetTopi
+ 
+ // static
+ bool PrivacySandboxSettingsImpl::IsAllowed(Status status) {
+-  return status == Status::kAllowed;
++  return false;
+ }
+ 
+ // static
+@@ -774,7 +774,7 @@ void PrivacySandboxSettingsImpl::SetTopi
+ }
+ 
+ bool PrivacySandboxSettingsImpl::IsPrivacySandboxRestricted() const {
+-  return delegate_->IsPrivacySandboxRestricted();
++  return true;
+ }
+ 
+ bool PrivacySandboxSettingsImpl::IsPrivacySandboxCurrentlyUnrestricted() const {
+@@ -843,11 +843,7 @@ PrivacySandboxSettingsImpl::GetPrivacySa
+     return Status::kIncognitoProfile;
+   }
+ 
+-  if (IsPrivacySandboxRestricted() && !should_ignore_restriction) {
+     return Status::kRestricted;
+-  }
+-
+-  return Status::kAllowed;
+ }
+ 
+ PrivacySandboxSettingsImpl::Status
+Index: chromium-126.0.6478.57/content/browser/aggregation_service/aggregation_service_features.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/content/browser/aggregation_service/aggregation_service_features.cc
++++ chromium-126.0.6478.57/content/browser/aggregation_service/aggregation_service_features.cc
+@@ -8,7 +8,7 @@ namespace content {
+ 
+ BASE_FEATURE(kPrivacySandboxAggregationService,
+              "PrivacySandboxAggregationService",
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+ 
+ const base::FeatureParam<std::string>
+     kPrivacySandboxAggregationServiceTrustedServerUrlAwsParam{

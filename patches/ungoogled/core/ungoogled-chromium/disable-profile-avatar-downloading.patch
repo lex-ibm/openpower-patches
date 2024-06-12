@@ -1,0 +1,16 @@
+# Stop downloading of profile avatar (trk:271:...)
+
+Index: chromium-126.0.6478.57/chrome/browser/profiles/profile_avatar_downloader.cc
+===================================================================
+--- chromium-126.0.6478.57.orig/chrome/browser/profiles/profile_avatar_downloader.cc
++++ chromium-126.0.6478.57/chrome/browser/profiles/profile_avatar_downloader.cc
+@@ -27,8 +27,7 @@ ProfileAvatarDownloader::ProfileAvatarDo
+                                                  FetchCompleteCallback callback)
+     : icon_index_(icon_index), callback_(std::move(callback)) {
+   DCHECK(!callback_.is_null());
+-  GURL url(std::string(kHighResAvatarDownloadUrlPrefix) +
+-           profiles::GetDefaultAvatarIconFileNameAtIndex(icon_index));
++  GURL url(std::string("about:blank"));
+   net::NetworkTrafficAnnotationTag traffic_annotation =
+       net::DefineNetworkTrafficAnnotation("profile_avatar", R"(
+         semantics {
