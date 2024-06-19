@@ -25,5 +25,7 @@ considering applying this Ungoogled patch series to a non-Debian Chromium tree,
 it may be a good idea to use the upstream Ungoogled patch series as a starting
 point instead of this patch series.
 
-If building a Debian package, safe_browsing_mode=0 will need to be set in the
-debian/rules file.
+If building a Debian package, the following options will need to be set in the
+debian/rules file:
+ * safe_browsing_mode=0
+ * build_with_tflite_lib=false
