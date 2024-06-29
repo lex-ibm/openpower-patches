@@ -57,6 +57,7 @@ ppc64le/fixes/fix-rust-linking.patch
 ppc64le/fixes/fix-breakpad-compile.patch
 ppc64le/fixes/fix-partition-alloc-compile.patch
 ppc64le/fixes/fix-study-crash.patch
+ppc64le/fixes/memory-allocator-dcheck-assert-fix.patch
 ppc64le/v8/0002-Add-ppc64-trap-instructions.patch
 
 ppc64le/sandbox/fix-ppc64-linux-syscalls-headers.patch
