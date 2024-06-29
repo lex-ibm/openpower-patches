@@ -62,6 +62,7 @@ ppc64le/v8/0002-Add-ppc64-trap-instructions.patch
 
 ppc64le/sandbox/fix-ppc64-linux-syscalls-headers.patch
 ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch
+ppc64le/third_party/partition-alloc-4k-detect.patch
 
 ppc64le/third_party/dawn-fix-typos.patch
 ppc64le/third_party/dawn-fix-ppc64le-detection.patch
