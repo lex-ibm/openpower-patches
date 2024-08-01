@@ -1,10 +1,10 @@
 # Disable some background communication with clients2.google.com
 
-Index: chromium-126.0.6478.57/chrome/browser/chrome_content_browser_client.cc
+Index: chromium-127.0.6533.88/chrome/browser/chrome_content_browser_client.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/chrome_content_browser_client.cc
-+++ chromium-126.0.6478.57/chrome/browser/chrome_content_browser_client.cc
-@@ -2550,24 +2550,6 @@ void ChromeContentBrowserClient::AppendE
+--- chromium-127.0.6533.88.orig/chrome/browser/chrome_content_browser_client.cc
++++ chromium-127.0.6533.88/chrome/browser/chrome_content_browser_client.cc
+@@ -2576,24 +2576,6 @@ void ChromeContentBrowserClient::AppendE
      command_line->AppendSwitchASCII(switches::kMetricsClientID,
                                      client_info->client_id);
    }
@@ -29,10 +29,10 @@ Index: chromium-126.0.6478.57/chrome/browser/chrome_content_browser_client.cc
  #endif
  
    if (logging::DialogsAreSuppressed())
-Index: chromium-126.0.6478.57/components/crash/core/app/crashpad.cc
+Index: chromium-127.0.6533.88/components/crash/core/app/crashpad.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/crash/core/app/crashpad.cc
-+++ chromium-126.0.6478.57/components/crash/core/app/crashpad.cc
+--- chromium-127.0.6533.88.orig/components/crash/core/app/crashpad.cc
++++ chromium-127.0.6533.88/components/crash/core/app/crashpad.cc
 @@ -81,6 +81,12 @@ void InitializeDatabasePath(const base::
  }
  
@@ -46,10 +46,10 @@ Index: chromium-126.0.6478.57/components/crash/core/app/crashpad.cc
                              const std::string& process_type,
                              const std::string& user_data_dir,
                              const base::FilePath& exe_path,
-Index: chromium-126.0.6478.57/components/gwp_asan/client/gwp_asan.cc
+Index: chromium-127.0.6533.88/components/gwp_asan/client/gwp_asan.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/gwp_asan/client/gwp_asan.cc
-+++ chromium-126.0.6478.57/components/gwp_asan/client/gwp_asan.cc
+--- chromium-127.0.6533.88.orig/components/gwp_asan/client/gwp_asan.cc
++++ chromium-127.0.6533.88/components/gwp_asan/client/gwp_asan.cc
 @@ -321,6 +321,11 @@ GWP_ASAN_EXPORT std::optional<AllocatorS
  
  // Exported for testing.
@@ -62,10 +62,10 @@ Index: chromium-126.0.6478.57/components/gwp_asan/client/gwp_asan.cc
      const base::Feature& feature,
      bool boost_sampling,
      std::string_view process_type) {
-Index: chromium-126.0.6478.57/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
+Index: chromium-127.0.6533.88/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
-+++ chromium-126.0.6478.57/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
+--- chromium-127.0.6533.88.orig/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
++++ chromium-127.0.6533.88/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
 @@ -748,8 +748,6 @@ void CrashpadClient::CrashWithoutDump(co
  // static
  void CrashpadClient::SetFirstChanceExceptionHandler(

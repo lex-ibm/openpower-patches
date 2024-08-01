@@ -1,10 +1,10 @@
 # Disable rlz
 
-Index: chromium-126.0.6478.57/BUILD.gn
+Index: chromium-127.0.6533.88/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/BUILD.gn
-+++ chromium-126.0.6478.57/BUILD.gn
-@@ -459,14 +459,6 @@ group("gn_all") {
+--- chromium-127.0.6533.88.orig/BUILD.gn
++++ chromium-127.0.6533.88/BUILD.gn
+@@ -464,14 +464,6 @@ group("gn_all") {
        deps += [ "//chromeos:chromeos_unittests" ]
      }
  
@@ -19,10 +19,10 @@ Index: chromium-126.0.6478.57/BUILD.gn
      if (is_linux || is_chromeos) {
        # The following are definitely linux-only.
        deps += [
-Index: chromium-126.0.6478.57/rlz/buildflags/buildflags.gni
+Index: chromium-127.0.6533.88/rlz/buildflags/buildflags.gni
 ===================================================================
---- chromium-126.0.6478.57.orig/rlz/buildflags/buildflags.gni
-+++ chromium-126.0.6478.57/rlz/buildflags/buildflags.gni
+--- chromium-127.0.6533.88.orig/rlz/buildflags/buildflags.gni
++++ chromium-127.0.6533.88/rlz/buildflags/buildflags.gni
 @@ -7,7 +7,7 @@ import("//build/config/chromeos/ui_mode.
  
  # Whether we are using the rlz library or not.  Platforms like Android send

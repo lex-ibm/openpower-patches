@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/sandbox/linux/system_headers/linux_stat.h
+Index: chromium-127.0.6533.88/sandbox/linux/system_headers/linux_stat.h
 ===================================================================
---- chromium-126.0.6478.57.orig/sandbox/linux/system_headers/linux_stat.h
-+++ chromium-126.0.6478.57/sandbox/linux/system_headers/linux_stat.h
+--- chromium-127.0.6533.88.orig/sandbox/linux/system_headers/linux_stat.h
++++ chromium-127.0.6533.88/sandbox/linux/system_headers/linux_stat.h
 @@ -173,6 +173,28 @@ struct kernel_stat {
    unsigned int __unused4;
    unsigned int __unused5;

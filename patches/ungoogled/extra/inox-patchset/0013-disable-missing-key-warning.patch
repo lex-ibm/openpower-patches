@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
 @@ -17,9 +17,6 @@
  // static
  void GoogleApiKeysInfoBarDelegate::Create(

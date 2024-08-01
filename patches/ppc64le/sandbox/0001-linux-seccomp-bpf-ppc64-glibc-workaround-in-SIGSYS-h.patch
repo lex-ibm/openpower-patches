@@ -10,10 +10,10 @@ More investigation required.
  sandbox/linux/seccomp-bpf/trap.cc | 14 ++++++++++++++
  1 file changed, 14 insertions(+)
 
-Index: chromium-126.0.6478.57/sandbox/linux/seccomp-bpf/trap.cc
+Index: chromium-127.0.6533.88/sandbox/linux/seccomp-bpf/trap.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/sandbox/linux/seccomp-bpf/trap.cc
-+++ chromium-126.0.6478.57/sandbox/linux/seccomp-bpf/trap.cc
+--- chromium-127.0.6533.88.orig/sandbox/linux/seccomp-bpf/trap.cc
++++ chromium-127.0.6533.88/sandbox/linux/seccomp-bpf/trap.cc
 @@ -231,6 +231,20 @@ void Trap::SigSys(int nr, LinuxSigInfo*
        SetIsInSigHandler();
      }
@@ -23,9 +23,9 @@ Index: chromium-126.0.6478.57/sandbox/linux/seccomp-bpf/trap.cc
 +    // parameter which causes checks against it to fail. For now, manually
 +    // negate them back.
 +    // TODO(shawn@anastas.io): investigate this issue further
-+    auto cnr = SECCOMP_SYSCALL(ctx);
-+    if (cnr == __NR_openat || cnr == __NR_mkdirat || cnr == __NR_faccessat || cnr == __NR_readlinkat ||
-+        cnr == __NR_renameat || cnr == __NR_renameat2 || cnr == __NR_newfstatat || cnr == __NR_unlinkat) {
++    auto nr = SECCOMP_SYSCALL(ctx);
++    if (nr == __NR_openat || nr == __NR_mkdirat || nr == __NR_faccessat || nr == __NR_readlinkat ||
++        nr == __NR_renameat || nr == __NR_renameat2 || nr == __NR_newfstatat || nr == __NR_unlinkat) {
 +        if (static_cast<int>(SECCOMP_PARM1(ctx)) > 0) {
 +            SECCOMP_PARM1(ctx) = -SECCOMP_PARM1(ctx);
 +        }

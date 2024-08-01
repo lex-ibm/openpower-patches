@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -92,4 +92,8 @@
       "Disable GREASE for TLS",
       "Turn off GREASE (Generate Random Extensions And Sustain Extensibility) for TLS connections. ungoogled-chromium flag.",
@@ -11,10 +11,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
 +     "Set a custom value for the Accept header which is sent by the browser with every HTTP request.  (e.g. `text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8`). ungoogled-chromium flag.",
 +     kOsAll, ORIGIN_LIST_VALUE_TYPE("http-accept-header", "")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-126.0.6478.57/components/flags_ui/flags_state.cc
+Index: chromium-127.0.6533.88/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/flags_ui/flags_state.cc
-+++ chromium-126.0.6478.57/components/flags_ui/flags_state.cc
+--- chromium-127.0.6533.88.orig/components/flags_ui/flags_state.cc
++++ chromium-127.0.6533.88/components/flags_ui/flags_state.cc
 @@ -223,6 +223,7 @@ std::string GetCombinedOriginListValue(c
    const std::string new_value =
        flags_storage.GetOriginListFlag(internal_entry_name);
@@ -31,10 +31,10 @@ Index: chromium-126.0.6478.57/components/flags_ui/flags_state.cc
        CombineAndSanitizeOriginLists(std::string(), value);
    flags_storage->SetOriginListFlag(internal_name, new_value);
  
-Index: chromium-126.0.6478.57/content/public/browser/frame_accept_header.cc
+Index: chromium-127.0.6533.88/content/public/browser/frame_accept_header.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/content/public/browser/frame_accept_header.cc
-+++ chromium-126.0.6478.57/content/public/browser/frame_accept_header.cc
+--- chromium-127.0.6533.88.orig/content/public/browser/frame_accept_header.cc
++++ chromium-127.0.6533.88/content/public/browser/frame_accept_header.cc
 @@ -4,6 +4,7 @@
  
  #include "content/public/browser/frame_accept_header.h"

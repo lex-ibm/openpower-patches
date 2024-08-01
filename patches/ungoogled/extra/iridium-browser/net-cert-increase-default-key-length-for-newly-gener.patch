@@ -10,11 +10,11 @@ it as hidden as it was before?
  net/cert/x509_util.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: chromium-126.0.6478.57/net/cert/x509_util.cc
+Index: chromium-127.0.6533.88/net/cert/x509_util.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/net/cert/x509_util.cc
-+++ chromium-126.0.6478.57/net/cert/x509_util.cc
-@@ -299,7 +299,7 @@ bool GetTLSServerEndPointChannelBinding(
+--- chromium-127.0.6533.88.orig/net/cert/x509_util.cc
++++ chromium-127.0.6533.88/net/cert/x509_util.cc
+@@ -304,7 +304,7 @@ bool GetTLSServerEndPointChannelBinding(
  }
  
  // RSA keys created by CreateKeyAndSelfSignedCert will be of this length.

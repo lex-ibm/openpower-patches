@@ -1,29 +1,29 @@
-Index: chromium-126.0.6478.57/chrome/browser/browser_features.cc
+Index: chromium-127.0.6533.88/chrome/browser/browser_features.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/browser_features.cc
-+++ chromium-126.0.6478.57/chrome/browser/browser_features.cc
-@@ -415,4 +415,5 @@ BASE_FEATURE(kWebUsbDeviceDetection,
-              "WebUsbDeviceDetection",
-              base::FEATURE_ENABLED_BY_DEFAULT);
+--- chromium-127.0.6533.88.orig/chrome/browser/browser_features.cc
++++ chromium-127.0.6533.88/chrome/browser/browser_features.cc
+@@ -401,4 +401,5 @@ BASE_FEATURE(kBrowserDynamicCodeDisabled
+              base::FEATURE_DISABLED_BY_DEFAULT);
+ #endif  // BUILDFLAG(IS_WIN)
  
 +BASE_FEATURE(kClearDataOnExit, "ClearDataOnExit", base::FEATURE_DISABLED_BY_DEFAULT);
  }  // namespace features
-Index: chromium-126.0.6478.57/chrome/browser/browser_features.h
+Index: chromium-127.0.6533.88/chrome/browser/browser_features.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/browser_features.h
-+++ chromium-126.0.6478.57/chrome/browser/browser_features.h
-@@ -153,6 +153,7 @@ BASE_DECLARE_FEATURE(kTabCaptureBlueBord
- BASE_DECLARE_FEATURE(kUseOsCryptAsyncForCookieEncryption);
- BASE_DECLARE_FEATURE(kWebUsbDeviceDetection);
- 
+--- chromium-127.0.6533.88.orig/chrome/browser/browser_features.h
++++ chromium-127.0.6533.88/chrome/browser/browser_features.h
+@@ -151,6 +151,7 @@ BASE_DECLARE_FEATURE(kWebUsbDeviceDetect
+ #if BUILDFLAG(IS_WIN)
+ BASE_DECLARE_FEATURE(kBrowserDynamicCodeDisabled);
+ #endif
 +BASE_DECLARE_FEATURE(kClearDataOnExit);
  }  // namespace features
  
  #endif  // CHROME_BROWSER_BROWSER_FEATURES_H_
-Index: chromium-126.0.6478.57/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
+Index: chromium-127.0.6533.88/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
-+++ chromium-126.0.6478.57/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
++++ chromium-127.0.6533.88/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
 @@ -19,6 +19,7 @@
  #include "base/task/task_traits.h"
  #include "base/values.h"
@@ -78,10 +78,10 @@ Index: chromium-126.0.6478.57/chrome/browser/browsing_data/chrome_browsing_data_
                              BrowsingDataRemoverObserver::Create(
                                  remover, /*filterable_deletion=*/true, profile_,
                                  keep_browser_alive));
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -56,4 +56,8 @@
       "Keep old history",
       "Keep history older than 3 months. ungoogled-chromium flag",

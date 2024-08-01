@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+Index: chromium-127.0.6533.88/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
-+++ chromium-126.0.6478.57/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
++++ chromium-127.0.6533.88/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 @@ -22,7 +22,6 @@
  #include "chrome/browser/extensions/extension_web_ui_override_registrar.h"
  #include "chrome/browser/extensions/install_tracker_factory.h"
@@ -18,10 +18,10 @@ Index: chromium-126.0.6478.57/chrome/browser/extensions/chrome_browser_context_k
    extensions::MenuManagerFactory::GetInstance();
    extensions::PermissionsUpdater::EnsureAssociatedFactoryBuilt();
  #if BUILDFLAG(ENABLE_PLUGINS)
-Index: chromium-126.0.6478.57/chrome/browser/extensions/extension_management.cc
+Index: chromium-127.0.6533.88/chrome/browser/extensions/extension_management.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/extensions/extension_management.cc
-+++ chromium-126.0.6478.57/chrome/browser/extensions/extension_management.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/extensions/extension_management.cc
++++ chromium-127.0.6533.88/chrome/browser/extensions/extension_management.cc
 @@ -287,31 +287,7 @@ bool ExtensionManagement::IsAllowedManif
      int manifest_version,
      const std::string& extension_id,
@@ -81,10 +81,10 @@ Index: chromium-126.0.6478.57/chrome/browser/extensions/extension_management.cc
  }
  
  bool ExtensionManagement::IsAllowedByUnpublishedAvailabilityPolicy(
-Index: chromium-126.0.6478.57/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+Index: chromium-127.0.6533.88/chrome/browser/extensions/manifest_v2_experiment_manager.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
-+++ chromium-126.0.6478.57/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
++++ chromium-127.0.6533.88/chrome/browser/extensions/manifest_v2_experiment_manager.cc
 @@ -76,11 +76,6 @@ KeyedService* ManifestV2ExperimentManage
  }
  

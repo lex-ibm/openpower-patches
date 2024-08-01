@@ -1,21 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/toolbar/toolbar_view.cc
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/toolbar/toolbar_view.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/toolbar/toolbar_view.cc
-@@ -461,7 +461,8 @@ void ToolbarView::Init() {
-     send_tab_to_self_button_ =
-         container_view_->AddChildView(std::move(send_tab_to_self_button));
- 
--  if (!features::IsSidePanelPinningEnabled()) {
-+  if (!features::IsSidePanelPinningEnabled() &&
-+      !base::CommandLine::ForCurrentProcess()->HasSwitch("hide-sidepanel-button")) {
-     if (companion::IsCompanionFeatureEnabled()) {
-       side_panel_container_ = container_view_->AddChildView(
-           std::make_unique<SidePanelToolbarContainer>(browser_view_));
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
-===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -100,4 +100,8 @@
       "Disable Sharing Hub",
       "Disables the sharing hub button. ungoogled-chromium flag.",

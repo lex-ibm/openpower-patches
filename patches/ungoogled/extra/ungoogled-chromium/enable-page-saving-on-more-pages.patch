@@ -1,9 +1,9 @@
 # Add more URL schemes allowed for saving
 
-Index: chromium-126.0.6478.57/chrome/browser/ui/browser_commands.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/browser_commands.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/browser_commands.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/browser_commands.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/browser_commands.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/browser_commands.cc
 @@ -557,11 +557,6 @@ int GetContentRestrictions(const Browser
      CoreTabHelper* core_tab_helper =
          CoreTabHelper::FromWebContents(current_tab);
@@ -16,7 +16,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/browser_commands.cc
    }
    return content_restrictions;
  }
-@@ -1704,8 +1699,7 @@ bool CanSavePage(const Browser* browser)
+@@ -1712,8 +1707,7 @@ bool CanSavePage(const Browser* browser)
        DownloadPrefs::DownloadRestriction::ALL_FILES) {
      return false;
    }
@@ -26,10 +26,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/browser_commands.cc
  }
  
  void Print(Browser* browser) {
-Index: chromium-126.0.6478.57/components/offline_pages/core/offline_page_model.cc
+Index: chromium-127.0.6533.88/components/offline_pages/core/offline_page_model.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/offline_pages/core/offline_page_model.cc
-+++ chromium-126.0.6478.57/components/offline_pages/core/offline_page_model.cc
+--- chromium-127.0.6533.88.orig/components/offline_pages/core/offline_page_model.cc
++++ chromium-127.0.6533.88/components/offline_pages/core/offline_page_model.cc
 @@ -21,7 +21,7 @@ OfflinePageModel::SavePageParams::~SaveP
  
  // static
@@ -39,10 +39,10 @@ Index: chromium-126.0.6478.57/components/offline_pages/core/offline_page_model.c
  }
  
  OfflinePageModel::OfflinePageModel() = default;
-Index: chromium-126.0.6478.57/content/common/url_schemes.cc
+Index: chromium-127.0.6533.88/content/common/url_schemes.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/content/common/url_schemes.cc
-+++ chromium-126.0.6478.57/content/common/url_schemes.cc
+--- chromium-127.0.6533.88.orig/content/common/url_schemes.cc
++++ chromium-127.0.6533.88/content/common/url_schemes.cc
 @@ -24,13 +24,21 @@ namespace {
  bool g_registered_url_schemes = false;
  
@@ -66,10 +66,10 @@ Index: chromium-126.0.6478.57/content/common/url_schemes.cc
  };
  
  // These lists are lazily initialized below and are leaked on shutdown to
-Index: chromium-126.0.6478.57/content/public/common/url_utils.cc
+Index: chromium-127.0.6533.88/content/public/common/url_utils.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/content/public/common/url_utils.cc
-+++ chromium-126.0.6478.57/content/public/common/url_utils.cc
+--- chromium-127.0.6533.88.orig/content/public/common/url_utils.cc
++++ chromium-127.0.6533.88/content/public/common/url_utils.cc
 @@ -40,11 +40,7 @@ bool IsPdfInternalPluginAllowedOrigin(co
  }
  

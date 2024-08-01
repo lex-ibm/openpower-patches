@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -132,4 +132,8 @@
       "Minimal Referrers",
       "Removes all cross-origin referrers and strips same-origin referrers down to the origin. Has lower precedence than remove-cross-origin-referrers. ungoogled-chromium flag.",
@@ -11,10 +11,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
 +     "Reduces the amount of system information obatainable through headers and javascript, also causes hardwareConcurrency to respond with two cores. ungoogled-chromium flag.",
 +     kOsAll, FEATURE_VALUE_TYPE(blink::features::kReducedSystemInfo)},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-126.0.6478.57/components/embedder_support/user_agent_utils.cc
+Index: chromium-127.0.6533.88/components/embedder_support/user_agent_utils.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/embedder_support/user_agent_utils.cc
-+++ chromium-126.0.6478.57/components/embedder_support/user_agent_utils.cc
+--- chromium-127.0.6533.88.orig/components/embedder_support/user_agent_utils.cc
++++ chromium-127.0.6533.88/components/embedder_support/user_agent_utils.cc
 @@ -143,6 +143,8 @@ const std::string& GetWindowsPlatformVer
  // TODO(crbug.com/1330890): Remove this method along with policy.
  bool ShouldReduceUserAgentMinorVersion(
@@ -42,10 +42,10 @@ Index: chromium-126.0.6478.57/components/embedder_support/user_agent_utils.cc
    blink::UserAgentMetadata metadata;
  
    bool enable_updated_grease_by_policy = true;
-Index: chromium-126.0.6478.57/third_party/blink/common/features.cc
+Index: chromium-127.0.6533.88/third_party/blink/common/features.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/common/features.cc
-+++ chromium-126.0.6478.57/third_party/blink/common/features.cc
+--- chromium-127.0.6533.88.orig/third_party/blink/common/features.cc
++++ chromium-127.0.6533.88/third_party/blink/common/features.cc
 @@ -21,6 +21,7 @@ namespace blink {
  namespace features {
  
@@ -54,10 +54,10 @@ Index: chromium-126.0.6478.57/third_party/blink/common/features.cc
  
  // -----------------------------------------------------------------------------
  // Feature definitions and associated constants (feature params, et cetera)
-Index: chromium-126.0.6478.57/third_party/blink/public/common/features.h
+Index: chromium-127.0.6533.88/third_party/blink/public/common/features.h
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/public/common/features.h
-+++ chromium-126.0.6478.57/third_party/blink/public/common/features.h
+--- chromium-127.0.6533.88.orig/third_party/blink/public/common/features.h
++++ chromium-127.0.6533.88/third_party/blink/public/common/features.h
 @@ -21,6 +21,7 @@ namespace blink {
  namespace features {
  
@@ -66,10 +66,10 @@ Index: chromium-126.0.6478.57/third_party/blink/public/common/features.h
  
  // -----------------------------------------------------------------------------
  // Feature declarations and associated constants (feature params, et cetera)
-Index: chromium-126.0.6478.57/third_party/blink/renderer/core/execution_context/navigator_base.cc
+Index: chromium-127.0.6533.88/third_party/blink/renderer/core/execution_context/navigator_base.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/renderer/core/execution_context/navigator_base.cc
-+++ chromium-126.0.6478.57/third_party/blink/renderer/core/execution_context/navigator_base.cc
+--- chromium-127.0.6533.88.orig/third_party/blink/renderer/core/execution_context/navigator_base.cc
++++ chromium-127.0.6533.88/third_party/blink/renderer/core/execution_context/navigator_base.cc
 @@ -69,6 +69,8 @@ String NavigatorBase::platform() const {
    }
  #endif

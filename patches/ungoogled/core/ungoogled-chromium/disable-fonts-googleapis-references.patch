@@ -1,9 +1,9 @@
 # Disables references to fonts.googleapis.com
 
-Index: chromium-126.0.6478.57/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
+Index: chromium-127.0.6533.88/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
-+++ chromium-126.0.6478.57/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
+--- chromium-127.0.6533.88.orig/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
++++ chromium-127.0.6533.88/components/dom_distiller/content/browser/dom_distiller_viewer_source.cc
 @@ -292,7 +292,7 @@ bool DomDistillerViewerSource::ShouldSer
  std::string DomDistillerViewerSource::GetContentSecurityPolicy(
      network::mojom::CSPDirectiveName directive) {
@@ -13,10 +13,10 @@ Index: chromium-126.0.6478.57/components/dom_distiller/content/browser/dom_disti
    } else if (directive == network::mojom::CSPDirectiveName::ChildSrc) {
      return "child-src *;";
    } else if (directive ==
-Index: chromium-126.0.6478.57/components/dom_distiller/core/html/preview.html
+Index: chromium-127.0.6533.88/components/dom_distiller/core/html/preview.html
 ===================================================================
---- chromium-126.0.6478.57.orig/components/dom_distiller/core/html/preview.html
-+++ chromium-126.0.6478.57/components/dom_distiller/core/html/preview.html
+--- chromium-127.0.6533.88.orig/components/dom_distiller/core/html/preview.html
++++ chromium-127.0.6533.88/components/dom_distiller/core/html/preview.html
 @@ -11,7 +11,7 @@ found in the LICENSE file.
    <meta name="theme-color" id="theme-color">
    <title>Title goes here and it could be kind of lengthy - Publisher name</title>
@@ -26,10 +26,10 @@ Index: chromium-126.0.6478.57/components/dom_distiller/core/html/preview.html
    <style>
      .english :lang(th) {display: none}
      .english :lang(zh) {display: none}
-Index: chromium-126.0.6478.57/components/dom_distiller/core/javascript/dom_distiller_viewer.js
+Index: chromium-127.0.6533.88/components/dom_distiller/core/javascript/dom_distiller_viewer.js
 ===================================================================
---- chromium-126.0.6478.57.orig/components/dom_distiller/core/javascript/dom_distiller_viewer.js
-+++ chromium-126.0.6478.57/components/dom_distiller/core/javascript/dom_distiller_viewer.js
+--- chromium-127.0.6533.88.orig/components/dom_distiller/core/javascript/dom_distiller_viewer.js
++++ chromium-127.0.6533.88/components/dom_distiller/core/javascript/dom_distiller_viewer.js
 @@ -109,7 +109,7 @@ function maybeSetWebFont() {
    }
  
@@ -39,10 +39,10 @@ Index: chromium-126.0.6478.57/components/dom_distiller/core/javascript/dom_disti
    e.rel = 'stylesheet';
    e.type = 'text/css';
    document.head.appendChild(e);
-Index: chromium-126.0.6478.57/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
+Index: chromium-127.0.6533.88/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
-+++ chromium-126.0.6478.57/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
+--- chromium-127.0.6533.88.orig/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
++++ chromium-127.0.6533.88/third_party/crashpad/crashpad/doc/support/crashpad_doxygen.css
 @@ -12,8 +12,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License. */
@@ -53,10 +53,10 @@ Index: chromium-126.0.6478.57/third_party/crashpad/crashpad/doc/support/crashpad
  
  body,
  table,
-Index: chromium-126.0.6478.57/tools/md_browser/base.css
+Index: chromium-127.0.6533.88/tools/md_browser/base.css
 ===================================================================
---- chromium-126.0.6478.57.orig/tools/md_browser/base.css
-+++ chromium-126.0.6478.57/tools/md_browser/base.css
+--- chromium-127.0.6533.88.orig/tools/md_browser/base.css
++++ chromium-127.0.6533.88/tools/md_browser/base.css
 @@ -16,8 +16,7 @@
  
  /* Common styles and definitions. */

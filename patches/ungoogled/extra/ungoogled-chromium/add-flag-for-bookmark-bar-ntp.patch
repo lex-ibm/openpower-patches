@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/ui/bookmarks/bookmark_tab_helper.h"
@@ -24,10 +24,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
  }
  
  void BookmarkTabHelper::AddObserver(BookmarkTabHelperObserver* observer) {
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_choices.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
 @@ -34,4 +34,10 @@ const FeatureEntry::Choice kScrollEventC
       "scroll-tabs",
       "never"}
@@ -39,10 +39,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_choices.h
 +     "never"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -36,4 +36,8 @@
       "Scroll switches tab",
       "Switch to the left/right tab if the wheel-scroll happens over the tabstrip, or the empty space beside the tabstrip. ungoogled-chromium flag.",

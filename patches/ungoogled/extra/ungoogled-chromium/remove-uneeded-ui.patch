@@ -5,6 +5,8 @@
 # the 'Learn more' link on new incognito tabs
 # Live captions entry from the settings page
 # link to Google's accessibility site from the settings page
+# update status icon on the About page
+# update status text on the About page
 # link to Google's help site on the About page
 # external link for theme entry on settings page
 # webstore text for theme entry on settings page
@@ -18,6 +20,7 @@
 # the 'Learn more' link from the search engine entry on the settings page
 # Safety Check entry on the side menu on the settings page
 # the (?) learn more button on many settings pages
+# 'Sign in to see tabs from other devices' in the history submenu
 # the 'Vist Chrome Web Store' entry in the extensions section of the main menu
 # the side panel entry in All Bookmarks
 # the feedback entry in the third party cookie popup
@@ -28,10 +31,10 @@
 # disable LiveCaption flag by default, this also removes non-functional Live Caption checkbox from media controls
 # the new feature badges
 
-Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/item_list.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/extensions/item_list.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/extensions/item_list.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/extensions/item_list.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/extensions/item_list.html
++++ chromium-127.0.6533.88/chrome/browser/resources/extensions/item_list.html
 @@ -114,13 +114,6 @@
        </div>
      </template>
@@ -46,10 +49,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/item_list.html
      <div id="no-search-results" class="empty-list-message"
          hidden$="[[!shouldShowEmptySearchMessage_(
              shownAppsCount_, shownExtensionsCount_, apps, extensions)]]">
-Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/extensions/sidebar.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/extensions/sidebar.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/extensions/sidebar.html
++++ chromium-127.0.6533.88/chrome/browser/resources/extensions/sidebar.html
 @@ -71,14 +71,3 @@
      <cr-ripple></cr-ripple>
    </a>
@@ -65,10 +68,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.html
 -    <cr-ripple></cr-ripple>
 -  </div>
 -</div>
-Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.ts
+Index: chromium-127.0.6533.88/chrome/browser/resources/extensions/sidebar.ts
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/extensions/sidebar.ts
-+++ chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.ts
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/extensions/sidebar.ts
++++ chromium-127.0.6533.88/chrome/browser/resources/extensions/sidebar.ts
 @@ -50,21 +50,11 @@ export class ExtensionsSidebarElement ex
         * displayed.
         */
@@ -105,10 +108,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/extensions/sidebar.ts
  }
  
  declare global {
-Index: chromium-126.0.6478.57/chrome/browser/resources/history/side_bar.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/history/side_bar.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/history/side_bar.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/history/side_bar.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/history/side_bar.html
++++ chromium-127.0.6533.88/chrome/browser/resources/history/side_bar.html
 @@ -88,13 +88,6 @@
          $i18n{historyMenuItem}
          <cr-ripple></cr-ripple>
@@ -123,10 +126,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/history/side_bar.html
        <template is="dom-if" if="[[productSpecificationsListsEnabled_]]">
          <a id="productSpecificationsLists" role="menuitem"
              href="/productSpecificationsLists"
-Index: chromium-126.0.6478.57/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
++++ chromium-127.0.6533.88/chrome/browser/resources/new_tab_page_incognito_guest/incognito_tab.html
 @@ -24,9 +24,6 @@ document.querySelector('#incognitothemec
    <h1>$i18n{incognitoTabHeading}</h1>
    <p id="subtitle">
@@ -137,10 +140,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/new_tab_page_incognito_gu
    </p>
    <div id="bulletpoints-wrapper">
      <div class="bulletpoints first">$i18nRaw{incognitoTabFeatures}</div>
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/a11y_page/a11y_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/a11y_page/a11y_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/a11y_page/a11y_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/a11y_page/a11y_page.html
 @@ -26,7 +26,7 @@
                external$="[[captionSettingsOpensExternally_]]">
            </cr-link-row>
@@ -150,7 +153,7 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_p
            <cr-link-row id="captions"
                class="hr"
                label="$i18n{captionsTitle}"
-@@ -84,11 +84,6 @@
+@@ -85,11 +85,6 @@
              external>
          </cr-link-row>
  </if>
@@ -162,10 +165,28 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_p
        </div>
  <if expr="not is_chromeos">
        <template is="dom-if" if="[[!captionSettingsOpensExternally_]]">
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/about_page/about_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/about_page/about_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/about_page/about_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/about_page/about_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/about_page/about_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/about_page/about_page.html
+@@ -52,7 +52,7 @@
+       <div class="cr-row two-line">
+         <!-- Set the icon from the iconset (when it's obsolete/EOL and
+           when update is done) or set the src (when it's updating). -->
+-<if expr="not chromeos_ash">
++<if expr="False">
+         <div class="icon-container"
+             hidden="[[!shouldShowIcons_(showUpdateStatus_)]]">
+           <iron-icon
+@@ -64,7 +64,7 @@
+         </div>
+ </if>
+         <div class="flex cr-padded-text">
+-<if expr="not chromeos_ash">
++<if expr="False">
+           <div id="updateStatusMessage" hidden="[[!showUpdateStatus_]]">
+             <div role="alert" aria-live="polite"
+                 inner-h-t-m-l="[[getUpdateStatusMessage_(
 @@ -120,11 +120,6 @@
          </div>
        </template>
@@ -178,11 +199,11 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/about_page/about
  <if expr="_google_chrome">
        <template is="dom-if" if="[[!showGetTheMostOutOfChromeSection_]]">
          <cr-link-row class="hr" id="reportIssue" on-click="onReportIssueClick_"
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/appearance_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/appearance_page/appearance_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/appearance_page/appearance_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/appearance_page.html
-@@ -30,11 +30,11 @@
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/appearance_page/appearance_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/appearance_page/appearance_page.html
+@@ -35,11 +35,11 @@
      <settings-animated-pages id="pages" section="appearance"
          focus-config="[[focusConfig_]]">
        <div route-path="default">
@@ -198,11 +219,11 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/
  <if expr="not is_linux">
            <template is="dom-if" if="[[prefs.extensions.theme.id.value]]">
              <div class="separator"></div>
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/appearance_page.ts
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/appearance_page/appearance_page.ts
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/appearance_page/appearance_page.ts
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/appearance_page.ts
-@@ -421,8 +421,8 @@ export class SettingsAppearancePageEleme
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/appearance_page/appearance_page.ts
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/appearance_page/appearance_page.ts
+@@ -475,8 +475,8 @@ export class SettingsAppearancePageEleme
        return;
      }
  
@@ -212,7 +233,7 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/
      switch (this.systemTheme_) {
        case SystemTheme.GTK:
          i18nId = 'gtkTheme';
-@@ -434,11 +434,8 @@ export class SettingsAppearancePageEleme
+@@ -488,11 +488,8 @@ export class SettingsAppearancePageEleme
          i18nId = 'classicTheme';
          break;
      }
@@ -225,11 +246,11 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/appearance_page/
    }
  
    /** @return Whether applied theme is set by policy. */
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/autofill_page/payments_section.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/autofill_page/payments_section.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/autofill_page/payments_section.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/autofill_page/payments_section.html
-@@ -95,11 +95,6 @@
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/autofill_page/payments_section.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/autofill_page/payments_section.html
+@@ -80,11 +80,6 @@
    </div>
  </template>
  
@@ -241,10 +262,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/autofill_page/pa
  <div class="cr-row continuation">
    <h2 class="flex">$i18n{creditCards}</h2>
    <template is="dom-if"
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/basic_page/basic_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/basic_page/basic_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/basic_page/basic_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/basic_page/basic_page.html
 @@ -47,7 +47,7 @@
          </settings-section>
          <!-- TODO(crbug.com/40277421): Remove after SafetyHub launched. -->
@@ -263,10 +284,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic
              restamp>
            <settings-section page-title="$i18n{safetyHub}"
                section="safetyHubEntryPoint" nest-under-section="privacy"
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic_page.ts
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/basic_page/basic_page.ts
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/basic_page/basic_page.ts
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic_page.ts
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/basic_page/basic_page.ts
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/basic_page/basic_page.ts
 @@ -12,7 +12,6 @@ import 'chrome://resources/cr_elements/c
  import 'chrome://resources/polymer/v3_0/iron-flex-layout/iron-flex-layout-classes.js';
  import '../ai_page/ai_page.js';
@@ -275,20 +296,28 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/basic_page/basic
  import '../privacy_page/privacy_page.js';
  import '../safety_check_page/safety_check_page.js';
  import '../safety_hub/safety_hub_entry_point.js';
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/personalization_options.html
+@@ -258,7 +257,6 @@ export class SettingsBasicPageElement ex
+       this.showPrivacyGuidePromo_ = false;
+       return;
+     }
+-    this.showPrivacyGuidePromo_ = true;
+     if (!this.privacyGuidePromoWasShown_) {
+       this.privacyGuideBrowserProxy_.incrementPromoImpressionCount();
+       this.privacyGuidePromoWasShown_ = true;
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/personalization_options.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/privacy_page/personalization_options.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/personalization_options.html
-@@ -21,7 +21,7 @@
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/privacy_page/personalization_options.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/personalization_options.html
+@@ -24,7 +24,7 @@
  
      </style>
  
 -<if expr="not is_chromeos">
 +<if expr="False">
-     <cr-radio-group id="chromeSigninUserChoiceRadioGroup"
-         class="hr radio-group-content"
+     <div id="chromeSigninUserChoiceSetting" class="hr cr-row"
          hidden="[[!chromeSigninUserChoiceInfo_.shouldShowSettings]]"
-@@ -90,12 +90,6 @@
+         aria-label="$i18n{chromeSigninChoiceTitle}">
+@@ -91,12 +91,6 @@
      </settings-toggle-button>
  </if><!-- not chromeos -->
  </if><!-- _google_chrome -->
@@ -301,11 +330,11 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/per
      <template is="dom-if" if="[[enablePageContentSetting_]]">
        <cr-link-row id="pageContentRow"
            class="hr"
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/personalization_options.ts
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/personalization_options.ts
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/privacy_page/personalization_options.ts
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/personalization_options.ts
-@@ -215,10 +215,6 @@ export class SettingsPersonalizationOpti
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/privacy_page/personalization_options.ts
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/personalization_options.ts
+@@ -223,10 +223,6 @@ export class SettingsPersonalizationOpti
          'chrome-signin-user-choice-info-change',
          this.setChromeSigninUserChoiceInfo_.bind(this));
      // </if>
@@ -316,10 +345,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/per
    }
  
    // <if expr="chromeos_ash">
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/privacy_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/privacy_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/privacy_page/privacy_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/privacy_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/privacy_page/privacy_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/privacy_page.html
 @@ -41,15 +41,6 @@
              label="$i18n{clearBrowsingData}"
              sub-label="$i18n{clearBrowsingDataDescription}"
@@ -336,10 +365,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/pri
          <template is="dom-if" if="[[is3pcdRedesignEnabled_]]">
            <cr-link-row id="trackingProtectionLinkRow"
                start-icon="settings:visibility-off"
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/security_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/security_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/privacy_page/security_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/security_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/privacy_page/security_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/privacy_page/security_page.html
 @@ -214,9 +214,3 @@
        </cr-link-row>
  </if>
@@ -350,10 +379,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/privacy_page/sec
 -        on-click="onAdvancedProtectionProgramLinkClick_"
 -        external>
 -    </cr-link-row>
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/search_page/search_page.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_page/search_page.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/search_page/search_page.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/search_page/search_page.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/search_page/search_page.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/search_page/search_page.html
 @@ -44,11 +44,6 @@
            $i18n{searchPageTitle}
            <div class="secondary">
@@ -366,10 +395,10 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/search_page/sear
            </div>
            <template is="dom-if" if="[[isDefaultSearchControlledByPolicy_(
                prefs.default_search_provider_data.template_url_data)]]">
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/settings_page/settings_subpage.html
+Index: chromium-127.0.6533.88/chrome/browser/resources/settings/settings_page/settings_subpage.html
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/settings_page/settings_subpage.html
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/settings_page/settings_subpage.html
+--- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/settings_page/settings_subpage.html
++++ chromium-127.0.6533.88/chrome/browser/resources/settings/settings_page/settings_subpage.html
 @@ -91,7 +91,7 @@
        </template>
        <h1 class="cr-title-text">[[pageTitle]]</h1>
@@ -379,11 +408,23 @@ Index: chromium-126.0.6478.57/chrome/browser/resources/settings/settings_page/se
          <cr-icon-button iron-icon="cr:help-outline" dir="ltr"
              aria-label="[[getLearnMoreAriaLabel_(pageTitle)]]"
              aria-description="$i18n{opensInNewTab}" on-click="onHelpClick_">
-Index: chromium-126.0.6478.57/chrome/browser/ui/toolbar/app_menu_model.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/tabs/recent_tabs_sub_menu_model.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/toolbar/app_menu_model.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/toolbar/app_menu_model.cc
-@@ -857,16 +857,6 @@ void ExtensionsMenuModel::Build(Browser*
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/tabs/recent_tabs_sub_menu_model.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/tabs/recent_tabs_sub_menu_model.cc
+@@ -346,7 +346,6 @@ void RecentTabsSubMenuModel::Build() {
+   AddSeparator(ui::NORMAL_SEPARATOR);
+   history_separator_index_ = GetItemCount() - 1;
+   BuildLocalEntries();
+-  BuildTabsFromOtherDevices();
+ }
+ 
+ void RecentTabsSubMenuModel::BuildLocalEntries() {
+Index: chromium-127.0.6533.88/chrome/browser/ui/toolbar/app_menu_model.cc
+===================================================================
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/toolbar/app_menu_model.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/toolbar/app_menu_model.cc
+@@ -861,16 +861,6 @@ void ExtensionsMenuModel::Build(Browser*
    SetElementIdentifierAt(
        GetIndexOfCommandId(IDC_EXTENSIONS_SUBMENU_MANAGE_EXTENSIONS).value(),
        kManageExtensionsMenuItem);
@@ -400,14 +441,14 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/toolbar/app_menu_model.cc
  }
  
  ////////////////////////////////////////////////////////////////////////////////
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
-@@ -645,13 +645,6 @@ void BookmarkMenuDelegate::BuildMenu(con
-                   kBookmarksSidePanelIcon, ui::kColorMenuIcon,
-                   ui::SimpleMenuModel::kDefaultIconSize)
-             : ui::ImageModel();
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/bookmarks/bookmark_menu_delegate.cc
+@@ -642,13 +642,6 @@ void BookmarkMenuDelegate::BuildMenu(con
+     ui::ImageModel bookmarks_side_panel_icon = ui::ImageModel::FromVectorIcon(
+         kBookmarksSidePanelIcon, ui::kColorMenuIcon,
+         ui::SimpleMenuModel::kDefaultIconSize);
 -    menu->AppendMenuItem(
 -        IDC_SHOW_BOOKMARK_SIDE_PANEL,
 -        l10n_util::GetStringUTF16(IDS_BOOKMARKS_ALL_BOOKMARKS_OPEN_SIDE_PANEL),
@@ -418,11 +459,11 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/views/bookmarks/bookmark_menu_de
    }
    const ui::ImageModel folder_icon = chrome::GetBookmarkFolderIcon(
        chrome::BookmarkFolderIconType::kNormal, ui::kColorMenuIcon);
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
-@@ -147,12 +147,7 @@ void CookieControlsContentView::SetEnfor
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/location_bar/cookie_controls/cookie_controls_content_view.cc
+@@ -136,12 +136,7 @@ void CookieControlsContentView::SetEnfor
  }
  
  void CookieControlsContentView::SetFeedbackSectionVisibility(bool visible) {
@@ -435,10 +476,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/views/location_bar/cookie_contro
    PreferredSizeChanged();
  }
  
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/profiles/profile_menu_view.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/profiles/profile_menu_view.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/profiles/profile_menu_view.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/profiles/profile_menu_view.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/profiles/profile_menu_view.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/profiles/profile_menu_view.cc
 @@ -188,6 +188,7 @@ void ProfileMenuView::BuildMenu() {
  }
  
@@ -447,7 +488,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/views/profiles/profile_menu_view
    Profile* profile = browser()->profile();
    if (profile->IsOffTheRecord() || profile->IsGuestSession())
      return gfx::ImageSkia();
-@@ -588,12 +589,6 @@ void ProfileMenuView::BuildIdentity() {
+@@ -576,12 +577,6 @@ void ProfileMenuView::BuildIdentity() {
          badge_image_model, menu_title_, menu_subtitle_, management_label);
    } else {
      std::string profile_user_display_name, profile_user_email;
@@ -460,10 +501,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/views/profiles/profile_menu_view
      menu_title_ =
          profile_user_display_name.empty()
              ? l10n_util::GetStringUTF16(IDS_PROFILES_LOCAL_PROFILE_STATE)
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/sad_tab_view.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/sad_tab_view.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/sad_tab_view.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/sad_tab_view.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/sad_tab_view.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/sad_tab_view.cc
 @@ -559,9 +559,6 @@ SadTabView::SadTabView(content::WebConte
    auto* actions_container =
        container->AddChildView(std::make_unique<views::FlexLayoutView>());
@@ -497,34 +538,33 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/views/sad_tab_view.cc
  
  void SadTabView::OnBoundsChanged(const gfx::Rect& previous_bounds) {
    // Specify the maximum message and title width explicitly.
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/user_education/browser_user_education_service.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/user_education/browser_user_education_service.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/user_education/browser_user_education_service.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/user_education/browser_user_education_service.cc
-@@ -667,18 +667,6 @@ void MaybeRegisterChromeFeaturePromos(
-   }
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/user_education/browser_user_education_service.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/user_education/browser_user_education_service.cc
+@@ -638,17 +638,6 @@ void MaybeRegisterChromeFeaturePromos(
+                        "Triggered to encourage users to try out the reading "
+                        "mode feature.")));
  
-   if (features::IsSidePanelPinningEnabled()) {
--    // kIPHSidePanelGenericMenuFeature:
--    registry.RegisterFeature(std::move(
--        FeaturePromoSpecification::CreateForToastPromo(
--            feature_engagement::kIPHSidePanelGenericMenuFeature,
--            kToolbarAppMenuButtonElementId, IDS_SIDE_PANEL_GENERIC_MENU_IPH,
--            IDS_SIDE_PANEL_GENERIC_MENU_IPH_SCREENREADER,
--            FeaturePromoSpecification::AcceleratorInfo())
--            .SetBubbleArrow(HelpBubbleArrow::kTopRight)
--            .SetMetadata(121, "corising@chromium.org",
--                         "Triggered on startup for discovery of "
--                         "side panel entry points in app menu.")));
--
-     // kIPHSidePanelGenericPinnableFeature:
-     registry.RegisterFeature(std::move(
-         FeaturePromoSpecification::CreateForToastPromo(
-Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
+-  // kIPHSidePanelGenericMenuFeature:
+-  registry.RegisterFeature(std::move(
+-      FeaturePromoSpecification::CreateForToastPromo(
+-          feature_engagement::kIPHSidePanelGenericMenuFeature,
+-          kToolbarAppMenuButtonElementId, IDS_SIDE_PANEL_GENERIC_MENU_IPH,
+-          IDS_SIDE_PANEL_GENERIC_MENU_IPH_SCREENREADER,
+-          FeaturePromoSpecification::AcceleratorInfo())
+-          .SetBubbleArrow(HelpBubbleArrow::kTopRight)
+-          .SetMetadata(121, "corising@chromium.org",
+-                       "Triggered on startup for discovery of "
+-                       "side panel entry points in app menu.")));
+ 
+   // kIPHSidePanelGenericPinnableFeature:
+   registry.RegisterFeature(std::move(
+Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
-@@ -3331,7 +3331,7 @@ void AddSiteSettingsStrings(content::Web
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
+@@ -3342,7 +3342,7 @@ void AddSiteSettingsStrings(content::Web
        base::FeatureList::IsEnabled(blink::features::kWebPrinting));
  
    html_source->AddBoolean("enableFederatedIdentityApiContentSetting",
@@ -533,12 +573,12 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/settings_localize
  
    base::CommandLine& cmd = *base::CommandLine::ForCurrentProcess();
    html_source->AddBoolean(
-Index: chromium-126.0.6478.57/media/base/media_switches.cc
+Index: chromium-127.0.6533.88/media/base/media_switches.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/media/base/media_switches.cc
-+++ chromium-126.0.6478.57/media/base/media_switches.cc
-@@ -927,7 +927,7 @@ BASE_FEATURE(kOnDeviceWebSpeech,
-              base::FEATURE_DISABLED_BY_DEFAULT);
+--- chromium-127.0.6533.88.orig/media/base/media_switches.cc
++++ chromium-127.0.6533.88/media/base/media_switches.cc
+@@ -912,7 +912,7 @@ BASE_FEATURE(kLacrosUseAshWidevine,
+ #endif
  
  // Enables the Live Caption feature on supported devices.
 -BASE_FEATURE(kLiveCaption, "LiveCaption", base::FEATURE_ENABLED_BY_DEFAULT);
@@ -546,11 +586,11 @@ Index: chromium-126.0.6478.57/media/base/media_switches.cc
  
  // Controls whether a "Share this tab instead" button should be shown for
  // getDisplayMedia captures. Note: This flag does not control if the "Share this
-Index: chromium-126.0.6478.57/ui/views/controls/menu/menu_item_view.cc
+Index: chromium-127.0.6533.88/ui/views/controls/menu/menu_item_view.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/ui/views/controls/menu/menu_item_view.cc
-+++ chromium-126.0.6478.57/ui/views/controls/menu/menu_item_view.cc
-@@ -826,7 +826,7 @@ void MenuItemView::SetAlerted() {
+--- chromium-127.0.6533.88.orig/ui/views/controls/menu/menu_item_view.cc
++++ chromium-127.0.6533.88/ui/views/controls/menu/menu_item_view.cc
+@@ -823,7 +823,7 @@ void MenuItemView::SetAlerted() {
  }
  
  bool MenuItemView::ShouldShowNewBadge() const {

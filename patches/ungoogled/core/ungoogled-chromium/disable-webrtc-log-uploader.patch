@@ -1,9 +1,9 @@
 # Disables WebRTC log uploading to Google
 
-Index: chromium-126.0.6478.57/chrome/browser/media/webrtc/webrtc_log_uploader.cc
+Index: chromium-127.0.6533.88/chrome/browser/media/webrtc/webrtc_log_uploader.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/media/webrtc/webrtc_log_uploader.cc
-+++ chromium-126.0.6478.57/chrome/browser/media/webrtc/webrtc_log_uploader.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/media/webrtc/webrtc_log_uploader.cc
++++ chromium-127.0.6533.88/chrome/browser/media/webrtc/webrtc_log_uploader.cc
 @@ -179,31 +179,13 @@ void WebRtcLogUploader::OnLoggingStopped
    DCHECK(meta_data.get());
    DCHECK(!upload_done_data.paths.directory.empty());
@@ -116,10 +116,10 @@ Index: chromium-126.0.6478.57/chrome/browser/media/webrtc/webrtc_log_uploader.cc
    main_task_runner_->PostTask(
        FROM_HERE, base::BindOnce(std::move(done_callback), true, ""));
  
-Index: chromium-126.0.6478.57/chrome/browser/ui/browser_ui_prefs.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/browser_ui_prefs.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/browser_ui_prefs.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/browser_ui_prefs.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/browser_ui_prefs.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/browser_ui_prefs.cc
 @@ -107,7 +107,7 @@ void RegisterBrowserUserPrefs(user_prefs
    registry->RegisterStringPref(prefs::kWebRTCUDPPortRange, std::string());
    registry->RegisterBooleanPref(prefs::kWebRtcEventLogCollectionAllowed, false);

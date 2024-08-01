@@ -1,11 +1,11 @@
 # Contains tests and features that are unneeded and would otherwise
 # require binaries to be whitelisted in the pruning list
 
-Index: chromium-126.0.6478.57/chrome/BUILD.gn
+Index: chromium-127.0.6533.88/chrome/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/BUILD.gn
-+++ chromium-126.0.6478.57/chrome/BUILD.gn
-@@ -937,8 +937,6 @@ if (is_win) {
+--- chromium-127.0.6533.88.orig/chrome/BUILD.gn
++++ chromium-127.0.6533.88/chrome/BUILD.gn
+@@ -940,8 +940,6 @@ if (is_win) {
  
    bundle_data("chrome_framework_resources") {
      sources = [
@@ -14,11 +14,11 @@ Index: chromium-126.0.6478.57/chrome/BUILD.gn
        # This image is used to badge the lock icon in the
        # authentication dialogs, such as those used for installation
        # from disk image and Keystone promotion (if so enabled).  It
-Index: chromium-126.0.6478.57/chrome/browser/BUILD.gn
+Index: chromium-127.0.6533.88/chrome/browser/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/BUILD.gn
-+++ chromium-126.0.6478.57/chrome/browser/BUILD.gn
-@@ -850,10 +850,6 @@ static_library("browser") {
+--- chromium-127.0.6533.88.orig/chrome/browser/BUILD.gn
++++ chromium-127.0.6533.88/chrome/browser/BUILD.gn
+@@ -842,10 +842,6 @@ static_library("browser") {
      "navigation_predictor/navigation_predictor_metrics_document_data.h",
      "navigation_predictor/navigation_predictor_preconnect_client.cc",
      "navigation_predictor/navigation_predictor_preconnect_client.h",
@@ -29,7 +29,7 @@ Index: chromium-126.0.6478.57/chrome/browser/BUILD.gn
      "navigation_predictor/search_engine_preconnector.cc",
      "navigation_predictor/search_engine_preconnector.h",
      "net/chrome_mojo_proxy_resolver_factory.cc",
-@@ -972,10 +968,6 @@ static_library("browser") {
+@@ -964,10 +960,6 @@ static_library("browser") {
      "optimization_guide/chrome_prediction_model_store.h",
      "optimization_guide/model_execution/chrome_on_device_model_service_controller.cc",
      "optimization_guide/model_execution/chrome_on_device_model_service_controller.h",
@@ -40,10 +40,10 @@ Index: chromium-126.0.6478.57/chrome/browser/BUILD.gn
      "optimization_guide/optimization_guide_internals_ui.cc",
      "optimization_guide/optimization_guide_internals_ui.h",
      "optimization_guide/optimization_guide_keyed_service.cc",
-Index: chromium-126.0.6478.57/chrome/browser/navigation_predictor/navigation_predictor.cc
+Index: chromium-127.0.6533.88/chrome/browser/navigation_predictor/navigation_predictor.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/navigation_predictor/navigation_predictor.cc
-+++ chromium-126.0.6478.57/chrome/browser/navigation_predictor/navigation_predictor.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/navigation_predictor/navigation_predictor.cc
++++ chromium-127.0.6533.88/chrome/browser/navigation_predictor/navigation_predictor.cc
 @@ -18,8 +18,6 @@
  #include "base/time/default_tick_clock.h"
  #include "chrome/browser/navigation_predictor/navigation_predictor_keyed_service.h"
@@ -146,10 +146,10 @@ Index: chromium-126.0.6478.57/chrome/browser/navigation_predictor/navigation_pre
  }
  
  void NavigationPredictor::SetModelScoreCallbackForTesting(
-Index: chromium-126.0.6478.57/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+Index: chromium-127.0.6533.88/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
-+++ chromium-126.0.6478.57/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
++++ chromium-127.0.6533.88/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
 @@ -92,7 +92,6 @@
  #include "chrome/browser/media_galleries/media_galleries_preferences_factory.h"
  #include "chrome/browser/metrics/variations/google_groups_updater_service_factory.h"
@@ -158,7 +158,7 @@ Index: chromium-126.0.6478.57/chrome/browser/profiles/chrome_browser_main_extra_
  #include "chrome/browser/net/dns_probe_service_factory.h"
  #include "chrome/browser/net/profile_network_context_service_factory.h"
  #include "chrome/browser/notifications/metrics/notification_metrics_logger_factory.h"
-@@ -939,7 +938,6 @@ void ChromeBrowserMainExtraPartsProfiles
+@@ -958,7 +957,6 @@ void ChromeBrowserMainExtraPartsProfiles
  #endif
    ModelTypeStoreServiceFactory::GetInstance();
    NavigationPredictorKeyedServiceFactory::GetInstance();
@@ -166,7 +166,7 @@ Index: chromium-126.0.6478.57/chrome/browser/profiles/chrome_browser_main_extra_
  #if BUILDFLAG(IS_CHROMEOS_ASH)
    NearbySharingServiceFactory::GetInstance();
    if (base::FeatureList::IsEnabled(ash::features::kNearbyPresence)) {
-@@ -984,9 +982,6 @@ void ChromeBrowserMainExtraPartsProfiles
+@@ -1007,9 +1005,6 @@ void ChromeBrowserMainExtraPartsProfiles
    OneTimePermissionsTrackerFactory::GetInstance();
  #endif
    OpenerHeuristicServiceFactory::GetInstance();
@@ -176,10 +176,10 @@ Index: chromium-126.0.6478.57/chrome/browser/profiles/chrome_browser_main_extra_
    OptimizationGuideKeyedServiceFactory::GetInstance();
    OriginKeyedPermissionActionServiceFactory::GetInstance();
    OriginTrialsFactory::GetInstance();
-Index: chromium-126.0.6478.57/chrome/browser/profiles/profile_manager.cc
+Index: chromium-127.0.6533.88/chrome/browser/profiles/profile_manager.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/profiles/profile_manager.cc
-+++ chromium-126.0.6478.57/chrome/browser/profiles/profile_manager.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/profiles/profile_manager.cc
++++ chromium-127.0.6533.88/chrome/browser/profiles/profile_manager.cc
 @@ -48,7 +48,6 @@
  #include "chrome/browser/extensions/chrome_content_browser_client_extensions_part.h"
  #include "chrome/browser/lifetime/application_lifetime.h"
@@ -188,7 +188,7 @@ Index: chromium-126.0.6478.57/chrome/browser/profiles/profile_manager.cc
  #include "chrome/browser/permissions/adaptive_quiet_notification_permission_ui_enabler.h"
  #include "chrome/browser/prefs/incognito_mode_prefs.h"
  #include "chrome/browser/profiles/delete_profile_helper.h"
-@@ -1542,9 +1541,6 @@ void ProfileManager::DoFinalInitForServi
+@@ -1539,9 +1538,6 @@ void ProfileManager::DoFinalInitForServi
    // Ensure NavigationPredictorKeyedService is started.
    NavigationPredictorKeyedServiceFactory::GetForProfile(profile);
  
@@ -197,24 +197,11 @@ Index: chromium-126.0.6478.57/chrome/browser/profiles/profile_manager.cc
 -
    IdentityManagerFactory::GetForProfile(profile)->OnNetworkInitialized();
    AccountReconcilorFactory::GetForProfile(profile);
- 
-Index: chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_page.ts
+ #if BUILDFLAG(IS_ANDROID)
+Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/resources/settings/a11y_page/a11y_page.ts
-+++ chromium-126.0.6478.57/chrome/browser/resources/settings/a11y_page/a11y_page.ts
-@@ -231,7 +231,7 @@ export class SettingsA11yPageElement ext
-    * page; i.e. Settings > Accessibility > Text-to-Speech.
-    */
-   private computeShowPdfOcrToggle_(): boolean {
--    return loadTimeData.getBoolean('pdfOcrEnabled') && this.hasScreenReader_;
-+    return false;
-   }
-   // </if>
- 
-Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
-===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/accessibility_main_handler.cc
 @@ -39,13 +39,6 @@ void AccessibilityMainHandler::RegisterM
        base::BindRepeating(
            &AccessibilityMainHandler::HandleCheckAccessibilityImageLabels,
@@ -234,7 +221,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_mai
  #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
  
 -#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
--  if (features::IsPdfOcrEnabled()) {
+-  if (features::IsPdfOcrEnabled() || features::IsMainNodeAnnotationsEnabled()) {
 -    CHECK(!component_ready_observer_.IsObserving());
 -    component_ready_observer_.Observe(
 -        screen_ai::ScreenAIInstallState::GetInstance());
@@ -248,7 +235,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_mai
  #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
  
 -#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
--  if (features::IsPdfOcrEnabled()) {
+-  if (features::IsPdfOcrEnabled() || features::IsMainNodeAnnotationsEnabled()) {
 -    component_ready_observer_.Reset();
 -  }
 -#endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
@@ -259,14 +246,14 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_mai
 -  CHECK_GE(progress, 0.0);
 -  CHECK_LE(progress, 1.0);
 -  const int progress_num = progress * 100;
--  FireWebUIListener("pdf-ocr-downloading-progress-changed",
+-  FireWebUIListener("screen-ai-downloading-progress-changed",
 -                    base::Value(progress_num));
 -}
 -
 -void AccessibilityMainHandler::StateChanged(
 -    screen_ai::ScreenAIInstallState::State state) {
 -  base::Value state_value = base::Value(static_cast<int>(state));
--  FireWebUIListener("pdf-ocr-state-changed", state_value);
+-  FireWebUIListener("screen-ai-state-changed", state_value);
 -}
 -
 -void AccessibilityMainHandler::HandleGetScreenAIInstallState(
@@ -284,10 +271,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_mai
  
  void AccessibilityMainHandler::HandleGetScreenReaderState(
      const base::Value::List& args) {
-Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_main_handler.h
+Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/accessibility_main_handler.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/webui/settings/accessibility_main_handler.h
-+++ chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_main_handler.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/accessibility_main_handler.h
++++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/accessibility_main_handler.h
 @@ -13,10 +13,6 @@
  #include "chrome/browser/ash/accessibility/accessibility_manager.h"
  #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
@@ -334,10 +321,37 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/settings/accessibility_mai
  };
  
  }  // namespace settings
-Index: chromium-126.0.6478.57/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
+@@ -285,7 +285,6 @@ void AddA11yStrings(content::WebUIDataSo
+        IDS_SETTINGS_OVERSCROLL_HISTORY_NAVIGATION_TITLE},
+       {"overscrollHistoryNavigationSubtitle",
+        IDS_SETTINGS_OVERSCROLL_HISTORY_NAVIGATION_SUBTITLE},
+-#if BUILDFLAG(ENABLE_SCREEN_AI_SERVICE)
+       {"mainNodeAnnotationsDownloadCompleteLabel",
+        IDS_SETTINGS_MAIN_NODE_ANNOTATIONS_DOWNLOAD_COMPLETE},
+       {"mainNodeAnnotationsDownloadErrorLabel",
+@@ -297,13 +296,11 @@ void AddA11yStrings(content::WebUIDataSo
+       {"mainNodeAnnotationsTitle", IDS_SETTINGS_MAIN_NODE_ANNOTATIONS_TITLE},
+       {"mainNodeAnnotationsSubtitle",
+        IDS_SETTINGS_MAIN_NODE_ANNOTATIONS_SUBTITLE},
+-#endif  // BULDFLAG(ENABLE_SCREEN_AI_SERVICE)
+ #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
+   };
+   html_source->AddLocalizedStrings(kLocalizedStrings);
+ 
+-#if (BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)) && \
+-    BUILDFLAG(ENABLE_SCREEN_AI_SERVICE)
++#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC)
+   html_source->AddBoolean(
+       "mainNodeAnnotationsEnabled",
+       base::FeatureList::IsEnabled(features::kMainNodeAnnotations));
+Index: chromium-127.0.6533.88/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
+===================================================================
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/webui/side_panel/read_anything/read_anything_untrusted_page_handler.cc
 @@ -17,8 +17,6 @@
  #include "chrome/browser/accessibility/pdf_ocr_controller_factory.h"
  #include "chrome/browser/browser_features.h"
@@ -347,7 +361,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/side_panel/read_anything/r
  #include "chrome/browser/translate/chrome_translate_client.h"
  #include "chrome/browser/ui/browser.h"
  #include "chrome/browser/ui/browser_finder.h"
-@@ -298,21 +296,6 @@ ReadAnythingUntrustedPageHandler::ReadAn
+@@ -301,21 +299,6 @@ ReadAnythingUntrustedPageHandler::ReadAn
          highlightGranularity);
    }
  
@@ -369,7 +383,7 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/side_panel/read_anything/r
  
    OnActiveWebContentsChanged();
  
-@@ -716,10 +699,6 @@ void ReadAnythingUntrustedPageHandler::S
+@@ -728,10 +711,6 @@ void ReadAnythingUntrustedPageHandler::S
            inner_contents[0]->GetPrimaryMainFrame()->GetLastCommittedOrigin())) {
      pdf_observer_ = std::make_unique<ReadAnythingWebContentsObserver>(
          weak_factory_.GetSafeRef(), inner_contents[0], kReadAnythingAXMode);
@@ -380,11 +394,11 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/webui/side_panel/read_anything/r
    }
  }
  
-Index: chromium-126.0.6478.57/chrome/renderer/BUILD.gn
+Index: chromium-127.0.6533.88/chrome/renderer/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/renderer/BUILD.gn
-+++ chromium-126.0.6478.57/chrome/renderer/BUILD.gn
-@@ -423,10 +423,6 @@ static_library("renderer") {
+--- chromium-127.0.6533.88.orig/chrome/renderer/BUILD.gn
++++ chromium-127.0.6533.88/chrome/renderer/BUILD.gn
+@@ -424,10 +424,6 @@ static_library("renderer") {
      sources += [
        "accessibility/ax_tree_distiller.cc",
        "accessibility/ax_tree_distiller.h",
@@ -395,11 +409,11 @@ Index: chromium-126.0.6478.57/chrome/renderer/BUILD.gn
        "media/chrome_speech_recognition_client.cc",
        "media/chrome_speech_recognition_client.h",
        "searchbox/searchbox.cc",
-Index: chromium-126.0.6478.57/chrome/renderer/chrome_render_frame_observer.cc
+Index: chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/renderer/chrome_render_frame_observer.cc
-+++ chromium-126.0.6478.57/chrome/renderer/chrome_render_frame_observer.cc
-@@ -320,22 +320,6 @@ void ChromeRenderFrameObserver::DidCommi
+--- chromium-127.0.6533.88.orig/chrome/renderer/chrome_render_frame_observer.cc
++++ chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
+@@ -320,21 +320,6 @@ void ChromeRenderFrameObserver::DidCommi
  }
  
  void ChromeRenderFrameObserver::DidClearWindowObject() {
@@ -413,20 +427,19 @@ Index: chromium-126.0.6478.57/chrome/renderer/chrome_render_frame_observer.cc
 -  // url, which is chrome-untrusted. ReadAnythingAppController installs v8
 -  // bindings in the chrome.readingMode namespace which are consumed by
 -  // read_anything/app.ts, the resource of the Read Anything WebUI.
--  if (features::IsReadAnythingEnabled() &&
--      render_frame()->GetWebFrame()->GetDocument().Url() ==
--          chrome::kChromeUIUntrustedReadAnythingSidePanelURL) {
+-  if (render_frame()->GetWebFrame()->GetDocument().Url() ==
+-      chrome::kChromeUIUntrustedReadAnythingSidePanelURL) {
 -    ReadAnythingAppController::Install(render_frame());
 -  }
 -#endif  // !BUILDFLAG(IS_ANDROID)
  }
  
  void ChromeRenderFrameObserver::DidMeaningfulLayout(
-Index: chromium-126.0.6478.57/chrome/test/chromedriver/BUILD.gn
+Index: chromium-127.0.6533.88/chrome/test/chromedriver/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/test/chromedriver/BUILD.gn
-+++ chromium-126.0.6478.57/chrome/test/chromedriver/BUILD.gn
-@@ -405,7 +405,7 @@ source_set("lib") {
+--- chromium-127.0.6533.88.orig/chrome/test/chromedriver/BUILD.gn
++++ chromium-127.0.6533.88/chrome/test/chromedriver/BUILD.gn
+@@ -403,7 +403,7 @@ source_set("lib") {
    }
  }
  
@@ -435,11 +448,11 @@ Index: chromium-126.0.6478.57/chrome/test/chromedriver/BUILD.gn
    # Linux
    executable("chromedriver_server.unstripped") {
      testonly = true
-Index: chromium-126.0.6478.57/components/omnibox/browser/autocomplete_classifier.cc
+Index: chromium-127.0.6533.88/components/omnibox/browser/autocomplete_classifier.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/omnibox/browser/autocomplete_classifier.cc
-+++ chromium-126.0.6478.57/components/omnibox/browser/autocomplete_classifier.cc
-@@ -103,8 +103,6 @@ void AutocompleteClassifier::Classify(
+--- chromium-127.0.6533.88.orig/components/omnibox/browser/autocomplete_classifier.cc
++++ chromium-127.0.6533.88/components/omnibox/browser/autocomplete_classifier.cc
+@@ -96,8 +96,6 @@ void AutocompleteClassifier::Classify(
      metrics::OmniboxEventProto::PageClassification page_classification,
      AutocompleteMatch* match,
      GURL* alternate_nav_url) {
@@ -448,11 +461,11 @@ Index: chromium-126.0.6478.57/components/omnibox/browser/autocomplete_classifier
    DCHECK(!inside_classify_);
    base::AutoReset<bool> reset(&inside_classify_, true);
    AutocompleteInput input(text, page_classification, *scheme_classifier_);
-Index: chromium-126.0.6478.57/content/shell/BUILD.gn
+Index: chromium-127.0.6533.88/content/shell/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/content/shell/BUILD.gn
-+++ chromium-126.0.6478.57/content/shell/BUILD.gn
-@@ -795,10 +795,6 @@ if (is_apple) {
+--- chromium-127.0.6533.88.orig/content/shell/BUILD.gn
++++ chromium-127.0.6533.88/content/shell/BUILD.gn
+@@ -800,10 +800,6 @@ if (is_apple) {
        deps = [ "//third_party/icu:icudata" ]
      }
  
@@ -463,10 +476,10 @@ Index: chromium-126.0.6478.57/content/shell/BUILD.gn
      if (v8_use_external_startup_data) {
        public_deps += [ "//v8" ]
        if (use_v8_context_snapshot) {
-Index: chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_service.cc
+Index: chromium-127.0.6533.88/services/passage_embeddings/passage_embeddings_service.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/services/passage_embeddings/passage_embeddings_service.cc
-+++ chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_service.cc
+--- chromium-127.0.6533.88.orig/services/passage_embeddings/passage_embeddings_service.cc
++++ chromium-127.0.6533.88/services/passage_embeddings/passage_embeddings_service.cc
 @@ -6,7 +6,6 @@
  
  #include "base/files/file.h"
@@ -475,10 +488,10 @@ Index: chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_ser
  
  namespace passage_embeddings {
  
-Index: chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_service.h
+Index: chromium-127.0.6533.88/services/passage_embeddings/passage_embeddings_service.h
 ===================================================================
---- chromium-126.0.6478.57.orig/services/passage_embeddings/passage_embeddings_service.h
-+++ chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_service.h
+--- chromium-127.0.6533.88.orig/services/passage_embeddings/passage_embeddings_service.h
++++ chromium-127.0.6533.88/services/passage_embeddings/passage_embeddings_service.h
 @@ -11,7 +11,6 @@
  
  namespace passage_embeddings {
@@ -487,10 +500,10 @@ Index: chromium-126.0.6478.57/services/passage_embeddings/passage_embeddings_ser
  
  // Class implementation of the passage embeddings service mojo interface.
  class PassageEmbeddingsService : public mojom::PassageEmbeddingsService {
-Index: chromium-126.0.6478.57/services/screen_ai/buildflags/features.gni
+Index: chromium-127.0.6533.88/services/screen_ai/buildflags/features.gni
 ===================================================================
---- chromium-126.0.6478.57.orig/services/screen_ai/buildflags/features.gni
-+++ chromium-126.0.6478.57/services/screen_ai/buildflags/features.gni
+--- chromium-127.0.6533.88.orig/services/screen_ai/buildflags/features.gni
++++ chromium-127.0.6533.88/services/screen_ai/buildflags/features.gni
 @@ -7,14 +7,13 @@ import("//build/config/sanitizers/saniti
  
  declare_args() {
@@ -509,10 +522,10 @@ Index: chromium-126.0.6478.57/services/screen_ai/buildflags/features.gni
 -  use_fake_screen_ai = is_msan || is_ubsan || is_ubsan_vptr || is_ubsan_security
 +  use_fake_screen_ai = false
  }
-Index: chromium-126.0.6478.57/third_party/devtools-frontend/src/front_end/BUILD.gn
+Index: chromium-127.0.6533.88/third_party/devtools-frontend/src/front_end/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/devtools-frontend/src/front_end/BUILD.gn
-+++ chromium-126.0.6478.57/third_party/devtools-frontend/src/front_end/BUILD.gn
+--- chromium-127.0.6533.88.orig/third_party/devtools-frontend/src/front_end/BUILD.gn
++++ chromium-127.0.6533.88/third_party/devtools-frontend/src/front_end/BUILD.gn
 @@ -184,7 +184,6 @@ group("unittests") {
      "panels/sources/components:unittests",
      "panels/timeline:unittests",

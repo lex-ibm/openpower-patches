@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/components/search_engines/prepopulated_engines.json
+Index: chromium-127.0.6533.88/components/search_engines/prepopulated_engines.json
 ===================================================================
---- chromium-126.0.6478.57.orig/components/search_engines/prepopulated_engines.json
-+++ chromium-126.0.6478.57/components/search_engines/prepopulated_engines.json
+--- chromium-127.0.6533.88.orig/components/search_engines/prepopulated_engines.json
++++ chromium-127.0.6533.88/components/search_engines/prepopulated_engines.json
 @@ -125,27 +125,11 @@
      },
  

@@ -1,10 +1,10 @@
 # Block all connection requests with 'qjz9zk' in the domain name or with a 'trk:' scheme.
 # This patch is based on Iridium's 'net: add "trk:" scheme and help identify URLs being retrieved'
 
-Index: chromium-126.0.6478.57/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
+Index: chromium-127.0.6533.88/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
-+++ chromium-126.0.6478.57/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
++++ chromium-127.0.6533.88/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
 @@ -56,6 +56,7 @@ ChromeAutocompleteSchemeClassifier::GetI
    if (base::IsStringASCII(scheme) &&
        (ProfileIOData::IsHandledProtocol(scheme) ||
@@ -13,10 +13,10 @@ Index: chromium-126.0.6478.57/chrome/browser/autocomplete/chrome_autocomplete_sc
         base::EqualsCaseInsensitiveASCII(scheme, url::kJavaScriptScheme) ||
         base::EqualsCaseInsensitiveASCII(scheme, url::kDataScheme))) {
      return metrics::OmniboxInputType::URL;
-Index: chromium-126.0.6478.57/chrome/browser/history/history_utils.cc
+Index: chromium-127.0.6533.88/chrome/browser/history/history_utils.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/history/history_utils.cc
-+++ chromium-126.0.6478.57/chrome/browser/history/history_utils.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/history/history_utils.cc
++++ chromium-127.0.6533.88/chrome/browser/history/history_utils.cc
 @@ -22,6 +22,7 @@ bool CanAddURLToHistory(const GURL& url)
        url.SchemeIs(content::kChromeUIScheme) ||
        url.SchemeIs(content::kChromeUIUntrustedScheme) ||
@@ -25,10 +25,10 @@ Index: chromium-126.0.6478.57/chrome/browser/history/history_utils.cc
        url.SchemeIs(chrome::kChromeNativeScheme) ||
        url.SchemeIs(chrome::kChromeSearchScheme) ||
        url.SchemeIs(dom_distiller::kDomDistillerScheme))
-Index: chromium-126.0.6478.57/chrome/browser/ui/singleton_tabs.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/singleton_tabs.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/singleton_tabs.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/singleton_tabs.cc
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/singleton_tabs.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/singleton_tabs.cc
 @@ -165,7 +165,8 @@ int GetIndexOfExistingTab(Browser* brows
      // RewriteURLIfNecessary removes the "view-source:" scheme which could lead
      // to incorrect matching, so ensure that the target and the candidate are
@@ -39,10 +39,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ui/singleton_tabs.cc
        continue;
      }
  
-Index: chromium-126.0.6478.57/components/omnibox/browser/autocomplete_input.cc
+Index: chromium-127.0.6533.88/components/omnibox/browser/autocomplete_input.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/omnibox/browser/autocomplete_input.cc
-+++ chromium-126.0.6478.57/components/omnibox/browser/autocomplete_input.cc
+--- chromium-127.0.6533.88.orig/components/omnibox/browser/autocomplete_input.cc
++++ chromium-127.0.6533.88/components/omnibox/browser/autocomplete_input.cc
 @@ -582,7 +582,8 @@ void AutocompleteInput::ParseForEmphasiz
    // For the view-source and blob schemes, we should emphasize the host of the
    // URL qualified by the view-source or blob prefix.
@@ -53,10 +53,10 @@ Index: chromium-126.0.6478.57/components/omnibox/browser/autocomplete_input.cc
        (static_cast<int>(text.length()) > after_scheme_and_colon)) {
      // Obtain the URL prefixed by view-source or blob and parse it.
      std::u16string real_url(text.substr(after_scheme_and_colon));
-Index: chromium-126.0.6478.57/components/url_formatter/url_fixer.cc
+Index: chromium-127.0.6533.88/components/url_formatter/url_fixer.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/url_formatter/url_fixer.cc
-+++ chromium-126.0.6478.57/components/url_formatter/url_fixer.cc
+--- chromium-127.0.6533.88.orig/components/url_formatter/url_fixer.cc
++++ chromium-127.0.6533.88/components/url_formatter/url_fixer.cc
 @@ -575,6 +575,10 @@ GURL FixupURLInternal(const std::string&
      }
    }
@@ -68,11 +68,11 @@ Index: chromium-126.0.6478.57/components/url_formatter/url_fixer.cc
    // We handle the file scheme separately.
    if (scheme == url::kFileScheme)
      return GURL(parts.scheme.is_valid() ? text : FixupPath(text));
-Index: chromium-126.0.6478.57/content/browser/child_process_security_policy_impl.cc
+Index: chromium-127.0.6533.88/content/browser/child_process_security_policy_impl.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/content/browser/child_process_security_policy_impl.cc
-+++ chromium-126.0.6478.57/content/browser/child_process_security_policy_impl.cc
-@@ -840,6 +840,7 @@ ChildProcessSecurityPolicyImpl::ChildPro
+--- chromium-127.0.6533.88.orig/content/browser/child_process_security_policy_impl.cc
++++ chromium-127.0.6533.88/content/browser/child_process_security_policy_impl.cc
+@@ -852,6 +852,7 @@ ChildProcessSecurityPolicyImpl::ChildPro
    RegisterWebSafeScheme(url::kWssScheme);
  #endif  // BUILDFLAG(ENABLE_WEBSOCKETS)
    RegisterWebSafeScheme(url::kDataScheme);
@@ -80,11 +80,11 @@ Index: chromium-126.0.6478.57/content/browser/child_process_security_policy_impl
  
    // TODO(nick): https://crbug.com/651534 blob: and filesystem: schemes embed
    // other origins, so we should not treat them as web safe. Remove callers of
-Index: chromium-126.0.6478.57/net/BUILD.gn
+Index: chromium-127.0.6533.88/net/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/net/BUILD.gn
-+++ chromium-126.0.6478.57/net/BUILD.gn
-@@ -996,6 +996,8 @@ component("net") {
+--- chromium-127.0.6533.88.orig/net/BUILD.gn
++++ chromium-127.0.6533.88/net/BUILD.gn
+@@ -998,6 +998,8 @@ component("net") {
      "url_request/referrer_policy.h",
      "url_request/static_http_user_agent_settings.cc",
      "url_request/static_http_user_agent_settings.h",
@@ -93,10 +93,10 @@ Index: chromium-126.0.6478.57/net/BUILD.gn
      "url_request/url_request.cc",
      "url_request/url_request.h",
      "url_request/url_request_context.cc",
-Index: chromium-126.0.6478.57/net/url_request/trk_protocol_handler.cc
+Index: chromium-127.0.6533.88/net/url_request/trk_protocol_handler.cc
 ===================================================================
 --- /dev/null
-+++ chromium-126.0.6478.57/net/url_request/trk_protocol_handler.cc
++++ chromium-127.0.6533.88/net/url_request/trk_protocol_handler.cc
 @@ -0,0 +1,25 @@
 +// Copyright (c) 2018 The ungoogled-chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -123,10 +123,10 @@ Index: chromium-126.0.6478.57/net/url_request/trk_protocol_handler.cc
 +}
 +
 +}  // namespace net
-Index: chromium-126.0.6478.57/net/url_request/trk_protocol_handler.h
+Index: chromium-127.0.6533.88/net/url_request/trk_protocol_handler.h
 ===================================================================
 --- /dev/null
-+++ chromium-126.0.6478.57/net/url_request/trk_protocol_handler.h
++++ chromium-127.0.6533.88/net/url_request/trk_protocol_handler.h
 @@ -0,0 +1,30 @@
 +// Copyright (c) 2018 The ungoogled-chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -158,10 +158,10 @@ Index: chromium-126.0.6478.57/net/url_request/trk_protocol_handler.h
 +}  // namespace net
 +
 +#endif  // NET_URL_REQUEST_TRK_PROTOCOL_HANDLER_H_
-Index: chromium-126.0.6478.57/net/url_request/url_request.cc
+Index: chromium-127.0.6533.88/net/url_request/url_request.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/net/url_request/url_request.cc
-+++ chromium-126.0.6478.57/net/url_request/url_request.cc
+--- chromium-127.0.6533.88.orig/net/url_request/url_request.cc
++++ chromium-127.0.6533.88/net/url_request/url_request.cc
 @@ -12,6 +12,7 @@
  #include "base/functional/callback_helpers.h"
  #include "base/metrics/histogram_macros.h"
@@ -170,7 +170,7 @@ Index: chromium-126.0.6478.57/net/url_request/url_request.cc
  #include "base/strings/utf_string_conversions.h"
  #include "base/synchronization/lock.h"
  #include "base/task/single_thread_task_runner.h"
-@@ -47,6 +48,7 @@
+@@ -49,6 +50,7 @@
  #include "net/url_request/url_request_redirect_job.h"
  #include "url/gurl.h"
  #include "url/origin.h"
@@ -178,7 +178,7 @@ Index: chromium-126.0.6478.57/net/url_request/url_request.cc
  
  namespace net {
  
-@@ -602,6 +604,12 @@ URLRequest::URLRequest(base::PassKey<URL
+@@ -605,6 +607,12 @@ URLRequest::URLRequest(base::PassKey<URL
    // Sanity check out environment.
    DCHECK(base::SingleThreadTaskRunner::HasCurrentDefault());
  
@@ -191,10 +191,10 @@ Index: chromium-126.0.6478.57/net/url_request/url_request.cc
    context->url_requests()->insert(this);
    net_log_.BeginEvent(NetLogEventType::REQUEST_ALIVE, [&] {
      return NetLogURLRequestConstructorParams(url, priority_,
-Index: chromium-126.0.6478.57/net/url_request/url_request_context_builder.cc
+Index: chromium-127.0.6533.88/net/url_request/url_request_context_builder.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/net/url_request/url_request_context_builder.cc
-+++ chromium-126.0.6478.57/net/url_request/url_request_context_builder.cc
+--- chromium-127.0.6533.88.orig/net/url_request/url_request_context_builder.cc
++++ chromium-127.0.6533.88/net/url_request/url_request_context_builder.cc
 @@ -48,6 +48,7 @@
  #include "net/socket/network_binding_client_socket_factory.h"
  #include "net/ssl/ssl_config_service_defaults.h"
@@ -213,12 +213,12 @@ Index: chromium-126.0.6478.57/net/url_request/url_request_context_builder.cc
    context->set_job_factory(std::move(job_factory));
  
    if (cookie_deprecation_label_.has_value()) {
-Index: chromium-126.0.6478.57/url/url_constants.h
+Index: chromium-127.0.6533.88/url/url_constants.h
 ===================================================================
---- chromium-126.0.6478.57.orig/url/url_constants.h
-+++ chromium-126.0.6478.57/url/url_constants.h
-@@ -47,6 +47,8 @@ inline constexpr char kMailToScheme[] =
- inline constexpr char16_t kMailToScheme16[] = u"mailto";
+--- chromium-127.0.6533.88.orig/url/url_constants.h
++++ chromium-127.0.6533.88/url/url_constants.h
+@@ -52,6 +52,8 @@ inline constexpr char kMaterializedViewS
+ inline constexpr char kSteamScheme[] = "steam";
  inline constexpr char kTelScheme[] = "tel";
  inline constexpr char16_t kTelScheme16[] = u"tel";
 +inline constexpr char kTraceScheme[] = "trk";
@@ -226,10 +226,10 @@ Index: chromium-126.0.6478.57/url/url_constants.h
  inline constexpr char kUrnScheme[] = "urn";
  inline constexpr char16_t kUrnScheme16[] = u"urn";
  inline constexpr char kUuidInPackageScheme[] = "uuid-in-package";
-Index: chromium-126.0.6478.57/url/url_util.cc
+Index: chromium-127.0.6533.88/url/url_util.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/url/url_util.cc
-+++ chromium-126.0.6478.57/url/url_util.cc
+--- chromium-127.0.6533.88.orig/url/url_util.cc
++++ chromium-127.0.6533.88/url/url_util.cc
 @@ -79,6 +79,7 @@ struct SchemeRegistry {
        kWssScheme,
        kDataScheme,

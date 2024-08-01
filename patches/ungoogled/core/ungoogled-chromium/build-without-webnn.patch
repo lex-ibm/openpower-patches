@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/components/viz/service/BUILD.gn
+Index: chromium-127.0.6533.88/components/viz/service/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/components/viz/service/BUILD.gn
-+++ chromium-126.0.6478.57/components/viz/service/BUILD.gn
+--- chromium-127.0.6533.88.orig/components/viz/service/BUILD.gn
++++ chromium-127.0.6533.88/components/viz/service/BUILD.gn
 @@ -284,7 +284,6 @@ viz_component("service") {
      "//services/metrics/public/mojom",
      "//services/tracing/public/cpp:cpp",
@@ -10,11 +10,11 @@ Index: chromium-126.0.6478.57/components/viz/service/BUILD.gn
      "//skia",
      "//skia:skcms",
      "//third_party/libyuv",
-Index: chromium-126.0.6478.57/components/viz/service/gl/gpu_service_impl.cc
+Index: chromium-127.0.6533.88/components/viz/service/gl/gpu_service_impl.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/components/viz/service/gl/gpu_service_impl.cc
-+++ chromium-126.0.6478.57/components/viz/service/gl/gpu_service_impl.cc
-@@ -902,15 +902,6 @@ void GpuServiceImpl::BindClientGmbInterf
+--- chromium-127.0.6533.88.orig/components/viz/service/gl/gpu_service_impl.cc
++++ chromium-127.0.6533.88/components/viz/service/gl/gpu_service_impl.cc
+@@ -903,15 +903,6 @@ void GpuServiceImpl::BindClientGmbInterf
  void GpuServiceImpl::BindWebNNContextProvider(
      mojo::PendingReceiver<webnn::mojom::WebNNContextProvider> pending_receiver,
      int client_id) {
@@ -30,11 +30,11 @@ Index: chromium-126.0.6478.57/components/viz/service/gl/gpu_service_impl.cc
  }
  #endif  // !BUILDFLAG(IS_CHROMEOS)
  
-Index: chromium-126.0.6478.57/content/browser/BUILD.gn
+Index: chromium-127.0.6533.88/content/browser/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/content/browser/BUILD.gn
-+++ chromium-126.0.6478.57/content/browser/BUILD.gn
-@@ -227,7 +227,6 @@ source_set("browser") {
+--- chromium-127.0.6533.88.orig/content/browser/BUILD.gn
++++ chromium-127.0.6533.88/content/browser/BUILD.gn
+@@ -229,7 +229,6 @@ source_set("browser") {
      "//services/viz/privileged/mojom",
      "//services/viz/public/cpp/gpu",
      "//services/viz/public/mojom",
@@ -42,10 +42,10 @@ Index: chromium-126.0.6478.57/content/browser/BUILD.gn
      "//services/webnn:webnn_switches",
      "//skia",
      "//skia/public/mojom",
-Index: chromium-126.0.6478.57/content/gpu/BUILD.gn
+Index: chromium-127.0.6533.88/content/gpu/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/content/gpu/BUILD.gn
-+++ chromium-126.0.6478.57/content/gpu/BUILD.gn
+--- chromium-127.0.6533.88.orig/content/gpu/BUILD.gn
++++ chromium-127.0.6533.88/content/gpu/BUILD.gn
 @@ -75,7 +75,6 @@ target(link_target_type, "gpu_sources")
      "//services/service_manager/public/mojom",
      "//services/tracing/public/cpp",
@@ -54,10 +54,10 @@ Index: chromium-126.0.6478.57/content/gpu/BUILD.gn
      "//services/webnn/public/mojom",
      "//skia",
      "//third_party/angle:angle_gpu_info_util",
-Index: chromium-126.0.6478.57/services/BUILD.gn
+Index: chromium-127.0.6533.88/services/BUILD.gn
 ===================================================================
---- chromium-126.0.6478.57.orig/services/BUILD.gn
-+++ chromium-126.0.6478.57/services/BUILD.gn
+--- chromium-127.0.6533.88.orig/services/BUILD.gn
++++ chromium-127.0.6533.88/services/BUILD.gn
 @@ -58,7 +58,6 @@ test("services_unittests") {
        "//services/viz/public/cpp/compositing:tests",
        "//services/viz/public/cpp/gpu:tests",

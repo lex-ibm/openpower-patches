@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
+--- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 @@ -104,4 +104,8 @@
       "Hide SidePanel Button",
       "Hides the SidePanel Button. ungoogled-chromium flag.",
@@ -11,10 +11,10 @@ Index: chromium-126.0.6478.57/chrome/browser/ungoogled_flag_entries.h
 +     "Prevents dragging of links and selected text. ungoogled-chromium flag.",
 +     kOsDesktop, FEATURE_VALUE_TYPE(blink::features::kDisableLinkDrag)},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-126.0.6478.57/third_party/blink/common/features.cc
+Index: chromium-127.0.6533.88/third_party/blink/common/features.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/common/features.cc
-+++ chromium-126.0.6478.57/third_party/blink/common/features.cc
+--- chromium-127.0.6533.88.orig/third_party/blink/common/features.cc
++++ chromium-127.0.6533.88/third_party/blink/common/features.cc
 @@ -20,6 +20,8 @@
  namespace blink {
  namespace features {
@@ -24,10 +24,10 @@ Index: chromium-126.0.6478.57/third_party/blink/common/features.cc
  // -----------------------------------------------------------------------------
  // Feature definitions and associated constants (feature params, et cetera)
  //
-Index: chromium-126.0.6478.57/third_party/blink/public/common/features.h
+Index: chromium-127.0.6533.88/third_party/blink/public/common/features.h
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/public/common/features.h
-+++ chromium-126.0.6478.57/third_party/blink/public/common/features.h
+--- chromium-127.0.6533.88.orig/third_party/blink/public/common/features.h
++++ chromium-127.0.6533.88/third_party/blink/public/common/features.h
 @@ -20,6 +20,8 @@
  namespace blink {
  namespace features {
@@ -37,10 +37,10 @@ Index: chromium-126.0.6478.57/third_party/blink/public/common/features.h
  // -----------------------------------------------------------------------------
  // Feature declarations and associated constants (feature params, et cetera)
  //
-Index: chromium-126.0.6478.57/third_party/blink/renderer/core/editing/selection_controller.cc
+Index: chromium-127.0.6533.88/third_party/blink/renderer/core/editing/selection_controller.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/renderer/core/editing/selection_controller.cc
-+++ chromium-126.0.6478.57/third_party/blink/renderer/core/editing/selection_controller.cc
+--- chromium-127.0.6533.88.orig/third_party/blink/renderer/core/editing/selection_controller.cc
++++ chromium-127.0.6533.88/third_party/blink/renderer/core/editing/selection_controller.cc
 @@ -1439,10 +1439,14 @@ FrameSelection& SelectionController::Sel
  }
  
@@ -56,10 +56,10 @@ Index: chromium-126.0.6478.57/third_party/blink/renderer/core/editing/selection_
  
  bool IsUserNodeDraggable(const MouseEventWithHitTestResults& event) {
    Node* inner_node = event.InnerNode();
-Index: chromium-126.0.6478.57/third_party/blink/renderer/core/input/mouse_event_manager.cc
+Index: chromium-127.0.6533.88/third_party/blink/renderer/core/input/mouse_event_manager.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/third_party/blink/renderer/core/input/mouse_event_manager.cc
-+++ chromium-126.0.6478.57/third_party/blink/renderer/core/input/mouse_event_manager.cc
+--- chromium-127.0.6533.88.orig/third_party/blink/renderer/core/input/mouse_event_manager.cc
++++ chromium-127.0.6533.88/third_party/blink/renderer/core/input/mouse_event_manager.cc
 @@ -648,8 +648,14 @@ WebInputEventResult MouseEventManager::H
  
    bool single_click = event.Event().click_count <= 1;

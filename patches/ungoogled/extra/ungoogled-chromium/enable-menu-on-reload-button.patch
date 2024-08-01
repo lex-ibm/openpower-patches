@@ -1,10 +1,10 @@
 # Add ability to always open dev context menu on reload button.
 
-Index: chromium-126.0.6478.57/chrome/browser/ui/views/toolbar/reload_button.cc
+Index: chromium-127.0.6533.88/chrome/browser/ui/views/toolbar/reload_button.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/browser/ui/views/toolbar/reload_button.cc
-+++ chromium-126.0.6478.57/chrome/browser/ui/views/toolbar/reload_button.cc
-@@ -114,7 +114,7 @@ bool ReloadButton::GetMenuEnabled() cons
+--- chromium-127.0.6533.88.orig/chrome/browser/ui/views/toolbar/reload_button.cc
++++ chromium-127.0.6533.88/chrome/browser/ui/views/toolbar/reload_button.cc
+@@ -111,7 +111,7 @@ bool ReloadButton::GetMenuEnabled() cons
  }
  
  void ReloadButton::SetMenuEnabled(bool enable) {

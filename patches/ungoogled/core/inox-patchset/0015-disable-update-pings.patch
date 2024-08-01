@@ -1,7 +1,7 @@
-Index: chromium-126.0.6478.57/chrome/updater/configurator.cc
+Index: chromium-127.0.6533.88/chrome/updater/configurator.cc
 ===================================================================
---- chromium-126.0.6478.57.orig/chrome/updater/configurator.cc
-+++ chromium-126.0.6478.57/chrome/updater/configurator.cc
+--- chromium-127.0.6533.88.orig/chrome/updater/configurator.cc
++++ chromium-127.0.6533.88/chrome/updater/configurator.cc
 @@ -106,7 +106,7 @@ base::TimeDelta Configurator::UpdateDela
  
  std::vector<GURL> Configurator::UpdateUrl() const {
