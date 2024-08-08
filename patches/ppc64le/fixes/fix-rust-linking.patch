@@ -1,7 +1,7 @@
-Index: chromium-127.0.6533.88/build/toolchain/gcc_toolchain.gni
+Index: chromium-127.0.6533.72/build/toolchain/gcc_toolchain.gni
 ===================================================================
---- chromium-127.0.6533.88.orig/build/toolchain/gcc_toolchain.gni
-+++ chromium-127.0.6533.88/build/toolchain/gcc_toolchain.gni
+--- chromium-127.0.6533.72.orig/build/toolchain/gcc_toolchain.gni
++++ chromium-127.0.6533.72/build/toolchain/gcc_toolchain.gni
 @@ -439,7 +439,13 @@ template("single_gcc_toolchain") {
          # -soname flag is not available on aix ld
          soname_flag = "-Wl,-soname=\"$soname\""

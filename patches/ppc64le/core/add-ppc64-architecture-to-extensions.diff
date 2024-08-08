@@ -1,8 +1,6 @@
-Index: chromium-127.0.6533.88/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
-===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
-+++ chromium-127.0.6533.88/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
-@@ -303,6 +303,8 @@ bool ChromeRuntimeAPIDelegate::GetPlatfo
+--- a/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
++++ b/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
+@@ -303,6 +303,8 @@
      info->arch = extensions::api::runtime::PlatformArch::kMips;
    } else if (strcmp(arch, "mips64el") == 0) {
      info->arch = extensions::api::runtime::PlatformArch::kMips64;
@@ -11,7 +9,7 @@ Index: chromium-127.0.6533.88/chrome/browser/extensions/api/runtime/chrome_runti
    } else {
      NOTREACHED_IN_MIGRATION();
      return false;
-@@ -319,6 +321,8 @@ bool ChromeRuntimeAPIDelegate::GetPlatfo
+@@ -319,6 +321,8 @@
      info->nacl_arch = extensions::api::runtime::PlatformNaclArch::kMips;
    } else if (strcmp(nacl_arch, "mips64") == 0) {
      info->nacl_arch = extensions::api::runtime::PlatformNaclArch::kMips64;
@@ -20,10 +18,8 @@ Index: chromium-127.0.6533.88/chrome/browser/extensions/api/runtime/chrome_runti
    } else {
      NOTREACHED_IN_MIGRATION();
      return false;
-Index: chromium-127.0.6533.88/extensions/common/api/runtime.json
-===================================================================
---- chromium-127.0.6533.88.orig/extensions/common/api/runtime.json
-+++ chromium-127.0.6533.88/extensions/common/api/runtime.json
+--- a/extensions/common/api/runtime.json
++++ b/extensions/common/api/runtime.json
 @@ -98,7 +98,8 @@
              {"name": "x86-32", "description": "Specifies the processer architecture as x86-32."},
              {"name": "x86-64", "description": "Specifies the processer architecture as x86-64."},
