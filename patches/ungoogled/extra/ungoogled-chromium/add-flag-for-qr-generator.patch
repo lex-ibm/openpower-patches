@@ -1,28 +1,16 @@
-Index: chromium-127.0.6533.88/chrome/browser/sharing/features.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/sharing/features.cc
-+++ chromium-127.0.6533.88/chrome/browser/sharing/features.cc
-@@ -17,3 +17,5 @@ const base::FeatureParam<int> kSharingPu
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
+@@ -12,6 +12,7 @@
+ #include "chrome/browser/ui/sharing_hub/sharing_hub_bubble_controller.h"
+ #include "chrome/common/pref_names.h"
+ #include "components/prefs/pref_change_registrar.h"
++#include "components/sharing_message/features.h"
+ #include "content/public/browser/web_contents.h"
+ #include "url/gurl.h"
  
- const base::FeatureParam<int> kSharingPulseDeltaAndroidHours = {
-     &kSharingMatchPulseInterval, "SharingPulseDeltaAndroidHours", 24};
-+
-+BASE_FEATURE(kDisableQRGenerator, "DisableQRGenerator", base::FEATURE_DISABLED_BY_DEFAULT);
-Index: chromium-127.0.6533.88/chrome/browser/sharing/features.h
-===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/sharing/features.h
-+++ chromium-127.0.6533.88/chrome/browser/sharing/features.h
-@@ -26,4 +26,5 @@ extern const base::FeatureParam<int> kSh
- // backgrounded. Such devices cannot be marked stale aggressively.
- extern const base::FeatureParam<int> kSharingPulseDeltaAndroidHours;
- 
-+BASE_DECLARE_FEATURE(kDisableQRGenerator);
- #endif  // CHROME_BROWSER_SHARING_FEATURES_H_
-Index: chromium-127.0.6533.88/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
-===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
-@@ -23,7 +23,7 @@ QRCodeGeneratorBubbleController::~QRCode
+@@ -37,7 +38,7 @@ QRCodeGeneratorBubbleController::~QRCode
  
  // static
  bool QRCodeGeneratorBubbleController::IsGeneratorAvailable(const GURL& url) {
@@ -30,11 +18,11 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/qrcode_generator/qrcode_generato
 +  if (!url.SchemeIsHTTPOrHTTPS() || base::FeatureList::IsEnabled(kDisableQRGenerator))
      return false;
  
-   return true;
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+   // Check policy.
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 @@ -64,4 +64,8 @@
       "Remove Tabsearch Button",
       "Removes the tabsearch button from the tabstrip. ungoogled-chromium flag",
@@ -44,3 +32,23 @@ Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 +     "Disables the QR generator for sharing page links. ungoogled-chromium flag",
 +     kOsDesktop, FEATURE_VALUE_TYPE(kDisableQRGenerator)},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
+Index: chromium-128.0.6613.36/components/sharing_message/features.cc
+===================================================================
+--- chromium-128.0.6613.36.orig/components/sharing_message/features.cc
++++ chromium-128.0.6613.36/components/sharing_message/features.cc
+@@ -17,3 +17,5 @@ const base::FeatureParam<int> kSharingPu
+ 
+ const base::FeatureParam<int> kSharingPulseDeltaAndroidHours = {
+     &kSharingMatchPulseInterval, "SharingPulseDeltaAndroidHours", 24};
++
++BASE_FEATURE(kDisableQRGenerator, "DisableQRGenerator", base::FEATURE_DISABLED_BY_DEFAULT);
+Index: chromium-128.0.6613.36/components/sharing_message/features.h
+===================================================================
+--- chromium-128.0.6613.36.orig/components/sharing_message/features.h
++++ chromium-128.0.6613.36/components/sharing_message/features.h
+@@ -26,4 +26,5 @@ extern const base::FeatureParam<int> kSh
+ // backgrounded. Such devices cannot be marked stale aggressively.
+ extern const base::FeatureParam<int> kSharingPulseDeltaAndroidHours;
+ 
++BASE_DECLARE_FEATURE(kDisableQRGenerator);
+ #endif  // COMPONENTS_SHARING_MESSAGE_FEATURES_H_

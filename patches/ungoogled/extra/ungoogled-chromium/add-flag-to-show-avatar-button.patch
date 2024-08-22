@@ -1,10 +1,10 @@
-Index: chromium-127.0.6533.88/chrome/browser/ui/views/toolbar/toolbar_view.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/views/toolbar/toolbar_view.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/views/toolbar/toolbar_view.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/views/toolbar/toolbar_view.cc
-@@ -467,6 +467,17 @@ void ToolbarView::Init() {
- #elif BUILDFLAG(IS_CHROMEOS_LACROS)
-   show_avatar_toolbar_button = !chromeos::IsManagedGuestSession();
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/views/toolbar/toolbar_view.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/views/toolbar/toolbar_view.cc
+@@ -483,6 +483,17 @@ void ToolbarView::Init() {
+                                browser_->profile()->IsGuestSession() ||
+                                browser_->profile()->IsRegularProfile();
  #endif
 +
 +  const std::string sab_value = base::CommandLine::ForCurrentProcess()->
@@ -20,10 +20,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/views/toolbar/toolbar_view.cc
    avatar_->SetVisible(show_avatar_toolbar_button);
  
  #if BUILDFLAG(ENABLE_WEBUI_TAB_STRIP)
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 @@ -13,4 +13,16 @@ const FeatureEntry::Choice kExtensionHan
       "extension-mime-request-handling",
       "always-prompt-for-install"},
@@ -41,10 +41,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
 +     "never"}
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 @@ -24,4 +24,8 @@
       "Force punycode hostnames",
       "Force punycode in hostnames instead of Unicode when displaying Internationalized Domain Names (IDNs). ungoogled-chromium flag.",

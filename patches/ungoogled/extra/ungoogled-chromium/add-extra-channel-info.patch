@@ -5,10 +5,10 @@ author: Wengling Chen <feiyu2817@gmail.com>
  components/version_ui_strings.grdp |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: chromium-127.0.6533.88/components/version_ui_strings.grdp
+Index: chromium-128.0.6613.36/components/version_ui_strings.grdp
 ===================================================================
---- chromium-127.0.6533.88.orig/components/version_ui_strings.grdp
-+++ chromium-127.0.6533.88/components/version_ui_strings.grdp
+--- chromium-128.0.6613.36.orig/components/version_ui_strings.grdp
++++ chromium-128.0.6613.36/components/version_ui_strings.grdp
 @@ -4,10 +4,10 @@
      About Version
    </message>

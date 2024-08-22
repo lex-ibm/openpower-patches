@@ -1,7 +1,7 @@
-Index: chromium-127.0.6533.88/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+Index: chromium-128.0.6613.36/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
-+++ chromium-127.0.6533.88/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
++++ chromium-128.0.6613.36/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 @@ -22,7 +22,6 @@
  #include "chrome/browser/extensions/extension_web_ui_override_registrar.h"
  #include "chrome/browser/extensions/install_tracker_factory.h"
@@ -18,10 +18,10 @@ Index: chromium-127.0.6533.88/chrome/browser/extensions/chrome_browser_context_k
    extensions::MenuManagerFactory::GetInstance();
    extensions::PermissionsUpdater::EnsureAssociatedFactoryBuilt();
  #if BUILDFLAG(ENABLE_PLUGINS)
-Index: chromium-127.0.6533.88/chrome/browser/extensions/extension_management.cc
+Index: chromium-128.0.6613.36/chrome/browser/extensions/extension_management.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/extensions/extension_management.cc
-+++ chromium-127.0.6533.88/chrome/browser/extensions/extension_management.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/extensions/extension_management.cc
++++ chromium-128.0.6613.36/chrome/browser/extensions/extension_management.cc
 @@ -287,31 +287,7 @@ bool ExtensionManagement::IsAllowedManif
      int manifest_version,
      const std::string& extension_id,
@@ -81,14 +81,20 @@ Index: chromium-127.0.6533.88/chrome/browser/extensions/extension_management.cc
  }
  
  bool ExtensionManagement::IsAllowedByUnpublishedAvailabilityPolicy(
-Index: chromium-127.0.6533.88/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+Index: chromium-128.0.6613.36/chrome/browser/extensions/manifest_v2_experiment_manager.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
-+++ chromium-127.0.6533.88/chrome/browser/extensions/manifest_v2_experiment_manager.cc
-@@ -76,11 +76,6 @@ KeyedService* ManifestV2ExperimentManage
- }
+--- chromium-128.0.6613.36.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
++++ chromium-128.0.6613.36/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+@@ -139,17 +139,6 @@ bool ManifestV2ExperimentManagerFactory:
  
+ // Determines the current stage of the MV2 deprecation experiments.
  MV2ExperimentStage CalculateCurrentExperimentStage() {
+-  // Return the "highest" stage that is currently active for the user.
+-  if (base::FeatureList::IsEnabled(
+-          extensions_features::kExtensionManifestV2Disabled)) {
+-    return MV2ExperimentStage::kDisableWithReEnable;
+-  }
+-
 -  if (base::FeatureList::IsEnabled(
 -          extensions_features::kExtensionManifestV2DeprecationWarning)) {
 -    return MV2ExperimentStage::kWarning;
@@ -97,3 +103,19 @@ Index: chromium-127.0.6533.88/chrome/browser/extensions/manifest_v2_experiment_m
    return MV2ExperimentStage::kNone;
  }
  
+Index: chromium-128.0.6613.36/chrome/browser/ui/webui/extensions/extensions_ui.cc
+===================================================================
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/webui/extensions/extensions_ui.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/webui/extensions/extensions_ui.cc
+@@ -468,9 +468,9 @@ content::WebUIDataSource* CreateAndAddEx
+           extensions_features::kExtensionsMenuAccessControlWithPermittedSites));
+   source->AddBoolean(
+       "safetyCheckShowReviewPanel",
+-      base::FeatureList::IsEnabled(features::kSafetyCheckExtensions));
++      false);
+   source->AddBoolean("safetyHubShowReviewPanel",
+-                     base::FeatureList::IsEnabled(features::kSafetyHub));
++                     false);
+ 
+   // MV2 deprecation.
+   auto* mv2_experiment_manager = ManifestV2ExperimentManager::Get(profile);

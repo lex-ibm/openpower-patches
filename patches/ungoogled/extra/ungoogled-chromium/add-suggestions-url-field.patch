@@ -1,10 +1,10 @@
 # Add suggestions URL text field to the search engine editing dialog
 # (chrome://settings/searchEngines).
 
-Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
+Index: chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
-+++ chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
+--- chromium-128.0.6613.36.orig/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
++++ chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.html
 @@ -22,6 +22,13 @@
              error-message="$i18n{notValid}"
              value="{{queryUrl_}}" on-focus="validate_" on-input="validate_">
@@ -19,10 +19,10 @@ Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_p
        </div>
        <div slot="button-container">
          <cr-button class="cancel-button" on-click="cancel_" id="cancel"
-Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
+Index: chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
-+++ chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
+--- chromium-128.0.6613.36.orig/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
++++ chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engine_edit_dialog.ts
 @@ -36,6 +36,7 @@ export interface SettingsSearchEngineEdi
      dialog: CrDialogElement,
      keyword: CrInputElement,
@@ -80,7 +80,7 @@ Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_p
      this.$.dialog.close();
    }
  
-@@ -185,8 +194,10 @@ export class SettingsSearchEngineEditDia
+@@ -192,8 +201,10 @@ export class SettingsSearchEngineEditDia
        this.$.searchEngine,
        this.$.keyword,
        this.$.queryUrl,
@@ -92,10 +92,10 @@ Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_p
      });
      this.$.actionButton.disabled = !allValid;
    }
-Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
+Index: chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
-+++ chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
+--- chromium-128.0.6613.36.orig/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
++++ chromium-128.0.6613.36/chrome/browser/resources/settings/search_engines_page/search_engines_browser_proxy.ts
 @@ -35,6 +35,7 @@ export interface SearchEngine {
    name: string;
    shouldConfirmDeletion: boolean;
@@ -127,10 +127,10 @@ Index: chromium-127.0.6533.88/chrome/browser/resources/settings/search_engines_p
      ]);
    }
  
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/edit_search_engine_controller.cc
 @@ -67,6 +67,15 @@ bool EditSearchEngineController::IsURLVa
        .is_valid();
  }
@@ -171,10 +171,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engin
    }
  }
  
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engine_controller.h
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/edit_search_engine_controller.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/edit_search_engine_controller.h
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engine_controller.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/edit_search_engine_controller.h
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/edit_search_engine_controller.h
 @@ -23,7 +23,8 @@ class EditSearchEngineControllerDelegate
    virtual void OnEditedKeyword(TemplateURL* template_url,
                                 const std::u16string& title,
@@ -204,10 +204,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/edit_search_engin
  
    // Deletes an unused TemplateURL, if its add was cancelled and it's not
    // already owned by the TemplateURLService.
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_controller.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/keyword_editor_controller.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/keyword_editor_controller.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_controller.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/keyword_editor_controller.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/keyword_editor_controller.cc
 @@ -24,23 +24,27 @@ KeywordEditorController::KeywordEditorCo
  KeywordEditorController::~KeywordEditorController() {
  }
@@ -259,10 +259,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_co
  
    base::RecordAction(UserMetricsAction("KeywordEditor_ModifiedKeyword"));
  }
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_controller.h
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/keyword_editor_controller.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/keyword_editor_controller.h
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_controller.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/keyword_editor_controller.h
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/keyword_editor_controller.h
 @@ -33,14 +33,16 @@ class KeywordEditorController {
    // model.  Returns the index of the added URL.
    int AddTemplateURL(const std::u16string& title,
@@ -282,10 +282,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/keyword_editor_co
  
    // Return true if the given |url| can be edited.
    bool CanEdit(const TemplateURL* url) const;
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_table_model.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/template_url_table_model.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/template_url_table_model.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_table_model.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/template_url_table_model.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/template_url_table_model.cc
 @@ -200,21 +200,25 @@ void TemplateURLTableModel::Remove(size_
  void TemplateURLTableModel::Add(size_t index,
                                  const std::u16string& short_name,
@@ -327,10 +327,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_tabl
  }
  
  TemplateURL* TemplateURLTableModel::GetTemplateURL(size_t index) {
-Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_table_model.h
+Index: chromium-128.0.6613.36/chrome/browser/ui/search_engines/template_url_table_model.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/search_engines/template_url_table_model.h
-+++ chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_table_model.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/search_engines/template_url_table_model.h
++++ chromium-128.0.6613.36/chrome/browser/ui/search_engines/template_url_table_model.h
 @@ -61,13 +61,15 @@ class TemplateURLTableModel : public ui:
    void Add(size_t index,
             const std::u16string& short_name,
@@ -349,10 +349,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/search_engines/template_url_tabl
  
    // Reloads the icon at the specified index.
    void ReloadIcon(size_t index);
-Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_handler.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/webui/settings/search_engines_handler.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/search_engines_handler.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_handler.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/webui/settings/search_engines_handler.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/webui/settings/search_engines_handler.cc
 @@ -48,6 +48,7 @@ namespace {
  const char kSearchEngineField[] = "searchEngine";
  const char kKeywordField[] = "keyword";
@@ -422,10 +422,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_ha
    }
  }
  
-Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_handler.h
+Index: chromium-128.0.6613.36/chrome/browser/ui/webui/settings/search_engines_handler.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/webui/settings/search_engines_handler.h
-+++ chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_handler.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/webui/settings/search_engines_handler.h
++++ chromium-128.0.6613.36/chrome/browser/ui/webui/settings/search_engines_handler.h
 @@ -41,7 +41,8 @@ class SearchEnginesHandler : public Sett
    void OnEditedKeyword(TemplateURL* template_url,
                         const std::u16string& title,
@@ -447,11 +447,11 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/webui/settings/search_engines_ha
    bool CheckFieldValidity(const std::string& field_name,
                            const std::string& field_value);
  
-Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
+Index: chromium-128.0.6613.36/components/search_engines/template_url_service.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/search_engines/template_url_service.cc
-+++ chromium-127.0.6533.88/components/search_engines/template_url_service.cc
-@@ -925,7 +925,8 @@ void TemplateURLService::IncrementUsageC
+--- chromium-128.0.6613.36.orig/components/search_engines/template_url_service.cc
++++ chromium-128.0.6613.36/components/search_engines/template_url_service.cc
+@@ -904,7 +904,8 @@ void TemplateURLService::IncrementUsageC
  void TemplateURLService::ResetTemplateURL(TemplateURL* url,
                                            const std::u16string& title,
                                            const std::u16string& keyword,
@@ -461,7 +461,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
    DCHECK(!IsCreatedByExtension(url));
    DCHECK(!keyword.empty());
    DCHECK(!search_url.empty());
-@@ -940,6 +941,7 @@ void TemplateURLService::ResetTemplateUR
+@@ -919,6 +920,7 @@ void TemplateURLService::ResetTemplateUR
    data.safe_for_autoreplace = false;
    data.last_modified = clock_->Now();
    data.is_active = TemplateURLData::ActiveStatus::kTrue;
@@ -469,11 +469,11 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
  
    Update(url, TemplateURL(data));
  }
-Index: chromium-127.0.6533.88/components/search_engines/template_url_service.h
+Index: chromium-128.0.6613.36/components/search_engines/template_url_service.h
 ===================================================================
---- chromium-127.0.6533.88.orig/components/search_engines/template_url_service.h
-+++ chromium-127.0.6533.88/components/search_engines/template_url_service.h
-@@ -319,7 +319,8 @@ class TemplateURLService final : public
+--- chromium-128.0.6613.36.orig/components/search_engines/template_url_service.h
++++ chromium-128.0.6613.36/components/search_engines/template_url_service.h
+@@ -314,7 +314,8 @@ class TemplateURLService final : public
    void ResetTemplateURL(TemplateURL* url,
                          const std::u16string& title,
                          const std::u16string& keyword,

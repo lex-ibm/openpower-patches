@@ -3,11 +3,11 @@ From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:51:59 +0200
 Subject: [PATCH 56/66] browser: disable profile auto-import on first run
 
-Index: chromium-127.0.6533.88/chrome/browser/chrome_browser_main.cc
+Index: chromium-128.0.6613.36/chrome/browser/chrome_browser_main.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/chrome_browser_main.cc
-+++ chromium-127.0.6533.88/chrome/browser/chrome_browser_main.cc
-@@ -1661,11 +1661,6 @@ int ChromeBrowserMainParts::PreMainMessa
+--- chromium-128.0.6613.36.orig/chrome/browser/chrome_browser_main.cc
++++ chromium-128.0.6613.36/chrome/browser/chrome_browser_main.cc
+@@ -1671,11 +1671,6 @@ int ChromeBrowserMainParts::PreMainMessa
    // and preferences have been registered since some of the import code depends
    // on preferences.
    if (first_run::IsChromeFirstRun()) {

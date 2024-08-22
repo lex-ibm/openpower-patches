@@ -1,8 +1,8 @@
-Index: chromium-127.0.6533.88/components/flags_ui/flags_state.cc
+Index: chromium-128.0.6613.36/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/flags_ui/flags_state.cc
-+++ chromium-127.0.6533.88/components/flags_ui/flags_state.cc
-@@ -24,6 +24,7 @@
+--- chromium-128.0.6613.36.orig/components/flags_ui/flags_state.cc
++++ chromium-128.0.6613.36/components/flags_ui/flags_state.cc
+@@ -25,6 +25,7 @@
  #include "base/strings/utf_string_conversions.h"
  #include "base/values.h"
  #include "build/build_config.h"
@@ -10,7 +10,7 @@ Index: chromium-127.0.6533.88/components/flags_ui/flags_state.cc
  #include "components/flags_ui/feature_entry.h"
  #include "components/flags_ui/flags_storage.h"
  #include "components/flags_ui/flags_ui_switches.h"
-@@ -653,13 +654,17 @@ void FlagsState::GetFlagFeatureEntries(
+@@ -654,13 +655,17 @@ void FlagsState::GetFlagFeatureEntries(
    int current_platform = GetCurrentPlatform();
  
    for (const FeatureEntry& entry : feature_entries_) {
@@ -29,7 +29,7 @@ Index: chromium-127.0.6533.88/components/flags_ui/flags_state.cc
  
      base::Value::List supported_platforms;
      AddOsStrings(entry.supported_platforms, &supported_platforms);
-@@ -1063,6 +1068,7 @@ bool FlagsState::IsSupportedFeature(cons
+@@ -1064,6 +1069,7 @@ bool FlagsState::IsSupportedFeature(cons
      if (!entry.InternalNameMatches(name))
        continue;
      if (delegate_ && delegate_->ShouldExcludeFlag(storage, entry))

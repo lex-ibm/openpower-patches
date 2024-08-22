@@ -1,10 +1,10 @@
 # Disable Google Cloud Messaging (GCM) client
 
-Index: chromium-127.0.6533.88/components/gcm_driver/gcm_client_impl.cc
+Index: chromium-128.0.6613.36/components/gcm_driver/gcm_client_impl.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/gcm_driver/gcm_client_impl.cc
-+++ chromium-127.0.6533.88/components/gcm_driver/gcm_client_impl.cc
-@@ -449,6 +449,7 @@ void GCMClientImpl::StartGCM() {
+--- chromium-128.0.6613.36.orig/components/gcm_driver/gcm_client_impl.cc
++++ chromium-128.0.6613.36/components/gcm_driver/gcm_client_impl.cc
+@@ -450,6 +450,7 @@ void GCMClientImpl::StartGCM() {
  
  void GCMClientImpl::InitializeMCSClient() {
    DCHECK(network_connection_tracker_);
@@ -12,7 +12,7 @@ Index: chromium-127.0.6533.88/components/gcm_driver/gcm_client_impl.cc
    std::vector<GURL> endpoints;
    endpoints.push_back(gservices_settings_.GetMCSMainEndpoint());
    GURL fallback_endpoint = gservices_settings_.GetMCSFallbackEndpoint();
-@@ -653,28 +654,6 @@ void GCMClientImpl::RemoveHeartbeatInter
+@@ -654,28 +655,6 @@ void GCMClientImpl::RemoveHeartbeatInter
  
  void GCMClientImpl::StartCheckin() {
    DCHECK(io_task_runner_->RunsTasksInCurrentSequence());
@@ -41,7 +41,7 @@ Index: chromium-127.0.6533.88/components/gcm_driver/gcm_client_impl.cc
  }
  
  void GCMClientImpl::OnCheckinCompleted(
-@@ -731,24 +710,6 @@ void GCMClientImpl::SetGServicesSettings
+@@ -732,24 +711,6 @@ void GCMClientImpl::SetGServicesSettings
  
  void GCMClientImpl::SchedulePeriodicCheckin() {
    DCHECK(io_task_runner_->RunsTasksInCurrentSequence());

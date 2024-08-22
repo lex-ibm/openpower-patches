@@ -1,10 +1,10 @@
 # Add flag to disable automatic search engine collection
 
-Index: chromium-127.0.6533.88/chrome/browser/ui/tab_helpers.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/tab_helpers.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/tab_helpers.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/tab_helpers.cc
-@@ -503,7 +503,9 @@ void TabHelpers::AttachTabHelpers(WebCon
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/tab_helpers.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/tab_helpers.cc
+@@ -501,7 +501,9 @@ void TabHelpers::AttachTabHelpers(WebCon
    resource_coordinator::ResourceCoordinatorTabHelper::CreateForWebContents(
        web_contents);
    SafetyTipWebContentsObserver::CreateForWebContents(web_contents);
@@ -14,10 +14,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/tab_helpers.cc
    SecurityStateTabHelper::CreateForWebContents(web_contents);
    if (site_engagement::SiteEngagementService::IsEnabled()) {
      site_engagement::SiteEngagementService::Helper::CreateForWebContents(
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 @@ -12,4 +12,8 @@
       "Handling of extension MIME type requests",
       "Used when deciding how to handle a request for a CRX or User Script MIME type. ungoogled-chromium flag.",
@@ -27,10 +27,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 +     "Prevents search engines from being added automatically. ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("disable-search-engine-collection")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
+Index: chromium-128.0.6613.36/chrome/renderer/chrome_render_frame_observer.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/renderer/chrome_render_frame_observer.cc
-+++ chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
+--- chromium-128.0.6613.36.orig/chrome/renderer/chrome_render_frame_observer.cc
++++ chromium-128.0.6613.36/chrome/renderer/chrome_render_frame_observer.cc
 @@ -256,14 +256,16 @@ void ChromeRenderFrameObserver::DidFinis
    if (frame->Parent() || frame->IsInFencedFrameTree())
      return;
@@ -39,7 +39,7 @@ Index: chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
 -  if (!osdd_url.is_empty()) {
 -    mojo::Remote<chrome::mojom::OpenSearchDescriptionDocumentHandler>
 -        osdd_handler;
--    render_frame()->GetBrowserInterfaceBroker()->GetInterface(
+-    render_frame()->GetBrowserInterfaceBroker().GetInterface(
 -        osdd_handler.BindNewPipeAndPassReceiver());
 -    osdd_handler->PageHasOpenSearchDescriptionDocument(
 -        frame->GetDocument().Url(), osdd_url);
@@ -48,7 +48,7 @@ Index: chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
 +    if (!osdd_url.is_empty()) {
 +      mojo::Remote<chrome::mojom::OpenSearchDescriptionDocumentHandler>
 +          osdd_handler;
-+      render_frame()->GetBrowserInterfaceBroker()->GetInterface(
++      render_frame()->GetBrowserInterfaceBroker().GetInterface(
 +          osdd_handler.BindNewPipeAndPassReceiver());
 +      osdd_handler->PageHasOpenSearchDescriptionDocument(
 +          frame->GetDocument().Url(), osdd_url);
@@ -56,10 +56,10 @@ Index: chromium-127.0.6533.88/chrome/renderer/chrome_render_frame_observer.cc
    }
  }
  
-Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
+Index: chromium-128.0.6613.36/components/search_engines/template_url_service.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/search_engines/template_url_service.cc
-+++ chromium-127.0.6533.88/components/search_engines/template_url_service.cc
+--- chromium-128.0.6613.36.orig/components/search_engines/template_url_service.cc
++++ chromium-128.0.6613.36/components/search_engines/template_url_service.cc
 @@ -15,6 +15,7 @@
  #include "base/base64url.h"
  #include "base/check_deref.h"
@@ -68,7 +68,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
  #include "base/containers/contains.h"
  #include "base/containers/flat_map.h"
  #include "base/debug/crash_logging.h"
-@@ -210,6 +211,12 @@ TemplateURL MergeEnterpriseSiteSearchEng
+@@ -209,6 +210,12 @@ TemplateURL MergeEnterpriseSiteSearchEng
    return TemplateURL(merged_data);
  }
  
@@ -81,7 +81,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
  }  // namespace
  
  // TemplateURLService::LessWithPrefix -----------------------------------------
-@@ -392,6 +399,7 @@ TemplateURLService::TemplateURLService(
+@@ -391,6 +398,7 @@ TemplateURLService::TemplateURLService(
  #endif  // BUILDFLAG(IS_CHROMEOS_LACROS)
      )
      : prefs_(prefs),
@@ -89,7 +89,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
        search_engine_choice_service_(search_engine_choice_service),
        search_terms_data_(std::move(search_terms_data)),
        web_data_service_(web_data_service),
-@@ -530,8 +538,8 @@ bool TemplateURLService::CanAddAutogener
+@@ -509,8 +517,8 @@ bool TemplateURLService::CanAddAutogener
    // that may interfere with search queries).  An easy heuristic for this is
    // whether the user has a TemplateURL that has been manually modified (e.g.,
    // renamed) connected to the same host.
@@ -100,7 +100,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
  }
  
  bool TemplateURLService::IsPrepopulatedOrDefaultProviderByPolicy(
-@@ -2071,6 +2079,8 @@ SyncDataMap TemplateURLService::CreateGU
+@@ -2049,6 +2057,8 @@ SyncDataMap TemplateURLService::CreateGU
  }
  
  void TemplateURLService::Init() {
@@ -109,7 +109,7 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
    if (client_)
      client_->SetOwner(this);
  
-@@ -2254,6 +2264,9 @@ void TemplateURLService::ChangeToLoadedS
+@@ -2231,6 +2241,9 @@ void TemplateURLService::ChangeToLoadedS
  
  bool TemplateURLService::CanAddAutogeneratedKeywordForHost(
      const std::string& host) const {
@@ -119,11 +119,11 @@ Index: chromium-127.0.6533.88/components/search_engines/template_url_service.cc
    const TemplateURLSet* urls = provider_map_->GetURLsForHost(host);
    if (!urls)
      return true;
-Index: chromium-127.0.6533.88/components/search_engines/template_url_service.h
+Index: chromium-128.0.6613.36/components/search_engines/template_url_service.h
 ===================================================================
---- chromium-127.0.6533.88.orig/components/search_engines/template_url_service.h
-+++ chromium-127.0.6533.88/components/search_engines/template_url_service.h
-@@ -896,6 +896,8 @@ class TemplateURLService final : public
+--- chromium-128.0.6613.36.orig/components/search_engines/template_url_service.h
++++ chromium-128.0.6613.36/components/search_engines/template_url_service.h
+@@ -891,6 +891,8 @@ class TemplateURLService final : public
    raw_ptr<search_engines::SearchEngineChoiceService>
        search_engine_choice_service_ = nullptr;
  

@@ -1,9 +1,9 @@
 # Keep local history longer than 90 days
 
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 @@ -52,4 +52,8 @@
       "Popups to tabs",
       "Makes popups open in new tabs. ungoogled-chromium flag",
@@ -13,10 +13,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
 +     "Keep history older than 3 months. ungoogled-chromium flag",
 +     kOsAll, SINGLE_VALUE_TYPE("keep-old-history")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-127.0.6533.88/components/history/core/browser/history_backend.cc
+Index: chromium-128.0.6613.36/components/history/core/browser/history_backend.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/history/core/browser/history_backend.cc
-+++ chromium-127.0.6533.88/components/history/core/browser/history_backend.cc
+--- chromium-128.0.6613.36.orig/components/history/core/browser/history_backend.cc
++++ chromium-128.0.6613.36/components/history/core/browser/history_backend.cc
 @@ -14,6 +14,7 @@
  #include <utility>
  #include <vector>
@@ -25,7 +25,7 @@ Index: chromium-127.0.6533.88/components/history/core/browser/history_backend.cc
  #include "base/compiler_specific.h"
  #include "base/containers/flat_set.h"
  #include "base/feature_list.h"
-@@ -1319,7 +1320,8 @@ void HistoryBackend::InitImpl(
+@@ -1320,7 +1321,8 @@ void HistoryBackend::InitImpl(
    db_->GetStartDate(&first_recorded_time_);
  
    // Start expiring old stuff.
@@ -35,7 +35,7 @@ Index: chromium-127.0.6533.88/components/history/core/browser/history_backend.cc
  }
  
  void HistoryBackend::OnMemoryPressure(
-@@ -1547,6 +1549,8 @@ void HistoryBackend::AddPagesWithDetails
+@@ -1548,6 +1550,8 @@ void HistoryBackend::AddPagesWithDetails
  }
  
  bool HistoryBackend::IsExpiredVisitTime(const base::Time& time) const {

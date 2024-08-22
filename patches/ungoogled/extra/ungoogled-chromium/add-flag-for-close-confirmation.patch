@@ -1,7 +1,7 @@
-Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/browser.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/browser.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/browser.cc
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/browser.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/browser.cc
 @@ -145,6 +145,7 @@
  #include "chrome/browser/ui/ui_features.h"
  #include "chrome/browser/ui/unload_controller.h"
@@ -18,7 +18,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
        override_bounds_(params.initial_bounds),
        initial_show_state_(params.initial_show_state),
        initial_workspace_(params.initial_workspace),
-@@ -987,20 +989,22 @@ Browser::WarnBeforeClosingResult Browser
+@@ -988,20 +990,22 @@ Browser::WarnBeforeClosingResult Browser
      return WarnBeforeClosingResult::kOkToClose;
    }
  
@@ -54,7 +54,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
    }
  
    DCHECK(!warn_before_closing_callback_)
-@@ -1038,6 +1042,7 @@ bool Browser::TryToCloseWindow(
+@@ -1039,6 +1043,7 @@ bool Browser::TryToCloseWindow(
  
  void Browser::ResetTryToCloseWindow() {
    cancel_download_confirmation_state_ = NOT_PROMPTED;
@@ -62,7 +62,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
    unload_controller_.ResetTryToCloseWindow();
  }
  
-@@ -3098,6 +3103,58 @@ bool Browser::CanCloseWithInProgressDown
+@@ -3085,6 +3090,58 @@ bool Browser::CanCloseWithInProgressDown
    return false;
  }
  
@@ -121,7 +121,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
  void Browser::InProgressDownloadResponse(bool cancel_downloads) {
    if (cancel_downloads) {
      cancel_download_confirmation_state_ = RESPONSE_RECEIVED;
-@@ -3123,6 +3180,22 @@ void Browser::InProgressDownloadResponse
+@@ -3110,6 +3167,22 @@ void Browser::InProgressDownloadResponse
  
    std::move(warn_before_closing_callback_)
        .Run(WarnBeforeClosingResult::kDoNotClose);
@@ -144,10 +144,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.cc
  }
  
  void Browser::CookieMigrationNoticeResponse(bool proceed_closing) {
-Index: chromium-127.0.6533.88/chrome/browser/ui/browser.h
+Index: chromium-128.0.6613.36/chrome/browser/ui/browser.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/browser.h
-+++ chromium-127.0.6533.88/chrome/browser/ui/browser.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/browser.h
++++ chromium-128.0.6613.36/chrome/browser/ui/browser.h
 @@ -31,6 +31,7 @@
  #include "chrome/browser/ui/browser_navigator_params.h"
  #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
@@ -156,7 +156,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.h
  #include "chrome/browser/ui/signin/signin_view_controller.h"
  #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
  #include "chrome/browser/ui/unload_controller.h"
-@@ -1183,12 +1184,17 @@ class Browser : public TabStripModelObse
+@@ -1174,12 +1175,17 @@ class Browser : public TabStripModelObse
    // Returns true if the window can close, false otherwise.
    bool CanCloseWithInProgressDownloads();
  
@@ -174,7 +174,7 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.h
    // Called when the user has decided whether to proceed or not with the browser
    // closure, in case the cookie migration notice was shown. |proceed_closing|
    // is true if the browser can  be closed.
-@@ -1361,6 +1367,8 @@ class Browser : public TabStripModelObse
+@@ -1347,6 +1353,8 @@ class Browser : public TabStripModelObse
    // when the browser is closed with in-progress downloads.
    CancelDownloadConfirmationState cancel_download_confirmation_state_;
  
@@ -183,10 +183,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ui/browser.h
    /////////////////////////////////////////////////////////////////////////////
  
    // Override values for the bounds of the window and its maximized or minimized
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 @@ -61,4 +61,13 @@ const FeatureEntry::Choice kCloseWindowW
       "close-window-with-last-tab",
       "never"},
@@ -201,10 +201,10 @@ Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_choices.h
 +     "multiple"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-127.0.6533.88/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 @@ -72,4 +72,8 @@
       "Remove Grab Handle",
       "Removes the reserved empty space in the tabstrip for moving the window. ungoogled-chromium flag",

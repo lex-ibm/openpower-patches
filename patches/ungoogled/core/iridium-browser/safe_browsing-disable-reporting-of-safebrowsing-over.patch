@@ -11,11 +11,11 @@ This prevents trk:148 (phishing) and trk:149 (malware).
  components/safe_browsing/content/browser/client_side_detection_service.cc   | 5 +++++
  1 file changed, 5 insertions(+)
 
-Index: chromium-127.0.6533.88/components/safe_browsing/content/browser/client_side_detection_service.cc
+Index: chromium-128.0.6613.36/components/safe_browsing/content/browser/client_side_detection_service.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/components/safe_browsing/content/browser/client_side_detection_service.cc
-+++ chromium-127.0.6533.88/components/safe_browsing/content/browser/client_side_detection_service.cc
-@@ -274,6 +274,10 @@ void ClientSideDetectionService::StartCl
+--- chromium-128.0.6613.36.orig/components/safe_browsing/content/browser/client_side_detection_service.cc
++++ chromium-128.0.6613.36/components/safe_browsing/content/browser/client_side_detection_service.cc
+@@ -271,6 +271,10 @@ void ClientSideDetectionService::StartCl
      return;
    }
  
@@ -26,7 +26,7 @@ Index: chromium-127.0.6533.88/components/safe_browsing/content/browser/client_si
    std::string request_data;
    request->SerializeToString(&request_data);
  
-@@ -353,6 +357,7 @@ void ClientSideDetectionService::StartCl
+@@ -350,6 +354,7 @@ void ClientSideDetectionService::StartCl
        base::BindOnce(&WebUIInfoSingleton::AddToClientPhishingRequestsSent,
                       base::Unretained(WebUIInfoSingleton::GetInstance()),
                       std::move(request), access_token));

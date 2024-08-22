@@ -1,8 +1,8 @@
-Index: chromium-127.0.6533.88/chrome/browser/ui/browser_ui_prefs.cc
+Index: chromium-128.0.6613.36/chrome/browser/ui/browser_ui_prefs.cc
 ===================================================================
---- chromium-127.0.6533.88.orig/chrome/browser/ui/browser_ui_prefs.cc
-+++ chromium-127.0.6533.88/chrome/browser/ui/browser_ui_prefs.cc
-@@ -103,7 +103,7 @@ void RegisterBrowserUserPrefs(user_prefs
+--- chromium-128.0.6613.36.orig/chrome/browser/ui/browser_ui_prefs.cc
++++ chromium-128.0.6613.36/chrome/browser/ui/browser_ui_prefs.cc
+@@ -107,7 +107,7 @@ void RegisterBrowserUserPrefs(user_prefs
                                  false);
  #endif
    registry->RegisterStringPref(prefs::kWebRTCIPHandlingPolicy,
