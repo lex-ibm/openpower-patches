@@ -78,6 +78,7 @@ ppc64le/fixes/fix-unknown-warning-option-messages.diff
 
 # Ungoogled Chromium
 ungoogled/misc/change-user-agent.patch
+ungoogled/misc/fix-debian-ftbfs.patch
 
 ungoogled/core/inox-patchset/0001-fix-building-without-safebrowsing.patch
 ungoogled/core/inox-patchset/0003-disable-autofill-download-manager.patch
