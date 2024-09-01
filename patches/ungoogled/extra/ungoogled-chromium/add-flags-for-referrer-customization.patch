@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 @@ -120,4 +120,16 @@
       "Enable themes in Incognito mode",
       "Allows themes to override Google's built-in Incognito theming. ungoogled-chromium flag.",
@@ -19,10 +19,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
 +     "Removes all cross-origin referrers and strips same-origin referrers down to the origin. Has lower precedence than remove-cross-origin-referrers. ungoogled-chromium flag.",
 +     kOsAll, FEATURE_VALUE_TYPE(features::kMinimalReferrers)},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.36/chrome/common/BUILD.gn
+Index: chromium-128.0.6613.113/chrome/common/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/common/BUILD.gn
-+++ chromium-128.0.6613.36/chrome/common/BUILD.gn
+--- chromium-128.0.6613.113.orig/chrome/common/BUILD.gn
++++ chromium-128.0.6613.113/chrome/common/BUILD.gn
 @@ -160,6 +160,8 @@ static_library("common_lib") {
      "pref_names_util.cc",
      "pref_names_util.h",
@@ -40,10 +40,10 @@ Index: chromium-128.0.6613.36/chrome/common/BUILD.gn
    ]
  
    if (is_android || enable_library_cdms) {
-Index: chromium-128.0.6613.36/chrome/common/chrome_features.cc
+Index: chromium-128.0.6613.113/chrome/common/chrome_features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/common/chrome_features.cc
-+++ chromium-128.0.6613.36/chrome/common/chrome_features.cc
+--- chromium-128.0.6613.113.orig/chrome/common/chrome_features.cc
++++ chromium-128.0.6613.113/chrome/common/chrome_features.cc
 @@ -982,6 +982,14 @@ BASE_FEATURE(kNewFilesPolicyUX,
  // referrers instead of their ordinary behavior.
  BASE_FEATURE(kNoReferrers, "NoReferrers", base::FEATURE_DISABLED_BY_DEFAULT);
@@ -59,10 +59,10 @@ Index: chromium-128.0.6613.36/chrome/common/chrome_features.cc
  #if BUILDFLAG(IS_WIN)
  // Changes behavior of requireInteraction for notifications. Instead of staying
  // on-screen until dismissed, they are instead shown for a very long time.
-Index: chromium-128.0.6613.36/chrome/common/chrome_features.h
+Index: chromium-128.0.6613.113/chrome/common/chrome_features.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/common/chrome_features.h
-+++ chromium-128.0.6613.36/chrome/common/chrome_features.h
+--- chromium-128.0.6613.113.orig/chrome/common/chrome_features.h
++++ chromium-128.0.6613.113/chrome/common/chrome_features.h
 @@ -594,6 +594,10 @@ BASE_DECLARE_FEATURE(kNewFilesPolicyUX);
  
  COMPONENT_EXPORT(CHROME_FEATURES) BASE_DECLARE_FEATURE(kNoReferrers);
@@ -74,10 +74,10 @@ Index: chromium-128.0.6613.36/chrome/common/chrome_features.h
  #if BUILDFLAG(IS_WIN)
  COMPONENT_EXPORT(CHROME_FEATURES)
  BASE_DECLARE_FEATURE(kNotificationDurationLongForRequireInteraction);
-Index: chromium-128.0.6613.36/chrome/common/referrer_sanitizer.cc
+Index: chromium-128.0.6613.113/chrome/common/referrer_sanitizer.cc
 ===================================================================
 --- /dev/null
-+++ chromium-128.0.6613.36/chrome/common/referrer_sanitizer.cc
++++ chromium-128.0.6613.113/chrome/common/referrer_sanitizer.cc
 @@ -0,0 +1,48 @@
 +// Copyright 2023 The ungoogled-chromium Authors
 +// Use of this source code is governed by a BSD-style license that can be
@@ -127,10 +127,10 @@ Index: chromium-128.0.6613.36/chrome/common/referrer_sanitizer.cc
 +}
 +
 +}  // namespace referrer_sanitizer
-Index: chromium-128.0.6613.36/chrome/common/referrer_sanitizer.h
+Index: chromium-128.0.6613.113/chrome/common/referrer_sanitizer.h
 ===================================================================
 --- /dev/null
-+++ chromium-128.0.6613.36/chrome/common/referrer_sanitizer.h
++++ chromium-128.0.6613.113/chrome/common/referrer_sanitizer.h
 @@ -0,0 +1,30 @@
 +// Copyright 2023 The ungoogled-chromium Authors
 +// Use of this source code is governed by a BSD-style license that can be
@@ -162,10 +162,10 @@ Index: chromium-128.0.6613.36/chrome/common/referrer_sanitizer.h
 +}  // namespace referrer_sanitizer
 +
 +#endif  // CHROME_COMMON_REFERRER_SANITIZER_H_
-Index: chromium-128.0.6613.36/chrome/test/chromedriver/BUILD.gn
+Index: chromium-128.0.6613.113/chrome/test/chromedriver/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/test/chromedriver/BUILD.gn
-+++ chromium-128.0.6613.36/chrome/test/chromedriver/BUILD.gn
+--- chromium-128.0.6613.113.orig/chrome/test/chromedriver/BUILD.gn
++++ chromium-128.0.6613.113/chrome/test/chromedriver/BUILD.gn
 @@ -357,8 +357,7 @@ source_set("lib") {
      "//base",
      "//build:branding_buildflags",
@@ -176,10 +176,10 @@ Index: chromium-128.0.6613.36/chrome/test/chromedriver/BUILD.gn
      "//chrome/test/chromedriver/constants:version_header",
      "//components/crx_file",
      "//components/embedder_support",
-Index: chromium-128.0.6613.36/components/BUILD.gn
+Index: chromium-128.0.6613.113/components/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/components/BUILD.gn
-+++ chromium-128.0.6613.36/components/BUILD.gn
+--- chromium-128.0.6613.113.orig/components/BUILD.gn
++++ chromium-128.0.6613.113/components/BUILD.gn
 @@ -69,7 +69,7 @@ if (is_ios) {
  
  # Omit Lacros because it allows //components to depend on //chrome, which in
@@ -207,10 +207,10 @@ Index: chromium-128.0.6613.36/components/BUILD.gn
        assert_no_deps = [ "//chrome/*" ]
        assert_no_deps += disallowed_extension_deps_
      }
-Index: chromium-128.0.6613.36/content/browser/renderer_host/navigation_request.cc
+Index: chromium-128.0.6613.113/content/browser/renderer_host/navigation_request.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/content/browser/renderer_host/navigation_request.cc
-+++ chromium-128.0.6613.36/content/browser/renderer_host/navigation_request.cc
+--- chromium-128.0.6613.113.orig/content/browser/renderer_host/navigation_request.cc
++++ chromium-128.0.6613.113/content/browser/renderer_host/navigation_request.cc
 @@ -42,6 +42,7 @@
  #include "build/build_config.h"
  #include "build/buildflag.h"
@@ -234,10 +234,10 @@ Index: chromium-128.0.6613.36/content/browser/renderer_host/navigation_request.c
  
    // Next, set the HTTP Origin if needed.
    if (NeedsHTTPOrigin(headers, method)) {
-Index: chromium-128.0.6613.36/content/renderer/render_frame_impl.cc
+Index: chromium-128.0.6613.113/content/renderer/render_frame_impl.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/content/renderer/render_frame_impl.cc
-+++ chromium-128.0.6613.36/content/renderer/render_frame_impl.cc
+--- chromium-128.0.6613.113.orig/content/renderer/render_frame_impl.cc
++++ chromium-128.0.6613.113/content/renderer/render_frame_impl.cc
 @@ -55,6 +55,7 @@
  #include "build/build_config.h"
  #include "build/chromeos_buildflags.h"
@@ -264,10 +264,10 @@ Index: chromium-128.0.6613.36/content/renderer/render_frame_impl.cc
  }
  
  void RenderFrameImpl::DidLoadResourceFromMemoryCache(
-Index: chromium-128.0.6613.36/content/shell/BUILD.gn
+Index: chromium-128.0.6613.113/content/shell/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/content/shell/BUILD.gn
-+++ chromium-128.0.6613.36/content/shell/BUILD.gn
+--- chromium-128.0.6613.113.orig/content/shell/BUILD.gn
++++ chromium-128.0.6613.113/content/shell/BUILD.gn
 @@ -315,6 +315,7 @@ static_library("content_shell_lib") {
      "//base:base_static",
      "//build:chromeos_buildflags",
@@ -276,10 +276,10 @@ Index: chromium-128.0.6613.36/content/shell/BUILD.gn
      "//components/cdm/renderer",
      "//components/custom_handlers",
      "//components/custom_handlers:test_support",
-Index: chromium-128.0.6613.36/services/network/network_service_network_delegate.cc
+Index: chromium-128.0.6613.113/services/network/network_service_network_delegate.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/services/network/network_service_network_delegate.cc
-+++ chromium-128.0.6613.36/services/network/network_service_network_delegate.cc
+--- chromium-128.0.6613.113.orig/services/network/network_service_network_delegate.cc
++++ chromium-128.0.6613.113/services/network/network_service_network_delegate.cc
 @@ -13,6 +13,7 @@
  #include "base/strings/utf_string_conversions.h"
  #include "base/types/optional_util.h"
@@ -306,10 +306,10 @@ Index: chromium-128.0.6613.36/services/network/network_service_network_delegate.
      return;
    }
  
-Index: chromium-128.0.6613.36/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/modules/service_worker/web_service_worker_fetch_context_impl.cc
 @@ -9,12 +9,14 @@
  #include "base/ranges/algorithm.h"
  #include "base/synchronization/waitable_event.h"
@@ -343,10 +343,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/modules/service_worker/
  }
  
  WebVector<std::unique_ptr<URLLoaderThrottle>>
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/loader/fetch/url_loader/dedicated_or_shared_worker_fetch_context_impl.cc
 @@ -12,6 +12,7 @@
  #include "base/task/sequenced_task_runner.h"
  #include "base/task/single_thread_task_runner.h"
@@ -381,10 +381,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/loader/fetch/u
  }
  
  WebVector<std::unique_ptr<URLLoaderThrottle>>
-Index: chromium-128.0.6613.36/tools/v8_context_snapshot/BUILD.gn
+Index: chromium-128.0.6613.113/tools/v8_context_snapshot/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/tools/v8_context_snapshot/BUILD.gn
-+++ chromium-128.0.6613.36/tools/v8_context_snapshot/BUILD.gn
+--- chromium-128.0.6613.113.orig/tools/v8_context_snapshot/BUILD.gn
++++ chromium-128.0.6613.113/tools/v8_context_snapshot/BUILD.gn
 @@ -83,6 +83,7 @@ if (use_v8_context_snapshot) {
        sources = [ "v8_context_snapshot_generator.cc" ]
  

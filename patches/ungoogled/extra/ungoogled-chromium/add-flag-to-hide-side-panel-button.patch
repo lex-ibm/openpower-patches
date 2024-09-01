@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 @@ -100,4 +100,8 @@
       "Disable Sharing Hub",
       "Disables the sharing hub button. ungoogled-chromium flag.",

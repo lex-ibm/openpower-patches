@@ -1,10 +1,10 @@
 # Return blank values for WebGLDebugRendererInfo to remove a potential data
 # leak while preventing potential website breakage
 
-Index: chromium-128.0.6613.36/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/modules/webgl/webgl_rendering_context_base.cc
 @@ -3835,8 +3835,7 @@ ScriptValue WebGLRenderingContextBase::g
                pname, IdentifiabilityBenignStringToken(
                           String(ContextGL()->GetString(GL_RENDERER))));

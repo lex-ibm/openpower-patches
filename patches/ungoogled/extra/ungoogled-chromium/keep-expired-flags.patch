@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/components/flags_ui/flags_state.cc
+Index: chromium-128.0.6613.113/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/flags_ui/flags_state.cc
-+++ chromium-128.0.6613.36/components/flags_ui/flags_state.cc
+--- chromium-128.0.6613.113.orig/components/flags_ui/flags_state.cc
++++ chromium-128.0.6613.113/components/flags_ui/flags_state.cc
 @@ -25,6 +25,7 @@
  #include "base/strings/utf_string_conversions.h"
  #include "base/values.h"

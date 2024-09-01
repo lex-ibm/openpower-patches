@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/net/dns/host_resolver_manager.cc
+Index: chromium-128.0.6613.113/net/dns/host_resolver_manager.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/net/dns/host_resolver_manager.cc
-+++ chromium-128.0.6613.36/net/dns/host_resolver_manager.cc
+--- chromium-128.0.6613.113.orig/net/dns/host_resolver_manager.cc
++++ chromium-128.0.6613.113/net/dns/host_resolver_manager.cc
 @@ -152,10 +152,10 @@ const size_t kMaxHostLength = 4096;
  // cached.
  const int kIPv6ProbePeriodMs = 1000;

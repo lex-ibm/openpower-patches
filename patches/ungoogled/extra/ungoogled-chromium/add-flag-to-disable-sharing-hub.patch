@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/chrome/browser/sharing_hub/sharing_hub_features.cc
+Index: chromium-128.0.6613.113/chrome/browser/sharing_hub/sharing_hub_features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/sharing_hub/sharing_hub_features.cc
-+++ chromium-128.0.6613.36/chrome/browser/sharing_hub/sharing_hub_features.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/sharing_hub/sharing_hub_features.cc
++++ chromium-128.0.6613.113/chrome/browser/sharing_hub/sharing_hub_features.cc
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/sharing_hub/sharing_hub_features.h"
@@ -18,10 +18,10 @@ Index: chromium-128.0.6613.36/chrome/browser/sharing_hub/sharing_hub_features.cc
  #if BUILDFLAG(IS_CHROMEOS)
    return false;
  #else
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 @@ -96,4 +96,8 @@
       "Custom HTTP Accept Header",
       "Set a custom value for the Accept header which is sent by the browser with every HTTP request.  (e.g. `text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8`). ungoogled-chromium flag.",

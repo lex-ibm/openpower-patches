@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/components/optimization_guide/core/optimization_guide_features.cc
+Index: chromium-128.0.6613.113/components/optimization_guide/core/optimization_guide_features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/optimization_guide/core/optimization_guide_features.cc
-+++ chromium-128.0.6613.36/components/optimization_guide/core/optimization_guide_features.cc
+--- chromium-128.0.6613.113.orig/components/optimization_guide/core/optimization_guide_features.cc
++++ chromium-128.0.6613.113/components/optimization_guide/core/optimization_guide_features.cc
 @@ -55,7 +55,7 @@ BASE_FEATURE(kOptimizationHints,
  // Enables fetching from a remote Optimization Guide Service.
  BASE_FEATURE(kRemoteOptimizationGuideFetching,

@@ -1,9 +1,9 @@
 # Disables various detections of Google hosts and functionality specific to them
 
-Index: chromium-128.0.6613.36/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
+Index: chromium-128.0.6613.113/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
-+++ chromium-128.0.6613.36/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
++++ chromium-128.0.6613.113/chrome/browser/ui/webui/suggest_internals/suggest_internals_handler.cc
 @@ -56,9 +56,6 @@ void SuggestInternalsHandler::OnSuggestR
        suggest_internals::mojom::Request::New();
    mojom_request->id = request_id;
@@ -14,10 +14,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ui/webui/suggest_internals/suggest_
    mojom_request->data[request->method] = request->url.spec();
    mojom_request->status = suggest_internals::mojom::RequestStatus::kCreated;
    page_->OnSuggestRequestCreated(std::move(mojom_request));
-Index: chromium-128.0.6613.36/chrome/common/google_url_loader_throttle.cc
+Index: chromium-128.0.6613.113/chrome/common/google_url_loader_throttle.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/common/google_url_loader_throttle.cc
-+++ chromium-128.0.6613.36/chrome/common/google_url_loader_throttle.cc
+--- chromium-128.0.6613.113.orig/chrome/common/google_url_loader_throttle.cc
++++ chromium-128.0.6613.113/chrome/common/google_url_loader_throttle.cc
 @@ -24,10 +24,6 @@
  #include "services/network/public/mojom/x_frame_options.mojom.h"
  #include "url/origin.h"
@@ -194,10 +194,10 @@ Index: chromium-128.0.6613.36/chrome/common/google_url_loader_throttle.cc
  }
  
  #if BUILDFLAG(ENABLE_BOUND_SESSION_CREDENTIALS)
-Index: chromium-128.0.6613.36/components/google/core/common/google_util.cc
+Index: chromium-128.0.6613.113/components/google/core/common/google_util.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/google/core/common/google_util.cc
-+++ chromium-128.0.6613.36/components/google/core/common/google_util.cc
+--- chromium-128.0.6613.113.orig/components/google/core/common/google_util.cc
++++ chromium-128.0.6613.113/components/google/core/common/google_util.cc
 @@ -31,111 +31,6 @@ namespace google_util {
  
  namespace {
@@ -496,10 +496,10 @@ Index: chromium-128.0.6613.36/components/google/core/common/google_util.cc
    return false;
  }
  
-Index: chromium-128.0.6613.36/components/page_load_metrics/browser/page_load_metrics_util.cc
+Index: chromium-128.0.6613.113/components/page_load_metrics/browser/page_load_metrics_util.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/page_load_metrics/browser/page_load_metrics_util.cc
-+++ chromium-128.0.6613.36/components/page_load_metrics/browser/page_load_metrics_util.cc
+--- chromium-128.0.6613.113.orig/components/page_load_metrics/browser/page_load_metrics_util.cc
++++ chromium-128.0.6613.113/components/page_load_metrics/browser/page_load_metrics_util.cc
 @@ -284,9 +284,7 @@ bool DidObserveLoadingBehaviorInAnyFrame
  }
  
@@ -511,10 +511,10 @@ Index: chromium-128.0.6613.36/components/page_load_metrics/browser/page_load_met
  }
  
  bool IsGoogleSearchResultUrl(const GURL& url) {
-Index: chromium-128.0.6613.36/components/page_load_metrics/common/page_load_metrics_util.cc
+Index: chromium-128.0.6613.113/components/page_load_metrics/common/page_load_metrics_util.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/page_load_metrics/common/page_load_metrics_util.cc
-+++ chromium-128.0.6613.36/components/page_load_metrics/common/page_load_metrics_util.cc
+--- chromium-128.0.6613.113.orig/components/page_load_metrics/common/page_load_metrics_util.cc
++++ chromium-128.0.6613.113/components/page_load_metrics/common/page_load_metrics_util.cc
 @@ -25,38 +25,7 @@ const int kExtraBufferTimerDelayMillis =
  }  // namespace
  
@@ -554,10 +554,10 @@ Index: chromium-128.0.6613.36/components/page_load_metrics/common/page_load_metr
  }
  
  bool IsGoogleHostname(const GURL& url) {
-Index: chromium-128.0.6613.36/components/search_engines/template_url.cc
+Index: chromium-128.0.6613.113/components/search_engines/template_url.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/search_engines/template_url.cc
-+++ chromium-128.0.6613.36/components/search_engines/template_url.cc
+--- chromium-128.0.6613.113.orig/components/search_engines/template_url.cc
++++ chromium-128.0.6613.113/components/search_engines/template_url.cc
 @@ -589,11 +589,7 @@ std::u16string TemplateURLRef::SearchTer
  bool TemplateURLRef::HasGoogleBaseURLs(
      const SearchTermsData& search_terms_data) const {
@@ -571,10 +571,10 @@ Index: chromium-128.0.6613.36/components/search_engines/template_url.cc
  }
  
  bool TemplateURLRef::ExtractSearchTermsFromURL(
-Index: chromium-128.0.6613.36/components/variations/net/variations_http_headers.cc
+Index: chromium-128.0.6613.113/components/variations/net/variations_http_headers.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/components/variations/net/variations_http_headers.cc
-+++ chromium-128.0.6613.36/components/variations/net/variations_http_headers.cc
+--- chromium-128.0.6613.113.orig/components/variations/net/variations_http_headers.cc
++++ chromium-128.0.6613.113/components/variations/net/variations_http_headers.cc
 @@ -33,10 +33,6 @@
  
  namespace variations {
@@ -677,10 +677,10 @@ Index: chromium-128.0.6613.36/components/variations/net/variations_http_headers.
  }
  
  }  // namespace variations
-Index: chromium-128.0.6613.36/content/browser/preloading/prefetch/prefetch_container.cc
+Index: chromium-128.0.6613.113/content/browser/preloading/prefetch/prefetch_container.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/content/browser/preloading/prefetch/prefetch_container.cc
-+++ chromium-128.0.6613.36/content/browser/preloading/prefetch/prefetch_container.cc
+--- chromium-128.0.6613.113.orig/content/browser/preloading/prefetch/prefetch_container.cc
++++ chromium-128.0.6613.113/content/browser/preloading/prefetch/prefetch_container.cc
 @@ -745,7 +745,7 @@ void PrefetchContainer::AddRedirectHop(c
    // some which are added by throttles). These aren't yet supported for
    // prefetch, including browsing topics and client hints.
@@ -690,10 +690,10 @@ Index: chromium-128.0.6613.36/content/browser/preloading/prefetch/prefetch_conta
    updated_headers.SetHeader("Sec-Purpose",
                              GetSecPurposeHeaderValue(redirect_info.new_url));
  
-Index: chromium-128.0.6613.36/net/base/url_util.cc
+Index: chromium-128.0.6613.113/net/base/url_util.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/net/base/url_util.cc
-+++ chromium-128.0.6613.36/net/base/url_util.cc
+--- chromium-128.0.6613.113.orig/net/base/url_util.cc
++++ chromium-128.0.6613.113/net/base/url_util.cc
 @@ -495,28 +495,6 @@ bool HasGoogleHost(const GURL& url) {
  }
  

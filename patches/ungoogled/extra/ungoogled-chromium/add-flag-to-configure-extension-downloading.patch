@@ -1,10 +1,10 @@
 # Add extension-mime-request-handling chrome://flag to tweak the behavior of
 # extension MIME types
 
-Index: chromium-128.0.6613.36/chrome/browser/download/download_crx_util.cc
+Index: chromium-128.0.6613.113/chrome/browser/download/download_crx_util.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/download/download_crx_util.cc
-+++ chromium-128.0.6613.36/chrome/browser/download/download_crx_util.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/download/download_crx_util.cc
++++ chromium-128.0.6613.113/chrome/browser/download/download_crx_util.cc
 @@ -8,6 +8,7 @@
  
  #include <memory>
@@ -37,10 +37,10 @@ Index: chromium-128.0.6613.36/chrome/browser/download/download_crx_util.cc
    } else {
      return false;
    }
-Index: chromium-128.0.6613.36/chrome/browser/download/download_crx_util.h
+Index: chromium-128.0.6613.113/chrome/browser/download/download_crx_util.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/download/download_crx_util.h
-+++ chromium-128.0.6613.36/chrome/browser/download/download_crx_util.h
+--- chromium-128.0.6613.113.orig/chrome/browser/download/download_crx_util.h
++++ chromium-128.0.6613.113/chrome/browser/download/download_crx_util.h
 @@ -35,6 +35,10 @@ scoped_refptr<extensions::CrxInstaller>
      Profile* profile,
      const download::DownloadItem& download_item);
@@ -52,10 +52,10 @@ Index: chromium-128.0.6613.36/chrome/browser/download/download_crx_util.h
  // Returns true if this is an extension download. This also considers user
  // scripts to be extension downloads, since we convert those automatically.
  bool IsExtensionDownload(const download::DownloadItem& download_item);
-Index: chromium-128.0.6613.36/chrome/browser/download/download_target_determiner.cc
+Index: chromium-128.0.6613.113/chrome/browser/download/download_target_determiner.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/download/download_target_determiner.cc
-+++ chromium-128.0.6613.36/chrome/browser/download/download_target_determiner.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/download/download_target_determiner.cc
++++ chromium-128.0.6613.113/chrome/browser/download/download_target_determiner.cc
 @@ -1263,10 +1263,12 @@ DownloadConfirmationReason DownloadTarge
      return DownloadConfirmationReason::SAVE_AS;
  
@@ -73,10 +73,10 @@ Index: chromium-128.0.6613.36/chrome/browser/download/download_target_determiner
  #endif
  
    // Don't prompt for file types that are marked for opening automatically.
-Index: chromium-128.0.6613.36/chrome/browser/extensions/extension_management.cc
+Index: chromium-128.0.6613.113/chrome/browser/extensions/extension_management.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/extensions/extension_management.cc
-+++ chromium-128.0.6613.36/chrome/browser/extensions/extension_management.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/extensions/extension_management.cc
++++ chromium-128.0.6613.113/chrome/browser/extensions/extension_management.cc
 @@ -8,6 +8,7 @@
  #include <string>
  #include <utility>
@@ -99,10 +99,10 @@ Index: chromium-128.0.6613.36/chrome/browser/extensions/extension_management.cc
    // No allowed install sites specified, disallow by default.
    if (!global_settings_->install_sources.has_value())
      return false;
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_choices.h
 @@ -4,4 +4,13 @@
  
  #ifndef CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
@@ -117,10 +117,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 +     "always-prompt-for-install"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 @@ -8,4 +8,8 @@
       "SetIpv6ProbeFalse",
       "Forces the result of the browser's IPv6 probing (i.e. IPv6 connectivity test) to be unsuccessful. This causes IPv4 addresses to be prioritized over IPv6 addresses. Without this flag, the probing result is set to be successful, which causes IPv6 to be used over IPv4 when possible. ungoogled-chromium flag.",

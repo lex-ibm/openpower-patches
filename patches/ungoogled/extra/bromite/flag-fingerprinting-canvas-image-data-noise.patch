@@ -21,10 +21,10 @@ approach to change color components.
  .../platform/graphics/static_bitmap_image.h        |   2 +
  4 files changed, 163 insertions(+), 2 deletions(-)
 
-Index: chromium-128.0.6613.36/chrome/browser/bromite_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/bromite_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/bromite_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/bromite_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/bromite_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/bromite_flag_entries.h
 @@ -16,4 +16,8 @@
       flag_descriptions::kMaxConnectionsPerHostName,
       flag_descriptions::kMaxConnectionsPerHostDescription,
@@ -34,10 +34,10 @@ Index: chromium-128.0.6613.36/chrome/browser/bromite_flag_entries.h
 +     "Slightly modifies at most 10 pixels in Canvas image data extracted via JS APIs. ungoogled-chromium flag, Bromite feature.",
 +     kOsAll, SINGLE_VALUE_TYPE(switches::kFingerprintingCanvasImageDataNoise)},
  #endif  // CHROME_BROWSER_BROMITE_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.36/content/browser/renderer_host/render_process_host_impl.cc
+Index: chromium-128.0.6613.113/content/browser/renderer_host/render_process_host_impl.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/content/browser/renderer_host/render_process_host_impl.cc
-+++ chromium-128.0.6613.36/content/browser/renderer_host/render_process_host_impl.cc
+--- chromium-128.0.6613.113.orig/content/browser/renderer_host/render_process_host_impl.cc
++++ chromium-128.0.6613.113/content/browser/renderer_host/render_process_host_impl.cc
 @@ -3219,6 +3219,7 @@ void RenderProcessHostImpl::PropagateBro
      switches::kFileUrlPathAlias,
      switches::kFingerprintingClientRectsNoise,
@@ -46,10 +46,10 @@ Index: chromium-128.0.6613.36/content/browser/renderer_host/render_process_host_
      switches::kForceDeviceScaleFactor,
      switches::kForceDisplayColorProfile,
      switches::kForceGpuMemAvailableMb,
-Index: chromium-128.0.6613.36/content/child/runtime_features.cc
+Index: chromium-128.0.6613.113/content/child/runtime_features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/content/child/runtime_features.cc
-+++ chromium-128.0.6613.36/content/child/runtime_features.cc
+--- chromium-128.0.6613.113.orig/content/child/runtime_features.cc
++++ chromium-128.0.6613.113/content/child/runtime_features.cc
 @@ -494,6 +494,8 @@ void SetRuntimeFeaturesFromCommandLine(c
         switches::kFingerprintingClientRectsNoise, true},
        {wrf::EnableFingerprintingCanvasMeasureTextNoise,
@@ -59,10 +59,10 @@ Index: chromium-128.0.6613.36/content/child/runtime_features.cc
    };
  
    for (const auto& mapping : switchToFeatureMapping) {
-Index: chromium-128.0.6613.36/third_party/blink/public/platform/web_runtime_features.h
+Index: chromium-128.0.6613.113/third_party/blink/public/platform/web_runtime_features.h
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/public/platform/web_runtime_features.h
-+++ chromium-128.0.6613.36/third_party/blink/public/platform/web_runtime_features.h
+--- chromium-128.0.6613.113.orig/third_party/blink/public/platform/web_runtime_features.h
++++ chromium-128.0.6613.113/third_party/blink/public/platform/web_runtime_features.h
 @@ -71,6 +71,7 @@ class BLINK_PLATFORM_EXPORT WebRuntimeFe
  
    static void EnableFingerprintingClientRectsNoise(bool);
@@ -71,10 +71,10 @@ Index: chromium-128.0.6613.36/third_party/blink/public/platform/web_runtime_feat
  
    WebRuntimeFeatures() = delete;
  };
-Index: chromium-128.0.6613.36/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
 @@ -2835,6 +2835,9 @@ ImageData* BaseRenderingContext2D::getIm
            snapshot->PaintImageForCurrentFrame().GetSkImageInfo().bounds();
        DCHECK(!bounds.intersect(SkIRect::MakeXYWH(sx, sy, sw, sh)));
@@ -85,10 +85,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/modules/canvas/canvas2d
    }
  
    return image_data;
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/BUILD.gn
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/BUILD.gn
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/BUILD.gn
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/BUILD.gn
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/BUILD.gn
 @@ -1699,7 +1699,9 @@ component("platform") {
      "//third_party/blink/renderer:non_test_config",
    ]
@@ -100,10 +100,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/BUILD.gn
  
    allow_circular_includes_from = [
      "//third_party/blink/renderer/platform/blob",
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/exported/web_runtime_features.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/exported/web_runtime_features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/exported/web_runtime_features.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/exported/web_runtime_features.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/exported/web_runtime_features.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/exported/web_runtime_features.cc
 @@ -76,4 +76,8 @@ void WebRuntimeFeatures::EnableFingerpri
    RuntimeEnabledFeatures::SetFingerprintingCanvasMeasureTextNoiseEnabled(enable);
  }
@@ -113,10 +113,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/exported/web_r
 +}
 +
  }  // namespace blink
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
 @@ -36,6 +36,8 @@
  
  #include "base/compiler_specific.h"
@@ -138,10 +138,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/image
    if (mime_type == kMimeTypeJpeg) {
      SkJpegEncoder::Options options;
      options.fQuality = ImageEncoder::ComputeJpegQuality(quality);
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/static_bitmap_image.cc
 @@ -4,6 +4,8 @@
  
  #include "third_party/blink/renderer/platform/graphics/static_bitmap_image.h"
@@ -319,10 +319,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/stati
 +#undef shuffleComponent
 +
  }  // namespace blink
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/graphics/static_bitmap_image.h
 @@ -37,6 +37,8 @@ class PLATFORM_EXPORT StaticBitmapImage
  
    StaticBitmapImage(ImageOrientation orientation) : orientation_(orientation) {}
@@ -332,10 +332,10 @@ Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/graphics/stati
    bool IsStaticBitmapImage() const override { return true; }
  
    // Methods overridden by all sub-classes
-Index: chromium-128.0.6613.36/third_party/blink/renderer/platform/runtime_enabled_features.json5
+Index: chromium-128.0.6613.113/third_party/blink/renderer/platform/runtime_enabled_features.json5
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/renderer/platform/runtime_enabled_features.json5
-+++ chromium-128.0.6613.36/third_party/blink/renderer/platform/runtime_enabled_features.json5
+--- chromium-128.0.6613.113.orig/third_party/blink/renderer/platform/runtime_enabled_features.json5
++++ chromium-128.0.6613.113/third_party/blink/renderer/platform/runtime_enabled_features.json5
 @@ -1854,6 +1854,9 @@
        name: "FingerprintingCanvasMeasureTextNoise",
      },

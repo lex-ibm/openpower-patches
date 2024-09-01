@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/chrome/browser/ui/tabs/tab_strip_model.cc
+Index: chromium-128.0.6613.113/chrome/browser/ui/tabs/tab_strip_model.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ui/tabs/tab_strip_model.cc
-+++ chromium-128.0.6613.36/chrome/browser/ui/tabs/tab_strip_model.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/ui/tabs/tab_strip_model.cc
++++ chromium-128.0.6613.113/chrome/browser/ui/tabs/tab_strip_model.cc
 @@ -12,6 +12,7 @@
  #include <unordered_map>
  #include <utility>
@@ -21,10 +21,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ui/tabs/tab_strip_model.cc
    const bool closing_all = static_cast<int>(filtered_items.size()) == count();
    base::WeakPtr<TabStripModel> ref = weak_factory_.GetWeakPtr();
    if (closing_all) {
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_choices.h
 @@ -55,4 +55,10 @@ const FeatureEntry::Choice kOmniboxAutoc
       "omnibox-autocomplete-filtering",
       "search-bookmarks-chrome"},
@@ -36,10 +36,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_choices.h
 +     "never"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.36/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
 @@ -44,4 +44,8 @@
       "Omnibox Autocomplete Filtering",
       "Restrict omnibox autocomplete results to a combination of search suggestions (if enabled), bookmarks, and internal chrome pages. ungoogled-chromium flag.",

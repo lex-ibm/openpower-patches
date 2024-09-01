@@ -1,9 +1,9 @@
 # Enable chrome://flags/#prefetch-privacy-changes by default
 
-Index: chromium-128.0.6613.36/third_party/blink/common/features.cc
+Index: chromium-128.0.6613.113/third_party/blink/common/features.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/third_party/blink/common/features.cc
-+++ chromium-128.0.6613.36/third_party/blink/common/features.cc
+--- chromium-128.0.6613.113.orig/third_party/blink/common/features.cc
++++ chromium-128.0.6613.113/third_party/blink/common/features.cc
 @@ -1834,7 +1834,7 @@ BASE_FEATURE(kPrefetchFontLookupTables,
  // crbug.com/988956.
  BASE_FEATURE(kPrefetchPrivacyChanges,

@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.36/chrome/browser/chrome_browser_main.cc
+Index: chromium-128.0.6613.113/chrome/browser/chrome_browser_main.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/chrome_browser_main.cc
-+++ chromium-128.0.6613.36/chrome/browser/chrome_browser_main.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/chrome_browser_main.cc
++++ chromium-128.0.6613.113/chrome/browser/chrome_browser_main.cc
 @@ -1106,6 +1106,7 @@ int ChromeBrowserMainParts::PreCreateThr
    if (first_run::IsChromeFirstRun()) {
      if (!base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kApp) &&
@@ -10,10 +10,10 @@ Index: chromium-128.0.6613.36/chrome/browser/chrome_browser_main.cc
        browser_creator_->AddFirstRunTabs(master_prefs_->new_tabs);
      }
  
-Index: chromium-128.0.6613.36/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
+Index: chromium-128.0.6613.113/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
-+++ chromium-128.0.6613.36/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
+--- chromium-128.0.6613.113.orig/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
++++ chromium-128.0.6613.113/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
 @@ -57,6 +57,7 @@
  #include "chrome/browser/ui/webui/suggest_internals/suggest_internals_ui.h"
  #include "chrome/browser/ui/webui/sync_internals/sync_internals_ui.h"
@@ -31,10 +31,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ui/webui/chrome_web_ui_controller_f
    return nullptr;
  }
  
-Index: chromium-128.0.6613.36/chrome/browser/ui/webui/ungoogled_first_run.h
+Index: chromium-128.0.6613.113/chrome/browser/ui/webui/ungoogled_first_run.h
 ===================================================================
 --- /dev/null
-+++ chromium-128.0.6613.36/chrome/browser/ui/webui/ungoogled_first_run.h
++++ chromium-128.0.6613.113/chrome/browser/ui/webui/ungoogled_first_run.h
 @@ -0,0 +1,137 @@
 +#ifndef CHROME_BROWSER_UI_WEBUI_UNGOOGLED_FIRST_RUN_H_
 +#define CHROME_BROWSER_UI_WEBUI_UNGOOGLED_FIRST_RUN_H_
@@ -173,10 +173,10 @@ Index: chromium-128.0.6613.36/chrome/browser/ui/webui/ungoogled_first_run.h
 +};
 +
 +#endif  // CHROME_BROWSER_UI_WEBUI_UNGOOGLED_FIRST_RUN_H_
-Index: chromium-128.0.6613.36/chrome/common/webui_url_constants.cc
+Index: chromium-128.0.6613.113/chrome/common/webui_url_constants.cc
 ===================================================================
---- chromium-128.0.6613.36.orig/chrome/common/webui_url_constants.cc
-+++ chromium-128.0.6613.36/chrome/common/webui_url_constants.cc
+--- chromium-128.0.6613.113.orig/chrome/common/webui_url_constants.cc
++++ chromium-128.0.6613.113/chrome/common/webui_url_constants.cc
 @@ -75,6 +75,7 @@ bool IsSystemWebUIHost(std::string_view
  // These hosts will also be suggested by BuiltinProvider.
  base::span<const base::cstring_view> ChromeURLHosts() {
