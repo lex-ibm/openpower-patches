@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.113/content/common/user_agent.cc
+Index: chromium-128.0.6613.119/content/common/user_agent.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/content/common/user_agent.cc
-+++ chromium-128.0.6613.113/content/common/user_agent.cc
+--- chromium-128.0.6613.119.orig/content/common/user_agent.cc
++++ chromium-128.0.6613.119/content/common/user_agent.cc
 @@ -129,7 +129,7 @@ std::string BuildCpuInfo() {
        sizeof(void*) == sizeof(int32_t)) {
      cpuinfo.assign("i686 (x86_64)");
@@ -11,10 +11,10 @@ Index: chromium-128.0.6613.113/content/common/user_agent.cc
    }
  #endif
  
-Index: chromium-128.0.6613.113/third_party/blink/renderer/core/frame/navigator_id.cc
+Index: chromium-128.0.6613.119/third_party/blink/renderer/core/frame/navigator_id.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/third_party/blink/renderer/core/frame/navigator_id.cc
-+++ chromium-128.0.6613.113/third_party/blink/renderer/core/frame/navigator_id.cc
+--- chromium-128.0.6613.119.orig/third_party/blink/renderer/core/frame/navigator_id.cc
++++ chromium-128.0.6613.119/third_party/blink/renderer/core/frame/navigator_id.cc
 @@ -72,10 +72,8 @@ String NavigatorID::platform() const {
      StringBuilder result;
      if (uname(&osname) >= 0) {

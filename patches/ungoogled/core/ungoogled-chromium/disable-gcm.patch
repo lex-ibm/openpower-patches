@@ -1,9 +1,9 @@
 # Disable Google Cloud Messaging (GCM) client
 
-Index: chromium-128.0.6613.113/components/gcm_driver/gcm_client_impl.cc
+Index: chromium-128.0.6613.119/components/gcm_driver/gcm_client_impl.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/components/gcm_driver/gcm_client_impl.cc
-+++ chromium-128.0.6613.113/components/gcm_driver/gcm_client_impl.cc
+--- chromium-128.0.6613.119.orig/components/gcm_driver/gcm_client_impl.cc
++++ chromium-128.0.6613.119/components/gcm_driver/gcm_client_impl.cc
 @@ -450,6 +450,7 @@ void GCMClientImpl::StartGCM() {
  
  void GCMClientImpl::InitializeMCSClient() {

@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.113/services/device/battery/battery_status_service.cc
+Index: chromium-128.0.6613.119/services/device/battery/battery_status_service.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/services/device/battery/battery_status_service.cc
-+++ chromium-128.0.6613.113/services/device/battery/battery_status_service.cc
+--- chromium-128.0.6613.119.orig/services/device/battery/battery_status_service.cc
++++ chromium-128.0.6613.119/services/device/battery/battery_status_service.cc
 @@ -22,10 +22,7 @@ BatteryStatusService::BatteryStatusServi
        update_callback_(
            base::BindRepeating(&BatteryStatusService::NotifyConsumers,
@@ -84,10 +84,10 @@ Index: chromium-128.0.6613.113/services/device/battery/battery_status_service.cc
    is_shutdown_ = false;
    main_thread_task_runner_ = base::SingleThreadTaskRunner::GetCurrentDefault();
  }
-Index: chromium-128.0.6613.113/services/device/battery/battery_status_service.h
+Index: chromium-128.0.6613.119/services/device/battery/battery_status_service.h
 ===================================================================
---- chromium-128.0.6613.113.orig/services/device/battery/battery_status_service.h
-+++ chromium-128.0.6613.113/services/device/battery/battery_status_service.h
+--- chromium-128.0.6613.119.orig/services/device/battery/battery_status_service.h
++++ chromium-128.0.6613.119/services/device/battery/battery_status_service.h
 @@ -59,15 +59,10 @@ class BatteryStatusService {
    // Updates current battery status and sends new status to interested
    // render processes. Can be called on any thread via a callback.

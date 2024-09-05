@@ -1,9 +1,9 @@
 # Remove the "--disable-setuid-sandbox" command line flag as a bad flag
 
-Index: chromium-128.0.6613.113/chrome/browser/ui/startup/bad_flags_prompt.cc
+Index: chromium-128.0.6613.119/chrome/browser/ui/startup/bad_flags_prompt.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ui/startup/bad_flags_prompt.cc
-+++ chromium-128.0.6613.113/chrome/browser/ui/startup/bad_flags_prompt.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/ui/startup/bad_flags_prompt.cc
++++ chromium-128.0.6613.119/chrome/browser/ui/startup/bad_flags_prompt.cc
 @@ -75,7 +75,6 @@ const char* const kBadFlags[] = {
      // These flags disable sandbox-related security.
      sandbox::policy::switches::kDisableGpuSandbox,

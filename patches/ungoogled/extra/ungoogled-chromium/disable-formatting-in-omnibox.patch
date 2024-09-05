@@ -1,9 +1,9 @@
 # Disables omission of URL elements in Omnibox and status bubble
 
-Index: chromium-128.0.6613.113/chrome/browser/ui/status_bubble.h
+Index: chromium-128.0.6613.119/chrome/browser/ui/status_bubble.h
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ui/status_bubble.h
-+++ chromium-128.0.6613.113/chrome/browser/ui/status_bubble.h
+--- chromium-128.0.6613.119.orig/chrome/browser/ui/status_bubble.h
++++ chromium-128.0.6613.119/chrome/browser/ui/status_bubble.h
 @@ -18,7 +18,7 @@ class GURL;
  class StatusBubble {
   public:
@@ -13,10 +13,10 @@ Index: chromium-128.0.6613.113/chrome/browser/ui/status_bubble.h
  
    virtual ~StatusBubble() {}
  
-Index: chromium-128.0.6613.113/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
+Index: chromium-128.0.6613.119/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
-+++ chromium-128.0.6613.113/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
++++ chromium-128.0.6613.119/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
 @@ -261,5 +261,5 @@ TemplateURLService* ChromeLocationBarMod
  // static
  void ChromeLocationBarModelDelegate::RegisterProfilePrefs(

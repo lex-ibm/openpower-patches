@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.113/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
+Index: chromium-128.0.6613.119/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
-+++ chromium-128.0.6613.113/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
++++ chromium-128.0.6613.119/chrome/browser/ui/views/extensions/extensions_toolbar_container.cc
 @@ -7,6 +7,7 @@
  #include <algorithm>
  #include <memory>
@@ -46,10 +46,10 @@ Index: chromium-128.0.6613.113/chrome/browser/ui/views/extensions/extensions_too
    // The container (and extensions-menu button) should not be visible if we have
    // no extensions.
    if (!HasAnyExtensions())
-Index: chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.113/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
 @@ -108,4 +108,8 @@
       "Disable link drag",
       "Prevents dragging of links and selected text. ungoogled-chromium flag.",

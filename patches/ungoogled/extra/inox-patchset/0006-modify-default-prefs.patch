@@ -1,8 +1,8 @@
 
-Index: chromium-128.0.6613.113/chrome/browser/background/background_mode_manager.cc
+Index: chromium-128.0.6613.119/chrome/browser/background/background_mode_manager.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/background/background_mode_manager.cc
-+++ chromium-128.0.6613.113/chrome/browser/background/background_mode_manager.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/background/background_mode_manager.cc
++++ chromium-128.0.6613.119/chrome/browser/background/background_mode_manager.cc
 @@ -358,7 +358,7 @@ BackgroundModeManager::~BackgroundModeMa
  
  // static
@@ -12,10 +12,10 @@ Index: chromium-128.0.6613.113/chrome/browser/background/background_mode_manager
  }
  
  void BackgroundModeManager::RegisterProfile(Profile* profile) {
-Index: chromium-128.0.6613.113/chrome/browser/chrome_content_browser_client.cc
+Index: chromium-128.0.6613.119/chrome/browser/chrome_content_browser_client.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/chrome_content_browser_client.cc
-+++ chromium-128.0.6613.113/chrome/browser/chrome_content_browser_client.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/chrome_content_browser_client.cc
++++ chromium-128.0.6613.119/chrome/browser/chrome_content_browser_client.cc
 @@ -1581,7 +1581,7 @@ void ChromeContentBrowserClient::Registe
  void ChromeContentBrowserClient::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
@@ -25,10 +25,10 @@ Index: chromium-128.0.6613.113/chrome/browser/chrome_content_browser_client.cc
    // Register user prefs for mapping SitePerProcess and IsolateOrigins in
    // user policy in addition to the same named ones in Local State (which are
    // used for mapping the command-line flags).
-Index: chromium-128.0.6613.113/chrome/browser/net/profile_network_context_service.cc
+Index: chromium-128.0.6613.119/chrome/browser/net/profile_network_context_service.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/net/profile_network_context_service.cc
-+++ chromium-128.0.6613.113/chrome/browser/net/profile_network_context_service.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/net/profile_network_context_service.cc
++++ chromium-128.0.6613.119/chrome/browser/net/profile_network_context_service.cc
 @@ -381,7 +381,7 @@ void ProfileNetworkContextService::Confi
  void ProfileNetworkContextService::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
@@ -38,10 +38,10 @@ Index: chromium-128.0.6613.113/chrome/browser/net/profile_network_context_servic
    registry->RegisterBooleanPref(prefs::kQuicAllowed, true);
    registry->RegisterBooleanPref(prefs::kGloballyScopeHTTPAuthCacheEnabled,
                                  false);
-Index: chromium-128.0.6613.113/chrome/browser/preloading/preloading_prefs.h
+Index: chromium-128.0.6613.119/chrome/browser/preloading/preloading_prefs.h
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/preloading/preloading_prefs.h
-+++ chromium-128.0.6613.113/chrome/browser/preloading/preloading_prefs.h
+--- chromium-128.0.6613.119.orig/chrome/browser/preloading/preloading_prefs.h
++++ chromium-128.0.6613.119/chrome/browser/preloading/preloading_prefs.h
 @@ -23,7 +23,7 @@ enum class NetworkPredictionOptions {
    kWifiOnlyDeprecated = 1,
    kDisabled = 2,
@@ -51,10 +51,10 @@ Index: chromium-128.0.6613.113/chrome/browser/preloading/preloading_prefs.h
  };
  
  // Enum representing possible values of the Preload Pages opt-in state. These
-Index: chromium-128.0.6613.113/chrome/browser/profiles/profile.cc
+Index: chromium-128.0.6613.119/chrome/browser/profiles/profile.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/profiles/profile.cc
-+++ chromium-128.0.6613.113/chrome/browser/profiles/profile.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/profiles/profile.cc
++++ chromium-128.0.6613.119/chrome/browser/profiles/profile.cc
 @@ -318,7 +318,7 @@ const char Profile::kProfileKey[] = "__P
  void Profile::RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
@@ -64,10 +64,10 @@ Index: chromium-128.0.6613.113/chrome/browser/profiles/profile.cc
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  #if BUILDFLAG(IS_ANDROID)
    registry->RegisterStringPref(
-Index: chromium-128.0.6613.113/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
+Index: chromium-128.0.6613.119/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
-+++ chromium-128.0.6613.113/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
+--- chromium-128.0.6613.119.orig/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
++++ chromium-128.0.6613.119/chrome/browser/resources/settings/reset_page/reset_profile_dialog.html
 @@ -34,7 +34,7 @@
          </cr-button>
        </div>
@@ -77,10 +77,10 @@ Index: chromium-128.0.6613.113/chrome/browser/resources/settings/reset_page/rese
            $i18nRaw{resetPageFeedback}</cr-checkbox>
        </div>
      </cr-dialog>
-Index: chromium-128.0.6613.113/chrome/browser/ui/browser_ui_prefs.cc
+Index: chromium-128.0.6613.119/chrome/browser/ui/browser_ui_prefs.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/ui/browser_ui_prefs.cc
-+++ chromium-128.0.6613.113/chrome/browser/ui/browser_ui_prefs.cc
+--- chromium-128.0.6613.119.orig/chrome/browser/ui/browser_ui_prefs.cc
++++ chromium-128.0.6613.119/chrome/browser/ui/browser_ui_prefs.cc
 @@ -95,7 +95,7 @@ void RegisterBrowserUserPrefs(user_prefs
    registry->RegisterBooleanPref(prefs::kWebAppCreateInAppsMenu, true);
    registry->RegisterBooleanPref(prefs::kWebAppCreateInQuickLaunchBar, true);
@@ -90,10 +90,10 @@ Index: chromium-128.0.6613.113/chrome/browser/ui/browser_ui_prefs.cc
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
-Index: chromium-128.0.6613.113/components/autofill/core/common/autofill_prefs.cc
+Index: chromium-128.0.6613.119/components/autofill/core/common/autofill_prefs.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/components/autofill/core/common/autofill_prefs.cc
-+++ chromium-128.0.6613.113/components/autofill/core/common/autofill_prefs.cc
+--- chromium-128.0.6613.119.orig/components/autofill/core/common/autofill_prefs.cc
++++ chromium-128.0.6613.119/components/autofill/core/common/autofill_prefs.cc
 @@ -40,7 +40,7 @@ int GetSyncTransportOptInBitFieldForAcco
  void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
    // Synced prefs. Used for cross-device choices, e.g., credit card Autofill.
@@ -112,10 +112,10 @@ Index: chromium-128.0.6613.113/components/autofill/core/common/autofill_prefs.cc
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kAutofillPaymentCvcStorage, true,
-Index: chromium-128.0.6613.113/components/bookmarks/browser/bookmark_utils.cc
+Index: chromium-128.0.6613.119/components/bookmarks/browser/bookmark_utils.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/components/bookmarks/browser/bookmark_utils.cc
-+++ chromium-128.0.6613.113/components/bookmarks/browser/bookmark_utils.cc
+--- chromium-128.0.6613.119.orig/components/bookmarks/browser/bookmark_utils.cc
++++ chromium-128.0.6613.119/components/bookmarks/browser/bookmark_utils.cc
 @@ -492,7 +492,7 @@ bool DoesBookmarkContainWords(const std:
  
  void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
@@ -125,10 +125,10 @@ Index: chromium-128.0.6613.113/components/bookmarks/browser/bookmark_utils.cc
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterBooleanPref(prefs::kEditBookmarksEnabled, true);
    registry->RegisterBooleanPref(
-Index: chromium-128.0.6613.113/components/password_manager/core/browser/password_manager.cc
+Index: chromium-128.0.6613.119/components/password_manager/core/browser/password_manager.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/components/password_manager/core/browser/password_manager.cc
-+++ chromium-128.0.6613.113/components/password_manager/core/browser/password_manager.cc
+--- chromium-128.0.6613.119.orig/components/password_manager/core/browser/password_manager.cc
++++ chromium-128.0.6613.119/components/password_manager/core/browser/password_manager.cc
 @@ -314,14 +314,14 @@ bool HasManuallyFilledFields(const Passw
  void PasswordManager::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
@@ -146,10 +146,10 @@ Index: chromium-128.0.6613.113/components/password_manager/core/browser/password
        user_prefs::PrefRegistrySyncable::SYNCABLE_PRIORITY_PREF);
    registry->RegisterStringPref(prefs::kSyncPasswordHash, std::string(),
                                 PrefRegistry::NO_REGISTRATION_FLAGS);
-Index: chromium-128.0.6613.113/components/payments/core/payment_prefs.cc
+Index: chromium-128.0.6613.119/components/payments/core/payment_prefs.cc
 ===================================================================
---- chromium-128.0.6613.113.orig/components/payments/core/payment_prefs.cc
-+++ chromium-128.0.6613.113/components/payments/core/payment_prefs.cc
+--- chromium-128.0.6613.119.orig/components/payments/core/payment_prefs.cc
++++ chromium-128.0.6613.119/components/payments/core/payment_prefs.cc
 @@ -11,7 +11,7 @@ namespace payments {
  void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(kPaymentsFirstTransactionCompleted, false);

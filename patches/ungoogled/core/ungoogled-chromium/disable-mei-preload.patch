@@ -5,10 +5,10 @@
 # is enough local data to determine the user's preferred behavior." This feature
 # does not seem to outweigh the benefit of removing the binary, thus this patch.
 
-Index: chromium-128.0.6613.113/chrome/BUILD.gn
+Index: chromium-128.0.6613.119/chrome/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/BUILD.gn
-+++ chromium-128.0.6613.113/chrome/BUILD.gn
+--- chromium-128.0.6613.119.orig/chrome/BUILD.gn
++++ chromium-128.0.6613.119/chrome/BUILD.gn
 @@ -382,7 +382,6 @@ if (!is_android && !is_mac) {
        }
  
@@ -17,10 +17,10 @@ Index: chromium-128.0.6613.113/chrome/BUILD.gn
          "//third_party/widevine/cdm",
        ]
        if (invoker.collect_inputs_only) {
-Index: chromium-128.0.6613.113/chrome/browser/resources/BUILD.gn
+Index: chromium-128.0.6613.119/chrome/browser/resources/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/resources/BUILD.gn
-+++ chromium-128.0.6613.113/chrome/browser/resources/BUILD.gn
+--- chromium-128.0.6613.119.orig/chrome/browser/resources/BUILD.gn
++++ chromium-128.0.6613.119/chrome/browser/resources/BUILD.gn
 @@ -96,11 +96,6 @@ group("resources") {
      public_deps += [ "accessibility:reading_mode_gdocs_extension_resources" ]
    }

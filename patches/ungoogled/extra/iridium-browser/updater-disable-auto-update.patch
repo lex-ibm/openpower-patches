@@ -14,10 +14,10 @@ the case anyway, since we are based off Chromium, not Chrome.
  chrome/browser/app_controller_mac.mm | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: chromium-128.0.6613.113/chrome/browser/app_controller_mac.mm
+Index: chromium-128.0.6613.119/chrome/browser/app_controller_mac.mm
 ===================================================================
---- chromium-128.0.6613.113.orig/chrome/browser/app_controller_mac.mm
-+++ chromium-128.0.6613.113/chrome/browser/app_controller_mac.mm
+--- chromium-128.0.6613.119.orig/chrome/browser/app_controller_mac.mm
++++ chromium-128.0.6613.119/chrome/browser/app_controller_mac.mm
 @@ -1062,7 +1062,7 @@ class AppControllerNativeThemeObserver :
    CFStringRef checkInterval = CFSTR("checkInterval");
    CFPropertyListRef plist = CFPreferencesCopyAppValue(checkInterval, app);
