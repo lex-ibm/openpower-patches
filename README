@@ -11,6 +11,43 @@ export QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
 quilt push -a
 
 =================================================================================
+MINIMUM SYSTEM REQUIREMENTS
+
+LLVM 17 or higher
+
+**** WARNING ****
+LLVM 16 is known to miscompile part of v8!
+
+At optimization levels higher than -O0, when using LTO, under specific
+circumstances involving array access of floating point numbers, the following
+(condensed) invalid instruction sequence is emitted:
+
+li      r4,-15
+rldic   r4,r4,3,29
+lfdx    f1,r3,r4
+
+Examples bytecode files that trigger the issue are located in
+compiler_bugs/clang_16/strtod_o[0|1].bc for analysis.
+
+To see the invalid assembler, compile to native object code via:
+llc-16 strtod_o1.bc -filetype=obj -o strtod.o
+
+and disassemble via:
+objdump -S strtod.o
+
+Note that llc-17 emits a completely different and more sensible instruction
+sequence:
+
+subfic  r6,r8,15
+rldic   r4,r6,3,29
+lfdx    f1,r5,r4
+
+where r8 is loaded via other setup routines prior to entering the index
+access segment of the code.  Likely, the optimizer in Clang 16 makes an
+incorrect assumption about r8 (in this example) always equalling 0x0, when
+in fact 0x0 would be an invalid value for r8.
+
+=================================================================================
 NOTE
 
 The Ungoogled patches are modified to apply to a stock Debian Chromium tree,
