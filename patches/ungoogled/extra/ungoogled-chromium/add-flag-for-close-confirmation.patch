@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/ui/browser.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/browser.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/browser.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/browser.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/browser.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/browser.cc
 @@ -145,6 +145,7 @@
  #include "chrome/browser/ui/ui_features.h"
  #include "chrome/browser/ui/unload_controller.h"
@@ -144,10 +144,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/browser.cc
  }
  
  void Browser::CookieMigrationNoticeResponse(bool proceed_closing) {
-Index: chromium-128.0.6613.119/chrome/browser/ui/browser.h
+Index: chromium-128.0.6613.137/chrome/browser/ui/browser.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/browser.h
-+++ chromium-128.0.6613.119/chrome/browser/ui/browser.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/browser.h
++++ chromium-128.0.6613.137/chrome/browser/ui/browser.h
 @@ -31,6 +31,7 @@
  #include "chrome/browser/ui/browser_navigator_params.h"
  #include "chrome/browser/ui/browser_window/public/browser_window_interface.h"
@@ -183,10 +183,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/browser.h
    /////////////////////////////////////////////////////////////////////////////
  
    // Override values for the bounds of the window and its maximized or minimized
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
 @@ -61,4 +61,13 @@ const FeatureEntry::Choice kCloseWindowW
       "close-window-with-last-tab",
       "never"},
@@ -201,10 +201,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
 +     "multiple"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -72,4 +72,8 @@
       "Remove Grab Handle",
       "Removes the reserved empty space in the tabstrip for moving the window. ungoogled-chromium flag",

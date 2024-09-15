@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 @@ -201,12 +201,10 @@ TabStripRegionView::TabStripRegionView(s
  
      // TODO(crbug.com/40118868): Revisit the macro expression once build flag
@@ -15,10 +15,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/views/frame/tab_strip_region_vi
    }
  
    reserved_grab_handle_space_ =
-Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab_strip.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/views/tabs/tab_strip.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab_strip.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab_strip.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
 @@ -2059,8 +2059,6 @@ void TabStrip::NewTabButtonPressed(const
  
      const ui::MouseEvent& mouse = static_cast<const ui::MouseEvent&>(event);

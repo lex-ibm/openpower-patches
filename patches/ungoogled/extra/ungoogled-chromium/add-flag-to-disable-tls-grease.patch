@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -88,4 +88,8 @@
       "Hide tab close buttons",
       "Hides the close buttons on tabs. ungoogled-chromium flag.",
@@ -11,10 +11,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
 +     "Turn off GREASE (Generate Random Extensions And Sustain Extensibility) for TLS connections. ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("disable-grease-tls")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.119/net/socket/ssl_client_socket_impl.cc
+Index: chromium-128.0.6613.137/net/socket/ssl_client_socket_impl.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/net/socket/ssl_client_socket_impl.cc
-+++ chromium-128.0.6613.119/net/socket/ssl_client_socket_impl.cc
+--- chromium-128.0.6613.137.orig/net/socket/ssl_client_socket_impl.cc
++++ chromium-128.0.6613.137/net/socket/ssl_client_socket_impl.cc
 @@ -210,7 +210,8 @@ class SSLClientSocketImpl::SSLContext {
      SSL_CTX_sess_set_new_cb(ssl_ctx_.get(), NewSessionCallback);
      SSL_CTX_set_timeout(ssl_ctx_.get(), 1 * 60 * 60 /* one hour */);

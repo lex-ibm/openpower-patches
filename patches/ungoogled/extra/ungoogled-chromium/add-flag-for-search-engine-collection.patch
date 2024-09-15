@@ -1,9 +1,9 @@
 # Add flag to disable automatic search engine collection
 
-Index: chromium-128.0.6613.119/chrome/browser/ui/tab_helpers.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/tab_helpers.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/tab_helpers.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/tab_helpers.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/tab_helpers.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/tab_helpers.cc
 @@ -501,7 +501,9 @@ void TabHelpers::AttachTabHelpers(WebCon
    resource_coordinator::ResourceCoordinatorTabHelper::CreateForWebContents(
        web_contents);
@@ -14,10 +14,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/tab_helpers.cc
    SecurityStateTabHelper::CreateForWebContents(web_contents);
    if (site_engagement::SiteEngagementService::IsEnabled()) {
      site_engagement::SiteEngagementService::Helper::CreateForWebContents(
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -12,4 +12,8 @@
       "Handling of extension MIME type requests",
       "Used when deciding how to handle a request for a CRX or User Script MIME type. ungoogled-chromium flag.",
@@ -27,10 +27,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
 +     "Prevents search engines from being added automatically. ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("disable-search-engine-collection")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.119/chrome/renderer/chrome_render_frame_observer.cc
+Index: chromium-128.0.6613.137/chrome/renderer/chrome_render_frame_observer.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/renderer/chrome_render_frame_observer.cc
-+++ chromium-128.0.6613.119/chrome/renderer/chrome_render_frame_observer.cc
+--- chromium-128.0.6613.137.orig/chrome/renderer/chrome_render_frame_observer.cc
++++ chromium-128.0.6613.137/chrome/renderer/chrome_render_frame_observer.cc
 @@ -256,14 +256,16 @@ void ChromeRenderFrameObserver::DidFinis
    if (frame->Parent() || frame->IsInFencedFrameTree())
      return;
@@ -56,10 +56,10 @@ Index: chromium-128.0.6613.119/chrome/renderer/chrome_render_frame_observer.cc
    }
  }
  
-Index: chromium-128.0.6613.119/components/search_engines/template_url_service.cc
+Index: chromium-128.0.6613.137/components/search_engines/template_url_service.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/components/search_engines/template_url_service.cc
-+++ chromium-128.0.6613.119/components/search_engines/template_url_service.cc
+--- chromium-128.0.6613.137.orig/components/search_engines/template_url_service.cc
++++ chromium-128.0.6613.137/components/search_engines/template_url_service.cc
 @@ -15,6 +15,7 @@
  #include "base/base64url.h"
  #include "base/check_deref.h"
@@ -119,10 +119,10 @@ Index: chromium-128.0.6613.119/components/search_engines/template_url_service.cc
    const TemplateURLSet* urls = provider_map_->GetURLsForHost(host);
    if (!urls)
      return true;
-Index: chromium-128.0.6613.119/components/search_engines/template_url_service.h
+Index: chromium-128.0.6613.137/components/search_engines/template_url_service.h
 ===================================================================
---- chromium-128.0.6613.119.orig/components/search_engines/template_url_service.h
-+++ chromium-128.0.6613.119/components/search_engines/template_url_service.h
+--- chromium-128.0.6613.137.orig/components/search_engines/template_url_service.h
++++ chromium-128.0.6613.137/components/search_engines/template_url_service.h
 @@ -891,6 +891,8 @@ class TemplateURLService final : public
    raw_ptr<search_engines::SearchEngineChoiceService>
        search_engine_choice_service_ = nullptr;

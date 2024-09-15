@@ -8,10 +8,10 @@ Subject: [PATCH] Add ppc64 target to libaom
  third_party/libaom/cmake_update.sh |  3 +++
  2 files changed, 15 insertions(+)
 
-Index: chromium-128.0.6613.119/third_party/libaom/BUILD.gn
+Index: chromium-128.0.6613.137/third_party/libaom/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.119.orig/third_party/libaom/BUILD.gn
-+++ chromium-128.0.6613.119/third_party/libaom/BUILD.gn
+--- chromium-128.0.6613.137.orig/third_party/libaom/BUILD.gn
++++ chromium-128.0.6613.137/third_party/libaom/BUILD.gn
 @@ -275,6 +275,18 @@ if (current_cpu == "arm64") {
    }
  }
@@ -41,10 +41,10 @@ Index: chromium-128.0.6613.119/third_party/libaom/BUILD.gn
    if (is_android) {
      deps += [ "//third_party/cpu_features:ndk_compat" ]
    }
-Index: chromium-128.0.6613.119/third_party/libaom/cmake_update.sh
+Index: chromium-128.0.6613.137/third_party/libaom/cmake_update.sh
 ===================================================================
---- chromium-128.0.6613.119.orig/third_party/libaom/cmake_update.sh
-+++ chromium-128.0.6613.119/third_party/libaom/cmake_update.sh
+--- chromium-128.0.6613.137.orig/third_party/libaom/cmake_update.sh
++++ chromium-128.0.6613.137/third_party/libaom/cmake_update.sh
 @@ -190,6 +190,9 @@ reset_dirs linux/arm64-cpu-detect
  gen_config_files linux/arm64-cpu-detect \
    "${toolchain}/arm64-linux-gcc.cmake ${all_platforms}"

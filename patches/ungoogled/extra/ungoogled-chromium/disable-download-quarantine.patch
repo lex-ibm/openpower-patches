@@ -1,9 +1,9 @@
 # Disables file download quarantining
 
-Index: chromium-128.0.6613.119/components/download/internal/common/base_file.cc
+Index: chromium-128.0.6613.137/components/download/internal/common/base_file.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/components/download/internal/common/base_file.cc
-+++ chromium-128.0.6613.119/components/download/internal/common/base_file.cc
+--- chromium-128.0.6613.137.orig/components/download/internal/common/base_file.cc
++++ chromium-128.0.6613.137/components/download/internal/common/base_file.cc
 @@ -23,7 +23,6 @@
  #include "components/download/public/common/download_interrupt_reasons_utils.h"
  #include "components/download/public/common/download_item.h"
@@ -142,10 +142,10 @@ Index: chromium-128.0.6613.119/components/download/internal/common/base_file.cc
  }
  
  }  // namespace download
-Index: chromium-128.0.6613.119/content/browser/BUILD.gn
+Index: chromium-128.0.6613.137/content/browser/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.119.orig/content/browser/BUILD.gn
-+++ chromium-128.0.6613.119/content/browser/BUILD.gn
+--- chromium-128.0.6613.137.orig/content/browser/BUILD.gn
++++ chromium-128.0.6613.137/content/browser/BUILD.gn
 @@ -114,7 +114,6 @@ source_set("browser") {
      "//components/payments/mojom",
      "//components/power_monitor",
@@ -154,10 +154,10 @@ Index: chromium-128.0.6613.119/content/browser/BUILD.gn
      "//components/services/storage",
      "//components/services/storage:filesystem_proxy_factory",
      "//components/services/storage/dom_storage:local_storage_proto",
-Index: chromium-128.0.6613.119/content/browser/file_system_access/file_system_access_safe_move_helper.cc
+Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/content/browser/file_system_access/file_system_access_safe_move_helper.cc
-+++ chromium-128.0.6613.119/content/browser/file_system_access/file_system_access_safe_move_helper.cc
+--- chromium-128.0.6613.137.orig/content/browser/file_system_access/file_system_access_safe_move_helper.cc
++++ chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.cc
 @@ -14,7 +14,6 @@
  #include "base/thread_annotations.h"
  #include "build/build_config.h"
@@ -235,10 +235,10 @@ Index: chromium-128.0.6613.119/content/browser/file_system_access/file_system_ac
      quarantine::mojom::QuarantineFileResult result) {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
  
-Index: chromium-128.0.6613.119/content/browser/file_system_access/file_system_access_safe_move_helper.h
+Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.h
 ===================================================================
---- chromium-128.0.6613.119.orig/content/browser/file_system_access/file_system_access_safe_move_helper.h
-+++ chromium-128.0.6613.119/content/browser/file_system_access/file_system_access_safe_move_helper.h
+--- chromium-128.0.6613.137.orig/content/browser/file_system_access/file_system_access_safe_move_helper.h
++++ chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.h
 @@ -66,10 +66,8 @@ class CONTENT_EXPORT FileSystemAccessSaf
    void DidFileDoQuarantine(
        const storage::FileSystemURL& target_url,
@@ -250,10 +250,10 @@ Index: chromium-128.0.6613.119/content/browser/file_system_access/file_system_ac
        quarantine::mojom::QuarantineFileResult result);
  
    void ComputeHashForSourceFile(HashCallback callback);
-Index: chromium-128.0.6613.119/content/browser/renderer_host/pepper/pepper_file_io_host.cc
+Index: chromium-128.0.6613.137/content/browser/renderer_host/pepper/pepper_file_io_host.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/content/browser/renderer_host/pepper/pepper_file_io_host.cc
-+++ chromium-128.0.6613.119/content/browser/renderer_host/pepper/pepper_file_io_host.cc
+--- chromium-128.0.6613.137.orig/content/browser/renderer_host/pepper/pepper_file_io_host.cc
++++ chromium-128.0.6613.137/content/browser/renderer_host/pepper/pepper_file_io_host.cc
 @@ -462,7 +462,7 @@ void PepperFileIOHost::OnLocalFileOpened
      ppapi::host::ReplyMessageContext reply_context,
      const base::FilePath& path,
@@ -272,10 +272,10 @@ Index: chromium-128.0.6613.119/content/browser/renderer_host/pepper/pepper_file_
  void PepperFileIOHost::OnLocalFileQuarantined(
      ppapi::host::ReplyMessageContext reply_context,
      const base::FilePath& path,
-Index: chromium-128.0.6613.119/content/browser/renderer_host/pepper/pepper_file_io_host.h
+Index: chromium-128.0.6613.137/content/browser/renderer_host/pepper/pepper_file_io_host.h
 ===================================================================
---- chromium-128.0.6613.119.orig/content/browser/renderer_host/pepper/pepper_file_io_host.h
-+++ chromium-128.0.6613.119/content/browser/renderer_host/pepper/pepper_file_io_host.h
+--- chromium-128.0.6613.137.orig/content/browser/renderer_host/pepper/pepper_file_io_host.h
++++ chromium-128.0.6613.137/content/browser/renderer_host/pepper/pepper_file_io_host.h
 @@ -14,7 +14,6 @@
  #include "base/memory/raw_ptr.h"
  #include "base/memory/ref_counted.h"

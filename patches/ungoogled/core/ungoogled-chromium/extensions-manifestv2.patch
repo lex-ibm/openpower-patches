@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+Index: chromium-128.0.6613.137/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
-+++ chromium-128.0.6613.119/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
++++ chromium-128.0.6613.137/chrome/browser/extensions/chrome_browser_context_keyed_service_factories.cc
 @@ -22,7 +22,6 @@
  #include "chrome/browser/extensions/extension_web_ui_override_registrar.h"
  #include "chrome/browser/extensions/install_tracker_factory.h"
@@ -18,10 +18,10 @@ Index: chromium-128.0.6613.119/chrome/browser/extensions/chrome_browser_context_
    extensions::MenuManagerFactory::GetInstance();
    extensions::PermissionsUpdater::EnsureAssociatedFactoryBuilt();
  #if BUILDFLAG(ENABLE_PLUGINS)
-Index: chromium-128.0.6613.119/chrome/browser/extensions/extension_management.cc
+Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_management.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/extensions/extension_management.cc
-+++ chromium-128.0.6613.119/chrome/browser/extensions/extension_management.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/extensions/extension_management.cc
++++ chromium-128.0.6613.137/chrome/browser/extensions/extension_management.cc
 @@ -287,31 +287,7 @@ bool ExtensionManagement::IsAllowedManif
      int manifest_version,
      const std::string& extension_id,
@@ -81,10 +81,10 @@ Index: chromium-128.0.6613.119/chrome/browser/extensions/extension_management.cc
  }
  
  bool ExtensionManagement::IsAllowedByUnpublishedAvailabilityPolicy(
-Index: chromium-128.0.6613.119/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+Index: chromium-128.0.6613.137/chrome/browser/extensions/manifest_v2_experiment_manager.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
-+++ chromium-128.0.6613.119/chrome/browser/extensions/manifest_v2_experiment_manager.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/extensions/manifest_v2_experiment_manager.cc
++++ chromium-128.0.6613.137/chrome/browser/extensions/manifest_v2_experiment_manager.cc
 @@ -139,17 +139,6 @@ bool ManifestV2ExperimentManagerFactory:
  
  // Determines the current stage of the MV2 deprecation experiments.
@@ -103,10 +103,10 @@ Index: chromium-128.0.6613.119/chrome/browser/extensions/manifest_v2_experiment_
    return MV2ExperimentStage::kNone;
  }
  
-Index: chromium-128.0.6613.119/chrome/browser/ui/webui/extensions/extensions_ui.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/webui/extensions/extensions_ui.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/webui/extensions/extensions_ui.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/webui/extensions/extensions_ui.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/extensions/extensions_ui.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/webui/extensions/extensions_ui.cc
 @@ -468,9 +468,9 @@ content::WebUIDataSource* CreateAndAddEx
            extensions_features::kExtensionsMenuAccessControlWithPermittedSites));
    source->AddBoolean(

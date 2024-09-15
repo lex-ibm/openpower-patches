@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/views/tabs/tab.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
 @@ -1068,7 +1068,11 @@ void Tab::UpdateIconVisibility() {
    if (IsActive()) {
      // Close button is shown on active tabs regardless of the size.
@@ -23,10 +23,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
      if (showing_close_button_) {
        available_width -= close_button_width;
      }
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -84,4 +84,8 @@
       "Tab Hover Cards",
       "Allows removing the tab hover cards or using a tooltip as a replacement. ungoogled-chromium flag.",

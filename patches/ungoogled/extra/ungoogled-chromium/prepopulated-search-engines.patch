@@ -1,10 +1,10 @@
 # Disables Site search Starter Pack
 # Adds DDG to the default search engines.
 #
-Index: chromium-128.0.6613.119/components/omnibox/common/omnibox_features.cc
+Index: chromium-128.0.6613.137/components/omnibox/common/omnibox_features.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/components/omnibox/common/omnibox_features.cc
-+++ chromium-128.0.6613.119/components/omnibox/common/omnibox_features.cc
+--- chromium-128.0.6613.137.orig/components/omnibox/common/omnibox_features.cc
++++ chromium-128.0.6613.137/components/omnibox/common/omnibox_features.cc
 @@ -528,7 +528,7 @@ BASE_FEATURE(kSiteSearchSettingsPolicy,
  // Enables additional site search providers for the Site search Starter Pack.
  BASE_FEATURE(kStarterPackExpansion,
@@ -14,10 +14,10 @@ Index: chromium-128.0.6613.119/components/omnibox/common/omnibox_features.cc
  
  // Enables an informational IPH message at the bottom of the Omnibox directing
  // users to certain starter pack engines.
-Index: chromium-128.0.6613.119/components/search_engines/search_engine_countries-inc.cc
+Index: chromium-128.0.6613.137/components/search_engines/search_engine_countries-inc.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/components/search_engines/search_engine_countries-inc.cc
-+++ chromium-128.0.6613.119/components/search_engines/search_engine_countries-inc.cc
+--- chromium-128.0.6613.137.orig/components/search_engines/search_engine_countries-inc.cc
++++ chromium-128.0.6613.137/components/search_engines/search_engine_countries-inc.cc
 @@ -36,6 +36,7 @@ constexpr EngineAndTier engines_default[
      {SearchEngineTier::kTopEngines, &google},
      {SearchEngineTier::kTopEngines, &bing},

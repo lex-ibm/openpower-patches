@@ -10,10 +10,10 @@ it as hidden as it was before?
  net/cert/x509_util.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: chromium-128.0.6613.119/net/cert/x509_util.cc
+Index: chromium-128.0.6613.137/net/cert/x509_util.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/net/cert/x509_util.cc
-+++ chromium-128.0.6613.119/net/cert/x509_util.cc
+--- chromium-128.0.6613.137.orig/net/cert/x509_util.cc
++++ chromium-128.0.6613.137/net/cert/x509_util.cc
 @@ -285,7 +285,7 @@ bool GetTLSServerEndPointChannelBinding(
  }
  

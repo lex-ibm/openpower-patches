@@ -1,9 +1,9 @@
 # Add --disable-beforeunload to always disable beforeunload JavaScript dialogs
 
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -16,4 +16,8 @@
       "Disable search engine collection",
       "Prevents search engines from being added automatically. ungoogled-chromium flag.",
@@ -13,10 +13,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
 +     "Disables JavaScript dialog boxes triggered by beforeunload. ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("disable-beforeunload")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.119/components/javascript_dialogs/app_modal_dialog_manager.cc
+Index: chromium-128.0.6613.137/components/javascript_dialogs/app_modal_dialog_manager.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/components/javascript_dialogs/app_modal_dialog_manager.cc
-+++ chromium-128.0.6613.119/components/javascript_dialogs/app_modal_dialog_manager.cc
+--- chromium-128.0.6613.137.orig/components/javascript_dialogs/app_modal_dialog_manager.cc
++++ chromium-128.0.6613.137/components/javascript_dialogs/app_modal_dialog_manager.cc
 @@ -7,6 +7,7 @@
  #include <algorithm>
  #include <utility>

@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/views/tabs/tab.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
 @@ -11,6 +11,7 @@
  #include <memory>
  #include <utility>
@@ -19,10 +19,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab.cc
    // Tab hover cards replace tooltips for tabs.
    return std::u16string();
  }
-Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab_strip.cc
+Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ui/views/tabs/tab_strip.cc
-+++ chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab_strip.cc
+--- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab_strip.cc
++++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
 @@ -14,6 +14,7 @@
  #include <utility>
  #include <vector>
@@ -40,10 +40,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ui/views/tabs/tab_strip.cc
    tab_container_->UpdateHoverCard(tab, update_type);
  }
  
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
 @@ -70,4 +70,13 @@ const FeatureEntry::Choice kCloseConfirm
       "close-confirmation",
       "multiple"},
@@ -58,10 +58,10 @@ Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_choices.h
 +     "tooltip"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.119.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.119/chrome/browser/ungoogled_flag_entries.h
+--- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 @@ -80,4 +80,8 @@
       "Custom New Tab Page",
       "Allows setting a custom URL for the new tab page. Value can be internal (e.g. `about:blank` or `chrome://new-tab-page`), external (e.g. `example.com`), or local (e.g. `file:///tmp/startpage.html`). This applies for incognito windows as well when not set to a `chrome://` internal page. ungoogled-chromium flag",
