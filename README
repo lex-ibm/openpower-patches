@@ -1,6 +1,6 @@
 =================================================================================
 VERSION
-128.0.6613.137
+129.0.6668.58
 
 =================================================================================
 APPLICATION
@@ -13,7 +13,21 @@ quilt push -a
 =================================================================================
 MINIMUM SYSTEM REQUIREMENTS
 
-LLVM 17 or higher
+**PATCHED** LLVM 17 or higher
+
+**** PATCH REQUIREMENTS ****
+LLVM 17 and up miscompile floating point libcalls with signed integer arguments
+on all architectures.  Since LLVM 16 significantly miscompiles ppc64el code
+(leading to Chromium segfaults), LLVM 17 or higher will need to have a patch
+applied prior to building Chromium.  If this is not done, the browser will
+consume massive system resources and randomly crash.
+
+The patch currently resides in a pull request for LLVM on Github:
+https://github.com/llvm/llvm-project/pull/109134
+
+This patch applies successfully to Clang 18, which SSC is currently using to
+build its production Chromium on POWER packages.  Hopefully, it will be
+merged shortly and backported to Clang 19 / Clang 18.
 
 **** WARNING ****
 LLVM 16 is known to miscompile part of v8!

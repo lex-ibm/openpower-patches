@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.137/chrome/browser/media/webrtc/capture_policy_utils.cc
+Index: chromium-129.0.6668.58/chrome/browser/media/webrtc/capture_policy_utils.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/media/webrtc/capture_policy_utils.cc
-+++ chromium-128.0.6613.137/chrome/browser/media/webrtc/capture_policy_utils.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/media/webrtc/capture_policy_utils.cc
++++ chromium-129.0.6668.58/chrome/browser/media/webrtc/capture_policy_utils.cc
 @@ -63,46 +63,7 @@ void IsMultiCaptureAllowedForAnyOriginOn
      base::OnceCallback<void(bool)> callback,
      content::BrowserContext* context,

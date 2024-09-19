@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/chrome/browser/ui/browser_command_controller.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/browser_command_controller.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/browser_command_controller.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/browser_command_controller.cc
-@@ -1432,7 +1432,8 @@ void BrowserCommandController::InitComma
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/browser_command_controller.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/browser_command_controller.cc
+@@ -1440,7 +1440,8 @@ void BrowserCommandController::InitComma
    command_updater_.UpdateCommandEnabled(IDC_WINDOW_CLOSE_OTHER_TABS,
                                          normal_window);
  
@@ -12,19 +12,19 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/browser_command_controller.cc
    command_updater_.UpdateCommandEnabled(IDC_TAB_SEARCH,
                                          enable_tab_search_commands);
    command_updater_.UpdateCommandEnabled(IDC_TAB_SEARCH_CLOSE,
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/ui/views/frame/tab_strip_region_view.h"
  
 +#include "base/command_line.h"
+ #include "base/feature_list.h"
  #include "base/functional/bind.h"
  #include "base/strings/utf_string_conversions.h"
- #include "base/task/single_thread_task_runner.h"
-@@ -112,7 +113,8 @@ TabStripRegionView::TabStripRegionView(s
+@@ -115,7 +116,8 @@ TabStripRegionView::TabStripRegionView(s
  
    // Add and configure the TabSearchContainer.
    std::unique_ptr<TabSearchContainer> tab_search_container;
@@ -34,10 +34,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_vi
      tab_search_container = std::make_unique<TabSearchContainer>(
          tab_strip_->controller(), browser->tab_strip_model(),
          render_tab_search_before_tab_strip_, this);
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -60,4 +60,8 @@
       "Clear data on exit",
       "Clears all browsing data on exit. ungoogled-chromium flag",

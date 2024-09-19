@@ -1,9 +1,9 @@
 # Keep local history longer than 90 days
 
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -52,4 +52,8 @@
       "Popups to tabs",
       "Makes popups open in new tabs. ungoogled-chromium flag",
@@ -13,10 +13,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 +     "Keep history older than 3 months. ungoogled-chromium flag",
 +     kOsAll, SINGLE_VALUE_TYPE("keep-old-history")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.137/components/history/core/browser/history_backend.cc
+Index: chromium-129.0.6668.58/components/history/core/browser/history_backend.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/history/core/browser/history_backend.cc
-+++ chromium-128.0.6613.137/components/history/core/browser/history_backend.cc
+--- chromium-129.0.6668.58.orig/components/history/core/browser/history_backend.cc
++++ chromium-129.0.6668.58/components/history/core/browser/history_backend.cc
 @@ -14,6 +14,7 @@
  #include <utility>
  #include <vector>

@@ -1,10 +1,10 @@
 # Additional changes to Inox's fix-building-without-safebrowsing.patch
 
-Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/browser/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/browser/BUILD.gn
-@@ -626,8 +626,6 @@ static_library("browser") {
+--- chromium-129.0.6668.58.orig/chrome/browser/BUILD.gn
++++ chromium-129.0.6668.58/chrome/browser/BUILD.gn
+@@ -636,8 +636,6 @@ static_library("browser") {
      "internal_auth.h",
      "interstitials/chrome_settings_page_helper.cc",
      "interstitials/chrome_settings_page_helper.h",
@@ -13,7 +13,7 @@ Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
      "invalidation/profile_invalidation_provider_factory.cc",
      "invalidation/profile_invalidation_provider_factory.h",
      "k_anonymity_service/k_anonymity_service_client.cc",
-@@ -4118,10 +4116,6 @@ static_library("browser") {
+@@ -3837,10 +3835,6 @@ static_library("browser") {
        "new_tab_page/modules/modules_util.h",
        "new_tab_page/modules/new_tab_page_modules.cc",
        "new_tab_page/modules/new_tab_page_modules.h",
@@ -24,16 +24,16 @@ Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
        "new_tab_page/modules/v2/calendar/google_calendar_page_handler.cc",
        "new_tab_page/modules/v2/calendar/google_calendar_page_handler.h",
        "new_tab_page/modules/v2/most_relevant_tab_resumption/most_relevant_tab_resumption_page_handler.cc",
-@@ -6834,8 +6828,6 @@ static_library("browser") {
+@@ -6634,8 +6628,6 @@ static_library("browser") {
+ 
+   if (enterprise_cloud_content_analysis) {
      sources += [
-       "enterprise/connectors/analysis/analysis_service_settings.cc",
-       "enterprise/connectors/analysis/analysis_service_settings.h",
 -      "enterprise/connectors/analysis/content_analysis_delegate.cc",
 -      "enterprise/connectors/analysis/content_analysis_delegate.h",
        "enterprise/connectors/analysis/content_analysis_delegate_base.h",
        "enterprise/connectors/analysis/content_analysis_dialog.cc",
        "enterprise/connectors/analysis/content_analysis_dialog.h",
-@@ -6843,8 +6835,6 @@ static_library("browser") {
+@@ -6643,8 +6635,6 @@ static_library("browser") {
        "enterprise/connectors/analysis/content_analysis_downloads_delegate.h",
        "enterprise/connectors/analysis/files_request_handler.cc",
        "enterprise/connectors/analysis/files_request_handler.h",
@@ -42,7 +42,7 @@ Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
        "enterprise/connectors/analysis/request_handler_base.cc",
        "enterprise/connectors/analysis/request_handler_base.h",
        "enterprise/connectors/common.cc",
-@@ -7534,13 +7524,6 @@ static_library("browser") {
+@@ -7249,12 +7239,6 @@ static_library("browser") {
      }
    }
  
@@ -51,12 +51,11 @@ Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
 -      "enterprise/data_protection/print_utils.cc",
 -      "enterprise/data_protection/print_utils.h",
 -    ]
--    deps += [ "//components/enterprise/connectors" ]
 -  }
  
    if (enable_captive_portal_detection) {
      sources += [
-@@ -8393,9 +8376,14 @@ static_library("browser") {
+@@ -8104,9 +8088,14 @@ static_library("browser") {
        "//components/safe_browsing/content/browser:safe_browsing_blocking_page",
        "//components/safe_browsing/content/browser/download:download_stats",
        "//components/safe_browsing/content/common:file_type_policies",
@@ -72,19 +71,19 @@ Index: chromium-128.0.6613.137/chrome/browser/BUILD.gn
  
    if (build_with_tflite_lib) {
      sources += [
-@@ -8673,7 +8661,6 @@ static_library("browser_generated_files"
-       "//chrome/browser/new_tab_page/modules/history_clusters:mojo_bindings",
-       "//chrome/browser/new_tab_page/modules/history_clusters/cart:mojo_bindings",
-       "//chrome/browser/new_tab_page/modules/history_clusters/discount:mojo_bindings",
+@@ -8413,7 +8402,6 @@ static_library("browser_generated_files"
+       "//chrome/browser/new_tab_page/chrome_colors:generate_chrome_colors_info",
+       "//chrome/browser/new_tab_page/chrome_colors:generate_colors_info",
+       "//chrome/browser/new_tab_page/modules/file_suggestion:mojo_bindings",
 -      "//chrome/browser/new_tab_page/modules/safe_browsing:mojo_bindings",
        "//chrome/browser/new_tab_page/modules/v2/calendar:mojo_bindings",
        "//chrome/browser/new_tab_page/modules/v2/most_relevant_tab_resumption:mojo_bindings",
        "//chrome/browser/new_tab_page/modules/v2/tab_resumption:mojo_bindings",
-Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/chrome_content_browser_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
-@@ -5494,11 +5494,13 @@ ChromeContentBrowserClient::CreateThrott
+--- chromium-129.0.6668.58.orig/chrome/browser/chrome_content_browser_client.cc
++++ chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
+@@ -5539,11 +5539,13 @@ ChromeContentBrowserClient::CreateThrott
        &throttles);
  #endif
  
@@ -98,7 +97,7 @@ Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
  
  #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
    MaybeAddThrottle(browser_switcher::BrowserSwitcherNavigationThrottle::
-@@ -7262,26 +7264,7 @@ ChromeContentBrowserClient::GetSafeBrows
+@@ -7338,26 +7340,7 @@ ChromeContentBrowserClient::GetSafeBrows
      const std::vector<std::string>& allowlist_domains) {
    DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
  
@@ -126,7 +125,7 @@ Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
  }
  
  safe_browsing::RealTimeUrlLookupServiceBase*
-@@ -7302,11 +7285,6 @@ ChromeContentBrowserClient::GetUrlLookup
+@@ -7378,11 +7361,6 @@ ChromeContentBrowserClient::GetUrlLookup
          GetForProfile(profile);
    }
  #endif
@@ -138,7 +137,7 @@ Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
    return nullptr;
  }
  
-@@ -7318,32 +7296,7 @@ ChromeContentBrowserClient::GetAsyncChec
+@@ -7394,32 +7372,7 @@ ChromeContentBrowserClient::GetAsyncChec
      safe_browsing::hash_realtime_utils::HashRealTimeSelection
          hash_realtime_selection,
      int frame_tree_node_id) {
@@ -171,10 +170,10 @@ Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
  }
  
  void ChromeContentBrowserClient::ReportLegacyTechEvent(
-Index: chromium-128.0.6613.137/chrome/browser/download/bubble/download_bubble_ui_controller.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/bubble/download_bubble_ui_controller.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/bubble/download_bubble_ui_controller.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/bubble/download_bubble_ui_controller.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/bubble/download_bubble_ui_controller.cc
++++ chromium-129.0.6668.58/chrome/browser/download/bubble/download_bubble_ui_controller.cc
 @@ -31,7 +31,6 @@
  #include "chrome/browser/feature_engagement/tracker_factory.h"
  #include "chrome/browser/offline_items_collection/offline_content_aggregator_factory.h"
@@ -222,10 +221,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/bubble/download_bubble_ui
 -  profile_->GetPrefs()->SetBoolean(
 -      prefs::kSafeBrowsingAutomaticDeepScanningIPHSeen, true);
  }
-Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_delegate.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/chrome_download_manager_delegate.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/chrome_download_manager_delegate.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_delegate.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/chrome_download_manager_delegate.cc
++++ chromium-129.0.6668.58/chrome/browser/download/chrome_download_manager_delegate.cc
 @@ -162,7 +162,6 @@ using content::DownloadManager;
  using download::DownloadItem;
  using download::DownloadPathReservationTracker;
@@ -234,7 +233,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
  using ConnectionType = net::NetworkChangeNotifier::ConnectionType;
  
  #if BUILDFLAG(FULL_SAFE_BROWSING)
-@@ -686,15 +685,6 @@ bool ChromeDownloadManagerDelegate::Shou
+@@ -691,15 +690,6 @@ bool ChromeDownloadManagerDelegate::Shou
  #endif
  
    bool should_open = download_prefs_->IsAutoOpenEnabled(url, path);
@@ -250,7 +249,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
  
    return should_open;
  }
-@@ -1686,7 +1676,6 @@ void ChromeDownloadManagerDelegate::OnDo
+@@ -1696,7 +1686,6 @@ void ChromeDownloadManagerDelegate::OnDo
      DownloadItemModel model(item);
      model.DetermineAndSetShouldPreferOpeningInBrowser(
          target_info.target_path, target_info.is_filetype_handled_safely);
@@ -258,7 +257,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
    }
    if (ShouldBlockFile(item, target_info.danger_type)) {
      MaybeReportDangerousDownloadBlocked(
-@@ -1767,53 +1756,6 @@ bool ChromeDownloadManagerDelegate::IsOp
+@@ -1777,49 +1766,20 @@ bool ChromeDownloadManagerDelegate::IsOp
  bool ChromeDownloadManagerDelegate::ShouldBlockFile(
      download::DownloadItem* item,
      download::DownloadDangerType danger_type) const {
@@ -267,9 +266,9 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
 -    return false;
 -  }
 -
--  DownloadPrefs::DownloadRestriction download_restriction =
--      download_prefs_->download_restriction();
--
+   DownloadPrefs::DownloadRestriction download_restriction =
+       download_prefs_->download_restriction();
+ 
 -  if (IsDangerTypeBlocked(danger_type))
 -    return true;
 -
@@ -277,10 +276,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
 -      (item && DownloadItemModel(item).GetDangerLevel() !=
 -                   DownloadFileType::NOT_DANGEROUS);
 -
--  switch (download_restriction) {
--    case (DownloadPrefs::DownloadRestriction::NONE):
--      return false;
--
+   switch (download_restriction) {
+     case (DownloadPrefs::DownloadRestriction::NONE):
+       return false;
+ 
 -    case (DownloadPrefs::DownloadRestriction::POTENTIALLY_DANGEROUS_FILES):
 -      return danger_type != download::DOWNLOAD_DANGER_TYPE_NOT_DANGEROUS ||
 -             file_type_dangerous;
@@ -302,17 +301,17 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
 -                  download::DOWNLOAD_DANGER_TYPE_DANGEROUS_ACCOUNT_COMPROMISE);
 -    }
 -
--    case (DownloadPrefs::DownloadRestriction::ALL_FILES):
--      return true;
--
--    default:
--      LOG(ERROR) << "Invalid download restriction value: "
--                 << static_cast<int>(download_restriction);
--  }
+     case (DownloadPrefs::DownloadRestriction::ALL_FILES):
+       return true;
  
-   return false;
- }
-@@ -1828,7 +1770,6 @@ void ChromeDownloadManagerDelegate::Mayb
++    // DownloadRestrictions policy key values 1, 2 and 4 treated as invalid
++    case (DownloadPrefs::DownloadRestriction::POTENTIALLY_DANGEROUS_FILES):
++    case (DownloadPrefs::DownloadRestriction::DANGEROUS_FILES):
++    case (DownloadPrefs::DownloadRestriction::MALICIOUS_FILES):
+     default:
+       LOG(ERROR) << "Invalid download restriction value: "
+                  << static_cast<int>(download_restriction);
+@@ -1838,7 +1798,6 @@ void ChromeDownloadManagerDelegate::Mayb
      service->MaybeSendDangerousDownloadOpenedReport(download,
                                                      show_download_in_folder);
    }
@@ -320,7 +319,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
    if (!download->GetAutoOpened()) {
      download::DownloadContent download_content =
          download::DownloadContentFromMimeType(download->GetMimeType(), false);
-@@ -1836,6 +1777,7 @@ void ChromeDownloadManagerDelegate::Mayb
+@@ -1846,6 +1805,7 @@ void ChromeDownloadManagerDelegate::Mayb
          download->GetDangerType(), download_content, base::Time::Now(),
          download->GetEndTime(), show_download_in_folder);
    }
@@ -328,7 +327,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
  }
  
  void ChromeDownloadManagerDelegate::MaybeSendDangerousDownloadCanceledReport(
-@@ -1960,8 +1902,7 @@ void ChromeDownloadManagerDelegate::Chec
+@@ -1970,8 +1930,7 @@ void ChromeDownloadManagerDelegate::Chec
    DCHECK(download_item);
    DCHECK(download_item->IsSavePackageDownload());
  
@@ -338,10 +337,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/chrome_download_manager_d
    std::optional<enterprise_connectors::AnalysisSettings> settings =
        safe_browsing::DeepScanningRequest::ShouldUploadBinary(download_item);
  
-Index: chromium-128.0.6613.137/chrome/browser/download/download_item_model.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/download_item_model.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/download_item_model.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/download_item_model.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/download_item_model.cc
++++ chromium-129.0.6668.58/chrome/browser/download/download_item_model.cc
 @@ -985,30 +985,6 @@ void DownloadItemModel::ExecuteCommand(D
  }
  
@@ -373,10 +372,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_item_model.cc
    return TailoredWarningType::kNoTailoredWarning;
  }
  
-Index: chromium-128.0.6613.137/chrome/browser/download/download_stats.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/download_stats.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/download_stats.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/download_stats.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/download_stats.cc
++++ chromium-129.0.6668.58/chrome/browser/download/download_stats.cc
 @@ -11,6 +11,7 @@
  #include "chrome/browser/download/download_ui_model.h"
  #include "components/download/public/common/download_content.h"
@@ -395,11 +394,11 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_stats.cc
  
    model.SetWasUIWarningShown(true);
  }
-Index: chromium-128.0.6613.137/chrome/browser/download/download_target_determiner.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/download_target_determiner.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/download_target_determiner.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/download_target_determiner.cc
-@@ -1070,12 +1070,6 @@ void DownloadTargetDeterminer::CheckVisi
+--- chromium-129.0.6668.58.orig/chrome/browser/download/download_target_determiner.cc
++++ chromium-129.0.6668.58/chrome/browser/download/download_target_determiner.cc
+@@ -1072,12 +1072,6 @@ void DownloadTargetDeterminer::CheckVisi
      bool visited_referrer_before) {
    DCHECK_CURRENTLY_ON(BrowserThread::UI);
    DCHECK_EQ(STATE_DETERMINE_INTERMEDIATE_PATH, next_state_);
@@ -412,7 +411,7 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_target_determine
    danger_level_ = GetDangerLevel(
        visited_referrer_before ? VISITED_REFERRER : NO_VISITS_TO_REFERRER);
    if (danger_level_ != DownloadFileType::NOT_DANGEROUS &&
-@@ -1360,14 +1354,7 @@ DownloadFileType::DangerLevel DownloadTa
+@@ -1362,14 +1356,7 @@ DownloadFileType::DangerLevel DownloadTa
  
  std::optional<base::Time>
  DownloadTargetDeterminer::GetLastDownloadBypassTimestamp() const {
@@ -428,10 +427,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_target_determine
  }
  
  void DownloadTargetDeterminer::OnDownloadDestroyed(
-Index: chromium-128.0.6613.137/chrome/browser/download/download_ui_safe_browsing_util.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/download_ui_safe_browsing_util.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/download_ui_safe_browsing_util.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/download_ui_safe_browsing_util.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/download_ui_safe_browsing_util.cc
++++ chromium-129.0.6668.58/chrome/browser/download/download_ui_safe_browsing_util.cc
 @@ -68,12 +68,6 @@ bool CanUserTurnOnSafeBrowsing(Profile*
  void RecordDownloadDangerPromptHistogram(
      const std::string& proceed_or_shown_suffix,
@@ -469,10 +468,10 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_ui_safe_browsing
 -
 -  return true;
  }
-Index: chromium-128.0.6613.137/chrome/browser/download/download_warning_desktop_hats_utils.cc
+Index: chromium-129.0.6668.58/chrome/browser/download/download_warning_desktop_hats_utils.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/download/download_warning_desktop_hats_utils.cc
-+++ chromium-128.0.6613.137/chrome/browser/download/download_warning_desktop_hats_utils.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/download/download_warning_desktop_hats_utils.cc
++++ chromium-129.0.6668.58/chrome/browser/download/download_warning_desktop_hats_utils.cc
 @@ -33,7 +33,6 @@
  #include "components/prefs/pref_service.h"
  #include "components/safe_browsing/buildflags.h"
@@ -590,11 +589,11 @@ Index: chromium-128.0.6613.137/chrome/browser/download/download_warning_desktop_
  }
  
  base::TimeDelta GetIgnoreDownloadBubbleWarningDelay() {
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
-@@ -201,8 +201,6 @@ AnalysisSettings AnalysisServiceSettings
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/analysis_service_settings.cc
+@@ -200,8 +200,6 @@ AnalysisSettings AnalysisServiceSettings
    settings.block_large_files = block_large_files_;
    if (is_cloud_analysis()) {
      CloudAnalysisSettings cloud_settings;
@@ -603,10 +602,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/ana
      // We assume all support_tags structs have the same max file size.
      cloud_settings.max_file_size =
          analysis_config_->supported_tags[0].max_file_size;
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/content_analysis_delegate.cc
 @@ -36,8 +36,6 @@
  #include "chrome/browser/profiles/profile.h"
  #include "chrome/browser/safe_browsing/cloud_content_scanning/binary_upload_service.h"
@@ -616,7 +615,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/con
  #include "chrome/grit/generated_resources.h"
  #include "components/enterprise/buildflags/buildflags.h"
  #include "components/enterprise/common/files_scan_data.h"
-@@ -1117,15 +1115,6 @@ void ContentAnalysisDelegate::AckAllRequ
+@@ -1117,16 +1115,6 @@ void ContentAnalysisDelegate::AckAllRequ
  void ContentAnalysisDelegate::FinishLargeDataRequestEarly(
      std::unique_ptr<safe_browsing::BinaryUploadService::Request> request,
      safe_browsing::BinaryUploadService::Result result) {
@@ -624,7 +623,8 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/con
 -  // it wasn't added in OnGetRequestData
 -  safe_browsing::WebUIInfoSingleton::GetInstance()->AddToDeepScanRequests(
 -      request->per_profile_request(), /*access_token*/ "", /*upload_info*/
--      "Skipped - Large data blocked", request->content_analysis_request());
+-      "Skipped - Large data blocked", /*upload_url*/ "",
+-      request->content_analysis_request());
 -  safe_browsing::WebUIInfoSingleton::GetInstance()->AddToDeepScanResponses(
 -      /*token=*/"", safe_browsing::BinaryUploadService::ResultToString(result),
 -      enterprise_connectors::ContentAnalysisResponse());
@@ -632,10 +632,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/con
    request->FinishRequest(result,
                           enterprise_connectors::ContentAnalysisResponse());
  }
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/content_analysis_downloads_delegate.cc
 @@ -123,7 +123,7 @@ ContentAnalysisDownloadsDelegate::GetCus
  }
  
@@ -645,10 +645,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/con
  }
  
  std::u16string ContentAnalysisDownloadsDelegate::GetBypassJustificationLabel()
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/files_request_handler.cc
 @@ -175,52 +175,12 @@ void FilesRequestHandler::FileRequestCal
  }
  
@@ -710,7 +710,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/fil
 -  // wasn't added in OnGetRequestData
 -  safe_browsing::WebUIInfoSingleton::GetInstance()->AddToDeepScanRequests(
 -      request->per_profile_request(), /*access_token*/ "", /*upload_info*/ "",
--      request->content_analysis_request());
+-      /*upload_url=*/"", request->content_analysis_request());
 -  safe_browsing::WebUIInfoSingleton::GetInstance()->AddToDeepScanResponses(
 -      /*token=*/"", safe_browsing::BinaryUploadService::ResultToString(result),
 -      enterprise_connectors::ContentAnalysisResponse());
@@ -718,10 +718,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/fil
    request->FinishRequest(result,
                           enterprise_connectors::ContentAnalysisResponse());
  }
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/analysis/files_request_handler.h
 @@ -123,10 +123,6 @@ class FilesRequestHandler : public Reque
        enterprise_connectors::ContentAnalysisResponse response);
  
@@ -733,11 +733,11 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/analysis/fil
    // Called when the file info for `path` has been fetched. Also begins the
    // upload process.
    void OnGotFileInfo(
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/common.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/common.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/common.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/common.cc
-@@ -269,7 +269,7 @@ void ShowDownloadReviewDialog(const std:
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/common.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/common.cc
+@@ -271,7 +271,7 @@ void ShowDownloadReviewDialog(const std:
  bool IsResumableUpload(const BinaryUploadService::Request& request) {
    // Currently resumable upload doesn't support paste or LBUS. If one day we do,
    // we should update the logic here as well.
@@ -746,49 +746,36 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/common.cc
           request.cloud_or_local_settings().is_cloud_analysis() &&
           request.content_analysis_request().analysis_connector() !=
               enterprise_connectors::AnalysisConnector::BULK_DATA_ENTRY &&
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_manager.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/connectors_manager.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/connectors_manager.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_manager.cc
-@@ -431,13 +431,7 @@ std::vector<const AnalysisConfig*> Conne
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/connectors_manager.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/connectors_manager.cc
+@@ -413,16 +413,7 @@ std::vector<const AnalysisConfig*> Conne
  }
  
- safe_browsing::DataRegion ConnectorsManager::GetDataRegion() const {
+ DataRegion ConnectorsManager::GetDataRegion() const {
+-#if BUILDFLAG(IS_ANDROID)
+   return DataRegion::NO_PREFERENCE;
+-#else
 -  bool apply_data_region =
 -      prefs()->HasPrefPath(prefs::kChromeDataRegionSetting) &&
 -      base::FeatureList::IsEnabled(safe_browsing::kDlpRegionalizedEndpoints);
--  return apply_data_region
--             ? safe_browsing::ChromeDataRegionSettingToEnum(
--                   prefs()->GetInteger(prefs::kChromeDataRegionSetting))
--             : safe_browsing::DataRegion::NO_PREFERENCE;
-+  return safe_browsing::DataRegion::NO_PREFERENCE;
+-  return apply_data_region ? ChromeDataRegionSettingToEnum(prefs()->GetInteger(
+-                                 prefs::kChromeDataRegionSetting))
+-                           : DataRegion::NO_PREFERENCE;
+-#endif
  }
  
  void ConnectorsManager::StartObservingPrefs(PrefService* pref_service) {
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_service.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/connectors_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/connectors_service.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_service.cc
-@@ -453,37 +453,8 @@ std::optional<std::string> ConnectorsSer
-   return std::nullopt;
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/connectors_service.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/connectors_service.cc
+@@ -446,22 +446,7 @@ std::string ConnectorsService::GetManage
  }
  
--safe_browsing::EnterpriseRealTimeUrlCheckMode
--ConnectorsService::GetAppliedRealTimeUrlCheck() const {
--  if (!ConnectorsEnabled() ||
--      !GetDmToken(prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckScope)
--           .has_value()) {
--    return safe_browsing::REAL_TIME_CHECK_DISABLED;
--  }
--
--  return static_cast<safe_browsing::EnterpriseRealTimeUrlCheckMode>(
--      Profile::FromBrowserContext(context_)->GetPrefs()->GetInteger(
--          prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckMode));
--}
--
  std::string ConnectorsService::GetRealTimeUrlCheckIdentifier() const {
--  auto dm_token =
--      GetDmToken(prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckScope);
+-  auto dm_token = GetDmToken(kEnterpriseRealTimeUrlCheckScope);
 -  if (!dm_token) {
      return std::string();
 -  }
@@ -807,27 +794,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_s
  }
  
  ConnectorsManager* ConnectorsService::ConnectorsManagerForTesting() {
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_service.h
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/connectors_service.h
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/connectors_service.h
-@@ -88,12 +88,6 @@ class ConnectorsService : public KeyedSe
-   // is no token to use.
-   std::optional<std::string> GetDMTokenForRealTimeUrlCheck() const;
- 
--  // Returns the value to used by the enterprise real-time URL check Connector
--  // if it is set and if the scope it's set at has a valid browser-profile
--  // affiliation.
--  safe_browsing::EnterpriseRealTimeUrlCheckMode GetAppliedRealTimeUrlCheck()
--      const;
--
-   // Returns the profile email if real-time URL check is set for the profile,
-   // the device ID if it is set for the device, or an empty string if it is
-   // unset.
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
-===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/device_trust/signals/decorators/common/context_signals_decorator.cc
 @@ -26,25 +26,6 @@ enum class PasswordProtectionTrigger {
    kPhisingReuse = 3
  };
@@ -871,10 +841,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/device_trust
    signals.Set(device_signals::names::kChromeRemoteDesktopAppBlocked,
                context_info.chrome_remote_desktop_app_blocked);
    signals.Set(device_signals::names::kBuiltInDnsClientEnabled,
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/connectors/reporting/realtime_reporting_client.cc
 @@ -501,18 +501,7 @@ void RealtimeReportingClient::ReportEven
  }
  
@@ -895,10 +865,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/connectors/reporting/re
  }
  
  std::string RealtimeReportingClient::GetProfileIdentifier() const {
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_controls/reporting_service.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/data_controls/reporting_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/data_controls/reporting_service.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/data_controls/reporting_service.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/data_controls/reporting_service.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/data_controls/reporting_service.cc
 @@ -124,10 +124,6 @@ void ReportingService::ReportPaste(
      const content::ClipboardEndpoint& destination,
      const content::ClipboardMetadata& metadata,
@@ -994,13 +964,13 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_controls/reporting
  }
  
  ReportingServiceFactory::~ReportingServiceFactory() = default;
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
-@@ -95,77 +95,6 @@ class ClipboardObserver : public ui::Cli
-   content::ClipboardPasteData pending_seqno_data_;
- };
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/data_protection/data_protection_clipboard_utils.cc
+@@ -36,77 +36,6 @@ namespace enterprise_data_protection {
+ 
+ namespace {
  
 -void HandleFileData(
 -    content::WebContents* web_contents,
@@ -1076,7 +1046,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
  
  bool SkipDataControlOrContentAnalysisChecks(
      const content::ClipboardEndpoint& main_endpoint) {
-@@ -206,41 +135,7 @@ void PasteIfAllowedByContentAnalysis(
+@@ -147,41 +76,7 @@ void PasteIfAllowedByContentAnalysis(
      return;
    }
  
@@ -1118,15 +1088,15 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
  }
  
  void MaybeReportDataControlsPaste(const content::ClipboardEndpoint& source,
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
-@@ -66,12 +66,6 @@ void RunPendingNavigationCallback(
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/data_protection/data_protection_navigation_observer.cc
+@@ -68,12 +68,6 @@ void RunPendingNavigationCallback(
    auto* user_data = GetUserData(web_contents);
    DCHECK(user_data);
  
--  if (ShouldReportWatermark(user_data)) {
+-  if (ShouldReportSafeUrlFilteringEvents(user_data)) {
 -    MaybeTriggerUrlFilteringInterstitialEvent(
 -        web_contents, web_contents->GetLastCommittedURL(),
 -        /*threat_type=*/"", *user_data->rt_lookup_response());
@@ -1135,7 +1105,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
    std::move(callback).Run(user_data->settings());
  }
  
-@@ -177,9 +171,7 @@ void LogVerdictSource(
+@@ -180,9 +174,7 @@ void LogVerdictSource(
  
  bool IsScreenshotAllowedByDataControls(content::BrowserContext* context,
                                         const GURL& url) {
@@ -1146,7 +1116,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
  }
  
  }  // namespace
-@@ -202,16 +194,6 @@ void DataProtectionNavigationObserver::C
+@@ -207,16 +199,6 @@ void DataProtectionNavigationObserver::C
      std::move(callback).Run(UrlSettings::None());
      return;
    }
@@ -1163,7 +1133,7 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
  }
  
  // static
-@@ -246,35 +228,9 @@ void DataProtectionNavigationObserver::G
+@@ -252,35 +234,9 @@ void DataProtectionNavigationObserver::G
                                            web_contents->GetLastCommittedURL()));
    }
  
@@ -1199,11 +1169,11 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/data_protection/data_pr
  }
  
  // static
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fetcher.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/signals/context_info_fetcher.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/signals/context_info_fetcher.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fetcher.cc
-@@ -222,7 +222,6 @@ void ContextInfoFetcher::Fetch(ContextIn
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/signals/context_info_fetcher.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/signals/context_info_fetcher.cc
+@@ -227,7 +227,6 @@ void ContextInfoFetcher::Fetch(ContextIn
        GetAnalysisConnectorProviders(enterprise_connectors::BULK_DATA_ENTRY);
    info.on_print_providers =
        GetAnalysisConnectorProviders(enterprise_connectors::PRINT);
@@ -1211,11 +1181,11 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fe
    info.on_security_event_providers = GetOnSecurityEventProviders();
    info.browser_version = version_info::GetVersionNumber();
    info.site_isolation_enabled =
-@@ -279,11 +278,6 @@ std::vector<std::string> ContextInfoFetc
+@@ -284,11 +283,6 @@ std::vector<std::string> ContextInfoFetc
    return connectors_service_->GetAnalysisServiceProviderNames(connector);
  }
  
--safe_browsing::EnterpriseRealTimeUrlCheckMode
+-enterprise_connectors::EnterpriseRealTimeUrlCheckMode
 -ContextInfoFetcher::GetRealtimeUrlCheckMode() {
 -  return connectors_service_->GetAppliedRealTimeUrlCheck();
 -}
@@ -1223,10 +1193,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fe
  std::vector<std::string> ContextInfoFetcher::GetOnSecurityEventProviders() {
    return connectors_service_->GetReportingServiceProviderNames(
        enterprise_connectors::ReportingConnector::SECURITY_EVENT);
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fetcher.h
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/signals/context_info_fetcher.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/signals/context_info_fetcher.h
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fetcher.h
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/signals/context_info_fetcher.h
++++ chromium-129.0.6668.58/chrome/browser/enterprise/signals/context_info_fetcher.h
 @@ -6,6 +6,7 @@
  #define CHROME_BROWSER_ENTERPRISE_SIGNALS_CONTEXT_INFO_FETCHER_H_
  
@@ -1235,26 +1205,27 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/context_info_fe
  #include <vector>
  
  #include "base/functional/callback_forward.h"
-@@ -39,7 +40,6 @@ struct ContextInfo {
+@@ -40,7 +41,6 @@ struct ContextInfo {
    std::vector<std::string> on_bulk_data_entry_providers;
    std::vector<std::string> on_print_providers;
    std::vector<std::string> on_security_event_providers;
--  safe_browsing::EnterpriseRealTimeUrlCheckMode realtime_url_check_mode;
+-  enterprise_connectors::EnterpriseRealTimeUrlCheckMode realtime_url_check_mode;
    std::string browser_version;
    safe_browsing::SafeBrowsingState safe_browsing_protection_level;
    bool site_isolation_enabled;
-@@ -90,7 +90,6 @@ class ContextInfoFetcher {
+@@ -91,8 +91,6 @@ class ContextInfoFetcher {
    std::vector<std::string> GetAnalysisConnectorProviders(
        enterprise_connectors::AnalysisConnector connector);
  
--  safe_browsing::EnterpriseRealTimeUrlCheckMode GetRealtimeUrlCheckMode();
+-  enterprise_connectors::EnterpriseRealTimeUrlCheckMode
+-  GetRealtimeUrlCheckMode();
  
    std::vector<std::string> GetOnSecurityEventProviders();
  
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.cc
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/signals/signals_utils.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/signals/signals_utils.cc
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/signals/signals_utils.cc
++++ chromium-129.0.6668.58/chrome/browser/enterprise/signals/signals_utils.cc
 @@ -33,24 +33,6 @@ bool IsURLBlocked(const GURL& url, Polic
  
  }  // namespace
@@ -1296,10 +1267,10 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.c
  bool GetChromeRemoteDesktopAppBlocked(PolicyBlocklistService* service) {
    DCHECK(service);
    return IsURLBlocked(GURL("https://remotedesktop.google.com"), service) ||
-Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.h
+Index: chromium-129.0.6668.58/chrome/browser/enterprise/signals/signals_utils.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/enterprise/signals/signals_utils.h
-+++ chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.h
+--- chromium-129.0.6668.58.orig/chrome/browser/enterprise/signals/signals_utils.h
++++ chromium-129.0.6668.58/chrome/browser/enterprise/signals/signals_utils.h
 @@ -19,12 +19,6 @@ std::optional<bool> GetThirdPartyBlockin
  
  bool GetBuiltInDnsClientEnabled(PrefService* local_state);
@@ -1313,11 +1284,11 @@ Index: chromium-128.0.6613.137/chrome/browser/enterprise/signals/signals_utils.h
  bool GetChromeRemoteDesktopAppBlocked(PolicyBlocklistService* service);
  
  }  // namespace utils
-Index: chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/browser/extensions/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
-@@ -315,10 +315,6 @@ source_set("extensions") {
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/BUILD.gn
++++ chromium-129.0.6668.58/chrome/browser/extensions/BUILD.gn
+@@ -291,10 +291,6 @@ source_set("extensions") {
      "api/runtime/chrome_runtime_api_delegate.h",
      "api/safe_browsing_private/safe_browsing_private_api.cc",
      "api/safe_browsing_private/safe_browsing_private_api.h",
@@ -1328,7 +1299,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
      "api/safe_browsing_private/safe_browsing_util.cc",
      "api/safe_browsing_private/safe_browsing_util.h",
      "api/search/search_api.cc",
-@@ -665,8 +661,6 @@ source_set("extensions") {
+@@ -639,8 +635,6 @@ source_set("extensions") {
      "mv2_experiment_stage.h",
      "navigation_extension_enabler.cc",
      "navigation_extension_enabler.h",
@@ -1337,11 +1308,11 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
      "pack_extension_job.cc",
      "pack_extension_job.h",
      "pending_extension_info.cc",
-Index: chromium-128.0.6613.137/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
-@@ -115,7 +115,6 @@ void EnsureApiBrowserContextKeyedService
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/api/api_browser_context_keyed_service_factories.cc
+@@ -114,7 +114,6 @@ void EnsureApiBrowserContextKeyedService
  #endif
    extensions::ProcessesAPI::GetFactoryInstance();
    extensions::ReadingListEventRouter::GetFactoryInstance();
@@ -1349,11 +1320,11 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/api/api_browser_context
    extensions::SessionsAPI::GetFactoryInstance();
    extensions::SettingsPrivateEventRouterFactory::GetInstance();
    extensions::SettingsOverridesAPI::GetFactoryInstance();
-Index: chromium-128.0.6613.137/chrome/browser/extensions/api/cookies/cookies_api.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/api/cookies/cookies_api.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/api/cookies/cookies_api.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/api/cookies/cookies_api.cc
-@@ -303,19 +303,6 @@ void CookiesGetFunction::GetCookieListCa
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/api/cookies/cookies_api.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/api/cookies/cookies_api.cc
+@@ -318,19 +318,6 @@ void CookiesGetFunction::GetCookieListCa
  }
  
  void CookiesGetFunction::NotifyExtensionTelemetry() {
@@ -1373,7 +1344,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/api/cookies/cookies_api
  }
  
  CookiesGetAllFunction::CookiesGetAllFunction() {
-@@ -408,24 +395,6 @@ void CookiesGetAllFunction::GetCookieLis
+@@ -423,24 +410,6 @@ void CookiesGetAllFunction::GetCookieLis
  }
  
  void CookiesGetAllFunction::NotifyExtensionTelemetry() {
@@ -1398,20 +1369,20 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/api/cookies/cookies_api
  }
  
  CookiesSetFunction::CookiesSetFunction()
-Index: chromium-128.0.6613.137/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
-@@ -93,16 +93,8 @@ api::enterprise_reporting_private::Conte
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/api/enterprise_reporting_private/enterprise_reporting_private_api.cc
+@@ -98,16 +98,8 @@ api::enterprise_reporting_private::Conte
    info.third_party_blocking_enabled = signals.third_party_blocking_enabled;
    info.os_firewall = ToInfoSettingValue(signals.os_firewall);
    info.system_dns_servers = std::move(signals.system_dns_servers);
 -  switch (signals.realtime_url_check_mode) {
--    case safe_browsing::REAL_TIME_CHECK_DISABLED:
+-    case enterprise_connectors::REAL_TIME_CHECK_DISABLED:
        info.realtime_url_check_mode = extensions::api::
            enterprise_reporting_private::RealtimeUrlCheckMode::kDisabled;
 -      break;
--    case safe_browsing::REAL_TIME_CHECK_FOR_MAINFRAME_ENABLED:
+-    case enterprise_connectors::REAL_TIME_CHECK_FOR_MAINFRAME_ENABLED:
 -      info.realtime_url_check_mode = extensions::api::
 -          enterprise_reporting_private::RealtimeUrlCheckMode::kEnabledMainFrame;
 -      break;
@@ -1419,24 +1390,11 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/api/enterprise_reportin
    info.browser_version = std::move(signals.browser_version);
    info.built_in_dns_client_enabled = signals.built_in_dns_client_enabled;
    info.enterprise_profile_id = signals.enterprise_profile_id;
-Index: chromium-128.0.6613.137/chrome/browser/extensions/api/settings_private/prefs_util.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/api/tabs/tabs_api.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/api/settings_private/prefs_util.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/api/settings_private/prefs_util.cc
-@@ -347,8 +347,6 @@ const PrefsUtil::TypedPrefMap& PrefsUtil
-       settings_api::PrefType::kBoolean;
-   (*s_allowlist)[::kGeneratedHttpsFirstModePref] =
-       settings_api::PrefType::kNumber;
--  (*s_allowlist)[::prefs::kSafeBrowsingEsbOptInWithFriendlierSettings] =
--      settings_api::PrefType::kBoolean;
- 
-   // Tracking protection page
-   (*s_allowlist)[::prefs::kCookieControlsMode] =
-Index: chromium-128.0.6613.137/chrome/browser/extensions/api/tabs/tabs_api.cc
-===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/api/tabs/tabs_api.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/api/tabs/tabs_api.cc
-@@ -428,30 +428,6 @@ void NotifyExtensionTelemetry(Profile* p
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/api/tabs/tabs_api.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/api/tabs/tabs_api.cc
+@@ -427,30 +427,6 @@ void NotifyExtensionTelemetry(Profile* p
                                const std::string& current_url,
                                const std::string& new_url,
                                const std::optional<StackTrace>& js_callstack) {
@@ -1467,10 +1425,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/api/tabs/tabs_api.cc
  }
  
  }  // namespace
-Index: chromium-128.0.6613.137/chrome/browser/extensions/blocklist.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/blocklist.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/blocklist.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/blocklist.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/blocklist.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/blocklist.cc
 @@ -185,20 +185,8 @@ Blocklist* Blocklist::Get(content::Brows
  void Blocklist::GetBlocklistedIDs(const std::set<ExtensionId>& ids,
                                    GetBlocklistedIDsCallback callback) {
@@ -1492,11 +1450,11 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/blocklist.cc
  }
  
  void Blocklist::GetMalwareIDs(const std::set<ExtensionId>& ids,
-Index: chromium-128.0.6613.137/chrome/browser/extensions/chrome_extensions_browser_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/chrome_extensions_browser_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/chrome_extensions_browser_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/chrome_extensions_browser_client.cc
-@@ -807,44 +807,17 @@ void ChromeExtensionsBrowserClient::Noti
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/chrome_extensions_browser_client.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/chrome_extensions_browser_client.cc
+@@ -808,44 +808,17 @@ void ChromeExtensionsBrowserClient::Noti
      content::BrowserContext* context,
      const ExtensionId& extension_id,
      const std::string& code) const {
@@ -1542,7 +1500,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/chrome_extensions_brows
  }
  
  void ChromeExtensionsBrowserClient::
-@@ -853,59 +826,12 @@ void ChromeExtensionsBrowserClient::
+@@ -854,59 +827,12 @@ void ChromeExtensionsBrowserClient::
          const ExtensionId& extension_id,
          const GURL& request_url,
          const GURL& redirect_url) const {
@@ -1602,7 +1560,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/chrome_extensions_brows
  }
  
  // static
-@@ -1074,7 +1000,6 @@ void ChromeExtensionsBrowserClient::GetW
+@@ -1075,7 +1001,6 @@ void ChromeExtensionsBrowserClient::GetW
  
  void ChromeExtensionsBrowserClient::CreatePasswordReuseDetectionManager(
      content::WebContents* web_contents) const {
@@ -1610,10 +1568,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/chrome_extensions_brows
  }
  
  media_device_salt::MediaDeviceSaltService*
-Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/extension_service.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/extension_service.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_service.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/extension_service.cc
 @@ -52,7 +52,6 @@
  #include "chrome/browser/extensions/forced_extensions/install_stage_tracker.h"
  #include "chrome/browser/extensions/install_verifier.h"
@@ -1648,7 +1606,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.cc
        extension_telemetry_service_verdict_handler_(
            extension_prefs,
            ExtensionRegistry::Get(profile),
-@@ -941,17 +935,6 @@ bool ExtensionService::IsExtensionEnable
+@@ -937,17 +931,6 @@ bool ExtensionService::IsExtensionEnable
    return extension_registrar_.IsExtensionEnabled(extension_id);
  }
  
@@ -1666,7 +1624,7 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.cc
  void ExtensionService::PerformActionBasedOnExtensionTelemetryServiceVerdicts(
      const Blocklist::BlocklistStateMap& blocklist_state_map) {
    DCHECK_CURRENTLY_ON(BrowserThread::UI);
-@@ -961,89 +944,6 @@ void ExtensionService::PerformActionBase
+@@ -957,89 +940,6 @@ void ExtensionService::PerformActionBase
    error_controller_->ShowErrorIfNeeded();
  }
  
@@ -1756,10 +1714,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.cc
  void ExtensionService::RemoveDisableReasonAndMaybeEnable(
      const std::string& extension_id,
      disable_reason::DisableReason reason_to_remove) {
-Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.h
+Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_service.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/extension_service.h
-+++ chromium-128.0.6613.137/chrome/browser/extensions/extension_service.h
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_service.h
++++ chromium-129.0.6668.58/chrome/browser/extensions/extension_service.h
 @@ -30,7 +30,6 @@
  #include "chrome/browser/extensions/forced_extensions/force_installed_metrics.h"
  #include "chrome/browser/extensions/forced_extensions/force_installed_tracker.h"
@@ -1818,10 +1776,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_service.h
    ExtensionTelemetryServiceVerdictHandler
        extension_telemetry_service_verdict_handler_;
  
-Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_system_impl.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_system_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/extension_system_impl.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/extension_system_impl.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_system_impl.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/extension_system_impl.cc
 @@ -448,8 +448,6 @@ void ExtensionSystemImpl::InstallUpdate(
  void ExtensionSystemImpl::PerformActionBasedOnOmahaAttributes(
      const std::string& extension_id,
@@ -1831,10 +1789,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_system_impl.c
  }
  
  bool ExtensionSystemImpl::FinishDelayedInstallationIfReady(
-Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/extension_telemetry_service_verdict_handler.cc
 @@ -73,14 +73,12 @@ void ExtensionTelemetryServiceVerdictHan
          blocklist_prefs::SetExtensionTelemetryServiceBlocklistState(
              extension_id, BitMapBlocklistState::NOT_BLOCKLISTED,
@@ -1850,10 +1808,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/extension_telemetry_ser
          ReportOffstoreExtensionDisabled(
              ExtensionTelemetryDisableReason::kMalware);
          break;
-Index: chromium-128.0.6613.137/chrome/browser/extensions/safe_browsing_verdict_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/extensions/safe_browsing_verdict_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/safe_browsing_verdict_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/extensions/safe_browsing_verdict_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/safe_browsing_verdict_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/extensions/safe_browsing_verdict_handler.cc
 @@ -119,7 +119,6 @@ void SafeBrowsingVerdictHandler::UpdateB
      blocklist_.Remove(id);
      blocklist_prefs::SetSafeBrowsingExtensionBlocklistState(
@@ -1886,10 +1844,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/safe_browsing_verdict_h
      UMA_HISTOGRAM_ENUMERATION("Extensions.Greylist.Disabled",
                                extension->location());
    }
-Index: chromium-128.0.6613.137/chrome/browser/file_select_helper.cc
+Index: chromium-129.0.6668.58/chrome/browser/file_select_helper.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/file_select_helper.cc
-+++ chromium-128.0.6613.137/chrome/browser/file_select_helper.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/file_select_helper.cc
++++ chromium-129.0.6668.58/chrome/browser/file_select_helper.cc
 @@ -329,7 +329,7 @@ void FileSelectHelper::PerformContentAna
    if (AbortIfWebContentsDestroyed())
      return;
@@ -1908,10 +1866,10 @@ Index: chromium-128.0.6613.137/chrome/browser/file_select_helper.cc
  void FileSelectHelper::ContentAnalysisCompletionCallback(
      std::vector<blink::mojom::FileChooserFileInfoPtr> list,
      const enterprise_connectors::ContentAnalysisDelegate::Data& data,
-Index: chromium-128.0.6613.137/chrome/browser/file_select_helper.h
+Index: chromium-129.0.6668.58/chrome/browser/file_select_helper.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/file_select_helper.h
-+++ chromium-128.0.6613.137/chrome/browser/file_select_helper.h
+--- chromium-129.0.6668.58.orig/chrome/browser/file_select_helper.h
++++ chromium-129.0.6668.58/chrome/browser/file_select_helper.h
 @@ -225,7 +225,7 @@ class FileSelectHelper : public base::Re
    void PerformContentAnalysisIfNeeded(
        std::vector<blink::mojom::FileChooserFileInfoPtr> list);
@@ -1921,19 +1879,19 @@ Index: chromium-128.0.6613.137/chrome/browser/file_select_helper.h
    // Callback used to receive the results of a content analysis scan.
    void ContentAnalysisCompletionCallback(
        std::vector<blink::mojom::FileChooserFileInfoPtr> list,
-Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
+Index: chromium-129.0.6668.58/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
-+++ chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
-@@ -36,7 +36,6 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
++++ chromium-129.0.6668.58/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
+@@ -37,7 +37,6 @@
  #include "chrome/browser/permissions/permission_decision_auto_blocker_factory.h"
  #include "chrome/browser/profiles/profile.h"
  #include "chrome/browser/profiles/profile_manager.h"
 -#include "chrome/browser/safe_browsing/download_protection/download_protection_util.h"
  #include "chrome/browser/ui/browser_finder.h"
- #include "chrome/browser/ui/file_system_access_dialogs.h"
- #include "chrome/common/chrome_paths.h"
-@@ -431,89 +430,6 @@ bool ShouldBlockAccessToPath(const base:
+ #include "chrome/browser/ui/file_system_access/file_system_access_dangerous_file_dialog.h"
+ #include "chrome/browser/ui/file_system_access/file_system_access_dialogs.h"
+@@ -434,89 +433,6 @@ bool ShouldBlockAccessToPath(const base:
    return true;
  }
  
@@ -2023,7 +1981,7 @@ Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_sys
  std::string GenerateLastPickedDirectoryKey(const std::string& id) {
    return id.empty() ? kDefaultLastPickedDirectoryKey
                      : base::StrCat({kCustomLastPickedDirectoryKey, "-", id});
-@@ -533,13 +449,7 @@ std::string_view GetGrantKeyFromGrantTyp
+@@ -536,13 +452,7 @@ std::string_view GetGrantKeyFromGrantTyp
  bool FileHasDangerousExtension(const url::Origin& origin,
                                 const base::FilePath& path,
                                 Profile* profile) {
@@ -2038,7 +1996,7 @@ Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_sys
  }
  
  }  // namespace
-@@ -1602,7 +1512,7 @@ void ChromeFileSystemAccessPermissionCon
+@@ -1625,7 +1535,7 @@ void ChromeFileSystemAccessPermissionCon
      std::vector<PathInfo> entries,
      content::GlobalRenderFrameHostId frame_id,
      EntriesAllowedByEnterprisePolicyCallback callback) {
@@ -2047,7 +2005,7 @@ Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_sys
    // Get WebContents pointer in order to perform enterprise content analysis.
    content::WebContents* web_contents = nullptr;
    if (!entries.empty()) {
-@@ -1710,29 +1620,6 @@ void ChromeFileSystemAccessPermissionCon
+@@ -1733,29 +1643,6 @@ void ChromeFileSystemAccessPermissionCon
        std::move(callback));
  }
  
@@ -2077,11 +2035,11 @@ Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_sys
  void ChromeFileSystemAccessPermissionContext::DidCheckPathAgainstBlocklist(
      const url::Origin& origin,
      const base::FilePath& path,
-Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
+Index: chromium-129.0.6668.58/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
-+++ chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
-@@ -181,10 +181,6 @@ class ChromeFileSystemAccessPermissionCo
+--- chromium-129.0.6668.58.orig/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
++++ chromium-129.0.6668.58/chrome/browser/file_system_access/chrome_file_system_access_permission_context.h
+@@ -180,10 +180,6 @@ class ChromeFileSystemAccessPermissionCo
        UserAction user_action,
        content::GlobalRenderFrameHostId frame_id,
        base::OnceCallback<void(SensitiveEntryResult)> callback) override;
@@ -2092,10 +2050,10 @@ Index: chromium-128.0.6613.137/chrome/browser/file_system_access/chrome_file_sys
    bool CanObtainReadPermission(const url::Origin& origin) override;
    bool CanObtainWritePermission(const url::Origin& origin) override;
    void SetLastPickedDirectory(const url::Origin& origin,
-Index: chromium-128.0.6613.137/chrome/browser/media/webrtc/display_media_access_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/media/webrtc/display_media_access_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/media/webrtc/display_media_access_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/media/webrtc/display_media_access_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/media/webrtc/display_media_access_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/media/webrtc/display_media_access_handler.cc
 @@ -29,6 +29,7 @@
  #include "chrome/browser/ui/views/frame/browser_view.h"
  #include "chrome/common/pref_names.h"
@@ -2120,10 +2078,10 @@ Index: chromium-128.0.6613.137/chrome/browser/media/webrtc/display_media_access_
  
  #if BUILDFLAG(IS_MAC)
    // Do not allow picker UI to be shown on a page that isn't in the foreground
-Index: chromium-128.0.6613.137/chrome/browser/notifications/notification_display_service_impl.cc
+Index: chromium-129.0.6668.58/chrome/browser/notifications/notification_display_service_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/notifications/notification_display_service_impl.cc
-+++ chromium-128.0.6613.137/chrome/browser/notifications/notification_display_service_impl.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/notifications/notification_display_service_impl.cc
++++ chromium-129.0.6668.58/chrome/browser/notifications/notification_display_service_impl.cc
 @@ -88,13 +88,6 @@ NotificationDisplayServiceImpl::Notifica
              profile_));
  #endif
@@ -2138,10 +2096,10 @@ Index: chromium-128.0.6613.137/chrome/browser/notifications/notification_display
  #if BUILDFLAG(ENABLE_EXTENSIONS)
      AddNotificationHandler(
          NotificationHandler::Type::EXTENSION,
-Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_manager_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/password_manager/chrome_password_manager_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/password_manager/chrome_password_manager_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_manager_client.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/password_manager/chrome_password_manager_client.cc
++++ chromium-129.0.6668.58/chrome/browser/password_manager/chrome_password_manager_client.cc
 @@ -36,7 +36,6 @@
  #include "chrome/browser/password_manager/profile_password_store_factory.h"
  #include "chrome/browser/profiles/profile.h"
@@ -2150,7 +2108,7 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  #include "chrome/browser/safe_browsing/user_interaction_observer.h"
  #include "chrome/browser/signin/identity_manager_factory.h"
  #include "chrome/browser/sync/sync_service_factory.h"
-@@ -1008,6 +1007,7 @@ autofill::LanguageCode ChromePasswordMan
+@@ -1005,6 +1004,7 @@ autofill::LanguageCode ChromePasswordMan
    return autofill::LanguageCode();
  }
  
@@ -2158,7 +2116,7 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  safe_browsing::PasswordProtectionService*
  ChromePasswordManagerClient::GetPasswordProtectionService() const {
    return safe_browsing::ChromePasswordProtectionService::
-@@ -1027,6 +1027,7 @@ void ChromePasswordManagerClient::CheckS
+@@ -1024,6 +1024,7 @@ void ChromePasswordManagerClient::CheckS
    }
  }
  #endif  // defined(ON_FOCUS_PING_ENABLED)
@@ -2166,7 +2124,7 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  
  #if !BUILDFLAG(IS_ANDROID)
  void ChromePasswordManagerClient::MaybeReportEnterpriseLoginEvent(
-@@ -1034,30 +1035,10 @@ void ChromePasswordManagerClient::MaybeR
+@@ -1031,30 +1032,10 @@ void ChromePasswordManagerClient::MaybeR
      bool is_federated,
      const url::SchemeHostPort& federated_origin,
      const std::u16string& login_user_name) const {
@@ -2197,7 +2155,7 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  }
  #endif
  
-@@ -1744,6 +1725,7 @@ bool ChromePasswordManagerClient::IsPass
+@@ -1778,6 +1759,7 @@ bool ChromePasswordManagerClient::IsPass
      is_enabled = false;
    }
  
@@ -2205,7 +2163,7 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
    // SafeBrowsing Delayed Warnings experiment can delay some SafeBrowsing
    // warnings until user interaction. If the current page has a delayed warning,
    // it'll have a user interaction observer attached. Disable password
-@@ -1754,6 +1736,7 @@ bool ChromePasswordManagerClient::IsPass
+@@ -1788,6 +1770,7 @@ bool ChromePasswordManagerClient::IsPass
      observer->OnPasswordSaveOrAutofillDenied();
      is_enabled = false;
    }
@@ -2213,10 +2171,10 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  
    if (log_manager_->IsLoggingActive()) {
      password_manager::BrowserSavePasswordProgressLogger logger(
-Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_manager_client.h
+Index: chromium-129.0.6668.58/chrome/browser/password_manager/chrome_password_manager_client.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/password_manager/chrome_password_manager_client.h
-+++ chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_manager_client.h
+--- chromium-129.0.6668.58.orig/chrome/browser/password_manager/chrome_password_manager_client.h
++++ chromium-129.0.6668.58/chrome/browser/password_manager/chrome_password_manager_client.h
 @@ -235,15 +235,9 @@ class ChromePasswordManagerClient
    autofill::LogManager* GetLogManager() override;
    void AnnotateNavigationEntry(bool has_password_field) override;
@@ -2233,10 +2191,10 @@ Index: chromium-128.0.6613.137/chrome/browser/password_manager/chrome_password_m
  
    // Reporting these events is only supported on desktop platforms.
  #if !BUILDFLAG(IS_ANDROID)
-Index: chromium-128.0.6613.137/chrome/browser/permissions/chrome_permissions_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/permissions/chrome_permissions_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/permissions/chrome_permissions_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/permissions/chrome_permissions_client.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/permissions/chrome_permissions_client.cc
++++ chromium-129.0.6668.58/chrome/browser/permissions/chrome_permissions_client.cc
 @@ -411,16 +411,6 @@ void ChromePermissionsClient::OnPromptRe
        PermissionRevocationRequest::ExemptOriginFromFutureRevocations(profile,
                                                                       origin);
@@ -2254,10 +2212,10 @@ Index: chromium-128.0.6613.137/chrome/browser/permissions/chrome_permissions_cli
    }
  
    auto content_setting_type = RequestTypeToContentSettingsType(request_type);
-Index: chromium-128.0.6613.137/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
+Index: chromium-129.0.6668.58/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
-+++ chromium-128.0.6613.137/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
++++ chromium-129.0.6668.58/chrome/browser/permissions/contextual_notification_permission_ui_selector.cc
 @@ -16,7 +16,6 @@
  #include "chrome/browser/browser_process.h"
  #include "chrome/browser/permissions/quiet_notification_permission_ui_config.h"
@@ -2306,10 +2264,10 @@ Index: chromium-128.0.6613.137/chrome/browser/permissions/contextual_notificatio
  }
  
  void ContextualNotificationPermissionUiSelector::OnSafeBrowsingVerdictReceived(
-Index: chromium-128.0.6613.137/chrome/browser/permissions/permission_revocation_request.cc
+Index: chromium-129.0.6668.58/chrome/browser/permissions/permission_revocation_request.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/permissions/permission_revocation_request.cc
-+++ chromium-128.0.6613.137/chrome/browser/permissions/permission_revocation_request.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/permissions/permission_revocation_request.cc
++++ chromium-129.0.6668.58/chrome/browser/permissions/permission_revocation_request.cc
 @@ -135,27 +135,7 @@ void PermissionRevocationRequest::CheckA
    DCHECK(profile_);
    DCHECK(callback_);
@@ -2372,10 +2330,10 @@ Index: chromium-128.0.6613.137/chrome/browser/permissions/permission_revocation_
    NotifyCallback(Outcome::PERMISSION_NOT_REVOKED);
  }
  
-Index: chromium-128.0.6613.137/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
+Index: chromium-129.0.6668.58/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
-+++ chromium-128.0.6613.137/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
++++ chromium-129.0.6668.58/chrome/browser/permissions/prediction_based_permission_ui_selector.cc
 @@ -342,51 +342,5 @@ bool PredictionBasedPermissionUiSelector
  
  PredictionSource PredictionBasedPermissionUiSelector::GetPredictionTypeToUse(
@@ -2428,11 +2386,11 @@ Index: chromium-128.0.6613.137/chrome/browser/permissions/prediction_based_permi
      return PredictionSource::USE_NONE;
 -  }
  }
-Index: chromium-128.0.6613.137/chrome/browser/policy/configuration_policy_handler_list_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/policy/configuration_policy_handler_list_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/policy/configuration_policy_handler_list_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/policy/configuration_policy_handler_list_factory.cc
-@@ -109,6 +109,7 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/policy/configuration_policy_handler_list_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/policy/configuration_policy_handler_list_factory.cc
+@@ -117,6 +117,7 @@
  #include "components/privacy_sandbox/privacy_sandbox_prefs.h"
  #include "components/privacy_sandbox/tracking_protection_prefs.h"
  #include "components/proxy_config/proxy_policy_handler.h"
@@ -2440,7 +2398,7 @@ Index: chromium-128.0.6613.137/chrome/browser/policy/configuration_policy_handle
  #include "components/safe_browsing/content/common/file_type_policies_prefs.h"
  #include "components/safe_browsing/core/common/safe_browsing_policy_handler.h"
  #include "components/safe_browsing/core/common/safe_browsing_prefs.h"
-@@ -2329,8 +2330,6 @@ std::unique_ptr<ConfigurationPolicyHandl
+@@ -2348,8 +2349,6 @@ std::unique_ptr<ConfigurationPolicyHandl
    handlers->AddHandler(
        std::make_unique<bookmarks::ManagedBookmarksPolicyHandler>(
            chrome_schema));
@@ -2449,9 +2407,9 @@ Index: chromium-128.0.6613.137/chrome/browser/policy/configuration_policy_handle
    handlers->AddHandler(std::make_unique<syncer::SyncPolicyHandler>());
    handlers->AddHandler(
        std::make_unique<URLBlocklistPolicyHandler>(key::kURLBlocklist));
-@@ -2440,20 +2439,6 @@ std::unique_ptr<ConfigurationPolicyHandl
-           prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckMode,
-           prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckScope, chrome_schema));
+@@ -2459,20 +2458,6 @@ std::unique_ptr<ConfigurationPolicyHandl
+           SimpleSchemaValidatingPolicyHandler::RECOMMENDED_ALLOWED,
+           SimpleSchemaValidatingPolicyHandler::MANDATORY_ALLOWED));
  
 -  handlers->AddHandler(std::make_unique<SimpleSchemaValidatingPolicyHandler>(
 -      key::kExemptDomainFileTypePairsFromFileTypeDownloadWarnings,
@@ -2470,11 +2428,11 @@ Index: chromium-128.0.6613.137/chrome/browser/policy/configuration_policy_handle
    handlers->AddHandler(
        std::make_unique<NtpCustomBackgroundEnabledPolicyHandler>());
  
-Index: chromium-128.0.6613.137/chrome/browser/prefs/browser_prefs.cc
+Index: chromium-129.0.6668.58/chrome/browser/prefs/browser_prefs.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/prefs/browser_prefs.cc
-+++ chromium-128.0.6613.137/chrome/browser/prefs/browser_prefs.cc
-@@ -286,7 +286,6 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/prefs/browser_prefs.cc
++++ chromium-129.0.6668.58/chrome/browser/prefs/browser_prefs.cc
+@@ -279,7 +279,6 @@
  #include "chrome/browser/metrics/tab_stats/tab_stats_tracker.h"
  #include "chrome/browser/nearby_sharing/common/nearby_share_prefs.h"
  #include "chrome/browser/new_tab_page/modules/file_suggestion/drive_service.h"
@@ -2482,7 +2440,7 @@ Index: chromium-128.0.6613.137/chrome/browser/prefs/browser_prefs.cc
  #include "chrome/browser/new_tab_page/modules/v2/calendar/google_calendar_page_handler.h"
  #include "chrome/browser/new_tab_page/modules/v2/most_relevant_tab_resumption/most_relevant_tab_resumption_page_handler.h"
  #include "chrome/browser/new_tab_page/modules/v2/tab_resumption/tab_resumption_page_handler.h"
-@@ -1939,7 +1938,6 @@ void RegisterProfilePrefs(user_prefs::Pr
+@@ -1971,7 +1970,6 @@ void RegisterProfilePrefs(user_prefs::Pr
    media_router::RegisterProfilePrefs(registry);
    NewTabPageHandler::RegisterProfilePrefs(registry);
    NewTabPageUI::RegisterProfilePrefs(registry);
@@ -2490,10 +2448,10 @@ Index: chromium-128.0.6613.137/chrome/browser/prefs/browser_prefs.cc
    ntp_tiles::CustomLinksManagerImpl::RegisterProfilePrefs(registry);
    PinnedTabCodec::RegisterProfilePrefs(registry);
    policy::DeveloperToolsPolicyHandler::RegisterProfilePrefs(registry);
-Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager.cc
+Index: chromium-129.0.6668.58/chrome/browser/printing/print_view_manager.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/printing/print_view_manager.cc
-+++ chromium-128.0.6613.137/chrome/browser/printing/print_view_manager.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/printing/print_view_manager.cc
++++ chromium-129.0.6668.58/chrome/browser/printing/print_view_manager.cc
 @@ -380,7 +380,7 @@ void PrintViewManager::ShowScriptedPrint
    DCHECK(print_preview_rfh_);
    if (GetCurrentTargetFrame() != print_preview_rfh_)
@@ -2530,10 +2488,10 @@ Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager.cc
    set_analyzing_content(/*analyzing=*/false);
  #endif
    if (!should_proceed) {
-Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.cc
+Index: chromium-129.0.6668.58/chrome/browser/printing/print_view_manager_base.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/printing/print_view_manager_base.cc
-+++ chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/printing/print_view_manager_base.cc
++++ chromium-129.0.6668.58/chrome/browser/printing/print_view_manager_base.cc
 @@ -441,7 +441,7 @@ void PrintViewManagerBase::StartLocalPri
      PrinterHandler::PrintCallback callback) {
    DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
@@ -2579,10 +2537,10 @@ Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.c
  }
  
  void PrintViewManagerBase::set_analyzing_content(bool analyzing) {
-Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.h
+Index: chromium-129.0.6668.58/chrome/browser/printing/print_view_manager_base.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/printing/print_view_manager_base.h
-+++ chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.h
+--- chromium-129.0.6668.58.orig/chrome/browser/printing/print_view_manager_base.h
++++ chromium-129.0.6668.58/chrome/browser/printing/print_view_manager_base.h
 @@ -229,7 +229,7 @@ class PrintViewManagerBase : public Prin
                                       mojom::ScriptedPrintParamsPtr params,
                                       ScriptedPrintCallback callback);
@@ -2592,11 +2550,11 @@ Index: chromium-128.0.6613.137/chrome/browser/printing/print_view_manager_base.h
    // Helper method bound to `content_analysis_before_printing_document_` when
    // content analysis should happen right before the document is to be printed.
    // This method is virtual for testing purposes.
-Index: chromium-128.0.6613.137/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+Index: chromium-129.0.6668.58/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
-+++ chromium-128.0.6613.137/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
-@@ -817,9 +817,6 @@ void ChromeBrowserMainExtraPartsProfiles
+--- chromium-129.0.6668.58.orig/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
++++ chromium-129.0.6668.58/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+@@ -820,9 +820,6 @@ void ChromeBrowserMainExtraPartsProfiles
    enterprise_connectors::ExtensionInstallEventRouterFactory::GetInstance();
    enterprise_connectors::ExtensionTelemetryEventRouterFactory::GetInstance();
  #endif
@@ -2606,7 +2564,7 @@ Index: chromium-128.0.6613.137/chrome/browser/profiles/chrome_browser_main_extra
  #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
      BUILDFLAG(IS_ANDROID)
    enterprise_idle::IdleServiceFactory::GetInstance();
-@@ -1141,23 +1138,6 @@ void ChromeBrowserMainExtraPartsProfiles
+@@ -1143,23 +1140,6 @@ void ChromeBrowserMainExtraPartsProfiles
  #if !BUILDFLAG(IS_ANDROID)
    ResetReportUploaderFactory::GetInstance();
  #endif
@@ -2630,10 +2588,10 @@ Index: chromium-128.0.6613.137/chrome/browser/profiles/chrome_browser_main_extra
    SafeSearchFactory::GetInstance();
  #if BUILDFLAG(IS_ANDROID)
    if (base::FeatureList::IsEnabled(features::kSafetyHub)) {
-Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
+Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
-+++ chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
++++ chromium-129.0.6668.58/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.cc
 @@ -71,10 +71,6 @@ void FileOpeningJob::ProcessNextTask(bas
      if (tasks_[i].taken.exchange(true, std::memory_order_relaxed))
        continue;
@@ -2645,10 +2603,10 @@ Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanni
      // Now that the file opening work is done, `num_unopened_files_` is
      // decremented atomically and we return to free the thread.
      num_unopened_files_.fetch_sub(1, std::memory_order_relaxed);
-Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
+Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
-+++ chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
+--- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
++++ chromium-129.0.6668.58/chrome/browser/safe_browsing/cloud_content_scanning/file_opening_job.h
 @@ -11,7 +11,6 @@
  #include "base/gtest_prod_util.h"
  #include "base/memory/raw_ptr.h"
@@ -2668,10 +2626,10 @@ Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/cloud_content_scanni
      // Indicates if this task has been taken and is owned by a thread.
      std::atomic_bool taken{false};
    };
-Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
+Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
-+++ chromium-128.0.6613.137/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
++++ chromium-129.0.6668.58/chrome/browser/safe_browsing/metrics/safe_browsing_metrics_provider.cc
 @@ -17,15 +17,6 @@ SafeBrowsingMetricsProvider::~SafeBrowsi
  
  void SafeBrowsingMetricsProvider::ProvideCurrentSessionData(
@@ -2688,10 +2646,10 @@ Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/metrics/safe_browsin
  }
  
  }  // namespace safe_browsing
-Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/url_lookup_service_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/url_lookup_service_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/safe_browsing/url_lookup_service_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/safe_browsing/url_lookup_service_factory.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/url_lookup_service_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/safe_browsing/url_lookup_service_factory.cc
 @@ -71,27 +71,7 @@ RealTimeUrlLookupServiceFactory::~RealTi
  std::unique_ptr<KeyedService>
  RealTimeUrlLookupServiceFactory::BuildServiceInstanceForBrowserContext(
@@ -2720,11 +2678,11 @@ Index: chromium-128.0.6613.137/chrome/browser/safe_browsing/url_lookup_service_f
  }
  
  scoped_refptr<network::SharedURLLoaderFactory>
-Index: chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
-@@ -146,15 +146,6 @@ CreateSettingsPageHelper() {
+--- chromium-129.0.6668.58.orig/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/ssl/chrome_security_blocking_page_factory.cc
+@@ -147,15 +147,6 @@ CreateSettingsPageHelper() {
        CreateChromeSettingsPageHelper();
  }
  
@@ -2740,7 +2698,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_
  }  // namespace
  
  std::unique_ptr<SSLBlockingPage>
-@@ -177,10 +168,6 @@ ChromeSecurityBlockingPageFactory::Creat
+@@ -178,10 +169,6 @@ ChromeSecurityBlockingPageFactory::Creat
            Profile::FromBrowserContext(web_contents->GetBrowserContext()));
    state->DidDisplayErrorPage(cert_error);
  
@@ -2751,7 +2709,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_
    auto controller_client = std::make_unique<SSLErrorControllerClient>(
        web_contents, ssl_info, cert_error, request_url,
        std::move(metrics_helper), CreateSettingsPageHelper());
-@@ -243,10 +230,6 @@ ChromeSecurityBlockingPageFactory::Creat
+@@ -244,10 +231,6 @@ ChromeSecurityBlockingPageFactory::Creat
      const GURL& request_url,
      const net::SSLInfo& ssl_info,
      const std::string& mitm_software_name) {
@@ -2762,7 +2720,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_
    auto page = std::make_unique<MITMSoftwareBlockingPage>(
        web_contents, cert_error, request_url,
        /*can_show_enhanced_protection_message=*/true, ssl_info,
-@@ -266,10 +249,6 @@ ChromeSecurityBlockingPageFactory::Creat
+@@ -267,10 +250,6 @@ ChromeSecurityBlockingPageFactory::Creat
      int cert_error,
      const GURL& request_url,
      const net::SSLInfo& ssl_info) {
@@ -2773,10 +2731,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/chrome_security_blocking_page_
    auto page = std::make_unique<BlockedInterceptionBlockingPage>(
        web_contents, cert_error, request_url,
        /*can_show_enhanced_protection_message=*/true, ssl_info,
-Index: chromium-128.0.6613.137/chrome/browser/ssl/sct_reporting_service_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/ssl/sct_reporting_service_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ssl/sct_reporting_service_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/ssl/sct_reporting_service_factory.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ssl/sct_reporting_service_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/ssl/sct_reporting_service_factory.cc
 @@ -41,15 +41,7 @@ SCTReportingServiceFactory::~SCTReportin
  std::unique_ptr<KeyedService>
  SCTReportingServiceFactory::BuildServiceInstanceForBrowserContext(
@@ -2794,10 +2752,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/sct_reporting_service_factory.
  }
  
  // Force this to be created during BrowserContext creation, since we can't
-Index: chromium-128.0.6613.137/chrome/browser/ssl/ssl_error_controller_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/ssl/ssl_error_controller_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ssl/ssl_error_controller_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/ssl/ssl_error_controller_client.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ssl/ssl_error_controller_client.cc
++++ chromium-129.0.6668.58/chrome/browser/ssl/ssl_error_controller_client.cc
 @@ -92,8 +92,6 @@ void SSLErrorControllerClient::GoBack()
  }
  
@@ -2807,10 +2765,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ssl/ssl_error_controller_client.cc
  #if BUILDFLAG(ENABLE_EXTENSIONS)
    // Hosted Apps should not be allowed to run if there is a problem with their
    // certificate. So, when users click proceed on an interstitial, move the tab
-Index: chromium-128.0.6613.137/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/subresource_filter/chrome_content_subresource_filter_web_contents_helper_factory.cc
 @@ -6,7 +6,6 @@
  
  #include "chrome/browser/browser_process.h"
@@ -2831,11 +2789,11 @@ Index: chromium-128.0.6613.137/chrome/browser/subresource_filter/chrome_content_
  }
  
  }  // namespace
-Index: chromium-128.0.6613.137/chrome/browser/ui/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/browser/ui/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/browser/ui/BUILD.gn
-@@ -622,7 +622,6 @@ static_library("ui") {
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/BUILD.gn
++++ chromium-129.0.6668.58/chrome/browser/ui/BUILD.gn
+@@ -625,7 +625,6 @@ static_library("ui") {
      "//components/renderer_context_menu",
      "//components/resources",
      "//components/safe_browsing/content/browser",
@@ -2843,7 +2801,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/BUILD.gn
      "//components/safe_browsing/content/browser/password_protection",
      "//components/safe_browsing/content/browser/web_ui",
      "//components/safe_browsing/core/browser/db:database_manager",
-@@ -3892,8 +3891,6 @@ static_library("ui") {
+@@ -3250,8 +3249,6 @@ static_library("ui") {
        "startup/web_app_startup_utils.h",
        "tab_contents/chrome_web_contents_menu_helper.cc",
        "tab_contents/chrome_web_contents_menu_helper.h",
@@ -2852,7 +2810,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/BUILD.gn
        "views/autofill/payments/webauthn_dialog_view.cc",
        "views/autofill/payments/webauthn_dialog_view.h",
        "views/close_bubble_on_tab_activation_helper.cc",
-@@ -5614,8 +5611,6 @@ static_library("ui") {
+@@ -4962,8 +4959,6 @@ static_library("ui") {
        "views/safe_browsing/prompt_for_scanning_modal_dialog.h",
        "views/safe_browsing/tailored_security_desktop_dialog_manager.cc",
        "views/safe_browsing/tailored_security_desktop_dialog_manager.h",
@@ -2861,10 +2819,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/BUILD.gn
        "views/send_tab_to_self/manage_account_devices_link_view.cc",
        "views/send_tab_to_self/manage_account_devices_link_view.h",
        "views/send_tab_to_self/send_tab_to_self_bubble_device_button.cc",
-Index: chromium-128.0.6613.137/chrome/browser/ui/download/download_bubble_row_view_info.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/download/download_bubble_row_view_info.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/download/download_bubble_row_view_info.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/download/download_bubble_row_view_info.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/download/download_bubble_row_view_info.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/download/download_bubble_row_view_info.cc
 @@ -10,7 +10,6 @@
  #include "chrome/browser/enterprise/connectors/common.h"
  #include "chrome/browser/safe_browsing/advanced_protection_status_manager.h"
@@ -2881,10 +2839,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/download/download_bubble_row_vi
 -                                        model_->GetDangerType());
 +  return false;
  }
-Index: chromium-128.0.6613.137/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
 @@ -113,20 +113,6 @@ void RecordWebsiteStateAtApiRequest(hist
  void CheckUrlForAllowlistAndRecordMetric(
      const GURL& url,
@@ -2906,10 +2864,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/exclusive_access/fullscreen_con
  }
  
  }  // namespace
-Index: chromium-128.0.6613.137/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
 @@ -16,6 +16,7 @@
  #include "components/javascript_dialogs/tab_modal_dialog_manager.h"
  #include "components/javascript_dialogs/tab_modal_dialog_view.h"
@@ -2934,11 +2892,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/javascript_dialogs/javascript_t
  }
  
  void JavaScriptTabModalDialogManagerDelegateDesktop::DidCloseDialog() {
-Index: chromium-128.0.6613.137/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
-@@ -51,7 +51,6 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/safety_hub/unused_site_permissions_service.cc
+@@ -52,7 +52,6 @@
  #include "components/prefs/pref_change_registrar.h"
  #include "components/prefs/pref_service.h"
  #include "components/safe_browsing/core/common/features.h"
@@ -2946,7 +2904,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/safety_hub/unused_site_permissi
  #include "content/public/browser/browser_context.h"
  #include "content/public/browser/browser_thread.h"
  #include "ui/base/l10n/l10n_util.h"
-@@ -357,21 +356,6 @@ UnusedSitePermissionsService::UnusedSite
+@@ -358,21 +357,6 @@ UnusedSitePermissionsService::UnusedSite
                              base::Unretained(this)));
    }
  
@@ -2968,7 +2926,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/safety_hub/unused_site_permissi
  
    bool migration_completed = pref_change_registrar_->prefs()->GetBoolean(
        safety_hub_prefs::kUnusedSitePermissionsRevocationMigrationCompleted);
-@@ -1027,9 +1011,7 @@ bool UnusedSitePermissionsService::IsUnu
+@@ -1028,9 +1012,7 @@ bool UnusedSitePermissionsService::IsUnu
  
  bool UnusedSitePermissionsService::
      IsAbusiveNotificationAutoRevocationEnabled() {
@@ -2979,11 +2937,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/safety_hub/unused_site_permissi
  }
  
  const std::set<ContentSettingsType>
-Index: chromium-128.0.6613.137/chrome/browser/ui/tab_helpers.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/tab_helpers.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/tab_helpers.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/tab_helpers.cc
-@@ -383,7 +383,6 @@ void TabHelpers::AttachTabHelpers(WebCon
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/tab_helpers.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/tab_helpers.cc
+@@ -380,7 +380,6 @@ void TabHelpers::AttachTabHelpers(WebCon
    if (!autofill_client_provider.uses_platform_autofill()) {
      ChromePasswordManagerClient::CreateForWebContents(web_contents);
    }
@@ -2991,10 +2949,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/tab_helpers.cc
    CreateSubresourceFilterWebContentsHelper(web_contents);
  #if BUILDFLAG(ENABLE_RLZ)
    ChromeRLZTrackerWebContentsObserver::CreateForWebContentsIfNeeded(
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/download/bubble/download_bubble_contents_view.cc
 @@ -13,7 +13,6 @@
  #include "chrome/browser/download/download_core_service.h"
  #include "chrome/browser/download/download_core_service_factory.h"
@@ -3025,13 +2983,17 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/download/bubble/download_
  }
  
  }  // namespace
-@@ -189,70 +173,16 @@ void DownloadBubbleContentsView::Process
+@@ -189,74 +173,16 @@ void DownloadBubbleContentsView::Process
      const ContentId& id,
      DownloadItemWarningData::DeepScanTrigger trigger,
      base::optional_ref<const std::string> password) {
 -  if (DownloadUIModel* model = GetDownloadModel(id); model) {
 -    LogDeepScanEvent(model->GetDownloadItem(),
 -                     safe_browsing::DeepScanEvent::kPromptAccepted);
+-    DownloadItemWarningData::AddWarningActionEvent(
+-        model->GetDownloadItem(),
+-        DownloadItemWarningData::WarningSurface::BUBBLE_SUBPAGE,
+-        DownloadItemWarningData::WarningAction::ACCEPT_DEEP_SCAN);
 -    safe_browsing::DownloadProtectionService::UploadForConsumerDeepScanning(
 -        model->GetDownloadItem(), trigger, password);
 -  }
@@ -3096,10 +3058,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/download/bubble/download_
  }
  
  bool DownloadBubbleContentsView::IsEncryptedArchive(const ContentId& id) {
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/download/download_item_view.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/download/download_item_view.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/download/download_item_view.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/download/download_item_view.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/download/download_item_view.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/download/download_item_view.cc
 @@ -38,7 +38,6 @@
  #include "chrome/browser/icon_manager.h"
  #include "chrome/browser/safe_browsing/advanced_protection_status_manager.h"
@@ -3145,10 +3107,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/download/download_item_vi
    model_->SetOpenWhenComplete(true);
  }
  
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/media_router/presentation_receiver_window_view.cc
 @@ -171,7 +171,6 @@ void PresentationReceiverWindowView::Ini
    ChromeTranslateClient::CreateForWebContents(web_contents);
    autofill::ChromeAutofillClient::CreateForWebContents(web_contents);
@@ -3157,11 +3119,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/media_router/presentation
    ManagePasswordsUIController::CreateForWebContents(web_contents);
    SearchTabHelper::CreateForWebContents(web_contents);
    TabDialogs::CreateForWebContents(web_contents);
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
-@@ -255,8 +255,6 @@ void ProfilePickerDiceSignInProvider::On
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/profiles/profile_picker_dice_sign_in_provider.cc
+@@ -280,8 +280,6 @@ void ProfilePickerDiceSignInProvider::On
            .Then(base::BindOnce(std::move(switch_finished_callback), true));
    host_->ShowScreen(contents(), BuildSigninURL(),
                      std::move(navigation_finished_closure));
@@ -3170,11 +3132,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_d
    // Attach a `DiceTabHelper` to the `WebContents` to trigger the completion
    // of the step.
    DiceTabHelper::CreateForWebContents(contents());
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
-@@ -46,9 +46,6 @@ ProfilePickerForceSigninDialogDelegate::
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/profiles/profile_picker_force_signin_dialog_delegate.cc
+@@ -47,9 +47,6 @@ ProfilePickerForceSigninDialogDelegate::
    ChromePasswordManagerClient::CreateForWebContents(
        web_view_->GetWebContents());
  
@@ -3184,10 +3146,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/profiles/profile_picker_f
    web_modal::WebContentsModalDialogManager::CreateForWebContents(
        web_view_->GetWebContents());
    web_modal::WebContentsModalDialogManager::FromWebContents(
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views.cc
 @@ -110,7 +110,7 @@ void ChromeWebContentsViewDelegateViews:
  void ChromeWebContentsViewDelegateViews::OnPerformingDrop(
      const content::DropData& drop_data,
@@ -3197,10 +3159,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_c
  }
  
  std::unique_ptr<content::WebContentsViewDelegate> CreateWebContentsViewDelegate(
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
++++ chromium-129.0.6668.58/chrome/browser/ui/views/tab_contents/chrome_web_contents_view_delegate_views_mac.mm
 @@ -89,7 +89,7 @@ bool ChromeWebContentsViewDelegateViewsM
  void ChromeWebContentsViewDelegateViewsMac::OnPerformingDrop(
      const content::DropData& drop_data,
@@ -3210,11 +3172,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tab_contents/chrome_web_c
  }
  
  std::unique_ptr<RenderViewContextMenuBase>
-Index: chromium-128.0.6613.137/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
-@@ -456,9 +456,6 @@ WebUIFactoryFunction GetWebUIFactoryFunc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
+@@ -434,9 +434,6 @@ WebUIFactoryFunction GetWebUIFactoryFunc
    }
    if (url.host_piece() == chrome::kChromeUIPredictorsHost)
      return &NewWebUI<PredictorsUI>;
@@ -3224,10 +3186,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/chrome_web_ui_controller_
    if (url.host_piece() == chrome::kChromeUISegmentationInternalsHost)
      return &NewWebUI<SegmentationInternalsUI>;
    if (url.host_piece() == chrome::kChromeUISignInInternalsHost)
-Index: chromium-128.0.6613.137/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/webui/downloads/downloads_dom_handler.cc
 @@ -191,10 +191,6 @@ void MaybeReportBypassAction(download::D
    if (action != WarningAction::PROCEED && action != WarningAction::DISCARD) {
      return;
@@ -3391,11 +3353,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/downloads/downloads_dom_h
  }
  
  void DownloadsDOMHandler::DiscardDangerous(const std::string& id) {
-@@ -753,15 +629,6 @@ void DownloadsDOMHandler::DeepScan(const
+@@ -753,18 +629,6 @@ void DownloadsDOMHandler::DeepScan(const
      return;
    }
  
--  if (DownloadItemWarningData::IsEncryptedArchive(download)) {
+-  if (DownloadItemWarningData::IsTopLevelEncryptedArchive(download)) {
 -    // For encrypted archives, we need a password from the user. We will request
 -    // this in the download bubble.
 -    PromptForScanningInBubble(GetWebUIWebContents(), download);
@@ -3404,10 +3366,13 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/downloads/downloads_dom_h
 -
 -  LogDeepScanEvent(download,
 -                   safe_browsing::DeepScanEvent::kPromptAcceptedFromWebUI);
+-  DownloadItemWarningData::AddWarningActionEvent(
+-      download, DownloadItemWarningData::WarningSurface::DOWNLOADS_PAGE,
+-      DownloadItemWarningData::WarningAction::ACCEPT_DEEP_SCAN);
    DownloadItemModel model(download);
    DownloadCommands commands(model.GetWeakPtr());
    commands.ExecuteCommand(DownloadCommands::DEEP_SCAN);
-@@ -797,12 +664,6 @@ void DownloadsDOMHandler::ReviewDangerou
+@@ -800,12 +664,6 @@ void DownloadsDOMHandler::ReviewDangerou
      return;
    }
  
@@ -3420,10 +3385,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/downloads/downloads_dom_h
  }
  
  #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
-Index: chromium-128.0.6613.137/chrome/browser/ui/webui/management/management_ui_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/webui/management/management_ui_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/management/management_ui_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/webui/management/management_ui_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/webui/management/management_ui_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/webui/management/management_ui_handler.cc
 @@ -274,10 +274,7 @@ void ManagementUIHandler::AddReportingIn
            enterprise_reporting::kCloudProfileReportingEnabled);
  
@@ -3431,7 +3396,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/management/management_ui_
 -      enterprise_connectors::ConnectorsServiceFactory::GetForBrowserContext(
 -          Profile::FromWebUI(web_ui()))
 -          ->GetAppliedRealTimeUrlCheck() !=
--      safe_browsing::REAL_TIME_CHECK_DISABLED;
+-      enterprise_connectors::REAL_TIME_CHECK_DISABLED;
 +      false;
  
    if (cloud_legacy_tech_report_enabled) {
@@ -3441,7 +3406,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/management/management_ui_
    }
  
 -  if (connectors_service->GetAppliedRealTimeUrlCheck() !=
--      safe_browsing::REAL_TIME_CHECK_DISABLED) {
+-      enterprise_connectors::REAL_TIME_CHECK_DISABLED) {
 -    AddThreatProtectionPermission(kManagementOnPageVisitedEvent,
 -                                  kManagementOnPageVisitedVisibleData, &info);
 -  }
@@ -3449,10 +3414,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/management/management_ui_
  #if BUILDFLAG(IS_CHROMEOS)
    if (is_get_all_screens_media_allowed_for_any_origin_) {
      AddThreatProtectionPermission(kManagementScreenCaptureEvent,
-Index: chromium-128.0.6613.137/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
 @@ -750,7 +750,7 @@ void PrintPreviewHandler::HandleDoPrint(
    }
    ReportUserActionHistogram(user_action);
@@ -3462,10 +3427,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/print_preview/print_previ
    std::string device_name = *settings.FindString(kSettingDeviceName);
  
    using enterprise_data_protection::PrintScanningContext;
-Index: chromium-128.0.6613.137/chrome/browser/ui/webui/settings/hats_handler.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/webui/settings/hats_handler.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/webui/settings/hats_handler.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/webui/settings/hats_handler.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/webui/settings/hats_handler.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/webui/settings/hats_handler.cc
 @@ -83,60 +83,6 @@ void HatsHandler::RegisterMessages() {
   */
  void HatsHandler::HandleSecurityPageHatsRequest(const base::Value::List& args) {
@@ -3543,12 +3508,12 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/webui/settings/hats_handler.cc
      safe_browsing_setting_current = "no_protection";
 -  }
  
-   std::string friendlier_safe_browsing_settings_enabled =
-       (base::FeatureList::IsEnabled(
-Index: chromium-128.0.6613.137/chrome/browser/webshare/share_service_impl.cc
+   std::string client_channel =
+       std::string(version_info::GetChannelString(chrome::GetChannel()));
+Index: chromium-129.0.6668.58/chrome/browser/webshare/share_service_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/webshare/share_service_impl.cc
-+++ chromium-128.0.6613.137/chrome/browser/webshare/share_service_impl.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/webshare/share_service_impl.cc
++++ chromium-129.0.6668.58/chrome/browser/webshare/share_service_impl.cc
 @@ -17,7 +17,9 @@
  #include "chrome/browser/browser_process.h"
  #include "chrome/browser/safe_browsing/safe_browsing_service.h"
@@ -3589,10 +3554,10 @@ Index: chromium-128.0.6613.137/chrome/browser/webshare/share_service_impl.cc
  
    OnSafeBrowsingResultReceived(title, text, share_url, std::move(files),
                                 std::move(callback),
-Index: chromium-128.0.6613.137/chrome/common/webui_url_constants.cc
+Index: chromium-129.0.6668.58/chrome/common/webui_url_constants.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/common/webui_url_constants.cc
-+++ chromium-128.0.6613.137/chrome/common/webui_url_constants.cc
+--- chromium-129.0.6668.58.orig/chrome/common/webui_url_constants.cc
++++ chromium-129.0.6668.58/chrome/common/webui_url_constants.cc
 @@ -126,7 +126,6 @@ base::span<const base::cstring_view> Chr
        kChromeUISuggestInternalsHost,
  #endif
@@ -3601,10 +3566,10 @@ Index: chromium-128.0.6613.137/chrome/common/webui_url_constants.cc
        kChromeUISyncInternalsHost,
  #if !BUILDFLAG(IS_ANDROID)
        kChromeUITabSearchHost,
-Index: chromium-128.0.6613.137/chrome/renderer/url_loader_throttle_provider_impl.cc
+Index: chromium-129.0.6668.58/chrome/renderer/url_loader_throttle_provider_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/renderer/url_loader_throttle_provider_impl.cc
-+++ chromium-128.0.6613.137/chrome/renderer/url_loader_throttle_provider_impl.cc
+--- chromium-129.0.6668.58.orig/chrome/renderer/url_loader_throttle_provider_impl.cc
++++ chromium-129.0.6668.58/chrome/renderer/url_loader_throttle_provider_impl.cc
 @@ -171,26 +171,6 @@ URLLoaderThrottleProviderImpl::CreateThr
    DCHECK(!is_frame_resource ||
           type_ == blink::URLLoaderThrottleProviderType::kFrame);
@@ -3632,10 +3597,10 @@ Index: chromium-128.0.6613.137/chrome/renderer/url_loader_throttle_provider_impl
  
    if (type_ == blink::URLLoaderThrottleProviderType::kFrame &&
        !is_frame_resource && local_frame_token.has_value()) {
-Index: chromium-128.0.6613.137/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
+Index: chromium-129.0.6668.58/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
-+++ chromium-128.0.6613.137/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
+--- chromium-129.0.6668.58.orig/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
++++ chromium-129.0.6668.58/chrome/renderer/websocket_handshake_throttle_provider_impl.cc
 @@ -58,15 +58,5 @@ WebSocketHandshakeThrottleProviderImpl::
      scoped_refptr<base::SingleThreadTaskRunner> task_runner) {
    DCHECK_CALLED_ON_VALID_THREAD(thread_checker_);
@@ -3652,11 +3617,11 @@ Index: chromium-128.0.6613.137/chrome/renderer/websocket_handshake_throttle_prov
    return nullptr;
 -#endif
  }
-Index: chromium-128.0.6613.137/chrome/test/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/test/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/test/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/test/BUILD.gn
-@@ -2019,9 +2019,6 @@ if (!is_android) {
+--- chromium-129.0.6668.58.orig/chrome/test/BUILD.gn
++++ chromium-129.0.6668.58/chrome/test/BUILD.gn
+@@ -2026,9 +2026,6 @@ if (!is_android) {
        "//components/resources",
        "//components/safe_browsing:buildflags",
        "//components/safe_browsing/content/browser",
@@ -3666,7 +3631,7 @@ Index: chromium-128.0.6613.137/chrome/test/BUILD.gn
        "//components/safe_browsing/content/browser:safe_browsing_service",
        "//components/safe_browsing/content/browser/password_protection",
        "//components/safe_browsing/content/browser/password_protection:test_support",
-@@ -6942,9 +6939,6 @@ test("unit_tests") {
+@@ -6765,9 +6762,6 @@ test("unit_tests") {
      "//components/resources",
      "//components/safe_browsing:buildflags",
      "//components/safe_browsing/content/browser",
@@ -3676,10 +3641,10 @@ Index: chromium-128.0.6613.137/chrome/test/BUILD.gn
      "//components/safe_browsing/content/browser/password_protection",
      "//components/safe_browsing/content/browser/password_protection:mock_password_protection",
      "//components/safe_browsing/content/browser/web_ui",
-Index: chromium-128.0.6613.137/components/enterprise/connectors/reporting/reporting_service_settings.cc
+Index: chromium-129.0.6668.58/components/enterprise/connectors/core/reporting_service_settings.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/enterprise/connectors/reporting/reporting_service_settings.cc
-+++ chromium-128.0.6613.137/components/enterprise/connectors/reporting/reporting_service_settings.cc
+--- chromium-129.0.6668.58.orig/components/enterprise/connectors/core/reporting_service_settings.cc
++++ chromium-129.0.6668.58/components/enterprise/connectors/core/reporting_service_settings.cc
 @@ -44,16 +44,6 @@ ReportingServiceSettings::ReportingServi
        else
          DVLOG(1) << "Enabled event name list contains a non string value!";
@@ -3697,10 +3662,10 @@ Index: chromium-128.0.6613.137/components/enterprise/connectors/reporting/report
    }
  
    const base::Value::List* enabled_opt_in_events_value =
-Index: chromium-128.0.6613.137/components/password_manager/content/browser/content_password_manager_driver.cc
+Index: chromium-129.0.6668.58/components/password_manager/content/browser/content_password_manager_driver.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/password_manager/content/browser/content_password_manager_driver.cc
-+++ chromium-128.0.6613.137/components/password_manager/content/browser/content_password_manager_driver.cc
+--- chromium-129.0.6668.58.orig/components/password_manager/content/browser/content_password_manager_driver.cc
++++ chromium-129.0.6668.58/components/password_manager/content/browser/content_password_manager_driver.cc
 @@ -584,7 +584,7 @@ void ContentPasswordManagerDriver::Check
    if (!password_manager::bad_message::CheckFrameNotPrerendering(
            render_frame_host_))
@@ -3710,10 +3675,10 @@ Index: chromium-128.0.6613.137/components/password_manager/content/browser/conte
    client_->CheckSafeBrowsingReputation(form_action, frame_url);
  #endif
  }
-Index: chromium-128.0.6613.137/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
+Index: chromium-129.0.6668.58/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
-+++ chromium-128.0.6613.137/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
+--- chromium-129.0.6668.58.orig/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
++++ chromium-129.0.6668.58/components/password_manager/core/browser/leak_detection/leak_detection_check_impl.cc
 @@ -324,12 +324,7 @@ bool LeakDetectionCheck::IsURLBlockedByP
      const PrefService& prefs,
      const GURL& form_url,
@@ -3728,10 +3693,10 @@ Index: chromium-128.0.6613.137/components/password_manager/core/browser/leak_det
  }
  
  }  // namespace password_manager
-Index: chromium-128.0.6613.137/components/password_manager/core/browser/password_manager_client.h
+Index: chromium-129.0.6668.58/components/password_manager/core/browser/password_manager_client.h
 ===================================================================
---- chromium-128.0.6613.137.orig/components/password_manager/core/browser/password_manager_client.h
-+++ chromium-128.0.6613.137/components/password_manager/core/browser/password_manager_client.h
+--- chromium-129.0.6668.58.orig/components/password_manager/core/browser/password_manager_client.h
++++ chromium-129.0.6668.58/components/password_manager/core/browser/password_manager_client.h
 @@ -411,9 +411,6 @@ class PasswordManagerClient {
    // Returns the current best guess as to the page's display language.
    virtual autofill::LanguageCode GetPageLanguage() const;
@@ -3756,10 +3721,10 @@ Index: chromium-128.0.6613.137/components/password_manager/core/browser/password
  
    // If the feature is enabled send an event to the enterprise reporting
    // connector server indicating that the user signed in to a website.
-Index: chromium-128.0.6613.137/components/safe_browsing/content/common/proto/BUILD.gn
+Index: chromium-129.0.6668.58/components/safe_browsing/content/common/proto/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/content/common/proto/BUILD.gn
-+++ chromium-128.0.6613.137/components/safe_browsing/content/common/proto/BUILD.gn
+--- chromium-129.0.6668.58.orig/components/safe_browsing/content/common/proto/BUILD.gn
++++ chromium-129.0.6668.58/components/safe_browsing/content/common/proto/BUILD.gn
 @@ -5,8 +5,12 @@
  import("//components/safe_browsing/buildflags.gni")
  import("//third_party/protobuf/proto_library.gni")
@@ -3775,10 +3740,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/content/common/proto/BUI
    }
 -}
 +# }
-Index: chromium-128.0.6613.137/components/safe_browsing/content/common/safe_browsing.mojom
+Index: chromium-129.0.6668.58/components/safe_browsing/content/common/safe_browsing.mojom
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/content/common/safe_browsing.mojom
-+++ chromium-128.0.6613.137/components/safe_browsing/content/common/safe_browsing.mojom
+--- chromium-129.0.6668.58.orig/components/safe_browsing/content/common/safe_browsing.mojom
++++ chromium-129.0.6668.58/components/safe_browsing/content/common/safe_browsing.mojom
 @@ -146,7 +146,6 @@ interface PhishingDetector {
          mojo_base.mojom.ProtoWrapper? request);
  };
@@ -3787,10 +3752,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/content/common/safe_brow
  // Interface for setting a phishing model. This is scoped to an entire
  // RenderProcess.
  interface PhishingModelSetter {
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/BUILD.gn
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/BUILD.gn
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/BUILD.gn
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/BUILD.gn
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/BUILD.gn
 @@ -23,8 +23,6 @@ source_set("browser") {
      "url_checker_delegate.h",
      "url_realtime_mechanism.cc",
@@ -3800,10 +3765,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/BUILD.gn
    ]
  
    configs += [ "//build/config/compiler:wexit_time_destructors" ]
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/db/BUILD.gn
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/db/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/db/BUILD.gn
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/db/BUILD.gn
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/db/BUILD.gn
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/db/BUILD.gn
 @@ -247,8 +247,6 @@ source_set("v4_store") {
    sources = [
      "hash_prefix_map.cc",
@@ -3813,10 +3778,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/db/BUILD.gn
    ]
  
    configs += [ "//build/config/compiler:wexit_time_destructors" ]
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/db/hash_prefix_map.h
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/db/hash_prefix_map.h
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/db/hash_prefix_map.h
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/db/hash_prefix_map.h
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/db/hash_prefix_map.h
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/db/hash_prefix_map.h
 @@ -11,6 +11,7 @@
  #include <unordered_map>
  
@@ -3825,10 +3790,22 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/db/hash_pre
  #include "components/safe_browsing/core/browser/db/v4_protocol_manager_util.h"
  #include "components/safe_browsing/core/browser/db/v4_store.pb.h"
  #include "components/safe_browsing/core/common/proto/webui.pb.h"
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/db/v4_update_protocol_manager.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/db/v4_update_protocol_manager.cc
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/db/v4_update_protocol_manager.cc
+@@ -27,7 +27,6 @@
+ #include "services/network/public/mojom/url_response_head.mojom.h"
+ 
+ using base::Time;
+-using enum safe_browsing::ExtendedReportingLevel;
+ 
+ namespace {
+ 
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
+===================================================================
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/hashprefix_realtime/hash_realtime_service.h
 @@ -12,6 +12,7 @@
  #include <string>
  #include <vector>
@@ -3837,10 +3814,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_
  #include "base/containers/unique_ptr_adapters.h"
  #include "base/gtest_prod_util.h"
  #include "base/memory/raw_ptr.h"
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/hashprefix_realtime/ohttp_key_service.cc
 @@ -13,7 +13,6 @@
  #include "components/safe_browsing/core/browser/utils/backoff_operator.h"
  #include "components/safe_browsing/core/common/features.h"
@@ -3864,7 +3841,7 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_
  }
  
  GURL GetKeyFetchingUrl() {
-@@ -403,25 +396,9 @@ void OhttpKeyService::MaybeStartServerTr
+@@ -407,25 +400,9 @@ void OhttpKeyService::MaybeStartServerTr
  }
  
  void OhttpKeyService::PopulateKeyFromPref() {
@@ -3890,11 +3867,11 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/hashprefix_
  }
  
  void OhttpKeyService::Shutdown() {
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
-@@ -253,17 +253,6 @@ void RealTimeUrlLookupService::MaybeLogP
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
+@@ -261,17 +261,6 @@ void RealTimeUrlLookupService::MaybeLogP
      bool request_had_cookie,
      bool was_first_request,
      bool sent_with_token) {
@@ -3912,10 +3889,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/realtime/ur
  }
  
  }  // namespace safe_browsing
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.cc
 @@ -409,7 +409,6 @@ void TailoredSecurityService::MaybeNotif
        RecordEnabledNotificationResult(
            TailoredSecurityNotificationResult::kHistoryNotSynced);
@@ -3964,10 +3941,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_se
  void TailoredSecurityService::SetCanQuery(bool can_query) {
    can_query_ = can_query;
    if (can_query) {
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/tailored_security_service/tailored_security_service.h
 @@ -23,7 +23,6 @@
  #include "base/values.h"
  #include "components/keyed_service/core/keyed_service.h"
@@ -3986,10 +3963,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/tailored_se
    // Stores pointer to `IdentityManager` instance. It must outlive the
    // `TailoredSecurityService` and can be null during tests.
    raw_ptr<signin::IdentityManager> identity_manager_;
-Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/verdict_cache_manager.cc
+Index: chromium-129.0.6668.58/components/safe_browsing/core/browser/verdict_cache_manager.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/core/browser/verdict_cache_manager.cc
-+++ chromium-128.0.6613.137/components/safe_browsing/core/browser/verdict_cache_manager.cc
+--- chromium-129.0.6668.58.orig/components/safe_browsing/core/browser/verdict_cache_manager.cc
++++ chromium-129.0.6668.58/components/safe_browsing/core/browser/verdict_cache_manager.cc
 @@ -443,16 +443,6 @@ VerdictCacheManager::VerdictCacheManager
    // pref_service can be null in tests.
    if (pref_service) {
@@ -4007,10 +3984,10 @@ Index: chromium-128.0.6613.137/components/safe_browsing/core/browser/verdict_cac
    }
    // sync_observer_ can be null in some embedders that don't support sync.
    if (sync_observer_) {
-Index: chromium-128.0.6613.137/components/security_interstitials/content/ssl_blocking_page_base.cc
+Index: chromium-129.0.6668.58/components/security_interstitials/content/ssl_blocking_page_base.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/security_interstitials/content/ssl_blocking_page_base.cc
-+++ chromium-128.0.6613.137/components/security_interstitials/content/ssl_blocking_page_base.cc
+--- chromium-129.0.6668.58.orig/components/security_interstitials/content/ssl_blocking_page_base.cc
++++ chromium-129.0.6668.58/components/security_interstitials/content/ssl_blocking_page_base.cc
 @@ -4,7 +4,6 @@
  
  #include "components/security_interstitials/content/ssl_blocking_page_base.h"
@@ -4053,10 +4030,10 @@ Index: chromium-128.0.6613.137/components/security_interstitials/content/ssl_blo
  }
  
  void SSLBlockingPageBase::PopulateEnhancedProtectionMessage(
-Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.cc
+Index: chromium-129.0.6668.58/content/browser/file_system_access/file_system_access_safe_move_helper.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/file_system_access/file_system_access_safe_move_helper.cc
-+++ chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.cc
+--- chromium-129.0.6668.58.orig/content/browser/file_system_access/file_system_access_safe_move_helper.cc
++++ chromium-129.0.6668.58/content/browser/file_system_access/file_system_access_safe_move_helper.cc
 @@ -168,15 +168,8 @@ void FileSystemAccessSafeMoveHelper::Sta
      return;
    }
@@ -4119,10 +4096,10 @@ Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_ac
  void FileSystemAccessSafeMoveHelper::DidAfterWriteCheck(
      FileSystemAccessPermissionContext::AfterWriteCheckResult result) {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
-Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.h
+Index: chromium-129.0.6668.58/content/browser/file_system_access/file_system_access_safe_move_helper.h
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/file_system_access/file_system_access_safe_move_helper.h
-+++ chromium-128.0.6613.137/content/browser/file_system_access/file_system_access_safe_move_helper.h
+--- chromium-129.0.6668.58.orig/content/browser/file_system_access/file_system_access_safe_move_helper.h
++++ chromium-129.0.6668.58/content/browser/file_system_access/file_system_access_safe_move_helper.h
 @@ -60,9 +60,6 @@ class CONTENT_EXPORT FileSystemAccessSaf
   private:
    SEQUENCE_CHECKER(sequence_checker_);
@@ -4133,10 +4110,10 @@ Index: chromium-128.0.6613.137/content/browser/file_system_access/file_system_ac
    void DidAfterWriteCheck(
        FileSystemAccessPermissionContext::AfterWriteCheckResult result);
    void DidFileSkipQuarantine(base::File::Error result);
-Index: chromium-128.0.6613.137/content/browser/file_system_access/mock_file_system_access_permission_context.cc
+Index: chromium-129.0.6668.58/content/browser/file_system_access/mock_file_system_access_permission_context.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/file_system_access/mock_file_system_access_permission_context.cc
-+++ chromium-128.0.6613.137/content/browser/file_system_access/mock_file_system_access_permission_context.cc
+--- chromium-129.0.6668.58.orig/content/browser/file_system_access/mock_file_system_access_permission_context.cc
++++ chromium-129.0.6668.58/content/browser/file_system_access/mock_file_system_access_permission_context.cc
 @@ -23,11 +23,4 @@ void MockFileSystemAccessPermissionConte
                                 user_action, frame_id, callback);
  }
@@ -4149,10 +4126,10 @@ Index: chromium-128.0.6613.137/content/browser/file_system_access/mock_file_syst
 -}
 -
  }  // namespace content
-Index: chromium-128.0.6613.137/content/browser/file_system_access/mock_file_system_access_permission_context.h
+Index: chromium-129.0.6668.58/content/browser/file_system_access/mock_file_system_access_permission_context.h
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/file_system_access/mock_file_system_access_permission_context.h
-+++ chromium-128.0.6613.137/content/browser/file_system_access/mock_file_system_access_permission_context.h
+--- chromium-129.0.6668.58.orig/content/browser/file_system_access/mock_file_system_access_permission_context.h
++++ chromium-129.0.6668.58/content/browser/file_system_access/mock_file_system_access_permission_context.h
 @@ -54,16 +54,6 @@ class MockFileSystemAccessPermissionCont
                 GlobalRenderFrameHostId frame_id,
                 base::OnceCallback<void(SensitiveEntryResult)>& callback));
@@ -4170,10 +4147,10 @@ Index: chromium-128.0.6613.137/content/browser/file_system_access/mock_file_syst
    MOCK_METHOD(bool,
                CanObtainReadPermission,
                (const url::Origin& origin),
-Index: chromium-128.0.6613.137/content/public/browser/file_system_access_permission_context.h
+Index: chromium-129.0.6668.58/content/public/browser/file_system_access_permission_context.h
 ===================================================================
---- chromium-128.0.6613.137.orig/content/public/browser/file_system_access_permission_context.h
-+++ chromium-128.0.6613.137/content/public/browser/file_system_access_permission_context.h
+--- chromium-129.0.6668.58.orig/content/public/browser/file_system_access_permission_context.h
++++ chromium-129.0.6668.58/content/public/browser/file_system_access_permission_context.h
 @@ -128,12 +128,6 @@ class FileSystemAccessPermissionContext
        base::OnceCallback<void(SensitiveEntryResult)> callback) = 0;
  
@@ -4187,10 +4164,10 @@ Index: chromium-128.0.6613.137/content/public/browser/file_system_access_permiss
  
    // Returns whether the give |origin| already allows read permission, or it is
    // possible to request one. This is used to block file dialogs from being
-Index: chromium-128.0.6613.137/content/public/test/fake_file_system_access_permission_context.cc
+Index: chromium-129.0.6668.58/content/public/test/fake_file_system_access_permission_context.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/public/test/fake_file_system_access_permission_context.cc
-+++ chromium-128.0.6613.137/content/public/test/fake_file_system_access_permission_context.cc
+--- chromium-129.0.6668.58.orig/content/public/test/fake_file_system_access_permission_context.cc
++++ chromium-129.0.6668.58/content/public/test/fake_file_system_access_permission_context.cc
 @@ -47,13 +47,6 @@ void FakeFileSystemAccessPermissionConte
    std::move(callback).Run(SensitiveEntryResult::kAllowed);
  }
@@ -4205,10 +4182,10 @@ Index: chromium-128.0.6613.137/content/public/test/fake_file_system_access_permi
  bool FakeFileSystemAccessPermissionContext::CanObtainReadPermission(
      const url::Origin& origin) {
    return true;
-Index: chromium-128.0.6613.137/content/public/test/fake_file_system_access_permission_context.h
+Index: chromium-129.0.6668.58/content/public/test/fake_file_system_access_permission_context.h
 ===================================================================
---- chromium-128.0.6613.137.orig/content/public/test/fake_file_system_access_permission_context.h
-+++ chromium-128.0.6613.137/content/public/test/fake_file_system_access_permission_context.h
+--- chromium-129.0.6668.58.orig/content/public/test/fake_file_system_access_permission_context.h
++++ chromium-129.0.6668.58/content/public/test/fake_file_system_access_permission_context.h
 @@ -46,11 +46,6 @@ class FakeFileSystemAccessPermissionCont
        GlobalRenderFrameHostId frame_id,
        base::OnceCallback<void(SensitiveEntryResult)> callback) override;
@@ -4221,10 +4198,10 @@ Index: chromium-128.0.6613.137/content/public/test/fake_file_system_access_permi
    bool CanObtainReadPermission(const url::Origin& origin) override;
    bool CanObtainWritePermission(const url::Origin& origin) override;
  
-Index: chromium-128.0.6613.137/extensions/browser/updater/update_service.cc
+Index: chromium-129.0.6668.58/extensions/browser/updater/update_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/extensions/browser/updater/update_service.cc
-+++ chromium-128.0.6613.137/extensions/browser/updater/update_service.cc
+--- chromium-129.0.6668.58.orig/extensions/browser/updater/update_service.cc
++++ chromium-129.0.6668.58/extensions/browser/updater/update_service.cc
 @@ -134,13 +134,6 @@ void UpdateService::OnCrxStateChange(Upd
        break;
    }

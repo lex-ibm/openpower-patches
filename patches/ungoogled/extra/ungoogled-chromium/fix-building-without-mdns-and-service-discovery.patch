@@ -1,9 +1,9 @@
 # Fix building with enable_service_discovery=false and enable_mds=false
 
-Index: chromium-128.0.6613.137/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
+Index: chromium-129.0.6668.58/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
-+++ chromium-128.0.6613.137/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
++++ chromium-129.0.6668.58/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
 @@ -40,37 +40,22 @@ DnsSdDeviceLister::DnsSdDeviceLister(
  DnsSdDeviceLister::~DnsSdDeviceLister() {}
  
@@ -41,4 +41,4 @@ Index: chromium-128.0.6613.137/chrome/browser/media/router/discovery/mdns/dns_sd
 -  device_lister_->DiscoverNewDevices();
  }
  
- }  // namespace media_router
+ void DnsSdDeviceLister::OnPermissionRejected() {

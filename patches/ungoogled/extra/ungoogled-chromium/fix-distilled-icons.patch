@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.137/components/dom_distiller/core/css/distilledpage.css
+Index: chromium-129.0.6668.58/components/dom_distiller/core/css/distilledpage.css
 ===================================================================
---- chromium-128.0.6613.137.orig/components/dom_distiller/core/css/distilledpage.css
-+++ chromium-128.0.6613.137/components/dom_distiller/core/css/distilledpage.css
+--- chromium-129.0.6668.58.orig/components/dom_distiller/core/css/distilledpage.css
++++ chromium-129.0.6668.58/components/dom_distiller/core/css/distilledpage.css
 @@ -28,6 +28,11 @@
    box-sizing: border-box;
  }

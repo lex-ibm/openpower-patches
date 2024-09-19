@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
-@@ -11,6 +11,7 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/tabs/tab.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab.cc
+@@ -16,6 +16,7 @@
  #include <memory>
  #include <utility>
  
@@ -10,7 +10,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
  #include "base/debug/alias.h"
  #include "base/functional/bind.h"
  #include "base/i18n/rtl.h"
-@@ -693,6 +694,8 @@ void Tab::OnGestureEvent(ui::GestureEven
+@@ -702,6 +703,8 @@ void Tab::OnGestureEvent(ui::GestureEven
  }
  
  std::u16string Tab::GetTooltipText(const gfx::Point& p) const {
@@ -19,11 +19,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab.cc
    // Tab hover cards replace tooltips for tabs.
    return std::u16string();
  }
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab_strip.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/tabs/tab_strip.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
-@@ -14,6 +14,7 @@
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/tabs/tab_strip.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab_strip.cc
+@@ -19,6 +19,7 @@
  #include <utility>
  #include <vector>
  
@@ -31,7 +31,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
  #include "base/check.h"
  #include "base/compiler_specific.h"
  #include "base/containers/adapters.h"
-@@ -1822,6 +1823,8 @@ void TabStrip::OnMouseEventInTab(views::
+@@ -1827,6 +1828,8 @@ void TabStrip::OnMouseEventInTab(views::
  }
  
  void TabStrip::UpdateHoverCard(Tab* tab, HoverCardUpdateType update_type) {
@@ -40,10 +40,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/tabs/tab_strip.cc
    tab_container_->UpdateHoverCard(tab, update_type);
  }
  
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_choices.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_choices.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_choices.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_choices.h
 @@ -70,4 +70,13 @@ const FeatureEntry::Choice kCloseConfirm
       "close-confirmation",
       "multiple"},
@@ -58,10 +58,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_choices.h
 +     "tooltip"},
 +};
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_CHOICES_H_
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -80,4 +80,8 @@
       "Custom New Tab Page",
       "Allows setting a custom URL for the new tab page. Value can be internal (e.g. `about:blank` or `chrome://new-tab-page`), external (e.g. `example.com`), or local (e.g. `file:///tmp/startpage.html`). This applies for incognito windows as well when not set to a `chrome://` internal page. ungoogled-chromium flag",

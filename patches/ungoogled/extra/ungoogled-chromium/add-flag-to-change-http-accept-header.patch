@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -92,4 +92,8 @@
       "Disable GREASE for TLS",
       "Turn off GREASE (Generate Random Extensions And Sustain Extensibility) for TLS connections. ungoogled-chromium flag.",
@@ -11,11 +11,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 +     "Set a custom value for the Accept header which is sent by the browser with every HTTP request.  (e.g. `text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8`). ungoogled-chromium flag.",
 +     kOsAll, ORIGIN_LIST_VALUE_TYPE("http-accept-header", "")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.137/components/flags_ui/flags_state.cc
+Index: chromium-129.0.6668.58/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/flags_ui/flags_state.cc
-+++ chromium-128.0.6613.137/components/flags_ui/flags_state.cc
-@@ -224,6 +224,7 @@ std::string GetCombinedOriginListValue(c
+--- chromium-129.0.6668.58.orig/components/flags_ui/flags_state.cc
++++ chromium-129.0.6668.58/components/flags_ui/flags_state.cc
+@@ -229,6 +229,7 @@ std::string GetCombinedOriginListValue(c
    const std::string new_value =
        flags_storage.GetOriginListFlag(internal_entry_name);
    if (command_line_switch == "custom-ntp") return existing_value.empty() ? new_value : existing_value;
@@ -23,7 +23,7 @@ Index: chromium-128.0.6613.137/components/flags_ui/flags_state.cc
    return CombineAndSanitizeOriginLists(existing_value, new_value);
  }
  
-@@ -463,6 +464,7 @@ void FlagsState::SetOriginListFlag(const
+@@ -468,6 +469,7 @@ void FlagsState::SetOriginListFlag(const
                                     FlagsStorage* flags_storage) {
    const std::string new_value =
        internal_name == "custom-ntp" ? value :
@@ -31,10 +31,10 @@ Index: chromium-128.0.6613.137/components/flags_ui/flags_state.cc
        CombineAndSanitizeOriginLists(std::string(), value);
    flags_storage->SetOriginListFlag(internal_name, new_value);
  
-Index: chromium-128.0.6613.137/content/public/browser/frame_accept_header.cc
+Index: chromium-129.0.6668.58/content/public/browser/frame_accept_header.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/public/browser/frame_accept_header.cc
-+++ chromium-128.0.6613.137/content/public/browser/frame_accept_header.cc
+--- chromium-129.0.6668.58.orig/content/public/browser/frame_accept_header.cc
++++ chromium-129.0.6668.58/content/public/browser/frame_accept_header.cc
 @@ -4,6 +4,7 @@
  
  #include "content/public/browser/frame_accept_header.h"

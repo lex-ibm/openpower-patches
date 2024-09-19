@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/browser/extensions/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/extensions/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
-@@ -942,6 +942,7 @@ source_set("extensions") {
+--- chromium-129.0.6668.58.orig/chrome/browser/extensions/BUILD.gn
++++ chromium-129.0.6668.58/chrome/browser/extensions/BUILD.gn
+@@ -933,6 +933,7 @@ source_set("extensions") {
      "//components/resources",
      "//components/safe_browsing:buildflags",
      "//components/safe_browsing/content/browser/web_ui:web_ui",
@@ -10,10 +10,10 @@ Index: chromium-128.0.6613.137/chrome/browser/extensions/BUILD.gn
      "//components/safe_browsing/core/browser/db:database_manager",
      "//components/safe_browsing/core/common",
      "//components/safe_browsing/core/common:safe_browsing_prefs",
-Index: chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/browser_commands.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/browser_commands.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/browser_commands.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/browser_commands.cc
 @@ -5,6 +5,7 @@
  #include "chrome/browser/ui/browser_commands.h"
  
@@ -22,11 +22,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
  #include <optional>
  #include <utility>
  #include <vector>
-Index: chromium-128.0.6613.137/chrome/common/BUILD.gn
+Index: chromium-129.0.6668.58/chrome/common/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/common/BUILD.gn
-+++ chromium-128.0.6613.137/chrome/common/BUILD.gn
-@@ -605,6 +605,7 @@ static_library("url_constants") {
+--- chromium-129.0.6668.58.orig/chrome/common/BUILD.gn
++++ chromium-129.0.6668.58/chrome/common/BUILD.gn
+@@ -556,6 +556,7 @@ static_library("url_constants") {
      "//components/optimization_guide/optimization_guide_internals/webui:url_constants",
      "//components/password_manager/content/common",
      "//components/safe_browsing/core/common",
@@ -34,11 +34,11 @@ Index: chromium-128.0.6613.137/chrome/common/BUILD.gn
      "//device/vr/buildflags",
    ]
  }
-Index: chromium-128.0.6613.137/content/browser/BUILD.gn
+Index: chromium-129.0.6668.58/content/browser/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/BUILD.gn
-+++ chromium-128.0.6613.137/content/browser/BUILD.gn
-@@ -88,6 +88,7 @@ source_set("browser") {
+--- chromium-129.0.6668.58.orig/content/browser/BUILD.gn
++++ chromium-129.0.6668.58/content/browser/BUILD.gn
+@@ -91,6 +91,7 @@ source_set("browser") {
      "//cc/animation",
      "//cc/mojo_embedder",
      "//cc/paint",
@@ -46,7 +46,7 @@ Index: chromium-128.0.6613.137/content/browser/BUILD.gn
      "//components/attribution_reporting:data_host_mojom",
      "//components/attribution_reporting:mojom",
      "//components/back_forward_cache:enum",
-@@ -100,6 +101,7 @@ source_set("browser") {
+@@ -103,6 +104,7 @@ source_set("browser") {
      "//components/file_access",
      "//components/filename_generation",
      "//components/input",
@@ -54,10 +54,10 @@ Index: chromium-128.0.6613.137/content/browser/BUILD.gn
      "//components/link_header_util",
      "//components/metrics",
      "//components/metrics:single_sample_metrics",
-Index: chromium-128.0.6613.137/pdf/pdfium/pdfium_engine_exports.h
+Index: chromium-129.0.6668.58/pdf/pdfium/pdfium_engine_exports.h
 ===================================================================
---- chromium-128.0.6613.137.orig/pdf/pdfium/pdfium_engine_exports.h
-+++ chromium-128.0.6613.137/pdf/pdfium/pdfium_engine_exports.h
+--- chromium-129.0.6668.58.orig/pdf/pdfium/pdfium_engine_exports.h
++++ chromium-129.0.6668.58/pdf/pdfium/pdfium_engine_exports.h
 @@ -15,6 +15,7 @@
  #include "build/build_config.h"
  #include "pdf/document_metadata.h"
@@ -66,10 +66,10 @@ Index: chromium-128.0.6613.137/pdf/pdfium/pdfium_engine_exports.h
  #include "ui/gfx/geometry/size_f.h"
  
  #if BUILDFLAG(IS_WIN)
-Index: chromium-128.0.6613.137/services/passage_embeddings/BUILD.gn
+Index: chromium-129.0.6668.58/services/passage_embeddings/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/services/passage_embeddings/BUILD.gn
-+++ chromium-128.0.6613.137/services/passage_embeddings/BUILD.gn
+--- chromium-129.0.6668.58.orig/services/passage_embeddings/BUILD.gn
++++ chromium-129.0.6668.58/services/passage_embeddings/BUILD.gn
 @@ -31,6 +31,7 @@ source_set("passage_embeddings") {
    }
  

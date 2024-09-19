@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.137/chrome/browser/search/search.cc
+Index: chromium-129.0.6668.58/chrome/browser/search/search.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/search/search.cc
-+++ chromium-128.0.6613.137/chrome/browser/search/search.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/search/search.cc
++++ chromium-129.0.6668.58/chrome/browser/search/search.cc
 @@ -179,33 +179,8 @@ struct NewTabURLDetails {
      const GURL local_url(default_is_google
                               ? chrome::kChromeUINewTabPageURL

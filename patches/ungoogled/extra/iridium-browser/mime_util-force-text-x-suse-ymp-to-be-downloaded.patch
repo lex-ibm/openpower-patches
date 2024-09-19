@@ -9,10 +9,10 @@ very interesting in themselves. Force them to be stored.
  components/mime_util/mime_util.cc | 1 +
  1 file changed, 1 insertion(+)
 
-Index: chromium-128.0.6613.137/third_party/blink/common/mime_util/mime_util.cc
+Index: chromium-129.0.6668.58/third_party/blink/common/mime_util/mime_util.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/third_party/blink/common/mime_util/mime_util.cc
-+++ chromium-128.0.6613.137/third_party/blink/common/mime_util/mime_util.cc
+--- chromium-129.0.6668.58.orig/third_party/blink/common/mime_util/mime_util.cc
++++ chromium-129.0.6668.58/third_party/blink/common/mime_util/mime_util.cc
 @@ -83,6 +83,7 @@ static const char* const kUnsupportedTex
      "text/x-csv",
      "text/x-vcf",

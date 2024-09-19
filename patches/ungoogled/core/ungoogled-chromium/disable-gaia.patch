@@ -1,10 +1,10 @@
 # Disables Gaia code
 # Somehow it is still activated even without being signed-in: https://github.com/ungoogled-software/ungoogled-chromium/issues/104
 
-Index: chromium-128.0.6613.137/google_apis/gaia/gaia_auth_fetcher.cc
+Index: chromium-129.0.6668.58/google_apis/gaia/gaia_auth_fetcher.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/google_apis/gaia/gaia_auth_fetcher.cc
-+++ chromium-128.0.6613.137/google_apis/gaia/gaia_auth_fetcher.cc
+--- chromium-129.0.6668.58.orig/google_apis/gaia/gaia_auth_fetcher.cc
++++ chromium-129.0.6668.58/google_apis/gaia/gaia_auth_fetcher.cc
 @@ -264,61 +264,6 @@ void GaiaAuthFetcher::CreateAndStartGaia
      network::mojom::CredentialsMode credentials_mode,
      const net::NetworkTrafficAnnotationTag& traffic_annotation) {

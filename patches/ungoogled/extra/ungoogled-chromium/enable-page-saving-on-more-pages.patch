@@ -1,10 +1,10 @@
 # Add more URL schemes allowed for saving
 
-Index: chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/browser_commands.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/browser_commands.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
-@@ -554,11 +554,6 @@ int GetContentRestrictions(const Browser
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/browser_commands.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/browser_commands.cc
+@@ -559,11 +559,6 @@ int GetContentRestrictions(const Browser
      CoreTabHelper* core_tab_helper =
          CoreTabHelper::FromWebContents(current_tab);
      content_restrictions = core_tab_helper->content_restrictions();
@@ -16,7 +16,7 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
    }
    return content_restrictions;
  }
-@@ -1717,8 +1712,7 @@ bool CanSavePage(const Browser* browser)
+@@ -1735,8 +1730,7 @@ bool CanSavePage(const Browser* browser)
        DownloadPrefs::DownloadRestriction::ALL_FILES) {
      return false;
    }
@@ -26,10 +26,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/browser_commands.cc
  }
  
  void Print(Browser* browser) {
-Index: chromium-128.0.6613.137/components/offline_pages/core/offline_page_model.cc
+Index: chromium-129.0.6668.58/components/offline_pages/core/offline_page_model.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/offline_pages/core/offline_page_model.cc
-+++ chromium-128.0.6613.137/components/offline_pages/core/offline_page_model.cc
+--- chromium-129.0.6668.58.orig/components/offline_pages/core/offline_page_model.cc
++++ chromium-129.0.6668.58/components/offline_pages/core/offline_page_model.cc
 @@ -21,7 +21,7 @@ OfflinePageModel::SavePageParams::~SaveP
  
  // static
@@ -39,10 +39,10 @@ Index: chromium-128.0.6613.137/components/offline_pages/core/offline_page_model.
  }
  
  OfflinePageModel::OfflinePageModel() = default;
-Index: chromium-128.0.6613.137/content/common/url_schemes.cc
+Index: chromium-129.0.6668.58/content/common/url_schemes.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/common/url_schemes.cc
-+++ chromium-128.0.6613.137/content/common/url_schemes.cc
+--- chromium-129.0.6668.58.orig/content/common/url_schemes.cc
++++ chromium-129.0.6668.58/content/common/url_schemes.cc
 @@ -24,13 +24,21 @@ namespace {
  bool g_registered_url_schemes = false;
  
@@ -66,10 +66,10 @@ Index: chromium-128.0.6613.137/content/common/url_schemes.cc
  };
  
  // These lists are lazily initialized below and are leaked on shutdown to
-Index: chromium-128.0.6613.137/content/public/common/url_utils.cc
+Index: chromium-129.0.6668.58/content/public/common/url_utils.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/content/public/common/url_utils.cc
-+++ chromium-128.0.6613.137/content/public/common/url_utils.cc
+--- chromium-129.0.6668.58.orig/content/public/common/url_utils.cc
++++ chromium-129.0.6668.58/content/public/common/url_utils.cc
 @@ -40,11 +40,7 @@ bool IsPdfInternalPluginAllowedOrigin(co
  }
  

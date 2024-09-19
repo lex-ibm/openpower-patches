@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-+++ chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-@@ -76,6 +76,7 @@ class FrameGrabHandle : public views::Vi
+--- chromium-129.0.6668.58.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
++++ chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+@@ -78,6 +78,7 @@ class FrameGrabHandle : public views::Vi
      // Reserve some space for the frame to be grabbed by, even if the tabstrip
      // is full.
      // TODO(tbergquist): Define this relative to the NTB insets again.
@@ -10,10 +10,10 @@ Index: chromium-128.0.6613.137/chrome/browser/ui/views/frame/tab_strip_region_vi
      return gfx::Size(42, 0);
    }
  };
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -68,4 +68,8 @@
       "Disable QR Generator",
       "Disables the QR generator for sharing page links. ungoogled-chromium flag",

@@ -1,9 +1,9 @@
 # Add flag to force punycode in hostnames instead of Unicode when displaying Internationalized Domain Names (IDNs) to mitigate homograph attacks
 
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -20,4 +20,8 @@
       "Disable beforeunload",
       "Disables JavaScript dialog boxes triggered by beforeunload. ungoogled-chromium flag.",
@@ -13,11 +13,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 +     "Force punycode in hostnames instead of Unicode when displaying Internationalized Domain Names (IDNs). ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("force-punycode-hostnames")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.137/components/url_formatter/url_formatter.cc
+Index: chromium-129.0.6668.58/components/url_formatter/url_formatter.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/url_formatter/url_formatter.cc
-+++ chromium-128.0.6613.137/components/url_formatter/url_formatter.cc
-@@ -10,6 +10,7 @@
+--- chromium-129.0.6668.58.orig/components/url_formatter/url_formatter.cc
++++ chromium-129.0.6668.58/components/url_formatter/url_formatter.cc
+@@ -15,6 +15,7 @@
  #include <utility>
  #include <vector>
  
@@ -25,7 +25,7 @@ Index: chromium-128.0.6613.137/components/url_formatter/url_formatter.cc
  #include "base/lazy_instance.h"
  #include "base/memory/raw_ptr.h"
  #include "base/numerics/safe_conversions.h"
-@@ -312,6 +313,13 @@ IDNConversionResult IDNToUnicodeWithAdju
+@@ -317,6 +318,13 @@ IDNConversionResult IDNToUnicodeWithAdju
    host16.reserve(host.length());
    host16.insert(host16.end(), host.begin(), host.end());
  

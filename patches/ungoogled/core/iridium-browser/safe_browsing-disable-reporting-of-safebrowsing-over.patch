@@ -11,10 +11,10 @@ This prevents trk:148 (phishing) and trk:149 (malware).
  components/safe_browsing/content/browser/client_side_detection_service.cc   | 5 +++++
  1 file changed, 5 insertions(+)
 
-Index: chromium-128.0.6613.137/components/safe_browsing/content/browser/client_side_detection_service.cc
+Index: chromium-129.0.6668.58/components/safe_browsing/content/browser/client_side_detection_service.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/safe_browsing/content/browser/client_side_detection_service.cc
-+++ chromium-128.0.6613.137/components/safe_browsing/content/browser/client_side_detection_service.cc
+--- chromium-129.0.6668.58.orig/components/safe_browsing/content/browser/client_side_detection_service.cc
++++ chromium-129.0.6668.58/components/safe_browsing/content/browser/client_side_detection_service.cc
 @@ -271,6 +271,10 @@ void ClientSideDetectionService::StartCl
      return;
    }

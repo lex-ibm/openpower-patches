@@ -1,7 +1,7 @@
-Index: chromium-128.0.6613.137/chrome/browser/net/dns_probe_runner.cc
+Index: chromium-129.0.6668.58/chrome/browser/net/dns_probe_runner.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/net/dns_probe_runner.cc
-+++ chromium-128.0.6613.137/chrome/browser/net/dns_probe_runner.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/net/dns_probe_runner.cc
++++ chromium-129.0.6668.58/chrome/browser/net/dns_probe_runner.cc
 @@ -18,7 +18,7 @@
  
  namespace chrome_browser_net {
@@ -11,10 +11,10 @@ Index: chromium-128.0.6613.137/chrome/browser/net/dns_probe_runner.cc
  
  namespace {
  
-Index: chromium-128.0.6613.137/chrome/browser/net/stub_resolver_config_reader.cc
+Index: chromium-129.0.6668.58/chrome/browser/net/stub_resolver_config_reader.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/net/stub_resolver_config_reader.cc
-+++ chromium-128.0.6613.137/chrome/browser/net/stub_resolver_config_reader.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/net/stub_resolver_config_reader.cc
++++ chromium-129.0.6668.58/chrome/browser/net/stub_resolver_config_reader.cc
 @@ -125,7 +125,7 @@ StubResolverConfigReader::StubResolverCo
                                        base::Value(ShouldEnableAsyncDns()));
      local_state_->SetDefaultPrefValue(prefs::kDnsOverHttpsMode,
@@ -24,10 +24,10 @@ Index: chromium-128.0.6613.137/chrome/browser/net/stub_resolver_config_reader.cc
    }
  
    pref_change_registrar_.Add(prefs::kBuiltInDnsClientEnabled, pref_callback);
-Index: chromium-128.0.6613.137/net/dns/public/doh_provider_entry.cc
+Index: chromium-129.0.6668.58/net/dns/public/doh_provider_entry.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/net/dns/public/doh_provider_entry.cc
-+++ chromium-128.0.6613.137/net/dns/public/doh_provider_entry.cc
+--- chromium-129.0.6668.58.orig/net/dns/public/doh_provider_entry.cc
++++ chromium-129.0.6668.58/net/dns/public/doh_provider_entry.cc
 @@ -166,30 +166,6 @@ const DohProviderEntry::List& DohProvide
            /*display_globally=*/false, /*display_countries=*/{"EE", "DE"},
            LoggingLevel::kNormal),
@@ -59,10 +59,10 @@ Index: chromium-128.0.6613.137/net/dns/public/doh_provider_entry.cc
            "Iij",
            MAKE_BASE_FEATURE_WITH_STATIC_STORAGE(
                DohProviderIij, base::FEATURE_ENABLED_BY_DEFAULT),
-Index: chromium-128.0.6613.137/services/network/public/cpp/features.cc
+Index: chromium-129.0.6668.58/services/network/public/cpp/features.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/services/network/public/cpp/features.cc
-+++ chromium-128.0.6613.137/services/network/public/cpp/features.cc
+--- chromium-129.0.6668.58.orig/services/network/public/cpp/features.cc
++++ chromium-129.0.6668.58/services/network/public/cpp/features.cc
 @@ -126,12 +126,7 @@ BASE_FEATURE(kSplitAuthCacheByNetworkIso
  // Enable usage of hardcoded DoH upgrade mapping for use in automatic mode.
  BASE_FEATURE(kDnsOverHttpsUpgrade,

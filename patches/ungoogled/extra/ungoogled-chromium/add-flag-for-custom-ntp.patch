@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
+Index: chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/chrome_content_browser_client.cc
-+++ chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
-@@ -909,10 +909,14 @@ bool HandleNewTabPageLocationOverride(
+--- chromium-129.0.6668.58.orig/chrome/browser/chrome_content_browser_client.cc
++++ chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
+@@ -921,10 +921,14 @@ bool HandleNewTabPageLocationOverride(
  
    // Don't change the URL when incognito mode.
    if (profile->IsOffTheRecord())
@@ -17,10 +17,10 @@ Index: chromium-128.0.6613.137/chrome/browser/chrome_content_browser_client.cc
    if (ntp_location.empty())
      return false;
    url::Component scheme;
-Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
+--- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 @@ -76,4 +76,8 @@
       "Close Confirmation",
       "Show a warning prompt when closing the browser window. ungoogled-chromium flag",
@@ -30,11 +30,11 @@ Index: chromium-128.0.6613.137/chrome/browser/ungoogled_flag_entries.h
 +     "Allows setting a custom URL for the new tab page. Value can be internal (e.g. `about:blank` or `chrome://new-tab-page`), external (e.g. `example.com`), or local (e.g. `file:///tmp/startpage.html`). This applies for incognito windows as well when not set to a `chrome://` internal page. ungoogled-chromium flag",
 +     kOsDesktop, ORIGIN_LIST_VALUE_TYPE("custom-ntp", "")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-128.0.6613.137/components/flags_ui/flags_state.cc
+Index: chromium-129.0.6668.58/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/components/flags_ui/flags_state.cc
-+++ chromium-128.0.6613.137/components/flags_ui/flags_state.cc
-@@ -223,6 +223,7 @@ std::string GetCombinedOriginListValue(c
+--- chromium-129.0.6668.58.orig/components/flags_ui/flags_state.cc
++++ chromium-129.0.6668.58/components/flags_ui/flags_state.cc
+@@ -228,6 +228,7 @@ std::string GetCombinedOriginListValue(c
        command_line.GetSwitchValueASCII(command_line_switch);
    const std::string new_value =
        flags_storage.GetOriginListFlag(internal_entry_name);
@@ -42,7 +42,7 @@ Index: chromium-128.0.6613.137/components/flags_ui/flags_state.cc
    return CombineAndSanitizeOriginLists(existing_value, new_value);
  }
  
-@@ -461,6 +462,7 @@ void FlagsState::SetOriginListFlag(const
+@@ -466,6 +467,7 @@ void FlagsState::SetOriginListFlag(const
                                     const std::string& value,
                                     FlagsStorage* flags_storage) {
    const std::string new_value =

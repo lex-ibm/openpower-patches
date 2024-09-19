@@ -1,10 +1,10 @@
 # Disables the dial registry's repeating discovery timer
 # This caused unnecessary SSDP network spam
 
-Index: chromium-128.0.6613.137/chrome/browser/media/router/discovery/dial/dial_registry.cc
+Index: chromium-129.0.6668.58/chrome/browser/media/router/discovery/dial/dial_registry.cc
 ===================================================================
---- chromium-128.0.6613.137.orig/chrome/browser/media/router/discovery/dial/dial_registry.cc
-+++ chromium-128.0.6613.137/chrome/browser/media/router/discovery/dial/dial_registry.cc
+--- chromium-129.0.6668.58.orig/chrome/browser/media/router/discovery/dial/dial_registry.cc
++++ chromium-129.0.6668.58/chrome/browser/media/router/discovery/dial/dial_registry.cc
 @@ -155,10 +155,6 @@ void DialRegistry::StartPeriodicDiscover
      return;
  

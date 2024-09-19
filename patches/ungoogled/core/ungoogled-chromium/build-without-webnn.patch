@@ -1,8 +1,8 @@
-Index: chromium-128.0.6613.137/content/browser/BUILD.gn
+Index: chromium-129.0.6668.58/content/browser/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/content/browser/BUILD.gn
-+++ chromium-128.0.6613.137/content/browser/BUILD.gn
-@@ -246,7 +246,6 @@ source_set("browser") {
+--- chromium-129.0.6668.58.orig/content/browser/BUILD.gn
++++ chromium-129.0.6668.58/content/browser/BUILD.gn
+@@ -252,7 +252,6 @@ source_set("browser") {
      "//services/viz/privileged/mojom",
      "//services/viz/public/cpp/gpu",
      "//services/viz/public/mojom",
@@ -10,10 +10,10 @@ Index: chromium-128.0.6613.137/content/browser/BUILD.gn
      "//services/webnn:webnn_switches",
      "//services/webnn/public/mojom",
      "//skia",
-Index: chromium-128.0.6613.137/content/gpu/BUILD.gn
+Index: chromium-129.0.6668.58/content/gpu/BUILD.gn
 ===================================================================
---- chromium-128.0.6613.137.orig/content/gpu/BUILD.gn
-+++ chromium-128.0.6613.137/content/gpu/BUILD.gn
+--- chromium-129.0.6668.58.orig/content/gpu/BUILD.gn
++++ chromium-129.0.6668.58/content/gpu/BUILD.gn
 @@ -75,7 +75,6 @@ target(link_target_type, "gpu_sources")
      "//services/service_manager/public/mojom",
      "//services/tracing/public/cpp",
