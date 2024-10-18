@@ -1,5 +1,6 @@
 # POWER support
 ppc64le/core/add-ppc64-architecture-string.patch
+ppc64le/core/add-ppc64-pthread-stack-size.patch
 
 ppc64le/sandbox/0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
 ppc64le/sandbox/0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
