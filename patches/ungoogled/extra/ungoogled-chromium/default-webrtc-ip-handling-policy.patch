@@ -1,7 +1,7 @@
-Index: chromium-129.0.6668.58/chrome/browser/ui/browser_ui_prefs.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/browser_ui_prefs.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/browser_ui_prefs.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/browser_ui_prefs.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/browser_ui_prefs.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/browser_ui_prefs.cc
 @@ -109,7 +109,7 @@ void RegisterBrowserUserPrefs(user_prefs
                                  false);
  #endif

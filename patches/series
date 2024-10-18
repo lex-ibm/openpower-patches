@@ -75,6 +75,9 @@ ppc64le/fixes/fix-unknown-warning-option-messages.diff
 # They will not work on POWER8 (ISA 2.07) or below
 #ppc64le/core/baseline-isa-3-0.patch
 
+# Upstream fixes needed for POWER builds
+upstream/blink-fix-size-assertions.patch
+
 # Ungoogled Chromium
 ungoogled/misc/change-user-agent.patch
 ungoogled/misc/fix-debian-ftbfs.patch

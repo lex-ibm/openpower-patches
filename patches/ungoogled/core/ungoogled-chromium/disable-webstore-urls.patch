@@ -1,10 +1,10 @@
 # Disables Chrome Webstore-related URLs and other internal functionality. Mainly for disabling auto updates via the Chrome Webstore.
 
-Index: chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
+Index: chromium-130.0.6723.44/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
-+++ chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
-@@ -664,12 +664,6 @@ std::vector<url::Origin> ChromeContentBr
+--- chromium-130.0.6723.44.orig/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
++++ chromium-130.0.6723.44/chrome/browser/extensions/chrome_content_browser_client_extensions_part.cc
+@@ -673,12 +673,6 @@ std::vector<url::Origin> ChromeContentBr
      GetOriginsRequiringDedicatedProcess() {
    std::vector<url::Origin> list;
  
@@ -17,10 +17,10 @@ Index: chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_browser_c
    return list;
  }
  
-Index: chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_verifier_delegate.cc
+Index: chromium-130.0.6723.44/chrome/browser/extensions/chrome_content_verifier_delegate.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/extensions/chrome_content_verifier_delegate.cc
-+++ chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_verifier_delegate.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/extensions/chrome_content_verifier_delegate.cc
++++ chromium-130.0.6723.44/chrome/browser/extensions/chrome_content_verifier_delegate.cc
 @@ -307,17 +307,7 @@ bool ChromeContentVerifierDelegate::IsFr
    // between which extensions are considered in-store.
    // See https://crbug.com/766806 for details.
@@ -40,10 +40,10 @@ Index: chromium-129.0.6668.58/chrome/browser/extensions/chrome_content_verifier_
    }
    return true;
  }
-Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.cc
+Index: chromium-130.0.6723.44/chrome/browser/extensions/extension_migrator.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_migrator.cc
-+++ chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/extensions/extension_migrator.cc
++++ chromium-130.0.6723.44/chrome/browser/extensions/extension_migrator.cc
 @@ -19,7 +19,9 @@ namespace extensions {
  ExtensionMigrator::ExtensionMigrator(Profile* profile,
                                       const std::string& old_id,
@@ -64,10 +64,10 @@ Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.cc
  
      prefs.Set(new_id_, std::move(entry));
    }
-Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.h
+Index: chromium-130.0.6723.44/chrome/browser/extensions/extension_migrator.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/extensions/extension_migrator.h
-+++ chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.h
+--- chromium-130.0.6723.44.orig/chrome/browser/extensions/extension_migrator.h
++++ chromium-130.0.6723.44/chrome/browser/extensions/extension_migrator.h
 @@ -9,6 +9,7 @@
  
  #include "base/memory/raw_ptr.h"
@@ -84,10 +84,10 @@ Index: chromium-129.0.6668.58/chrome/browser/extensions/extension_migrator.h
  };
  
  }  // namespace extensions
-Index: chromium-129.0.6668.58/extensions/browser/updater/extension_downloader.cc
+Index: chromium-130.0.6723.44/extensions/browser/updater/extension_downloader.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/extensions/browser/updater/extension_downloader.cc
-+++ chromium-129.0.6668.58/extensions/browser/updater/extension_downloader.cc
+--- chromium-130.0.6723.44.orig/extensions/browser/updater/extension_downloader.cc
++++ chromium-130.0.6723.44/extensions/browser/updater/extension_downloader.cc
 @@ -92,28 +92,19 @@ const char kNotFromWebstoreInstallSource
  const char kDefaultInstallSource[] = "";
  const char kReinstallInstallSource[] = "reinstall";

@@ -7,11 +7,11 @@
 #
 # Unlike the latest Bromite patch, it was chosen to not regenerate the noise value each time the value is read to prevent potential efficiency issues with the load on the RNG.
 
-Index: chromium-129.0.6668.58/chrome/browser/BUILD.gn
+Index: chromium-130.0.6723.44/chrome/browser/BUILD.gn
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/BUILD.gn
-+++ chromium-129.0.6668.58/chrome/browser/BUILD.gn
-@@ -2441,6 +2441,7 @@ static_library("browser") {
+--- chromium-130.0.6723.44.orig/chrome/browser/BUILD.gn
++++ chromium-130.0.6723.44/chrome/browser/BUILD.gn
+@@ -2451,6 +2451,7 @@ static_library("browser") {
      "//third_party/libyuv",
      "//third_party/metrics_proto",
      "//third_party/re2",
@@ -19,11 +19,11 @@ Index: chromium-129.0.6668.58/chrome/browser/BUILD.gn
      "//third_party/webrtc_overrides:webrtc_component",
      "//third_party/widevine/cdm:buildflags",
      "//third_party/widevine/cdm:headers",
-Index: chromium-129.0.6668.58/chrome/browser/about_flags.cc
+Index: chromium-130.0.6723.44/chrome/browser/about_flags.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/about_flags.cc
-+++ chromium-129.0.6668.58/chrome/browser/about_flags.cc
-@@ -178,6 +178,7 @@
+--- chromium-130.0.6723.44.orig/chrome/browser/about_flags.cc
++++ chromium-130.0.6723.44/chrome/browser/about_flags.cc
+@@ -177,6 +177,7 @@
  #include "components/translate/core/common/translate_util.h"
  #include "components/trusted_vault/features.h"
  #include "components/ui_devtools/switches.h"
@@ -31,10 +31,10 @@ Index: chromium-129.0.6668.58/chrome/browser/about_flags.cc
  #include "components/variations/variations_switches.h"
  #include "components/version_info/channel.h"
  #include "components/version_info/version_info.h"
-Index: chromium-129.0.6668.58/chrome/browser/bromite_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/bromite_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/bromite_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/bromite_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/bromite_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/bromite_flag_entries.h
 @@ -4,4 +4,12 @@
  
  #ifndef CHROME_BROWSER_BROMITE_FLAG_ENTRIES_H_
@@ -48,22 +48,22 @@ Index: chromium-129.0.6668.58/chrome/browser/bromite_flag_entries.h
 +     "Scale the output values of Canvas::measureText() with a randomly selected factor in the range -0.0003% to 0.0003%, which are recomputed on every document initialization. ungoogled-chromium flag, Bromite feature.",
 +     kOsAll, SINGLE_VALUE_TYPE(switches::kFingerprintingCanvasMeasureTextNoise)},
  #endif  // CHROME_BROWSER_BROMITE_FLAG_ENTRIES_H_
-Index: chromium-129.0.6668.58/content/browser/BUILD.gn
+Index: chromium-130.0.6723.44/content/browser/BUILD.gn
 ===================================================================
---- chromium-129.0.6668.58.orig/content/browser/BUILD.gn
-+++ chromium-129.0.6668.58/content/browser/BUILD.gn
+--- chromium-130.0.6723.44.orig/content/browser/BUILD.gn
++++ chromium-130.0.6723.44/content/browser/BUILD.gn
 @@ -276,6 +276,7 @@ source_set("browser") {
-     "//third_party/libyuv",
      "//third_party/re2",
+     "//third_party/snappy",
      "//third_party/sqlite",
 +    "//components/ungoogled:ungoogled_switches",
      "//third_party/webrtc_overrides:webrtc_component",
      "//third_party/zlib",
      "//tools/v8_context_snapshot:buildflags",
-Index: chromium-129.0.6668.58/content/browser/renderer_host/render_process_host_impl.cc
+Index: chromium-130.0.6723.44/content/browser/renderer_host/render_process_host_impl.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/content/browser/renderer_host/render_process_host_impl.cc
-+++ chromium-129.0.6668.58/content/browser/renderer_host/render_process_host_impl.cc
+--- chromium-130.0.6723.44.orig/content/browser/renderer_host/render_process_host_impl.cc
++++ chromium-130.0.6723.44/content/browser/renderer_host/render_process_host_impl.cc
 @@ -79,6 +79,7 @@
  #include "components/services/storage/public/cpp/quota_error_or.h"
  #include "components/services/storage/public/mojom/cache_storage_control.mojom.h"
@@ -72,7 +72,7 @@ Index: chromium-129.0.6668.58/content/browser/renderer_host/render_process_host_
  #include "components/viz/common/switches.h"
  #include "components/viz/host/gpu_client.h"
  #include "content/browser/bad_message.h"
-@@ -3314,6 +3315,8 @@ void RenderProcessHostImpl::PropagateBro
+@@ -3370,6 +3371,8 @@ void RenderProcessHostImpl::PropagateBro
      switches::kEnableWebGLImageChromium,
      switches::kEnableWebGPUDeveloperFeatures,
      switches::kFileUrlPathAlias,
@@ -81,10 +81,10 @@ Index: chromium-129.0.6668.58/content/browser/renderer_host/render_process_host_
      switches::kForceDeviceScaleFactor,
      switches::kForceDisplayColorProfile,
      switches::kForceGpuMemAvailableMb,
-Index: chromium-129.0.6668.58/content/child/BUILD.gn
+Index: chromium-130.0.6723.44/content/child/BUILD.gn
 ===================================================================
---- chromium-129.0.6668.58.orig/content/child/BUILD.gn
-+++ chromium-129.0.6668.58/content/child/BUILD.gn
+--- chromium-130.0.6723.44.orig/content/child/BUILD.gn
++++ chromium-130.0.6723.44/content/child/BUILD.gn
 @@ -105,6 +105,7 @@ target(link_target_type, "child") {
      "//third_party/blink/public/common:buildflags",
      "//third_party/blink/public/strings",
@@ -93,10 +93,10 @@ Index: chromium-129.0.6668.58/content/child/BUILD.gn
      "//third_party/zlib/google:compression_utils",
      "//ui/base",
      "//ui/events/blink",
-Index: chromium-129.0.6668.58/content/child/runtime_features.cc
+Index: chromium-130.0.6723.44/content/child/runtime_features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/content/child/runtime_features.cc
-+++ chromium-129.0.6668.58/content/child/runtime_features.cc
+--- chromium-130.0.6723.44.orig/content/child/runtime_features.cc
++++ chromium-130.0.6723.44/content/child/runtime_features.cc
 @@ -40,6 +40,7 @@
  #include "third_party/blink/public/common/loader/referrer_utils.h"
  #include "third_party/blink/public/common/switches.h"
@@ -116,10 +116,10 @@ Index: chromium-129.0.6668.58/content/child/runtime_features.cc
    };
  
    for (const auto& mapping : switchToFeatureMapping) {
-Index: chromium-129.0.6668.58/third_party/blink/public/platform/web_runtime_features.h
+Index: chromium-130.0.6723.44/third_party/blink/public/platform/web_runtime_features.h
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/public/platform/web_runtime_features.h
-+++ chromium-129.0.6668.58/third_party/blink/public/platform/web_runtime_features.h
+--- chromium-130.0.6723.44.orig/third_party/blink/public/platform/web_runtime_features.h
++++ chromium-130.0.6723.44/third_party/blink/public/platform/web_runtime_features.h
 @@ -69,6 +69,9 @@ class BLINK_PLATFORM_EXPORT WebRuntimeFe
    static void EnableFluentScrollbars(bool);
    static void EnableFluentOverlayScrollbars(bool);
@@ -130,10 +130,10 @@ Index: chromium-129.0.6668.58/third_party/blink/public/platform/web_runtime_feat
    WebRuntimeFeatures() = delete;
  };
  
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/dom/document.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/dom/document.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.cc
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/dom/document.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/dom/document.cc
 @@ -45,6 +45,7 @@
  #include "base/i18n/time_formatting.h"
  #include "base/metrics/histogram_functions.h"
@@ -142,7 +142,7 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.cc
  #include "base/ranges/algorithm.h"
  #include "base/task/single_thread_task_runner.h"
  #include "base/time/time.h"
-@@ -905,6 +906,11 @@ Document::Document(const DocumentInit& i
+@@ -861,6 +862,11 @@ Document::Document(const DocumentInit& i
    TRACE_EVENT_WITH_FLOW0("blink", "Document::Document", TRACE_ID_LOCAL(this),
                           TRACE_EVENT_FLAG_FLOW_OUT);
    DCHECK(agent_);
@@ -154,7 +154,7 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.cc
    if (base::FeatureList::IsEnabled(features::kDelayAsyncScriptExecution) &&
        features::kDelayAsyncScriptExecutionDelayByDefaultParam.Get()) {
      script_runner_delayer_->Activate();
-@@ -1020,6 +1026,14 @@ const Position Document::PositionAdjuste
+@@ -978,6 +984,14 @@ const Position Document::PositionAdjuste
    return Position::BeforeNode(*shadow_host);
  }
  
@@ -169,11 +169,11 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.cc
  SelectorQueryCache& Document::GetSelectorQueryCache() {
    if (!selector_query_cache_)
      selector_query_cache_ = std::make_unique<SelectorQueryCache>();
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.h
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/dom/document.h
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/dom/document.h
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.h
-@@ -549,6 +549,10 @@ class CORE_EXPORT Document : public Cont
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/dom/document.h
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/dom/document.h
+@@ -548,6 +548,10 @@ class CORE_EXPORT Document : public Cont
      has_xml_declaration_ = has_xml_declaration ? 1 : 0;
    }
  
@@ -184,7 +184,7 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.h
    AtomicString visibilityState() const;
    bool IsPageVisible() const;
    bool hidden() const;
-@@ -2567,6 +2571,9 @@ class CORE_EXPORT Document : public Cont
+@@ -2556,6 +2560,9 @@ class CORE_EXPORT Document : public Cont
  
    base::ElapsedTimer start_time_;
  
@@ -194,11 +194,11 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/document.h
    Member<ScriptRunner> script_runner_;
    Member<ScriptRunnerDelayer> script_runner_delayer_;
  
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/element.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/dom/element.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/dom/element.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/dom/element.cc
-@@ -2513,6 +2513,11 @@ DOMRectList* Element::getClientRects() {
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/dom/element.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/dom/element.cc
+@@ -2508,6 +2508,11 @@ DOMRectList* Element::getClientRects() {
    DCHECK(element_layout_object);
    GetDocument().AdjustQuadsForScrollAndAbsoluteZoom(quads,
                                                      *element_layout_object);
@@ -210,7 +210,7 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/element.cc
    return MakeGarbageCollected<DOMRectList>(quads);
  }
  
-@@ -2540,6 +2545,9 @@ gfx::RectF Element::GetBoundingClientRec
+@@ -2535,6 +2540,9 @@ gfx::RectF Element::GetBoundingClientRec
    DCHECK(element_layout_object);
    GetDocument().AdjustRectForScrollAndAbsoluteZoom(result,
                                                     *element_layout_object);
@@ -220,10 +220,10 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/element.cc
    return result;
  }
  
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/range.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/dom/range.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/dom/range.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/dom/range.cc
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/dom/range.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/dom/range.cc
 @@ -1649,6 +1649,12 @@ DOMRectList* Range::getClientRects() con
    Vector<gfx::QuadF> quads;
    GetBorderAndTextQuads(quads);
@@ -250,13 +250,13 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/dom/range.cc
  }
  
  // TODO(editing-dev): We should make
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_metrics.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/html/canvas/text_metrics.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/html/canvas/text_metrics.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_metrics.cc
-@@ -79,6 +79,24 @@ TextMetrics::TextMetrics(const Font& fon
-   Update(font, direction, baseline, align, text);
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/html/canvas/text_metrics.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/html/canvas/text_metrics.cc
+@@ -93,6 +93,24 @@ const ShapeResult* ShapeWord(const TextR
  }
+ }  // namespace
  
 +void TextMetrics::Shuffle(const double factor) {
 +  // x-direction
@@ -279,10 +279,10 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_m
  void TextMetrics::Update(const Font& font,
                           const TextDirection& direction,
                           const TextBaseline& baseline,
-Index: chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_metrics.h
+Index: chromium-130.0.6723.44/third_party/blink/renderer/core/html/canvas/text_metrics.h
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/core/html/canvas/text_metrics.h
-+++ chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_metrics.h
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/core/html/canvas/text_metrics.h
++++ chromium-130.0.6723.44/third_party/blink/renderer/core/html/canvas/text_metrics.h
 @@ -93,6 +93,8 @@ class CORE_EXPORT TextMetrics final : pu
      float x_position_;
    };
@@ -292,10 +292,10 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/core/html/canvas/text_m
   private:
    void Update(const Font&,
                const TextDirection&,
-Index: chromium-129.0.6668.58/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
 @@ -221,6 +221,9 @@ class Isolate;
  class Value;
  }  // namespace v8
@@ -306,7 +306,7 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/modules/canvas/canvas2d
  namespace blink {
  
  class DOMMatrixInit;
-@@ -3538,8 +3541,22 @@ TextMetrics* BaseRenderingContext2D::mea
+@@ -3592,8 +3595,22 @@ TextMetrics* BaseRenderingContext2D::mea
    const CanvasRenderingContext2DState& state = GetState();
    TextDirection direction = ToTextDirection(state.GetDirection(), canvas);
  
@@ -331,11 +331,11 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/modules/canvas/canvas2d
  }
  
  void BaseRenderingContext2D::SnapshotStateForFilter() {
-Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/BUILD.gn
+Index: chromium-130.0.6723.44/third_party/blink/renderer/platform/BUILD.gn
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/platform/BUILD.gn
-+++ chromium-129.0.6668.58/third_party/blink/renderer/platform/BUILD.gn
-@@ -1751,6 +1751,7 @@ component("platform") {
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/platform/BUILD.gn
++++ chromium-130.0.6723.44/third_party/blink/renderer/platform/BUILD.gn
+@@ -1758,6 +1758,7 @@ component("platform") {
      "//components/paint_preview/common",
      "//components/search_engines:search_engine_utils",
      "//components/translate/core/language_detection:language_detection",
@@ -343,10 +343,10 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/BUILD.gn
      "//components/viz/client",
      "//components/viz/common",
      "//components/webrtc:net_address_utils",
-Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/exported/web_runtime_features.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/platform/exported/web_runtime_features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/platform/exported/web_runtime_features.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/platform/exported/web_runtime_features.cc
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/platform/exported/web_runtime_features.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/platform/exported/web_runtime_features.cc
 @@ -68,4 +68,12 @@ void WebRuntimeFeatures::EnableFluentScr
  void WebRuntimeFeatures::EnableFluentOverlayScrollbars(bool enable) {
    RuntimeEnabledFeatures::SetFluentOverlayScrollbarsEnabled(enable);
@@ -360,10 +360,10 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/exported/web_r
 +}
 +
  }  // namespace blink
-Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
+Index: chromium-130.0.6723.44/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
-+++ chromium-129.0.6668.58/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
++++ chromium-130.0.6723.44/third_party/blink/renderer/platform/graphics/image_data_buffer.cc
 @@ -38,6 +38,7 @@
  #include "base/memory/ptr_util.h"
  #include "third_party/blink/renderer/platform/graphics/static_bitmap_image.h"
@@ -372,11 +372,11 @@ Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/graphics/image
  #include "third_party/blink/renderer/platform/wtf/text/base64.h"
  #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"
  #include "third_party/blink/renderer/platform/wtf/vector.h"
-Index: chromium-129.0.6668.58/third_party/blink/renderer/platform/runtime_enabled_features.json5
+Index: chromium-130.0.6723.44/third_party/blink/renderer/platform/runtime_enabled_features.json5
 ===================================================================
---- chromium-129.0.6668.58.orig/third_party/blink/renderer/platform/runtime_enabled_features.json5
-+++ chromium-129.0.6668.58/third_party/blink/renderer/platform/runtime_enabled_features.json5
-@@ -1947,6 +1947,12 @@
+--- chromium-130.0.6723.44.orig/third_party/blink/renderer/platform/runtime_enabled_features.json5
++++ chromium-130.0.6723.44/third_party/blink/renderer/platform/runtime_enabled_features.json5
+@@ -1991,6 +1991,12 @@
        status: "experimental",
      },
      {

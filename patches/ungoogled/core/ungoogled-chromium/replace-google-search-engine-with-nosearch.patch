@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/components/search_engines/prepopulated_engines.json
+Index: chromium-130.0.6723.44/components/search_engines/prepopulated_engines.json
 ===================================================================
---- chromium-129.0.6668.58.orig/components/search_engines/prepopulated_engines.json
-+++ chromium-129.0.6668.58/components/search_engines/prepopulated_engines.json
-@@ -135,27 +135,11 @@
+--- chromium-130.0.6723.44.orig/components/search_engines/prepopulated_engines.json
++++ chromium-130.0.6723.44/components/search_engines/prepopulated_engines.json
+@@ -159,27 +159,11 @@
      // TODO(b/343792225): Identify a way to resolve this problem and implement
      // necessary changes.
      "google": {

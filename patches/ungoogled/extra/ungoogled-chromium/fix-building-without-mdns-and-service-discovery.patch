@@ -1,9 +1,21 @@
 # Fix building with enable_service_discovery=false and enable_mds=false
 
-Index: chromium-129.0.6668.58/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
+Index: chromium-130.0.6723.44/chrome/browser/extensions/api/BUILD.gn
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
-+++ chromium-129.0.6668.58/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/extensions/api/BUILD.gn
++++ chromium-130.0.6723.44/chrome/browser/extensions/api/BUILD.gn
+@@ -34,7 +34,6 @@ group("api_implementations") {
+     "//chrome/browser/extensions/api/downloads_internal",
+     "//chrome/browser/extensions/api/experimental_ai_data",
+     "//chrome/browser/extensions/api/font_settings",
+-    "//chrome/browser/extensions/api/mdns",
+     "//chrome/browser/extensions/api/module",
+     "//chrome/browser/extensions/api/networking_private",
+     "//chrome/browser/extensions/api/omnibox",
+Index: chromium-130.0.6723.44/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
+===================================================================
+--- chromium-130.0.6723.44.orig/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
++++ chromium-130.0.6723.44/chrome/browser/media/router/discovery/mdns/dns_sd_device_lister.cc
 @@ -40,37 +40,22 @@ DnsSdDeviceLister::DnsSdDeviceLister(
  DnsSdDeviceLister::~DnsSdDeviceLister() {}
  

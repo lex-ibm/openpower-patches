@@ -1,9 +1,9 @@
 # Make popups go to tabs instead
 
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -48,4 +48,8 @@
       "Close window with last tab",
       "Determines whether a window should close once the last tab is closed. ungoogled-chromium flag.",
@@ -13,11 +13,11 @@ Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 +     "Makes popups open in new tabs. ungoogled-chromium flag",
 +     kOsAll, SINGLE_VALUE_TYPE("popups-to-tabs")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-129.0.6668.58/content/renderer/render_frame_impl.cc
+Index: chromium-130.0.6723.44/content/renderer/render_frame_impl.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/content/renderer/render_frame_impl.cc
-+++ chromium-129.0.6668.58/content/renderer/render_frame_impl.cc
-@@ -1276,6 +1276,8 @@ WindowOpenDisposition NavigationPolicyTo
+--- chromium-130.0.6723.44.orig/content/renderer/render_frame_impl.cc
++++ chromium-130.0.6723.44/content/renderer/render_frame_impl.cc
+@@ -1278,6 +1278,8 @@ WindowOpenDisposition NavigationPolicyTo
      case blink::kWebNavigationPolicyNewWindow:
        return WindowOpenDisposition::NEW_WINDOW;
      case blink::kWebNavigationPolicyNewPopup:
@@ -26,10 +26,10 @@ Index: chromium-129.0.6668.58/content/renderer/render_frame_impl.cc
        return WindowOpenDisposition::NEW_POPUP;
      case blink::kWebNavigationPolicyPictureInPicture:
        return WindowOpenDisposition::NEW_PICTURE_IN_PICTURE;
-Index: chromium-129.0.6668.58/ui/base/mojom/window_open_disposition_mojom_traits.h
+Index: chromium-130.0.6723.44/ui/base/mojom/window_open_disposition_mojom_traits.h
 ===================================================================
---- chromium-129.0.6668.58.orig/ui/base/mojom/window_open_disposition_mojom_traits.h
-+++ chromium-129.0.6668.58/ui/base/mojom/window_open_disposition_mojom_traits.h
+--- chromium-130.0.6723.44.orig/ui/base/mojom/window_open_disposition_mojom_traits.h
++++ chromium-130.0.6723.44/ui/base/mojom/window_open_disposition_mojom_traits.h
 @@ -5,6 +5,7 @@
  #ifndef UI_BASE_MOJOM_WINDOW_OPEN_DISPOSITION_MOJOM_TRAITS_H_
  #define UI_BASE_MOJOM_WINDOW_OPEN_DISPOSITION_MOJOM_TRAITS_H_

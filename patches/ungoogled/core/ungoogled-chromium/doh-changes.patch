@@ -1,7 +1,20 @@
-Index: chromium-129.0.6668.58/chrome/browser/net/dns_probe_runner.cc
+Index: chromium-130.0.6723.44/chrome/browser/net/default_dns_over_https_config_source.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/net/dns_probe_runner.cc
-+++ chromium-129.0.6668.58/chrome/browser/net/dns_probe_runner.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/net/default_dns_over_https_config_source.cc
++++ chromium-130.0.6723.44/chrome/browser/net/default_dns_over_https_config_source.cc
+@@ -25,7 +25,7 @@ DefaultDnsOverHttpsConfigSource::Default
+   if (set_up_pref_defaults) {
+     local_state->SetDefaultPrefValue(prefs::kDnsOverHttpsMode,
+                                      base::Value(SecureDnsConfig::ModeToString(
+-                                         net::SecureDnsMode::kAutomatic)));
++                                         net::SecureDnsMode::kOff)));
+   }
+ }
+ 
+Index: chromium-130.0.6723.44/chrome/browser/net/dns_probe_runner.cc
+===================================================================
+--- chromium-130.0.6723.44.orig/chrome/browser/net/dns_probe_runner.cc
++++ chromium-130.0.6723.44/chrome/browser/net/dns_probe_runner.cc
 @@ -18,7 +18,7 @@
  
  namespace chrome_browser_net {
@@ -11,23 +24,10 @@ Index: chromium-129.0.6668.58/chrome/browser/net/dns_probe_runner.cc
  
  namespace {
  
-Index: chromium-129.0.6668.58/chrome/browser/net/stub_resolver_config_reader.cc
+Index: chromium-130.0.6723.44/net/dns/public/doh_provider_entry.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/net/stub_resolver_config_reader.cc
-+++ chromium-129.0.6668.58/chrome/browser/net/stub_resolver_config_reader.cc
-@@ -125,7 +125,7 @@ StubResolverConfigReader::StubResolverCo
-                                       base::Value(ShouldEnableAsyncDns()));
-     local_state_->SetDefaultPrefValue(prefs::kDnsOverHttpsMode,
-                                       base::Value(SecureDnsConfig::ModeToString(
--                                          net::SecureDnsMode::kAutomatic)));
-+                                          net::SecureDnsMode::kOff)));
-   }
- 
-   pref_change_registrar_.Add(prefs::kBuiltInDnsClientEnabled, pref_callback);
-Index: chromium-129.0.6668.58/net/dns/public/doh_provider_entry.cc
-===================================================================
---- chromium-129.0.6668.58.orig/net/dns/public/doh_provider_entry.cc
-+++ chromium-129.0.6668.58/net/dns/public/doh_provider_entry.cc
+--- chromium-130.0.6723.44.orig/net/dns/public/doh_provider_entry.cc
++++ chromium-130.0.6723.44/net/dns/public/doh_provider_entry.cc
 @@ -166,30 +166,6 @@ const DohProviderEntry::List& DohProvide
            /*display_globally=*/false, /*display_countries=*/{"EE", "DE"},
            LoggingLevel::kNormal),
@@ -59,10 +59,10 @@ Index: chromium-129.0.6668.58/net/dns/public/doh_provider_entry.cc
            "Iij",
            MAKE_BASE_FEATURE_WITH_STATIC_STORAGE(
                DohProviderIij, base::FEATURE_ENABLED_BY_DEFAULT),
-Index: chromium-129.0.6668.58/services/network/public/cpp/features.cc
+Index: chromium-130.0.6723.44/services/network/public/cpp/features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/services/network/public/cpp/features.cc
-+++ chromium-129.0.6668.58/services/network/public/cpp/features.cc
+--- chromium-130.0.6723.44.orig/services/network/public/cpp/features.cc
++++ chromium-130.0.6723.44/services/network/public/cpp/features.cc
 @@ -126,12 +126,7 @@ BASE_FEATURE(kSplitAuthCacheByNetworkIso
  // Enable usage of hardcoded DoH upgrade mapping for use in automatic mode.
  BASE_FEATURE(kDnsOverHttpsUpgrade,

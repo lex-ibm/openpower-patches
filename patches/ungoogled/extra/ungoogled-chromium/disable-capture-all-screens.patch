@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/chrome/browser/media/webrtc/capture_policy_utils.cc
+Index: chromium-130.0.6723.44/chrome/browser/media/webrtc/capture_policy_utils.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/media/webrtc/capture_policy_utils.cc
-+++ chromium-129.0.6668.58/chrome/browser/media/webrtc/capture_policy_utils.cc
-@@ -63,46 +63,7 @@ void IsMultiCaptureAllowedForAnyOriginOn
+--- chromium-130.0.6723.44.orig/chrome/browser/media/webrtc/capture_policy_utils.cc
++++ chromium-130.0.6723.44/chrome/browser/media/webrtc/capture_policy_utils.cc
+@@ -64,46 +64,7 @@ void IsMultiCaptureAllowedForAnyOriginOn
      base::OnceCallback<void(bool)> callback,
      content::BrowserContext* context,
      bool is_multi_capture_allowed_for_any_origin_on_main_profile) {
@@ -49,7 +49,7 @@ Index: chromium-129.0.6668.58/chrome/browser/media/webrtc/capture_policy_utils.c
  }
  
  void CheckAllScreensMediaAllowedForIwaResultReceived(
-@@ -290,58 +251,13 @@ void RegisterProfilePrefs(PrefRegistrySi
+@@ -291,58 +252,13 @@ void RegisterProfilePrefs(PrefRegistrySi
  void CheckGetAllScreensMediaAllowedForAnyOrigin(
      content::BrowserContext* context,
      base::OnceCallback<void(bool)> callback) {

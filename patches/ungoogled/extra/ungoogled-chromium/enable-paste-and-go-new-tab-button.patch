@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-@@ -204,12 +204,10 @@ TabStripRegionView::TabStripRegionView(s
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+@@ -205,12 +205,10 @@ TabStripRegionView::TabStripRegionView(s
  
      // TODO(crbug.com/40118868): Revisit the macro expression once build flag
      // switch of lacros-chrome is complete.
@@ -15,11 +15,11 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_vie
    }
  
    reserved_grab_handle_space_ =
-Index: chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab_strip.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/views/tabs/tab_strip.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/views/tabs/tab_strip.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab_strip.cc
-@@ -2069,8 +2069,6 @@ void TabStrip::NewTabButtonPressed(const
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/views/tabs/tab_strip.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/views/tabs/tab_strip.cc
+@@ -2073,8 +2073,6 @@ void TabStrip::NewTabButtonPressed(const
  
      const ui::MouseEvent& mouse = static_cast<const ui::MouseEvent&>(event);
      if (mouse.IsOnlyMiddleMouseButton()) {
@@ -28,7 +28,7 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/views/tabs/tab_strip.cc
          ui::Clipboard* clipboard = ui::Clipboard::GetForCurrentThread();
          CHECK(clipboard)
              << "Clipboard instance is not available, cannot proceed with "
-@@ -2081,7 +2079,6 @@ void TabStrip::NewTabButtonPressed(const
+@@ -2085,7 +2083,6 @@ void TabStrip::NewTabButtonPressed(const
          if (!clipboard_text.empty()) {
            controller_->CreateNewTabWithLocation(clipboard_text);
          }

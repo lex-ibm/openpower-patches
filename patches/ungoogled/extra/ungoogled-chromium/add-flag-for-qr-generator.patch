@@ -1,7 +1,7 @@
-Index: chromium-129.0.6668.58/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/qrcode_generator/qrcode_generator_bubble_controller.cc
 @@ -12,6 +12,7 @@
  #include "chrome/browser/ui/sharing_hub/sharing_hub_bubble_controller.h"
  #include "chrome/common/pref_names.h"
@@ -19,10 +19,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/qrcode_generator/qrcode_generato
      return false;
  
    // Check policy.
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -64,4 +64,8 @@
       "Remove Tabsearch Button",
       "Removes the tabsearch button from the tabstrip. ungoogled-chromium flag",
@@ -32,20 +32,20 @@ Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 +     "Disables the QR generator for sharing page links. ungoogled-chromium flag",
 +     kOsDesktop, FEATURE_VALUE_TYPE(kDisableQRGenerator)},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-129.0.6668.58/components/sharing_message/features.cc
+Index: chromium-130.0.6723.44/components/sharing_message/features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/sharing_message/features.cc
-+++ chromium-129.0.6668.58/components/sharing_message/features.cc
+--- chromium-130.0.6723.44.orig/components/sharing_message/features.cc
++++ chromium-130.0.6723.44/components/sharing_message/features.cc
 @@ -17,3 +17,5 @@ const base::FeatureParam<int> kSharingPu
  
  const base::FeatureParam<int> kSharingPulseDeltaAndroidHours = {
      &kSharingMatchPulseInterval, "SharingPulseDeltaAndroidHours", 24};
 +
 +BASE_FEATURE(kDisableQRGenerator, "DisableQRGenerator", base::FEATURE_DISABLED_BY_DEFAULT);
-Index: chromium-129.0.6668.58/components/sharing_message/features.h
+Index: chromium-130.0.6723.44/components/sharing_message/features.h
 ===================================================================
---- chromium-129.0.6668.58.orig/components/sharing_message/features.h
-+++ chromium-129.0.6668.58/components/sharing_message/features.h
+--- chromium-130.0.6723.44.orig/components/sharing_message/features.h
++++ chromium-130.0.6723.44/components/sharing_message/features.h
 @@ -26,4 +26,5 @@ extern const base::FeatureParam<int> kSh
  // backgrounded. Such devices cannot be marked stale aggressively.
  extern const base::FeatureParam<int> kSharingPulseDeltaAndroidHours;

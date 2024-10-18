@@ -1,29 +1,29 @@
-Index: chromium-129.0.6668.58/chrome/browser/browser_features.cc
+Index: chromium-130.0.6723.44/chrome/browser/browser_features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/browser_features.cc
-+++ chromium-129.0.6668.58/chrome/browser/browser_features.cc
-@@ -410,4 +410,5 @@ BASE_FEATURE(kReportPakFileIntegrity,
- BASE_FEATURE(kRemovalOfIWAsFromTabCapture,
+--- chromium-130.0.6723.44.orig/chrome/browser/browser_features.cc
++++ chromium-130.0.6723.44/chrome/browser/browser_features.cc
+@@ -450,4 +450,5 @@ BASE_FEATURE(kRemovalOfIWAsFromTabCaptur
               "RemovalOfIWAsFromTabCapture",
               base::FEATURE_ENABLED_BY_DEFAULT);
+ 
 +BASE_FEATURE(kClearDataOnExit, "ClearDataOnExit", base::FEATURE_DISABLED_BY_DEFAULT);
  }  // namespace features
-Index: chromium-129.0.6668.58/chrome/browser/browser_features.h
+Index: chromium-130.0.6723.44/chrome/browser/browser_features.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/browser_features.h
-+++ chromium-129.0.6668.58/chrome/browser/browser_features.h
-@@ -145,6 +145,7 @@ BASE_DECLARE_FEATURE(kBrowserDynamicCode
- BASE_DECLARE_FEATURE(kReportPakFileIntegrity);
+--- chromium-130.0.6723.44.orig/chrome/browser/browser_features.h
++++ chromium-130.0.6723.44/chrome/browser/browser_features.h
+@@ -170,6 +170,7 @@ BASE_DECLARE_FEATURE(kReportPakFileInteg
  
  BASE_DECLARE_FEATURE(kRemovalOfIWAsFromTabCapture);
+ 
 +BASE_DECLARE_FEATURE(kClearDataOnExit);
  }  // namespace features
  
  #endif  // CHROME_BROWSER_BROWSER_FEATURES_H_
-Index: chromium-129.0.6668.58/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
+Index: chromium-130.0.6723.44/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
-+++ chromium-129.0.6668.58/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
++++ chromium-130.0.6723.44/chrome/browser/browsing_data/chrome_browsing_data_lifetime_manager.cc
 @@ -19,6 +19,7 @@
  #include "base/task/task_traits.h"
  #include "base/values.h"
@@ -78,10 +78,10 @@ Index: chromium-129.0.6668.58/chrome/browser/browsing_data/chrome_browsing_data_
                              BrowsingDataRemoverObserver::Create(
                                  remover, /*filterable_deletion=*/true, profile_,
                                  keep_browser_alive));
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -56,4 +56,8 @@
       "Keep old history",
       "Keep history older than 3 months. ungoogled-chromium flag",

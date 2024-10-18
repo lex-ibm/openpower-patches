@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
+Index: chromium-130.0.6723.44/chrome/browser/chrome_content_browser_client.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/chrome_content_browser_client.cc
-+++ chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
-@@ -921,10 +921,14 @@ bool HandleNewTabPageLocationOverride(
+--- chromium-130.0.6723.44.orig/chrome/browser/chrome_content_browser_client.cc
++++ chromium-130.0.6723.44/chrome/browser/chrome_content_browser_client.cc
+@@ -930,10 +930,14 @@ bool HandleNewTabPageLocationOverride(
  
    // Don't change the URL when incognito mode.
    if (profile->IsOffTheRecord())
@@ -17,10 +17,10 @@ Index: chromium-129.0.6668.58/chrome/browser/chrome_content_browser_client.cc
    if (ntp_location.empty())
      return false;
    url::Component scheme;
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -76,4 +76,8 @@
       "Close Confirmation",
       "Show a warning prompt when closing the browser window. ungoogled-chromium flag",
@@ -30,10 +30,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 +     "Allows setting a custom URL for the new tab page. Value can be internal (e.g. `about:blank` or `chrome://new-tab-page`), external (e.g. `example.com`), or local (e.g. `file:///tmp/startpage.html`). This applies for incognito windows as well when not set to a `chrome://` internal page. ungoogled-chromium flag",
 +     kOsDesktop, ORIGIN_LIST_VALUE_TYPE("custom-ntp", "")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-129.0.6668.58/components/flags_ui/flags_state.cc
+Index: chromium-130.0.6723.44/components/flags_ui/flags_state.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/flags_ui/flags_state.cc
-+++ chromium-129.0.6668.58/components/flags_ui/flags_state.cc
+--- chromium-130.0.6723.44.orig/components/flags_ui/flags_state.cc
++++ chromium-130.0.6723.44/components/flags_ui/flags_state.cc
 @@ -228,6 +228,7 @@ std::string GetCombinedOriginListValue(c
        command_line.GetSwitchValueASCII(command_line_switch);
    const std::string new_value =

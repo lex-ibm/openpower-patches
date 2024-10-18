@@ -1,9 +1,9 @@
 # Disable additional URLs that are not caught by the "trk" scheme
 
-Index: chromium-129.0.6668.58/rlz/lib/financial_ping.cc
+Index: chromium-130.0.6723.44/rlz/lib/financial_ping.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/rlz/lib/financial_ping.cc
-+++ chromium-129.0.6668.58/rlz/lib/financial_ping.cc
+--- chromium-130.0.6723.44.orig/rlz/lib/financial_ping.cc
++++ chromium-130.0.6723.44/rlz/lib/financial_ping.cc
 @@ -311,7 +311,7 @@ FinancialPing::PingResponse FinancialPin
    response->clear();
  
@@ -13,10 +13,10 @@ Index: chromium-129.0.6668.58/rlz/lib/financial_ping.cc
  
    // Use a waitable event to cause this function to block, to match the
    // wininet implementation.
-Index: chromium-129.0.6668.58/rlz/lib/lib_values.cc
+Index: chromium-130.0.6723.44/rlz/lib/lib_values.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/rlz/lib/lib_values.cc
-+++ chromium-129.0.6668.58/rlz/lib/lib_values.cc
+--- chromium-130.0.6723.44.orig/rlz/lib/lib_values.cc
++++ chromium-130.0.6723.44/rlz/lib/lib_values.cc
 @@ -40,7 +40,6 @@ const char kSetDccResponseVariable[] = "
  //
  
@@ -25,10 +25,10 @@ Index: chromium-129.0.6668.58/rlz/lib/lib_values.cc
  const int kFinancialPort = 443;
  
  // Ping times in 100-nanosecond intervals.
-Index: chromium-129.0.6668.58/rlz/lib/lib_values.h
+Index: chromium-130.0.6723.44/rlz/lib/lib_values.h
 ===================================================================
---- chromium-129.0.6668.58.orig/rlz/lib/lib_values.h
-+++ chromium-129.0.6668.58/rlz/lib/lib_values.h
+--- chromium-130.0.6723.44.orig/rlz/lib/lib_values.h
++++ chromium-130.0.6723.44/rlz/lib/lib_values.h
 @@ -72,7 +72,6 @@ extern const char kSetDccResponseVariabl
  //
  

@@ -1,7 +1,7 @@
-Index: chromium-129.0.6668.58/components/attribution_reporting/features.cc
+Index: chromium-130.0.6723.44/components/attribution_reporting/features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/attribution_reporting/features.cc
-+++ chromium-129.0.6668.58/components/attribution_reporting/features.cc
+--- chromium-130.0.6723.44.orig/components/attribution_reporting/features.cc
++++ chromium-130.0.6723.44/components/attribution_reporting/features.cc
 @@ -11,7 +11,7 @@ namespace attribution_reporting::feature
  // Controls whether the Conversion Measurement API infrastructure is enabled.
  BASE_FEATURE(kConversionMeasurement,
@@ -11,11 +11,11 @@ Index: chromium-129.0.6668.58/components/attribution_reporting/features.cc
  
  BASE_FEATURE(kAttributionAggregatableDebugReporting,
               "AttributionAggregatableDebugReporting",
-Index: chromium-129.0.6668.58/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
+Index: chromium-130.0.6723.44/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
-+++ chromium-129.0.6668.58/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
-@@ -125,7 +125,7 @@ std::set<browsing_topics::Topic> GetTopi
+--- chromium-130.0.6723.44.orig/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
++++ chromium-130.0.6723.44/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
+@@ -127,7 +127,7 @@ std::set<browsing_topics::Topic> GetTopi
  
  // static
  bool PrivacySandboxSettingsImpl::IsAllowed(Status status) {
@@ -24,7 +24,7 @@ Index: chromium-129.0.6668.58/components/privacy_sandbox/privacy_sandbox_setting
  }
  
  // static
-@@ -775,7 +775,7 @@ void PrivacySandboxSettingsImpl::SetTopi
+@@ -822,7 +822,7 @@ void PrivacySandboxSettingsImpl::SetTopi
  }
  
  bool PrivacySandboxSettingsImpl::IsPrivacySandboxRestricted() const {
@@ -33,7 +33,7 @@ Index: chromium-129.0.6668.58/components/privacy_sandbox/privacy_sandbox_setting
  }
  
  bool PrivacySandboxSettingsImpl::IsPrivacySandboxCurrentlyUnrestricted() const {
-@@ -844,11 +844,7 @@ PrivacySandboxSettingsImpl::GetPrivacySa
+@@ -891,11 +891,7 @@ PrivacySandboxSettingsImpl::GetPrivacySa
      return Status::kIncognitoProfile;
    }
  
@@ -45,10 +45,10 @@ Index: chromium-129.0.6668.58/components/privacy_sandbox/privacy_sandbox_setting
  }
  
  PrivacySandboxSettingsImpl::Status
-Index: chromium-129.0.6668.58/content/browser/aggregation_service/aggregation_service_features.cc
+Index: chromium-130.0.6723.44/content/browser/aggregation_service/aggregation_service_features.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/content/browser/aggregation_service/aggregation_service_features.cc
-+++ chromium-129.0.6668.58/content/browser/aggregation_service/aggregation_service_features.cc
+--- chromium-130.0.6723.44.orig/content/browser/aggregation_service/aggregation_service_features.cc
++++ chromium-130.0.6723.44/content/browser/aggregation_service/aggregation_service_features.cc
 @@ -8,7 +8,7 @@ namespace content {
  
  BASE_FEATURE(kPrivacySandboxAggregationService,

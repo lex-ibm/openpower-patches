@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/browser_view.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/views/frame/browser_view.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/views/frame/browser_view.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/views/frame/browser_view.cc
-@@ -2000,6 +2000,10 @@ void BrowserView::ExitFullscreen() {
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/views/frame/browser_view.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/views/frame/browser_view.cc
+@@ -2019,6 +2019,10 @@ void BrowserView::ExitFullscreen() {
  void BrowserView::UpdateExclusiveAccessBubble(
      const ExclusiveAccessBubbleParams& params,
      ExclusiveAccessBubbleHideCallback first_hide_callback) {
@@ -13,10 +13,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/browser_view.cc
    // Trusted pinned mode does not allow to escape. So do not show the bubble.
    bool is_trusted_pinned =
        platform_util::IsBrowserLockedFullscreen(browser_.get());
-Index: chromium-129.0.6668.58/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/views/fullscreen_control/fullscreen_control_host.cc
 @@ -72,6 +72,10 @@ bool IsExitUiEnabled() {
    // menu and controls reveal when the cursor is moved to the top.
    return false;
@@ -28,10 +28,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/views/fullscreen_control/fullscr
    // Kiosk mode is a fullscreen experience, which makes the exit UI
    // inappropriate.
    return !IsRunningInAppMode();
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -112,4 +112,8 @@
       "Hide Extensions Menu",
       "Hides the extensions container. This includes the puzzle piece icon as well as any pinned extensions. ungoogled-chromium flag.",

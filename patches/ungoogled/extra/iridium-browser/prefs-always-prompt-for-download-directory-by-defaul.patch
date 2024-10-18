@@ -27,11 +27,11 @@ TLDR: Do not let files sneak onto the disk too easily.
  chrome/browser/download/download_prefs.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: chromium-129.0.6668.58/chrome/browser/download/download_prefs.cc
+Index: chromium-130.0.6723.44/chrome/browser/download/download_prefs.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/download/download_prefs.cc
-+++ chromium-129.0.6668.58/chrome/browser/download/download_prefs.cc
-@@ -272,7 +272,7 @@ void DownloadPrefs::RegisterProfilePrefs
+--- chromium-130.0.6723.44.orig/chrome/browser/download/download_prefs.cc
++++ chromium-130.0.6723.44/chrome/browser/download/download_prefs.cc
+@@ -268,7 +268,7 @@ void DownloadPrefs::RegisterProfilePrefs
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
        prefs::kPromptForDownload,

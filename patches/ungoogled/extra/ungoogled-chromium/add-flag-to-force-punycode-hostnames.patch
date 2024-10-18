@@ -1,9 +1,9 @@
 # Add flag to force punycode in hostnames instead of Unicode when displaying Internationalized Domain Names (IDNs) to mitigate homograph attacks
 
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -20,4 +20,8 @@
       "Disable beforeunload",
       "Disables JavaScript dialog boxes triggered by beforeunload. ungoogled-chromium flag.",
@@ -13,10 +13,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
 +     "Force punycode in hostnames instead of Unicode when displaying Internationalized Domain Names (IDNs). ungoogled-chromium flag.",
 +     kOsAll, SINGLE_VALUE_TYPE("force-punycode-hostnames")},
  #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
-Index: chromium-129.0.6668.58/components/url_formatter/url_formatter.cc
+Index: chromium-130.0.6723.44/components/url_formatter/url_formatter.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/url_formatter/url_formatter.cc
-+++ chromium-129.0.6668.58/components/url_formatter/url_formatter.cc
+--- chromium-130.0.6723.44.orig/components/url_formatter/url_formatter.cc
++++ chromium-130.0.6723.44/components/url_formatter/url_formatter.cc
 @@ -15,6 +15,7 @@
  #include <utility>
  #include <vector>

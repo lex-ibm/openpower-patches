@@ -1,8 +1,8 @@
-Index: chromium-129.0.6668.58/chrome/browser/ui/browser_command_controller.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/browser_command_controller.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/browser_command_controller.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/browser_command_controller.cc
-@@ -1440,7 +1440,8 @@ void BrowserCommandController::InitComma
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/browser_command_controller.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/browser_command_controller.cc
+@@ -1422,7 +1422,8 @@ void BrowserCommandController::InitComma
    command_updater_.UpdateCommandEnabled(IDC_WINDOW_CLOSE_OTHER_TABS,
                                          normal_window);
  
@@ -12,10 +12,10 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/browser_command_controller.cc
    command_updater_.UpdateCommandEnabled(IDC_TAB_SEARCH,
                                          enable_tab_search_commands);
    command_updater_.UpdateCommandEnabled(IDC_TAB_SEARCH_CLOSE,
-Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+Index: chromium-130.0.6723.44/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
-+++ chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_view.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/ui/views/frame/tab_strip_region_view.cc
++++ chromium-130.0.6723.44/chrome/browser/ui/views/frame/tab_strip_region_view.cc
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/ui/views/frame/tab_strip_region_view.h"
@@ -33,11 +33,11 @@ Index: chromium-129.0.6668.58/chrome/browser/ui/views/frame/tab_strip_region_vie
 +      !base::CommandLine::ForCurrentProcess()->HasSwitch("remove-tabsearch-button")) {
      tab_search_container = std::make_unique<TabSearchContainer>(
          tab_strip_->controller(), browser->tab_strip_model(),
-         render_tab_search_before_tab_strip_, this);
-Index: chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+         render_tab_search_before_tab_strip_, this,
+Index: chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/ungoogled_flag_entries.h
-+++ chromium-129.0.6668.58/chrome/browser/ungoogled_flag_entries.h
+--- chromium-130.0.6723.44.orig/chrome/browser/ungoogled_flag_entries.h
++++ chromium-130.0.6723.44/chrome/browser/ungoogled_flag_entries.h
 @@ -60,4 +60,8 @@
       "Clear data on exit",
       "Clears all browsing data on exit. ungoogled-chromium flag",

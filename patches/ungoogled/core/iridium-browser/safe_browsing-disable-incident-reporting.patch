@@ -14,10 +14,10 @@ the URL so we get notified if this happens again in the future).
  .../security_interstitials/core/safe_browsing_loud_error_ui.cc | 1 +
  5 files changed, 7 insertions(+), 4 deletions(-)
 
-Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
+Index: chromium-130.0.6723.44/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
-+++ chromium-129.0.6668.58/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
++++ chromium-130.0.6723.44/chrome/browser/safe_browsing/chrome_safe_browsing_blocking_page_factory.cc
 @@ -63,8 +63,7 @@ ChromeSafeBrowsingBlockingPageFactory::C
        Profile::FromBrowserContext(web_contents->GetBrowserContext());
    // Create appropriate display options for this blocking page.
@@ -28,10 +28,10 @@ Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/chrome_safe_browsing_
    bool is_proceed_anyway_disabled = IsSafeBrowsingProceedAnywayDisabled(*prefs);
  
    // Determine if any prefs need to be updated prior to showing the security
-Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
+Index: chromium-130.0.6723.44/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
-+++ chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
++++ chromium-130.0.6723.44/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
 @@ -27,7 +27,7 @@ namespace safe_browsing {
  namespace {
  
@@ -41,10 +41,10 @@ Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/in
  
  constexpr net::NetworkTrafficAnnotationTag
      kSafeBrowsingIncidentTrafficAnnotation =
-Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
+Index: chromium-130.0.6723.44/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
-+++ chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
+--- chromium-130.0.6723.44.orig/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
++++ chromium-130.0.6723.44/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
 @@ -306,11 +306,14 @@ IncidentReportingService::UploadContext:
  
  // static
@@ -60,11 +60,11 @@ Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/incident_reporting/in
  }
  
  IncidentReportingService::IncidentReportingService(
-Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/safe_browsing_service.cc
+Index: chromium-130.0.6723.44/chrome/browser/safe_browsing/safe_browsing_service.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/chrome/browser/safe_browsing/safe_browsing_service.cc
-+++ chromium-129.0.6668.58/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -373,7 +373,7 @@ SafeBrowsingUIManager* SafeBrowsingServi
+--- chromium-130.0.6723.44.orig/chrome/browser/safe_browsing/safe_browsing_service.cc
++++ chromium-130.0.6723.44/chrome/browser/safe_browsing/safe_browsing_service.cc
+@@ -372,7 +372,7 @@ SafeBrowsingUIManager* SafeBrowsingServi
  }
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
@@ -73,10 +73,10 @@ Index: chromium-129.0.6668.58/chrome/browser/safe_browsing/safe_browsing_service
    RegisterBinaryIntegrityAnalysis();
  #endif
  }
-Index: chromium-129.0.6668.58/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
+Index: chromium-130.0.6723.44/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
 ===================================================================
---- chromium-129.0.6668.58.orig/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
-+++ chromium-129.0.6668.58/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
+--- chromium-130.0.6723.44.orig/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
++++ chromium-130.0.6723.44/components/security_interstitials/core/safe_browsing_loud_error_ui.cc
 @@ -27,11 +27,11 @@ namespace {
  // For malware interstitial pages, we link the problematic URL to Google's
  // diagnostic page.
